@@ -26,28 +26,24 @@
         }
         nav {
             background: var(--bg-light);
-            padding: 25px 20px;
+            padding: 15px 20px;
             border-bottom: 1px solid #eee;
         }
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .logo {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 20px;
+        /* LOGO图片样式 */
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
         .nav-links {
             display: flex;
-            justify-content: center;
             gap: 35px;
         }
         .nav-links a {
@@ -201,9 +197,14 @@
 </head>
 <body>
 
+<!-- 顶部导航栏（左侧LOGO+右侧导航） -->
 <nav>
     <div class="nav-container">
-        <a href="#" class="logo">GemstoneBR Co-Host</a>
+        <!-- 公司LOGO -->
+        <a href="#">
+            <img src="https://github.com/Ula1996/ula1996.github.io/blob/main/%E7%99%BD%E5%BA%95logo.png?raw=true" class="logo-img" alt="GemstoneBR Co-Host Logo">
+        </a>
+        <!-- 导航菜单 -->
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
@@ -226,7 +227,6 @@
     </div>
 
     <div class="services-grid">
-        <!-- 已替换新图片 -->
         <div class="service-card">
             <div class="card-image" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-1010832159352594711/original/5720d3f0-a3ea-43c0-b77e-a03b11ea7ac5.jpeg?im_w=1440')"></div>
             <div class="card-content">
