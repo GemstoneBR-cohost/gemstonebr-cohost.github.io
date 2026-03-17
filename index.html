@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GemstoneBR Co-Host | Airbnb Full-Service Management</title>
     <style>
-        /* 风格对标 beachlifebliss.com：简约清新、柔和配色 */
         * {
             margin: 0;
             padding: 0;
@@ -13,8 +12,8 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
         :root {
-            --primary: #4A90E2; /* 主色调：清新蓝 */
-            --secondary: #F5F5F0; /* 背景色：米色 */
+            --primary: #4A90E2;
+            --secondary: #F5F5F0;
             --dark: #2C3E50;
             --light: #FFFFFF;
         }
@@ -23,7 +22,6 @@
             color: var(--dark);
             line-height: 1.6;
         }
-        /* 导航栏 */
         nav {
             background: var(--light);
             padding: 20px;
@@ -54,14 +52,14 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-        /* 横幅区域 */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background: url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .hero h1 {
             font-size: 42px;
@@ -70,58 +68,69 @@
         .hero p {
             font-size: 18px;
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
         }
-        /* 通用容器 */
         .container {
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
         }
-        .section-title {
+        /* 标题区域 */
+        .section-header {
             text-align: center;
-            font-size: 32px;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 40px;
             color: var(--dark);
-            margin-bottom: 40px;
-            position: relative;
+            margin-bottom: 10px;
         }
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-            display: block;
-            margin: 10px auto;
+        .section-header p {
+            font-size: 18px;
+            color: #666;
         }
-        /* 卡片布局 */
-        .grid {
+        /* 服务卡片（方形背景图） */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
-        .card {
-            background: var(--light);
-            padding: 30px;
+        .service-card {
             border-radius: 10px;
+            overflow: hidden;
+            background: white;
             box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        /* 成果数据卡片 */
-        .stats-card {
             text-align: center;
-            font-size: 22px;
-            font-weight: bold;
         }
-        /* 联系区域 */
+        .card-image {
+            width: 100%;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 30px;
+        }
+        .card-content h3 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background: #357abd;
+        }
+        /* 联系方式 */
         .contact {
             background: var(--light);
             padding: 50px;
@@ -132,7 +141,6 @@
             font-size: 18px;
             margin: 10px 0;
         }
-        /* 页脚 */
         footer {
             background: var(--dark);
             color: var(--light);
@@ -144,100 +152,63 @@
 </head>
 <body>
 
-<!-- 导航栏 -->
+<!-- 导航 -->
 <nav>
     <div class="nav-container">
         <a href="#" class="logo">GemstoneBR Co-Host</a>
         <div class="nav-links">
             <a href="#services">Services</a>
-            <a href="#results">Our Results</a>
-            <a href="#pricing">Pricing</a>
             <a href="#contact">Contact</a>
         </div>
     </div>
 </nav>
 
-<!-- 首页横幅 -->
+<!-- 主图区域 -->
 <section class="hero">
     <h1>Professional Airbnb Co-Hosting & Management</h1>
     <p>Maximize your rental income with GemstoneBR Co-Host — Full-service Airbnb management for property owners.</p>
 </section>
 
-<!-- 服务内容 -->
+<!-- 你要的新板块 -->
 <section class="container" id="services">
-    <h2 class="section-title">Our Services</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Listing Optimization</h3>
-            <p>Professional listing creation, high-quality descriptions, SEO optimization, and competitive pricing strategy.</p>
+    <div class="section-header">
+        <h2>What can we help with?</h2>
+        <p>Resources for every stage of your short term rental business</p>
+    </div>
+
+    <div class="services-grid">
+        <!-- 模块1 -->
+        <div class="service-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&auto=format&fit=crop')"></div>
+            <div class="card-content">
+                <h3>Amenities & Design</h3>
+                <a href="#" class="btn">Click Here</a>
+            </div>
         </div>
-        <div class="card">
-            <h3>Guest Management</h3>
-            <p>24/7 guest communication, seamless check-in/check-out, and 5-star guest experience support.</p>
+
+        <!-- 模块2 -->
+        <div class="service-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1556742031-814559a56854?w=500&auto=format&fit=crop')"></div>
+            <div class="card-content">
+                <h3>Professional online operation</h3>
+                <a href="#" class="btn">Click Here</a>
+            </div>
         </div>
-        <div class="card">
-            <h3>Cleaning & Maintenance</h3>
-            <p>Professional cleaning services, regular property inspections, and quick maintenance support.</p>
-        </div>
-        <div class="card">
-            <h3>Revenue Management</h3>
-            <p>Dynamic pricing, calendar management, and occupancy rate optimization to maximize your profit.</p>
-        </div>
-        <div class="card">
-            <h3>Review Management</h3>
-            <p>Proactive review collection and reputation management to maintain Superhost status.</p>
-        </div>
-        <div class="card">
-            <h3>Full-Service Co-Hosting</h3>
-            <p>End-to-end management: we handle everything, you just collect the profit!</p>
+
+        <!-- 模块3 -->
+        <div class="service-card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583997104043-1ca00e3de21e?w=500&auto=format&fit=crop')"></div>
+            <div class="card-content">
+                <h3>Cleaning and Maintenance</h3>
+                <a href="#" class="btn">Click Here</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- 项目成果 -->
-<section class="container" id="results">
-    <h2 class="section-title">Our Results</h2>
-    <div class="grid">
-        <div class="card stats-card">
-            <p>📈 95%+ Occupancy Rate</p>
-        </div>
-        <div class="card stats-card">
-            <p>💰 30-50% Higher Rental Income</p>
-        </div>
-        <div class="card stats-card">
-            <p>⭐ 4.9/5 Guest Review Score</p>
-        </div>
-        <div class="card stats-card">
-            <p>🏆 100% Superhost Status</p>
-        </div>
-    </div>
-</section>
-
-<!-- 收费标准 -->
-<section class="container" id="pricing">
-    <h2 class="section-title">Pricing</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Standard Co-Hosting Plan</h3>
-            <p><strong>Commission: 15% of monthly revenue</strong></p>
-            <p>Includes: Guest communication, cleaning coordination, pricing, and basic management.</p>
-        </div>
-        <div class="card">
-            <h3>Full-Service Plan</h3>
-            <p><strong>Commission: 25% of monthly revenue</strong></p>
-            <p>Includes: ALL services (end-to-end management, cleaning, maintenance, 24/7 support).</p>
-        </div>
-        <div class="card">
-            <h3>Custom Plan</h3>
-            <p><strong>Tailored Pricing</strong></p>
-            <p>Customized services for multi-property owners and luxury rentals.</p>
-        </div>
-    </div>
-</section>
-
-<!-- 联系方式 -->
+<!-- 联系方式（不变） -->
 <section class="container" id="contact">
-    <h2 class="section-title">Contact Us</h2>
+    <h2 class="section-header" style="font-size:32px;">Contact Us</h2>
     <div class="contact">
         <p class="contact-info">📩 Email: 785154397@qq.com</p>
         <p class="contact-info">📱 WhatsApp/Wechat: +86 15734003660</p>
@@ -246,9 +217,8 @@
     </div>
 </section>
 
-<!-- 页脚 -->
 <footer>
-    <p>&copy; 2026 GemstoneBR Co-Host. All Rights Reserved. Professional Airbnb Management Services.</p>
+    <p>&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
 </body>
