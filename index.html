@@ -24,7 +24,6 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
         }
-        /* 导航栏样式 */
         nav {
             background: var(--bg-light);
             padding: 15px 20px;
@@ -37,14 +36,14 @@
             justify-content: space-between;
             align-items: center;
         }
-        /* Logo 区域：图片+文字 */
         .logo-wrapper {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+        /* 放大LOGO：从50px改为80px */
         .logo-img {
-            height: 50px;
+            height: 80px;
             width: auto;
             object-fit: contain;
         }
@@ -61,7 +60,7 @@
             gap: 35px;
         }
         .nav-links a {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Seg UI', sans-serif;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -72,9 +71,8 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-        /* 主图区域 */
         .hero {
-            background: url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background: url('https://images.unsplash.com/photo-168418203189-a1384f3d7d4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
             color: white;
@@ -212,11 +210,9 @@
 </head>
 <body>
 
-<!-- 顶部导航（左侧Logo+公司名，右侧导航） -->
 <nav>
     <div class="nav-container">
         <div class="logo-wrapper">
-            <!-- 稳定的Logo直链 -->
             <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
             <span class="logo-text">GemstoneBR Co-Host</span>
         </div>
@@ -227,7 +223,6 @@
     </div>
 </nav>
 
-<!-- 主图区域 -->
 <section class="hero">
     <div class="hero-content">
         <h1>Professional Airbnb Co-Hosting & Management</h1>
@@ -236,7 +231,6 @@
     </div>
 </section>
 
-<!-- 服务区域 -->
 <section class="container" id="services">
     <div class="section-header">
         <h2>What can we help with?</h2>
@@ -270,14 +264,13 @@
     </div>
 </section>
 
-<!-- 联系方式 -->
 <section class="container" id="contact">
     <div class="section-header">
         <h2>Contact Us</h2>
     </div>
     <div class="contact">
         <p class="contact-info">📩 Email: 785154397@qq.com</p>
-        <p class="contact-info">📱 WhatsApp/Wechat: +86 15734003660</p>
+        <p class="contact-info">📱 WhatsApp/Wechat: +86 1573403660</p>
         <p class="contact-info">🌐 Instagram: @gemstonebr_cohost</p>
         <p class="contact-info">🌐 Facebook: GemstoneBR_cohost</p>
     </div>
