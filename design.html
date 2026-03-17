@@ -75,8 +75,6 @@
             margin: 60px auto;
             padding: 0 20px;
             text-align: center;
-            /* 新增：防止内容溢出 */
-            overflow: hidden;
         }
         .page-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -89,16 +87,13 @@
             color: #666;
             margin-bottom: 40px;
         }
-        /* 🔥 核心修改：调整图片大小，完整显示 */
+        /* 🔥 核心修复：简化样式，只保留关键尺寸控制，确保显示 */
         .banner-image {
-            width: 100%;
-            max-width: 1200px; /* 限制最大宽度，适配页面 */
-            max-height: 600px; /* 限制最大高度，避免只显示一半 */
-            height: auto; /* 保持宽高比 */
-            border-radius: 0;
-            object-fit: contain; /* 完整显示图片，不裁剪 */
-            display: block;
+            width: 80%; /* 直接设宽度为页面80%，保证完整显示 */
+            height: auto; /* 自动适配高度，不裁剪 */
+            display: block; /* 强制显示 */
             margin: 0 auto; /* 居中 */
+            border: 0; /* 避免边框干扰 */
         }
     </style>
 </head>
@@ -119,8 +114,11 @@
     <div class="page-container">
         <h1 class="page-title">Design & Renovation</h1>
         <p class="page-subtitle">Transform Your Space</p>
-        <!-- 你的图片链接，大小会自动适配 -->
+        <!-- 第一步：先用这个测试链接验证（必显），再换你自己的 -->
+        <img src="https://picsum.photos/1200/600" alt="Design & Renovation" class="banner-image">
+        <!-- 第二步：测试成功后，替换成你自己的图片直链，示例：
         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why-choose-us.png" alt="Design & Renovation" class="banner-image">
+        -->
     </div>
 
 </body>
