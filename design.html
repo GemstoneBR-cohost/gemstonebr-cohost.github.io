@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design & Renovation | GemstoneBR Co-Host</title>
     <style>
-        /* 🔥 完全复用首页的所有样式，保证风格统一 */
         * {
             margin: 0;
             padding: 0;
@@ -71,7 +70,6 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-        /* 子页面专属内容样式 */
         .page-container {
             max-width: 1400px;
             margin: 60px auto;
@@ -89,16 +87,19 @@
             color: #666;
             margin-bottom: 40px;
         }
+        /* 🔥 强化图片样式，确保显示 */
         .banner-image {
             width: 100%;
             height: auto;
             border-radius: 0;
             object-fit: cover;
+            display: block; /* 强制显示 */
+            margin: 0 auto; /* 居中 */
+            max-width: 100%; /* 适配手机 */
         }
     </style>
 </head>
 <body>
-    <!-- 🔥 完全保留顶部导航栏（和首页一模一样） -->
     <nav>
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -112,12 +113,14 @@
         </div>
     </nav>
 
-    <!-- 🔥 子页面专属内容：标题 + 副标题 + 横图 -->
     <div class="page-container">
         <h1 class="page-title">Design & Renovation</h1>
         <p class="page-subtitle">Transform Your Space</p>
-        <!-- 替换这里的图片链接为你的横图 -->
-        <img src="https://github.com/Ula1996/ula1996.github.io/blob/main/why%20us.png?raw=true">
+        <!-- 🔥 先测试这个通用链接，能显示后再换你自己的 -->
+        <img src="https://picsum.photos/1440/600" alt="Design & Renovation" class="banner-image">
+        <!-- 替换示例：把上面的src换成你自己的图片直链
+        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why-choose-us.png" alt="Design & Renovation" class="banner-image">
+        -->
     </div>
 
 </body>
