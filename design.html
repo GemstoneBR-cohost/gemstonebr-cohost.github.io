@@ -5,95 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design & Renovation | GemstoneBR Co-Host</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --primary: #9FB49E;
-            --text-dark: #333333;
-            --text-light: #F5F1E9;
-            --bg-light: #FFFFFF;
-            --btn-bg: #F5F1E9;
-            --btn-text: #333333;
-        }
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-        }
-        nav {
-            background: var(--bg-light);
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-img {
-            height: 100px;
-            width: auto;
-            object-fit: contain;
-        }
-        .logo-text {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 35px;
-        }
-        .nav-links a {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        .page-container {
-            max-width: 1400px;
-            margin: 60px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        .page-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 48px;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-        }
-        .page-subtitle {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 40px;
-        }
-        /* 🔥 核心修复：简化样式，只保留关键尺寸控制，确保显示 */
+        * {margin:0;padding:0;box-sizing:border-box;}
+        body {font-family: 'Segoe UI', sans-serif;background:#fff;}
+        
+        /* 导航栏样式 */
+        nav {padding:15px 20px;border-bottom:1px solid #eee;}
+        .nav-container {max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+        .logo-wrapper {display:flex;align-items:center;gap:12px;}
+        .logo-img {height:100px;width:auto;}
+        .logo-text {font-family:Georgia;font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#333;}
+        .nav-links {display:flex;gap:35px;}
+        .nav-links a {font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#333;text-decoration:none;font-weight:500;}
+        .nav-links a:hover {color:#9FB49E;}
+        
+        /* 内容区样式 */
+        .page-container {max-width:1400px;margin:60px auto;padding:0 20px;text-align:center;}
+        .page-title {font-family:Georgia;font-size:48px;color:#333;margin-bottom:15px;}
+        .page-subtitle {font-size:20px;color:#666;margin-bottom:40px;}
+        
+        /* 图片样式：保证显示+居中+大小合适 */
         .banner-image {
-            width: 80%; /* 直接设宽度为页面80%，保证完整显示 */
-            height: auto; /* 自动适配高度，不裁剪 */
-            display: block; /* 强制显示 */
-            margin: 0 auto; /* 居中 */
-            border: 0; /* 避免边框干扰 */
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -101,7 +36,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo-wrapper">
-                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
+                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="Logo">
                 <span class="logo-text">GemstoneBR Co-Host</span>
             </div>
             <div class="nav-links">
@@ -114,9 +49,8 @@
     <div class="page-container">
         <h1 class="page-title">Design & Renovation</h1>
         <p class="page-subtitle">Transform Your Space</p>
-        <!-- 🔥 关键修复：删掉注释符号，加上class和alt属性 -->
-        <img src="https://github.com/Ula1996/ula1996.github.io/blob/main/why%20us.png?raw=true" class="banner-image" alt="Why Choose Us">
+        <!-- 🔥 用我帮你拼好的正确直链，直接复制这段 -->
+        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
     </div>
-
 </body>
 </html>
