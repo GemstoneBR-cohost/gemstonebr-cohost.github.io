@@ -24,6 +24,7 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
         }
+        /* 导航栏样式 */
         nav {
             background: var(--bg-light);
             padding: 15px 20px;
@@ -36,11 +37,24 @@
             justify-content: space-between;
             align-items: center;
         }
-        /* LOGO图片样式 */
+        /* Logo 区域：图片+文字 */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
         .logo-img {
-            height: 60px;
+            height: 50px;
             width: auto;
             object-fit: contain;
+        }
+        .logo-text {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .nav-links {
             display: flex;
@@ -58,6 +72,7 @@
         .nav-links a:hover {
             color: var(--primary);
         }
+        /* 主图区域 */
         .hero {
             background: url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
@@ -197,29 +212,31 @@
 </head>
 <body>
 
-<!-- 顶部导航栏（左侧LOGO+右侧导航） -->
+<!-- 顶部导航（左侧Logo+公司名，右侧导航） -->
 <nav>
     <div class="nav-container">
-        <!-- 公司LOGO -->
-        <a href="#">
-            <img src="https://github.com/Ula1996/ula1996.github.io/blob/main/%E7%99%BD%E5%BA%95logo.png?raw=true" class="logo-img" alt="GemstoneBR Co-Host Logo">
-        </a>
-        <!-- 导航菜单 -->
+        <div class="logo-wrapper">
+            <!-- 稳定的Logo直链 -->
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
+            <span class="logo-text">GemstoneBR Co-Host</span>
+        </div>
         <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
+            <a href="#services">SERVICES</a>
+            <a href="#contact">CONTACT</a>
         </div>
     </div>
 </nav>
 
+<!-- 主图区域 -->
 <section class="hero">
     <div class="hero-content">
         <h1>Professional Airbnb Co-Hosting & Management</h1>
         <p>Maximize your rental income with GemstoneBR Co-Host — Full-service Airbnb management for property owners.</p>
-        <a href="#services" class="btn-hero">Explore Our Services</a>
+        <a href="#services" class="btn-hero">EXPLORE OUR SERVICES</a>
     </div>
 </section>
 
+<!-- 服务区域 -->
 <section class="container" id="services">
     <div class="section-header">
         <h2>What can we help with?</h2>
@@ -253,6 +270,7 @@
     </div>
 </section>
 
+<!-- 联系方式 -->
 <section class="container" id="contact">
     <div class="section-header">
         <h2>Contact Us</h2>
