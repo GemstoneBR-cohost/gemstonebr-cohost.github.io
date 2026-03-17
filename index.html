@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
         :root {
-            /* 🔥 改为 Airbnb 官方粉红色 */
+            /* Airbnb 官方粉红色 */
             --primary: #FF5A5F;
             --secondary: #F5F5F0;
             --dark: #2C3E50;
@@ -80,14 +80,15 @@
             text-align: center;
             margin-bottom: 50px;
         }
+        /* 核心修改：服务标题+副标题 粉色 */
         .section-header h2 {
             font-size: 40px;
-            color: var(--dark);
+            color: var(--primary);
             margin-bottom: 10px;
         }
         .section-header p {
             font-size: 18px;
-            color: #666;
+            color: var(--primary);
         }
         .services-grid {
             display: grid;
@@ -135,9 +136,12 @@
             border-radius: 10px;
             text-align: center;
         }
+        /* 核心修改：联系方式 粉色 */
         .contact-info {
             font-size: 18px;
             margin: 10px 0;
+            color: var(--primary);
+            font-weight: 500;
         }
         footer {
             background: var(--dark);
