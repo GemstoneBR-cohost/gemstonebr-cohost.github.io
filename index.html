@@ -10,32 +10,20 @@
             padding: 0;
             box-sizing: border-box;
         }
-        /* 参考图字体：标题衬线，正文无衬线 */
         :root {
-            --primary: #9FB49E; /* 柔和橄榄绿（参考图顶部栏颜色） */
-            --text-dark: #333333; /* 深灰正文 */
-            --text-light: #F5F1E9; /* 浅米色按钮文字 */
+            --primary: #9FB49E;
+            --text-dark: #333333;
+            --text-light: #F5F1E9;
             --bg-light: #FFFFFF;
-            --btn-bg: #F5F1E9; /* 浅米色按钮背景 */
+            --btn-bg: #F5F1E9;
             --btn-text: #333333;
         }
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
-            font-family: 'Segoe UI', Roboto, sans-serif; /* 正文无衬线 */
+            font-family: 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
         }
-        /* 顶部通知栏（参考图样式） */
-        .top-bar {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        /* 导航栏 */
         nav {
             background: var(--bg-light);
             padding: 25px 20px;
@@ -47,7 +35,7 @@
             text-align: center;
         }
         .logo {
-            font-family: Georgia, 'Times New Roman', Times, serif; /* 衬线Logo */
+            font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 20px;
             font-weight: 600;
             color: var(--text-dark);
@@ -74,7 +62,6 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-        /* 主图区域 */
         .hero {
             background: url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
@@ -87,7 +74,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.25); /* 浅遮罩，和参考图一致 */
+            background: rgba(0,0,0,0.25);
         }
         .hero-content {
             max-width: 1200px;
@@ -96,7 +83,7 @@
             z-index: 1;
         }
         .hero h1 {
-            font-family: Georgia, 'Times New Roman', Times, serif; /* 衬线大标题 */
+            font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 48px;
             font-weight: 500;
             margin-bottom: 20px;
@@ -128,13 +115,12 @@
             margin: 80px auto;
             padding: 0 20px;
         }
-        /* 服务标题区 */
         .section-header {
             text-align: center;
             margin-bottom: 60px;
         }
         .section-header h2 {
-            font-family: Georgia, 'Times New Roman', Times, serif; /* 衬线标题 */
+            font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 42px;
             color: var(--text-dark);
             margin-bottom: 15px;
@@ -146,7 +132,6 @@
             max-width: 700px;
             margin: 0 auto;
         }
-        /* 服务卡片 */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -154,7 +139,7 @@
             margin-bottom: 80px;
         }
         .service-card {
-            border-radius: 0; /* 直角，参考图风格 */
+            border-radius: 0;
             overflow: hidden;
             background: white;
             box-shadow: none;
@@ -191,7 +176,6 @@
         .btn:hover {
             background: #e8e3d8;
         }
-        /* 联系方式 */
         .contact {
             background: #f9f9f9;
             padding: 60px 40px;
@@ -217,12 +201,6 @@
 </head>
 <body>
 
-<!-- 顶部通知栏（参考图样式） -->
-<div class="top-bar">
-    Visit My Etsy Store
-</div>
-
-<!-- 导航栏 -->
 <nav>
     <div class="nav-container">
         <a href="#" class="logo">GemstoneBR Co-Host</a>
@@ -233,7 +211,6 @@
     </div>
 </nav>
 
-<!-- 主图区域 -->
 <section class="hero">
     <div class="hero-content">
         <h1>Professional Airbnb Co-Hosting & Management</h1>
@@ -242,7 +219,6 @@
     </div>
 </section>
 
-<!-- 服务区域 -->
 <section class="container" id="services">
     <div class="section-header">
         <h2>What can we help with?</h2>
@@ -250,8 +226,9 @@
     </div>
 
     <div class="services-grid">
+        <!-- 已替换新图片 -->
         <div class="service-card">
-            <div class="card-image" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-1010832159352594711/original/de3379ea-7bc2-4de1-b775-7b9e89eba5a4.jpeg?im_w=1440')"></div>
+            <div class="card-image" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-1010832159352594711/original/5720d3f0-a3ea-43c0-b77e-a03b11ea7ac5.jpeg?im_w=1440')"></div>
             <div class="card-content">
                 <h3>Amenities & Design</h3>
                 <a href="#" class="btn">Click Here</a>
@@ -276,7 +253,6 @@
     </div>
 </section>
 
-<!-- 联系方式 -->
 <section class="container" id="contact">
     <div class="section-header">
         <h2>Contact Us</h2>
