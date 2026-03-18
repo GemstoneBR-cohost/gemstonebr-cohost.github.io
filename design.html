@@ -70,7 +70,7 @@
             color: var(--primary);
         }
         
-        /* 🔥 1. 标题区域：加清新淡雅的背景色 */
+        /* 标题区域：加清新淡雅的背景色 */
         .title-section {
             background: var(--primary-light); /* 浅草木绿背景，清新淡雅 */
             padding: 60px 20px;
@@ -103,11 +103,12 @@
             margin: 0 auto;
         }
         
-        /* 🔥 2. 服务模块区域：标题 + 竖版卡片 */
+        /* 🔥 核心修改：服务模块强制一行6列，竖版展示 */
         .services-section {
-            max-width: 1400px;
+            max-width: 1600px; /* 加宽容器，适配6列 */
             margin: 60px auto;
             padding: 0 20px;
+            overflow-x: auto; /* 小屏幕横向滚动，保证6列不挤 */
         }
         .services-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -117,24 +118,26 @@
             margin-bottom: 40px;
             font-weight: 500;
         }
-        /* 网格布局：竖版卡片，适配移动端 */
+        /* 🔥 强制一行6列，每个卡片等宽 */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(6, 1fr); /* 核心：6列一排 */
+            gap: 20px; /* 减小间距，适配6列 */
+            min-width: 1200px; /* 保证电脑端至少显示6列 */
         }
-        /* 竖版服务卡片：预留底图位置 */
+        /* 竖版服务卡片：优化尺寸，突出竖版 */
         .service-card {
             background: var(--card-bg); /* 浅米色卡片，清新淡雅 */
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid #eee;
+            height: 400px; /* 竖版高度，可调整 */
         }
-        /* 🔥 竖版底图占位区域 */
+        /* 竖版底图占位区域：加高，突出竖版 */
         .card-img-placeholder {
             width: 100%;
-            height: 220px; /* 竖版高度，可调整 */
-            background: #E8ECE6; /* 占位背景色，替换为图片后会覆盖 */
+            height: 300px; /* 竖版底图高度，占卡片大部分 */
+            background: #E8ECE6; /* 占位背景色 */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -143,23 +146,25 @@
         }
         /* 卡片标题区域 */
         .card-content {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
         }
         .card-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-dark);
             font-weight: 500;
             text-transform: capitalize;
         }
 
-        /* 响应式适配：手机端优化 */
+        /* 响应式适配：手机端横向滚动，保证6列结构 */
         @media (max-width: 768px) {
             .page-title {font-size: 36px;}
             .services-title {font-size: 28px;}
             .banner-image {width: 95%;}
-            .card-img-placeholder {height: 180px;}
+            .services-section {overflow-x: auto;} /* 小屏幕横向滚动 */
+            .service-card {height: 350px;}
+            .card-img-placeholder {height: 250px;}
         }
     </style>
 </head>
@@ -178,7 +183,7 @@
         </div>
     </nav>
 
-    <!-- 🔥 标题区域：加清新背景色 -->
+    <!-- 标题区域：加清新背景色 -->
     <section class="title-section">
         <h1 class="page-title">Design & Renovation</h1>
         <p class="page-subtitle">Transform Your Space</p>
@@ -189,15 +194,13 @@
         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
     </section>
 
-    <!-- 🔥 新增服务模块区域 -->
+    <!-- 新增服务模块区域（6列一排竖版） -->
     <section class="services-section">
         <h2 class="services-title">What services will you receive?</h2>
         <div class="services-grid">
             <!-- 服务卡片1：Design -->
             <div class="service-card">
                 <div class="card-img-placeholder">
-                    <!-- 预留竖版底图位置：替换src为你的图片链接 -->
-                    <!-- <img src="你的Design图片链接.jpg" alt="Design" style="width:100%;height:100%;object-fit:cover;"> -->
                     Design 底图位置
                 </div>
                 <div class="card-content">
