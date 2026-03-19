@@ -90,7 +90,7 @@
             margin-bottom: 0; /* 去掉多余间距 */
         }
         
-        /* 图片区域样式 */
+        /* 🔥 核心修改：缩小Why us图片宽度（从80%改为60%） */
         .image-section {
             max-width: 1400px;
             margin: 40px auto;
@@ -98,7 +98,7 @@
             text-align: center;
         }
         .banner-image {
-            width: 80%;
+            width: 60%; /* 关键：从80%缩小到60%，可按需调整为50%/70% */
             height: auto;
             display: block;
             margin: 0 auto;
@@ -156,7 +156,7 @@
             line-height: 1.4;
         }
 
-        /* 🔥 新增：案例展示区域样式 */
+        /* 案例展示区域样式 */
         .projects-section {
             max-width: 1200px;
             margin: 80px auto 60px;
@@ -236,7 +236,7 @@
         @media (max-width: 768px) {
             .page-title {font-size: 36px;}
             .services-title, .projects-title {font-size: 28px;}
-            .banner-image {width: 95%;}
+            .banner-image {width: 85%; /* 手机端图片稍宽，保证显示清晰 */}
             .services-section {overflow-x: auto; padding: 0 10px;}
             .services-grid {min-width: 900px; gap: 10px;}
             .service-card {height: 380px;}
@@ -266,7 +266,7 @@
         <p class="page-subtitle">Transform Your Space</p>
     </section>
 
-    <!-- 图片区域 -->
+    <!-- 图片区域（缩小后的Why us图） -->
     <section class="image-section">
         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
     </section>
@@ -332,7 +332,7 @@
         </div>
     </section>
 
-    <!-- 🔥 新增：案例展示区域 -->
+    <!-- 案例展示区域 -->
     <section class="projects-section">
         <h2 class="projects-title">Project Presentation</h2>
         
