@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Online Operation | GemstoneBR Co-Host</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;}
+        /* 沿用全站统一的清新色系 */
+        :root {
+            --primary: #9FB49E; /* 主色：浅草木绿 */
+            --primary-light: #F0F5EF; /* 主色淡色：背景填色 */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #FFFFFF;
+            --border-color: #E8ECE6;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        /* 导航栏（和其他页面完全一致，保证统一） */
+        nav {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-light);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+        .logo-text {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+        .nav-links a {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* 🔥 标题区域：填色背景 + 大标题/副标题 */
+        .hero-section {
+            background: var(--primary-light); /* 清新草木绿填色背景 */
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .page-main-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* 🔥 核心优势区域：We will help you achieve */
+        .achieve-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .achieve-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-weight: 500;
+            border-left: 4px solid var(--primary); /* 左侧主色竖线装饰 */
+            padding-left: 15px;
+        }
+        .achieve-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .achieve-item {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 17px;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+        .achieve-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(159, 180, 158, 0.1);
+            border-color: var(--primary);
+        }
+        .achieve-item strong {
+            color: var(--primary);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .page-main-title {font-size: 32px;}
+            .page-subtitle {font-size: 16px; padding: 0 10px;}
+            .achieve-title {font-size: 26px;}
+            .achieve-list {grid-template-columns: 1fr;}
+            .achieve-item {padding: 20px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏（和其他页面统一） -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
+                <span class="logo-text">GemstoneBR Co-Host</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">SERVICES</a>
+                <a href="index.html#contact">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 标题区域：填色背景 + 大标题/副标题 -->
+    <section class="hero-section">
+        <h1 class="page-main-title">Professional Online Operation</h1>
+        <p class="page-subtitle">Comprehensive and meticulous operation throughout the process, ensuring that every night is closer to full occupancy.</p>
+    </section>
+
+    <!-- 核心优势区域：We will help you achieve -->
+    <section class="achieve-section">
+        <h2 class="achieve-title">We will help you achieve:</h2>
+        <ul class="achieve-list">
+            <li class="achieve-item"><strong>Increase exposure</strong> (CTR optimization)</li>
+            <li class="achieve-item"><strong>Improve conversion</strong> (photos + pricing)</li>
+            <li class="achieve-item"><strong>Increase occupancy rate</strong> (dynamic pricing)</li>
+            <li class="achieve-item"><strong>Improve the rating</strong> (customer service + handling of negative reviews)</li>
+        </ul>
+    </section>
+</body>
+</html>
