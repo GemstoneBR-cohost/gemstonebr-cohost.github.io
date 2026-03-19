@@ -14,6 +14,7 @@
             --text-light: #666666;
             --bg-light: #FFFFFF;
             --card-bg: #FAFAF8; /* 卡片背景：浅米色，清新淡雅 */
+            --border-color: #E8ECE6; /* 边框色，和占位图呼应 */
         }
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
@@ -103,7 +104,7 @@
             margin: 0 auto;
         }
         
-        /* 🔥 核心修改：6个模块在原有4个的宽度内紧凑排列，不靠边 */
+        /* 服务模块：6列紧凑竖版，不靠边 */
         .services-section {
             max-width: 1200px; /* 和原4列宽度一致，不超宽 */
             margin: 60px auto;
@@ -117,7 +118,6 @@
             margin-bottom: 40px;
             font-weight: 500;
         }
-        /* 🔥 6列在1200px内紧凑排列，居中显示，不靠边 */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr); /* 6列均分 */
@@ -125,27 +125,24 @@
             max-width: 1200px; /* 限制总宽度=原4列宽度 */
             margin: 0 auto; /* 居中，避免靠边 */
         }
-        /* 🔥 强化竖版：窄宽+高长的卡片比例 */
         .service-card {
             background: var(--card-bg);
             border-radius: 4px;
             overflow: hidden;
-            border: 1px solid #eee;
+            border: 1px solid var(--border-color);
             height: 420px; /* 加高卡片，竖版更明显 */
             width: 100%; /* 自适应列宽，不超宽 */
         }
-        /* 竖版底图占位：占卡片绝大部分高度 */
         .card-img-placeholder {
             width: 100%;
             height: 340px; /* 加高底图区，强化竖版 */
-            background: #E8ECE6;
+            background: var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
             font-size: 13px;
         }
-        /* 卡片标题区域：紧凑排版 */
         .card-content {
             padding: 12px;
             text-align: center;
@@ -159,15 +156,92 @@
             line-height: 1.4;
         }
 
-        /* 响应式适配：小屏幕横向滚动，保持6列紧凑 */
+        /* 🔥 新增：案例展示区域样式 */
+        .projects-section {
+            max-width: 1200px;
+            margin: 80px auto 60px;
+            padding: 0 20px;
+        }
+        .projects-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 36px;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+        /* 单个案例容器：Before + After + 右侧信息，横向排列 */
+        .project-case {
+            display: flex;
+            align-items: stretch; /* 高度对齐 */
+            gap: 20px;
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        /* Before/After 图片占位 */
+        .project-img-wrapper {
+            flex: 1; /* 图片区域占比均等 */
+            height: 300px; /* 图片高度，可调整 */
+            background: var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        .img-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        /* 右侧成本/时长信息区域 */
+        .project-info {
+            flex: 0 0 200px; /* 固定宽度，不挤压 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px;
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+        .info-item {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            /* 平板：案例改为上下布局 */
+            .project-case {
+                flex-direction: column;
+            }
+            .project-info {
+                flex: 1;
+                width: 100%;
+                margin-top: 15px;
+            }
+        }
         @media (max-width: 768px) {
             .page-title {font-size: 36px;}
-            .services-title {font-size: 28px;}
+            .services-title, .projects-title {font-size: 28px;}
             .banner-image {width: 95%;}
             .services-section {overflow-x: auto; padding: 0 10px;}
             .services-grid {min-width: 900px; gap: 10px;}
             .service-card {height: 380px;}
             .card-img-placeholder {height: 300px;}
+            .project-img-wrapper {height: 250px;}
         }
     </style>
 </head>
@@ -254,6 +328,68 @@
                 <div class="card-content">
                     <h3 class="card-title">Image beautification</h3>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔥 新增：案例展示区域 -->
+    <section class="projects-section">
+        <h2 class="projects-title">Project Presentation</h2>
+        
+        <!-- 案例1 -->
+        <div class="project-case">
+            <!-- Before 图片占位 -->
+            <div class="project-img-wrapper">
+                <div class="img-label">Before</div>
+                <div>案例1 原图位置</div>
+            </div>
+            <!-- After 图片占位 -->
+            <div class="project-img-wrapper">
+                <div class="img-label">After</div>
+                <div>案例1 效果图位置</div>
+            </div>
+            <!-- 右侧成本/时长信息 -->
+            <div class="project-info">
+                <div class="info-item"><span class="info-label">Total cost:</span> 50000 pesos</div>
+                <div class="info-item"><span class="info-label">Lasted for:</span> 30 days</div>
+            </div>
+        </div>
+
+        <!-- 案例2 -->
+        <div class="project-case">
+            <!-- Before 图片占位 -->
+            <div class="project-img-wrapper">
+                <div class="img-label">Before</div>
+                <div>案例2 原图位置</div>
+            </div>
+            <!-- After 图片占位 -->
+            <div class="project-img-wrapper">
+                <div class="img-label">After</div>
+                <div>案例2 效果图位置</div>
+            </div>
+            <!-- 右侧成本/时长信息 -->
+            <div class="project-info">
+                <div class="info-item"><span class="info-label">Total cost:</span> 85000 pesos</div>
+                <div class="info-item"><span class="info-label">Lasted for:</span> 45 days</div>
+            </div>
+        </div>
+
+        <!-- 案例3 -->
+        <div class="project-case">
+            <!-- Before 图片占位 -->
+            <div class="project-img-wrapper">
+                <div class="img-label">Before</div>
+                <div>案例3 原图位置</div>
+            </div>
+            <!-- After 图片占位 -->
+            <div class="project-img-wrapper">
+                <div class="img-label">After</div>
+                <div>案例3 效果图位置</div>
+            </div>
+            <!-- 右侧成本/时长信息 -->
+            <div class="project-info">
+                <div class="info-item"><span class="info-label">Total cost:</span> 120000 pesos</div>
+                <div class="info-item"><span class="info-label">Lasted for:</span> 60 days</div>
             </div>
         </div>
     </section>
