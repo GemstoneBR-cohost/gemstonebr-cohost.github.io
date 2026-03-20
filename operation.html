@@ -1,362 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Online Operation | GemstoneBR Co-Host</title>
-    <style>
-        * {margin:0;padding:0;box-sizing:border-box;}
-        /* 全站统一清新色系 */
-        :root {
-            --primary: #9FB49E; /* 主色：浅草木绿 */
-            --primary-light: #F0F5EF; /* 淡色背景 */
-            --primary-hover: #8A9F88; /* hover加深 */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-light: #FFFFFF;
-            --border-color: #E8ECE6;
-            --card-bg: #FAFAF8; /* 卡片背景 */
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-        
-        /* 导航栏（和其他页面完全统一） */
-        nav {
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-            background: var(--bg-light);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-img {
-            height: 100px;
-            width: auto;
-            object-fit: contain;
-        }
-        .logo-text {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 35px;
-        }
-        .nav-links a {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* 1. HERO区域：标题+副标题（填色背景） */
-        .hero-section {
-            background: var(--primary-light);
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .page-main-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 42px;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        .page-subtitle {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design & Renovation</title>
+  <style>
+    /* 全局重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        /* 2. 4个卖点卡片（2x2网格） */
-        .selling-points-section {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-        .section-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 32px;
-            color: var(--text-dark);
-            margin-bottom: 40px;
-            font-weight: 500;
-            text-align: center;
-        }
-        .points-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2x2布局 */
-            gap: 25px;
-        }
-        .point-card {
-            background: var(--card-bg);
-            padding: 35px 25px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .point-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(159, 180, 158, 0.15);
-            border-color: var(--primary);
-        }
-        .point-card h3 {
-            font-size: 20px;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .point-card p {
-            color: var(--text-light);
-            font-size: 15px;
-        }
+    /* 顶部导航栏（保留原站样式，此处为基础示例，需替换为你的导航样式） */
+    .top-nav {
+      width: 100%;
+      background-color: #333;
+      padding: 1rem 2rem;
+    }
+    .top-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
 
-        /* 3. 左：服务范围 / 右：流程步骤（双栏布局） */
-        .service-process-section {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 左右两栏 */
-            gap: 40px;
-        }
-        .section-subtitle {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 26px;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-            font-weight: 500;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-        .content-list {
-            list-style: none;
-        }
-        .content-list li {
-            padding: 12px 0;
-            border-bottom: 1px dashed var(--border-color);
-            font-size: 16px;
-            color: var(--text-dark);
-        }
-        .content-list li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: 600;
-            margin-right: 10px;
-        }
+    /* 标题区域 */
+    .title-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .main-title {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 1rem;
+    }
+    .sub-title {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
 
-        /* 4. 3张横向优势卡 */
-        .advantages-section {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-        .advantages-cards {
-            display: flex;
-            flex-direction: column; /* 横向卡片垂直排列 */
-            gap: 20px;
-        }
-        .advantage-card {
-            background: var(--card-bg);
-            padding: 30px 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-        .advantage-card:hover {
-            box-shadow: 0 5px 15px rgba(159, 180, 158, 0.1);
-            background: var(--primary-light);
-        }
-        .advantage-card p {
-            font-size: 17px;
-            color: var(--text-dark);
-            text-align: center;
-            font-weight: 500;
-        }
+    /* 卖点+图片 左右分栏 */
+    .selling-points-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap; /* 移动端自动换行 */
+      align-items: center;
+    }
+    /* 左侧卖点容器 */
+    .selling-points-list {
+      flex: 1; /* 占比自适应 */
+      min-width: 300px; /* 移动端最小宽度 */
+    }
+    .selling-points-list h2 {
+      font-size: 1.8rem;
+      color: #222;
+      margin-bottom: 2rem;
+    }
+    .selling-point {
+      margin-bottom: 2rem;
+    }
+    .selling-point h3 {
+      font-size: 1.4rem;
+      color: #222;
+      margin-bottom: 0.8rem;
+    }
+    .selling-point p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    /* 右侧图片容器 */
+    .selling-points-img {
+      flex: 1;
+      min-width: 300px;
+    }
+    .selling-points-img img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px; /* 可选：图片圆角 */
+    }
 
-        /* 5. 数据指标条（浅底色横幅） */
-        .metrics-section {
-            max-width: 100%;
-            background: var(--primary-light);
-            padding: 40px 20px;
-            margin: 80px 0;
-        }
-        .metrics-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-        .metrics-label {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
-            color: var(--text-dark);
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .metric-tag {
-            background: var(--bg-light);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 15px;
-            color: var(--text-dark);
-            border: 1px solid var(--border-color);
-            white-space: nowrap;
-        }
-        .metric-tag:hover {
-            background: var(--primary);
-            color: var(--bg-light);
-            border-color: var(--primary);
-            transition: all 0.3s ease;
-        }
+    /* 优势区域（左侧指定图片+右侧内容） */
+    .advantages-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    /* 左侧优势图片 */
+    .advantages-img {
+      flex: 1;
+      min-width: 300px;
+    }
+    .advantages-img img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    /* 右侧优势内容（可根据需求补充文字） */
+    .advantages-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    .advantages-content h2 {
+      font-size: 2rem;
+      color: #222;
+      margin-bottom: 1.5rem;
+    }
+    .advantages-content p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
 
-        /* 响应式适配（手机/平板） */
-        @media (max-width: 992px) {
-            .service-process-section {
-                grid-template-columns: 1fr; /* 双栏变单列 */
-            }
-            .metrics-container {
-                gap: 15px;
-            }
-        }
-        @media (max-width: 768px) {
-            .page-main-title {font-size: 32px;}
-            .page-subtitle {font-size: 16px; padding: 0 10px;}
-            .section-title {font-size: 26px;}
-            .points-grid {grid-template-columns: 1fr; /* 2x2变单列 */}
-            .section-subtitle {font-size: 22px;}
-            .advantage-card p {font-size: 16px;}
-            .metrics-label {font-size: 18px; margin-bottom: 10px;}
-            .metric-tag {padding: 8px 15px; font-size: 14px;}
-        }
-    </style>
+    /* 响应式适配（小屏幕） */
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2rem;
+      }
+      .selling-points-section, .advantages-section {
+        gap: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo-wrapper">
-                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
-                <span class="logo-text">GemstoneBR Co-Host</span>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">SERVICES</a>
-                <a href="index.html#contact">CONTACT</a>
-            </div>
-        </div>
-    </nav>
+  <!-- 顶部导航（替换为你的原站导航HTML） -->
+  <nav class="top-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/design-renovation">Design & Renovation</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- 1. HERO区域：标题+副标题 -->
-    <section class="hero-section">
-        <h1 class="page-main-title">Professional Online Operation</h1>
-        <p class="page-subtitle">Comprehensive and meticulous operation throughout the process, ensuring that every night is closer to full occupancy.</p>
-    </section>
+  <!-- 标题区域 -->
+  <section class="title-section">
+    <h1 class="main-title">Design & Renovation</h1>
+    <p class="sub-title">Transform Your Space</p>
+  </section>
 
-    <!-- 2. 4个卖点卡片（2x2） -->
-    <section class="selling-points-section">
-        <h2 class="section-title">What We Help You Achieve</h2>
-        <div class="points-grid">
-            <div class="point-card">
-                <h3>Increase exposure</h3>
-                <p>CTR optimization to get more eyes on your listing</p>
-            </div>
-            <div class="point-card">
-                <h3>Improve conversion</h3>
-                <p>Optimize photos & pricing to turn views into bookings</p>
-            </div>
-            <div class="point-card">
-                <h3>Increase occupancy rate</h3>
-                <p>Dynamic pricing strategy to fill more nights</p>
-            </div>
-            <div class="point-card">
-                <h3>Improve the rating</h3>
-                <p>Proactive customer service & negative review handling</p>
-            </div>
-        </div>
-    </section>
+  <!-- 卖点+图片 左右分栏（What We Help You Achieve） -->
+  <section class="selling-points-section">
+    <!-- 左侧4个卖点 -->
+    <div class="selling-points-list">
+      <h2>What We Help You Achieve</h2>
+      <div class="selling-point">
+        <h3>Custom Design Solutions</h3>
+        <p>Tailored designs that match your unique style, needs and budget, ensuring your space is truly one-of-a-kind.</p>
+      </div>
+      <div class="selling-point">
+        <h3>Expert Renovation Team</h3>
+        <p>Our certified professionals bring years of experience to every project, guaranteeing high-quality craftsmanship.</p>
+      </div>
+      <div class="selling-point">
+        <h3>Time & Cost Efficiency</h3>
+        <p>Streamlined processes to complete projects on schedule and within budget, with no hidden fees.</p>
+      </div>
+      <div class="selling-point">
+        <h3>Sustainable Materials</h3>
+        <p>We use eco-friendly, durable materials to create spaces that are both beautiful and environmentally responsible.</p>
+      </div>
+    </div>
+    <!-- 右侧图片（★ 替换此处的URL为你提供的卖点右侧图片链接 ★） -->
+    <div class="selling-points-img">
+      <img src="https://github.com/Ula1996/ula1996.github.io/blob/8b038cbe3ab8a435243f007b541968ce1ff16bc0/%E6%97%A5%E5%8E%86.png">
+    </div>
+  </section>
 
-    <!-- 3. 左：服务范围 / 右：流程步骤 -->
-    <section class="service-process-section">
-        <!-- 左侧：What’s included -->
-        <div class="service-list">
-            <h3 class="section-subtitle">What’s included</h3>
-            <ul class="content-list">
-                <li>Listing title & description optimization</li>
-                <li>Photo selection & layout advice</li>
-                <li>Dynamic pricing</li>
-                <li>Guest communication</li>
-                <li>Review management</li>
-                <li>Monthly reporting</li>
-            </ul>
-        </div>
-        <!-- 右侧：How we work -->
-        <div class="process-list">
-            <h3 class="section-subtitle">How we work</h3>
-            <ul class="content-list">
-                <li>Audit (Comprehensive listing assessment)</li>
-                <li>Optimize (Implement targeted improvements)</li>
-                <li>Operate (Daily management & monitoring)</li>
-                <li>Report & Improve (Data-driven optimization)</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- 4. 3张横向优势卡 -->
-    <section class="advantages-section">
-        <h2 class="section-title">Our Core Advantages</h2>
-        <div class="advantages-cards">
-            <div class="advantage-card">
-                <p>Continuous years of outstanding hosts on Airbnb</p>
-            </div>
-            <div class="advantage-card">
-                <p>180+ properties with an average annual occupancy rate of over 85%</p>
-            </div>
-            <div class="advantage-card">
-                <p>Professional team and technologically-advanced management back-end</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. 数据指标条 -->
-    <section class="metrics-section">
-        <div class="metrics-container">
-            <div class="metrics-label">Metrics we track:</div>
-            <div class="metric-tag">Response rate</div>
-            <div class="metric-tag">CTR</div>
-            <div class="metric-tag">Conversion rate</div>
-            <div class="metric-tag">Occupancy rate</div>
-            <div class="metric-tag">Review score</div>
-            <div class="metric-tag">Revenue performance</div>
-        </div>
-    </section>
+  <!-- 优势区域（左侧指定图片+右侧内容） -->
+  <section class="advantages-section">
+    <!-- 左侧指定图片（已转换为raw链接，可直接显示） -->
+    <div class="advantages-img">
+      <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/8b038cbe3ab8a435243f007b541968ce1ff16bc0/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" 
+           alt="Advantages of Our Design & Renovation Service">
+    </div>
+    <!-- 右侧优势内容（可根据需求修改/补充） -->
+    <div class="advantages-content">
+      <h2>Our Competitive Edge</h2>
+      <p>We combine creative design thinking with practical renovation expertise to deliver spaces that exceed expectations. From initial concept to final execution, we prioritize your vision while ensuring compliance with all industry standards.</p>
+      <p>Our transparent pricing, dedicated project management, and post-completion support make us the trusted choice for homeowners and businesses alike.</p>
+    </div>
+  </section>
 </body>
 </html>
