@@ -93,17 +93,16 @@
             line-height: 1.8;
         }
 
-        /* 2. 4个卖点卡片（左卡片+右图片）★ 核心修改：布局改为flex + 图片样式优化 */
+        /* 2. 4个卖点卡片（左卡片+右图片） */
         .selling-points-section {
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
-            display: flex; /* 改为flex实现左右布局 */
-            gap: 40px; /* 左右间距 */
-            align-items: flex-start; /* 顶部对齐 */
-            flex-wrap: wrap; /* 移动端自动换行 */
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
         }
-        /* 卖点标题：单独提取，保证居中/换行后样式 */
         .selling-points-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 32px;
@@ -111,14 +110,13 @@
             margin-bottom: 40px;
             font-weight: 500;
             text-align: center;
-            width: 100%; /* 标题占满整行 */
+            width: 100%;
         }
-        /* 左侧卖点卡片容器 */
         .points-grid {
-            flex: 1; /* 自适应占比 */
-            min-width: 300px; /* 移动端最小宽度 */
+            flex: 1;
+            min-width: 300px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 保持2x2卡片 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
         .point-card {
@@ -144,28 +142,27 @@
             color: var(--text-light);
             font-size: 15px;
         }
-        /* 右侧卖点图片容器 ★ 优化样式：解决高度问题 */
         .points-img-wrapper {
-            flex: 1; /* 自适应占比，和左侧平分 */
-            min-width: 300px; /* 移动端最小宽度 */
+            flex: 1;
+            min-width: 300px;
         }
         .points-img {
             width: 100%;
-            height: auto; /* 关键：把100%改为auto，避免高度依赖 */
-            min-height: 400px; /* 保证容器高度，适配卡片 */
-            object-fit: cover; /* 图片不变形 */
+            height: auto;
+            min-height: 400px;
+            object-fit: cover;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            display: block; /* 避免行内元素间隙 */
+            display: block;
         }
 
-        /* 3. 左：服务范围 / 右：流程步骤（双栏布局） */
+        /* 3. 左：服务范围 / 右：流程步骤 */
         .service-process-section {
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 左右两栏 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
         }
         .section-subtitle {
@@ -194,17 +191,17 @@
             margin-right: 10px;
         }
 
-        /* 4. 3张横向优势卡（左图片+右卡片）★ 优化图片样式 */
+        /* 4. 3张横向优势卡（左图片+右卡片）★ 核心修改：让图片高度和卡片一致 */
         .advantages-section {
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
-            display: flex; /* 改为flex实现左右布局 */
-            gap: 40px; /* 左右间距 */
-            align-items: center; /* 垂直居中 */
-            flex-wrap: wrap; /* 移动端自动换行 */
+            display: flex;
+            gap: 40px;
+            /* 关键1：从center改为stretch，让左右容器高度和最高的一方一致（这里就是右侧卡片总高度） */
+            align-items: stretch; 
+            flex-wrap: wrap;
         }
-        /* 优势标题：单独提取，占满整行 */
         .advantages-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 32px;
@@ -212,28 +209,30 @@
             margin-bottom: 40px;
             font-weight: 500;
             text-align: center;
-            width: 100%; /* 标题占满整行 */
+            width: 100%;
         }
-        /* 左侧优势图片容器 ★ 优化样式 */
+        /* 左侧优势图片容器 ★ 核心修改：去掉min-height，高度自适应 */
         .advantages-img-wrapper {
-            flex: 1; /* 自适应占比 */
-            min-width: 300px; /* 移动端最小宽度 */
+            flex: 1;
+            min-width: 300px;
+            /* 让容器高度铺满父级（和右侧卡片总高度一致） */
+            height: 100%; 
         }
         .advantages-img {
             width: 100%;
-            height: auto; /* 关键：改为auto */
-            min-height: 300px; /* 保证图片容器高度 */
-            object-fit: cover; /* 图片不变形 */
+            /* 关键2：高度100%铺满容器，不再超长 */
+            height: 100%; 
+            /* 保留图片比例，裁剪多余部分，避免变形 */
+            object-fit: cover; 
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            display: block; /* 避免行内元素间隙 */
+            display: block;
         }
-        /* 右侧优势卡片容器 */
         .advantages-cards {
-            flex: 1; /* 自适应占比，和左侧平分 */
-            min-width: 300px; /* 移动端最小宽度 */
+            flex: 1;
+            min-width: 300px;
             display: flex;
-            flex-direction: column; /* 横向卡片垂直排列 */
+            flex-direction: column;
             gap: 20px;
         }
         .advantage-card {
@@ -254,7 +253,7 @@
             font-weight: 500;
         }
 
-        /* 5. 数据指标条（浅底色横幅） */
+        /* 5. 数据指标条 */
         .metrics-section {
             max-width: 100%;
             background: var(--primary-light);
@@ -293,10 +292,10 @@
             transition: all 0.3s ease;
         }
 
-        /* 响应式适配（手机/平板） */
+        /* 响应式适配 */
         @media (max-width: 992px) {
             .service-process-section {
-                grid-template-columns: 1fr; /* 双栏变单列 */
+                grid-template-columns: 1fr;
             }
             .metrics-container {
                 gap: 15px;
@@ -306,14 +305,14 @@
             .page-main-title {font-size: 32px;}
             .page-subtitle {font-size: 16px; padding: 0 10px;}
             .selling-points-title, .advantages-title {font-size: 26px;}
-            .points-grid {grid-template-columns: 1fr; /* 2x2变单列 */}
+            .points-grid {grid-template-columns: 1fr;}
             .section-subtitle {font-size: 22px;}
             .advantage-card p {font-size: 16px;}
             .metrics-label {font-size: 18px; margin-bottom: 10px;}
             .metric-tag {padding: 8px 15px; font-size: 14px;}
-            /* 移动端图片最小高度降低，适配屏幕 */
             .points-img {min-height: 250px;}
-            .advantages-img {min-height: 200px;}
+            /* 移动端优势区图片高度自适应 */
+            .advantages-img {height: auto; min-height: 200px;}
         }
     </style>
 </head>
@@ -332,13 +331,13 @@
         </div>
     </nav>
 
-    <!-- 1. HERO区域：标题+副标题 -->
+    <!-- 1. HERO区域 -->
     <section class="hero-section">
         <h1 class="page-main-title">Professional Online Operation</h1>
         <p class="page-subtitle">Comprehensive and meticulous operation throughout the process, ensuring that every night is closer to full occupancy.</p>
     </section>
 
-    <!-- 2. 4个卖点卡片（左卡片+右图片）★ 替换为英文文件名的RAW链接 -->
+    <!-- 2. 卖点卡片+图片 -->
     <section class="selling-points-section">
         <h2 class="selling-points-title">What We Help You Achieve</h2>
         <div class="points-grid">
@@ -360,12 +359,11 @@
             </div>
         </div>
         <div class="points-img-wrapper">
-            <!-- 改为英文文件名的RAW链接（重命名后使用） -->
            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar.png" alt="What We Help You Achieve" class="points-img">
         </div>
     </section>
 
-    <!-- 3. 左：服务范围 / 右：流程步骤 -->
+    <!-- 3. 服务范围+流程 -->
     <section class="service-process-section">
         <div class="service-list">
             <h3 class="section-subtitle">What’s included</h3>
@@ -389,7 +387,7 @@
         </div>
     </section>
 
-    <!-- 4. 3张横向优势卡（左图片+右卡片） -->
+    <!-- 4. 优势图片+卡片 -->
     <section class="advantages-section">
         <h2 class="advantages-title">Our Core Advantages</h2>
         <div class="advantages-img-wrapper">
@@ -397,13 +395,13 @@
         </div>
         <div class="advantages-cards">
             <div class="advantage-card">
-                <p>In-house design, cleaning, maintenance, and customer service</p>
+                <p>Continuous years of outstanding hosts on Airbnb</p>
             </div>
             <div class="advantage-card">
-                <p>180+ unit operational experience</p>
+                <p>The average annual occupancy rate of over 180 properties exceeds 85%</p>
             </div>
             <div class="advantage-card">
-                <p>Fast response and consistent quality</p>
+                <p>Professional team and technical management back-end</p>
             </div>
         </div>
     </section>
