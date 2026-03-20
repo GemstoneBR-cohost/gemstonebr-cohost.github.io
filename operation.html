@@ -6,14 +6,16 @@
     <title>Professional Online Operation | GemstoneBR Co-Host</title>
     <style>
         * {margin:0;padding:0;box-sizing:border-box;}
-        /* 沿用全站统一的清新色系 */
+        /* 全站统一清新色系 */
         :root {
             --primary: #9FB49E; /* 主色：浅草木绿 */
-            --primary-light: #F0F5EF; /* 主色淡色：背景填色 */
+            --primary-light: #F0F5EF; /* 淡色背景 */
+            --primary-hover: #8A9F88; /* hover加深 */
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #FFFFFF;
             --border-color: #E8ECE6;
+            --card-bg: #FAFAF8; /* 卡片背景 */
         }
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
@@ -22,7 +24,7 @@
             line-height: 1.8;
         }
         
-        /* 导航栏（和其他页面完全一致，保证统一） */
+        /* 导航栏（和其他页面完全统一） */
         nav {
             padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
@@ -70,9 +72,9 @@
             color: var(--primary);
         }
         
-        /* 🔥 标题区域：填色背景 + 大标题/副标题 */
+        /* 1. HERO区域：标题+副标题（填色背景） */
         .hero-section {
-            background: var(--primary-light); /* 清新草木绿填色背景 */
+            background: var(--primary-light);
             padding: 80px 20px;
             text-align: center;
         }
@@ -90,58 +92,176 @@
             margin: 0 auto;
             line-height: 1.8;
         }
-        
-        /* 🔥 核心优势区域：We will help you achieve */
-        .achieve-section {
+
+        /* 2. 4个卖点卡片（2x2网格） */
+        .selling-points-section {
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
         }
-        .achieve-title {
+        .section-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 32px;
             color: var(--text-dark);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-weight: 500;
-            border-left: 4px solid var(--primary); /* 左侧主色竖线装饰 */
-            padding-left: 15px;
+            text-align: center;
         }
-        .achieve-list {
-            list-style: none;
+        .points-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* 2x2布局 */
             gap: 25px;
         }
-        .achieve-item {
-            background: var(--bg-light);
-            padding: 25px;
-            border-radius: 6px;
+        .point-card {
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
-            font-size: 17px;
-            color: var(--text-dark);
+            text-align: center;
             transition: all 0.3s ease;
         }
-        .achieve-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(159, 180, 158, 0.1);
+        .point-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(159, 180, 158, 0.15);
             border-color: var(--primary);
         }
-        .achieve-item strong {
+        .point-card h3 {
+            font-size: 20px;
             color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .point-card p {
+            color: var(--text-light);
+            font-size: 15px;
         }
 
-        /* 响应式适配 */
+        /* 3. 左：服务范围 / 右：流程步骤（双栏布局） */
+        .service-process-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 左右两栏 */
+            gap: 40px;
+        }
+        .section-subtitle {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 26px;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-weight: 500;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        .content-list {
+            list-style: none;
+        }
+        .content-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+        .content-list li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        /* 4. 3张横向优势卡 */
+        .advantages-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .advantages-cards {
+            display: flex;
+            flex-direction: column; /* 横向卡片垂直排列 */
+            gap: 20px;
+        }
+        .advantage-card {
+            background: var(--card-bg);
+            padding: 30px 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        .advantage-card:hover {
+            box-shadow: 0 5px 15px rgba(159, 180, 158, 0.1);
+            background: var(--primary-light);
+        }
+        .advantage-card p {
+            font-size: 17px;
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* 5. 数据指标条（浅底色横幅） */
+        .metrics-section {
+            max-width: 100%;
+            background: var(--primary-light);
+            padding: 40px 20px;
+            margin: 80px 0;
+        }
+        .metrics-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        .metrics-label {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .metric-tag {
+            background: var(--bg-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 15px;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        .metric-tag:hover {
+            background: var(--primary);
+            color: var(--bg-light);
+            border-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* 响应式适配（手机/平板） */
+        @media (max-width: 992px) {
+            .service-process-section {
+                grid-template-columns: 1fr; /* 双栏变单列 */
+            }
+            .metrics-container {
+                gap: 15px;
+            }
+        }
         @media (max-width: 768px) {
             .page-main-title {font-size: 32px;}
             .page-subtitle {font-size: 16px; padding: 0 10px;}
-            .achieve-title {font-size: 26px;}
-            .achieve-list {grid-template-columns: 1fr;}
-            .achieve-item {padding: 20px;}
+            .section-title {font-size: 26px;}
+            .points-grid {grid-template-columns: 1fr; /* 2x2变单列 */}
+            .section-subtitle {font-size: 22px;}
+            .advantage-card p {font-size: 16px;}
+            .metrics-label {font-size: 18px; margin-bottom: 10px;}
+            .metric-tag {padding: 8px 15px; font-size: 14px;}
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏（和其他页面统一） -->
+    <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -155,21 +275,88 @@
         </div>
     </nav>
 
-    <!-- 标题区域：填色背景 + 大标题/副标题 -->
+    <!-- 1. HERO区域：标题+副标题 -->
     <section class="hero-section">
         <h1 class="page-main-title">Professional Online Operation</h1>
         <p class="page-subtitle">Comprehensive and meticulous operation throughout the process, ensuring that every night is closer to full occupancy.</p>
     </section>
 
-    <!-- 核心优势区域：We will help you achieve -->
-    <section class="achieve-section">
-        <h2 class="achieve-title">We will help you achieve:</h2>
-        <ul class="achieve-list">
-            <li class="achieve-item"><strong>Increase exposure</strong> (CTR optimization)</li>
-            <li class="achieve-item"><strong>Improve conversion</strong> (photos + pricing)</li>
-            <li class="achieve-item"><strong>Increase occupancy rate</strong> (dynamic pricing)</li>
-            <li class="achieve-item"><strong>Improve the rating</strong> (customer service + handling of negative reviews)</li>
-        </ul>
+    <!-- 2. 4个卖点卡片（2x2） -->
+    <section class="selling-points-section">
+        <h2 class="section-title">What We Help You Achieve</h2>
+        <div class="points-grid">
+            <div class="point-card">
+                <h3>Increase exposure</h3>
+                <p>CTR optimization to get more eyes on your listing</p>
+            </div>
+            <div class="point-card">
+                <h3>Improve conversion</h3>
+                <p>Optimize photos & pricing to turn views into bookings</p>
+            </div>
+            <div class="point-card">
+                <h3>Increase occupancy rate</h3>
+                <p>Dynamic pricing strategy to fill more nights</p>
+            </div>
+            <div class="point-card">
+                <h3>Improve the rating</h3>
+                <p>Proactive customer service & negative review handling</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 左：服务范围 / 右：流程步骤 -->
+    <section class="service-process-section">
+        <!-- 左侧：What’s included -->
+        <div class="service-list">
+            <h3 class="section-subtitle">What’s included</h3>
+            <ul class="content-list">
+                <li>Listing title & description optimization</li>
+                <li>Photo selection & layout advice</li>
+                <li>Dynamic pricing</li>
+                <li>Guest communication</li>
+                <li>Review management</li>
+                <li>Monthly reporting</li>
+            </ul>
+        </div>
+        <!-- 右侧：How we work -->
+        <div class="process-list">
+            <h3 class="section-subtitle">How we work</h3>
+            <ul class="content-list">
+                <li>Audit (Comprehensive listing assessment)</li>
+                <li>Optimize (Implement targeted improvements)</li>
+                <li>Operate (Daily management & monitoring)</li>
+                <li>Report & Improve (Data-driven optimization)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. 3张横向优势卡 -->
+    <section class="advantages-section">
+        <h2 class="section-title">Our Core Advantages</h2>
+        <div class="advantages-cards">
+            <div class="advantage-card">
+                <p>In-house design, cleaning, maintenance, and customer service</p>
+            </div>
+            <div class="advantage-card">
+                <p>180+ unit operational experience</p>
+            </div>
+            <div class="advantage-card">
+                <p>Fast response and consistent quality</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 数据指标条 -->
+    <section class="metrics-section">
+        <div class="metrics-container">
+            <div class="metrics-label">Metrics we track:</div>
+            <div class="metric-tag">Response rate</div>
+            <div class="metric-tag">CTR</div>
+            <div class="metric-tag">Conversion rate</div>
+            <div class="metric-tag">Occupancy rate</div>
+            <div class="metric-tag">Review score</div>
+            <div class="metric-tag">Revenue performance</div>
+        </div>
     </section>
 </body>
 </html>
