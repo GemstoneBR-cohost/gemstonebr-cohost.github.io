@@ -93,7 +93,7 @@
             line-height: 1.8;
         }
 
-        /* 2. 4个卖点卡片（左卡片+右图片）★ 核心修改：布局改为flex */
+        /* 2. 4个卖点卡片（左卡片+右图片）★ 核心修改：布局改为flex + 图片样式优化 */
         .selling-points-section {
             max-width: 1200px;
             margin: 80px auto;
@@ -144,18 +144,19 @@
             color: var(--text-light);
             font-size: 15px;
         }
-        /* 右侧卖点图片容器 ★ 新增样式 */
+        /* 右侧卖点图片容器 ★ 优化样式：解决高度问题 */
         .points-img-wrapper {
             flex: 1; /* 自适应占比，和左侧平分 */
             min-width: 300px; /* 移动端最小宽度 */
         }
         .points-img {
             width: 100%;
-            height: 100%;
-            min-height: 400px; /* 保证图片容器高度，适配卡片 */
+            height: auto; /* 关键：把100%改为auto，避免高度依赖 */
+            min-height: 400px; /* 保证容器高度，适配卡片 */
             object-fit: cover; /* 图片不变形 */
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            display: block; /* 避免行内元素间隙 */
         }
 
         /* 3. 左：服务范围 / 右：流程步骤（双栏布局） */
@@ -193,7 +194,7 @@
             margin-right: 10px;
         }
 
-        /* 4. 3张横向优势卡（左图片+右卡片）★ 核心修改：布局改为flex */
+        /* 4. 3张横向优势卡（左图片+右卡片）★ 优化图片样式 */
         .advantages-section {
             max-width: 1200px;
             margin: 80px auto;
@@ -213,18 +214,19 @@
             text-align: center;
             width: 100%; /* 标题占满整行 */
         }
-        /* 左侧优势图片容器 ★ 新增样式 */
+        /* 左侧优势图片容器 ★ 优化样式 */
         .advantages-img-wrapper {
             flex: 1; /* 自适应占比 */
             min-width: 300px; /* 移动端最小宽度 */
         }
         .advantages-img {
             width: 100%;
-            height: 100%;
+            height: auto; /* 关键：改为auto */
             min-height: 300px; /* 保证图片容器高度 */
             object-fit: cover; /* 图片不变形 */
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            display: block; /* 避免行内元素间隙 */
         }
         /* 右侧优势卡片容器 */
         .advantages-cards {
@@ -309,6 +311,9 @@
             .advantage-card p {font-size: 16px;}
             .metrics-label {font-size: 18px; margin-bottom: 10px;}
             .metric-tag {padding: 8px 15px; font-size: 14px;}
+            /* 移动端图片最小高度降低，适配屏幕 */
+            .points-img {min-height: 250px;}
+            .advantages-img {min-height: 200px;}
         }
     </style>
 </head>
@@ -333,11 +338,9 @@
         <p class="page-subtitle">Comprehensive and meticulous operation throughout the process, ensuring that every night is closer to full occupancy.</p>
     </section>
 
-    <!-- 2. 4个卖点卡片（左卡片+右图片）★ 核心修改：结构调整 -->
+    <!-- 2. 4个卖点卡片（左卡片+右图片）★ 替换为英文文件名的RAW链接 -->
     <section class="selling-points-section">
-        <!-- 卖点标题：单独提取，占满整行 -->
         <h2 class="selling-points-title">What We Help You Achieve</h2>
-        <!-- 左侧：4个卖点卡片（保留原2x2） -->
         <div class="points-grid">
             <div class="point-card">
                 <h3>Increase exposure</h3>
@@ -356,16 +359,14 @@
                 <p>Proactive customer service & negative review handling</p>
             </div>
         </div>
-        <!-- 右侧：卖点图片位置 ★ 新增图片容器 -->
         <div class="points-img-wrapper">
-            <!-- 替换src为你的卖点图片链接 -->
-           <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/日历.png" alt="What We Help You Achieve" class="points-img">
+            <!-- 改为英文文件名的RAW链接（重命名后使用） -->
+           <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar.png" alt="What We Help You Achieve" class="points-img">
         </div>
     </section>
 
     <!-- 3. 左：服务范围 / 右：流程步骤 -->
     <section class="service-process-section">
-        <!-- 左侧：What’s included -->
         <div class="service-list">
             <h3 class="section-subtitle">What’s included</h3>
             <ul class="content-list">
@@ -377,7 +378,6 @@
                 <li>Monthly reporting</li>
             </ul>
         </div>
-        <!-- 右侧：How we work -->
         <div class="process-list">
             <h3 class="section-subtitle">How we work</h3>
             <ul class="content-list">
@@ -389,16 +389,12 @@
         </div>
     </section>
 
-    <!-- 4. 3张横向优势卡（左图片+右卡片）★ 核心修改：结构调整 -->
+    <!-- 4. 3张横向优势卡（左图片+右卡片） -->
     <section class="advantages-section">
-        <!-- 优势标题：单独提取，占满整行 -->
         <h2 class="advantages-title">Our Core Advantages</h2>
-        <!-- 左侧：优势图片位置 ★ 新增图片容器 -->
         <div class="advantages-img-wrapper">
-            <!-- 替换src为你的优势图片链接（你提供的账单图片） -->
             <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/8b038cbe3ab8a435243f007b541968ce1ff16bc0/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" alt="Core Advantages" class="advantages-img">
         </div>
-        <!-- 右侧：3张优势卡片（保留原样式） -->
         <div class="advantages-cards">
             <div class="advantage-card">
                 <p>In-house design, cleaning, maintenance, and customer service</p>
