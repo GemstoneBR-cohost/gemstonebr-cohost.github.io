@@ -191,52 +191,53 @@
             margin-right: 10px;
         }
 
-        /* 4. 3张横向优势卡（左图片+右卡片）★ 终极修改：100%匹配高度 */
+        /* 4. 3张横向优势卡（左图片+右卡片）★ 核心修复：显示+比例缩放 */
         .advantages-section {
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
-            /* 改用grid布局，更精准控制行列高度 */
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 左右各占一半 */
-            grid-template-rows: auto 1fr; /* 标题一行，内容一行 */
+            display: flex; /* 换回flex，更易控制比例缩放 */
             gap: 40px;
+            flex-wrap: wrap;
+            align-items: flex-start; /* 顶部对齐，避免强制拉伸 */
         }
         .advantages-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 32px;
             color: var(--text-dark);
-            margin-bottom: 0; /* 去掉margin，用grid gap控制间距 */
+            margin-bottom: 40px;
             font-weight: 500;
             text-align: center;
-            /* 标题跨两列 */
-            grid-column: 1 / -1;
+            width: 100%;
         }
-        /* 左侧优势图片容器 ★ 关键：高度和右侧卡片容器完全一致 */
+        /* 左侧优势图片容器 ★ 关键：自适应右侧高度，图片按比例缩放 */
         .advantages-img-wrapper {
-            /* 继承grid行的高度（和右侧卡片容器相同） */
-            height: 100%;
-            /* 超出部分隐藏，彻底避免图片溢出 */
-            overflow: hidden;
+            flex: 1;
+            min-width: 300px;
+            /* 关键：高度和右侧卡片容器完全一致（通过JS兜底，但CSS优先适配） */
+            height: fit-content;
+            /* 保证容器边框和卡片统一 */
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            overflow: hidden; /* 仅隐藏宽度溢出，高度不溢出 */
         }
         .advantages-img {
             width: 100%;
-            height: 100%;
-            /* 优先显示图片中间区域，裁剪上下多余部分 */
-            object-fit: cover;
-            object-position: center;
-            /* 去掉图片自身边框，统一由容器控制 */
-            border: none;
+            height: auto; /* 高度自动，保持原比例 */
+            /* 核心：强制图片最大高度等于右侧卡片总高度（实测约450px，可微调） */
+            max-height: 450px;
+            object-fit: contain; /* 保持比例缩放，不裁剪，空白处留空 */
+            display: block; /* 消除图片底部间隙 */
         }
-        /* 右侧优势卡片容器 ★ 固定卡片总高度（和图片容器匹配） */
+        /* 右侧优势卡片容器 ★ 固定总高度，让图片匹配 */
         .advantages-cards {
+            flex: 1;
+            min-width: 300px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            /* 高度由内容决定，左侧图片容器会完全匹配 */
-            height: 100%;
+            /* 设定卡片总高度，和图片max-height匹配 */
+            height: 450px;
         }
         .advantage-card {
             background: var(--card-bg);
@@ -309,13 +310,16 @@
             .metrics-container {
                 gap: 15px;
             }
-            /* 移动端优势区变回单列 */
-            .advantages-section {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-            }
+            /* 移动端优势区图片和卡片都自适应 */
             .advantages-img-wrapper {
-                min-height: 250px;
+                max-height: none;
+                height: auto;
+            }
+            .advantages-img {
+                max-height: 300px;
+            }
+            .advantages-cards {
+                height: auto;
             }
         }
         @media (max-width: 768px) {
@@ -402,11 +406,12 @@
         </div>
     </section>
 
-    <!-- 4. 优势图片+卡片 -->
+    <!-- 4. 优势图片+卡片 ★ 修复图片链接+匹配高度 -->
     <section class="advantages-section">
         <h2 class="advantages-title">Our Core Advantages</h2>
         <div class="advantages-img-wrapper">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/8b038cbe3ab8a435243f007b541968ce1ff16bc0/Feb%2026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" alt="Core Advantages" class="advantages-img">
+            <!-- 修正图片链接（之前的Feb 26是笔误，改回Feb 2026） -->
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/8b038cbe3ab8a435243f007b541968ce1ff16bc0/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" alt="Core Advantages" class="advantages-img">
         </div>
         <div class="advantages-cards">
             <div class="advantage-card">
