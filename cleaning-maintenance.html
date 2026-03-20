@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleaning & Maintenance | GemstoneBR Co-Host</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #9FB49E;
+      --primary-light: #F3F7F1;
+      --primary-dark: #7F9580;
+      --text-dark: #2F3430;
+      --text-light: #6C746F;
+      --bg-light: #FFFFFF;
+      --border-color: #E6EBE2;
+      --card-bg: #FAFBF9;
+      --shadow: 0 18px 40px rgba(47, 52, 48, 0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    nav {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo-img {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-dark);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-title {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 34px;
+      line-height: 1.15;
+      color: var(--text-dark);
+      font-weight: 500;
+      margin-bottom: 16px;
+      letter-spacing: 0.2px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--text-light);
+      max-width: 760px;
+    }
+
+    /* Hero */
+    .hero-section {
+      background:
+        radial-gradient(circle at top left, rgba(159,180,158,0.18), transparent 28%),
+        linear-gradient(180deg, var(--primary-light), #fff);
+      padding: 80px 0 92px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: clamp(40px, 5vw, 58px);
+      line-height: 1.05;
+      color: var(--text-dark);
+      font-weight: 500;
+      margin-bottom: 18px;
+      max-width: 8.5ch;
+    }
+
+    .hero-copy p {
+      font-size: 18px;
+      color: var(--text-light);
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      min-height: 48px;
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(47, 52, 48, 0.12);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #1f2321;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(159,180,158,0.24);
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,251,249,0.9)),
+        linear-gradient(135deg, rgba(159,180,158,0.18), rgba(255,255,255,0));
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 22px;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: auto -60px -70px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(159,180,158,0.28), transparent 65%);
+      filter: blur(2px);
+    }
+
+    .hero-tagline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag-title {
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+
+    .tag-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .visual-top {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 14px;
+    }
+
+    .mini-panel {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 24px rgba(47,52,48,0.05);
+    }
+
+    .mini-panel h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text-dark);
+    }
+
+    .service-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.45;
+    }
+
+    .service-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    .price-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      background: linear-gradient(180deg, #fff, #fafbf9);
+    }
+
+    .price-row strong {
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .price-row span {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .hero-card-image {
+      position: relative;
+      z-index: 1;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      box-shadow: 0 12px 24px rgba(47,52,48,0.05);
+      margin-top: 14px;
+    }
+
+    .hero-card-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-caption {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-light);
+      background: #fff;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Overview */
+    .overview-section {
+      background: #fff;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .overview-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 22px rgba(47,52,48,0.04);
+    }
+
+    .overview-card h3 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 26px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .overview-card h3::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 999px;
+    }
+
+    .overview-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .overview-list li {
+      position: relative;
+      padding: 14px 14px 14px 42px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .overview-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 13px;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    .team-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(250,251,249,0.94)),
+        linear-gradient(135deg, rgba(159,180,158,0.18), rgba(255,255,255,0));
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 10px 22px rgba(47,52,48,0.04);
+    }
+
+    .team-title {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 26px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .team-title::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 999px;
+    }
+
+    .team-points {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .team-point {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      font-size: 15px;
+    }
+
+    .promo-image {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      box-shadow: 0 12px 24px rgba(47,52,48,0.05);
+    }
+
+    .promo-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .promo-caption {
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text-light);
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Workflow */
+    .workflow-section {
+      background: #fff;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .workflow-step {
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      background: var(--card-bg);
+      padding: 22px 18px;
+      box-shadow: 0 10px 22px rgba(47,52,48,0.04);
+      min-height: 170px;
+    }
+
+    .workflow-index {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .workflow-step h4 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .workflow-step p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* Pricing */
+    .pricing-section {
+      background: var(--primary-light);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .pricing-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: 0 12px 24px rgba(47,52,48,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.featured::before {
+      content: "Best Value";
+      position: absolute;
+      top: 18px;
+      right: -28px;
+      transform: rotate(35deg);
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 6px 40px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    .pricing-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .pricing-amount {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 34px;
+      color: var(--primary-dark);
+      line-height: 1;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .pricing-desc {
+      color: var(--text-light);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .pricing-note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: var(--primary-light);
+      border: 1px solid rgba(159,180,158,0.28);
+      font-size: 13px;
+      color: var(--text-dark);
+      line-height: 1.55;
+    }
+
+    /* Metrics */
+    .metrics-section {
+      background: #fff;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .metric-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 22px 18px;
+      box-shadow: 0 10px 22px rgba(47,52,48,0.04);
+      text-align: center;
+    }
+
+    .metric-box .num {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 28px;
+      color: var(--primary-dark);
+      line-height: 1;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .metric-box .txt {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 76px 0 96px;
+      background:
+        radial-gradient(circle at top right, rgba(159,180,158,0.16), transparent 28%),
+        linear-gradient(180deg, #fff, #fafcf8);
+    }
+
+    .cta-box {
+      border-radius: 28px;
+      border: 1px solid var(--border-color);
+      background: linear-gradient(135deg, #ffffff, var(--primary-light));
+      padding: 34px;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-copy h2 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 30px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .cta-copy p {
+      color: var(--text-light);
+      font-size: 16px;
+      max-width: 720px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .workflow-grid,
+      .pricing-grid,
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .overview-grid,
+      .workflow-grid,
+      .pricing-grid,
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-top {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 16px; }
+
+      .nav-container {
+        align-items: flex-start;
+      }
+
+      .logo-img {
+        height: 58px;
+      }
+
+      .logo-text {
+        font-size: 16px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .hero-section {
+        padding-top: 54px;
+      }
+
+      .hero-copy h1 {
+        max-width: none;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .overview-card h3,
+      .team-title {
+        font-size: 22px;
+      }
+
+      .cta-box {
+        padding: 24px;
+      }
+
+      .cta-copy h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo-wrapper">
+        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
+        <span class="logo-text">GemstoneBR Co-Host</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="section-kicker">Cleaning & Maintenance</span>
+        <h1>Professional Cleaning & Maintenance</h1>
+        <p>In-house StoneCare support for hotel-level turnover, fast response maintenance, and reliable repair coordination — built to keep every unit ready, clean, and guest-ready.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Request Service</a>
+          <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+        </div>
+        <div class="hero-points">
+          <span class="hero-chip">Hotel-level cleaning</span>
+          <span class="hero-chip">Fast repair support</span>
+          <span class="hero-chip">Transparent billing</span>
+          <span class="hero-chip">In-house StoneCare team</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="StoneCare service overview">
+        <div class="hero-tagline">
+          <div class="tag-title">StoneCare Team</div>
+          <div class="tag-pill">Cleaning + Repair</div>
+        </div>
+
+        <div class="visual-top">
+          <div class="mini-panel">
+            <h3>What we handle</h3>
+            <div class="service-list">
+              <div class="service-item"><span class="service-badge">1</span><span>Unit cleaning and turnover</span></div>
+              <div class="service-item"><span class="service-badge">2</span><span>Furniture / sofa / mattress cleaning</span></div>
+              <div class="service-item"><span class="service-badge">3</span><span>Maintenance and repair coordination</span></div>
+            </div>
+          </div>
+
+          <div class="mini-panel">
+            <h3>Service rules</h3>
+            <div class="price-stack">
+              <div class="price-row">
+                <strong>Hotel-level cleaning</strong>
+                <span>600 PHP</span>
+              </div>
+              <div class="price-row">
+                <strong>StoneCare repair discount</strong>
+                <span>-10%</span>
+              </div>
+              <div class="price-row">
+                <strong>Other repair items</strong>
+                <span>At cost</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-image">
+          <img src="stonecare.jpg" alt="StoneCare promotional card">
+          <div class="hero-caption">
+            Please place the uploaded StoneCare card as <strong>stonecare.jpg</strong> in the same folder as this HTML file.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="container">
+      <div class="section-kicker">Our approach</div>
+      <h2 class="section-title">Built for guest-ready units and efficient owner support</h2>
+      <p class="section-lead">We manage cleaning and maintenance with one internal standard, so the unit stays consistent from checkout to the next guest arrival.</p>
+
+      <div class="overview-grid" style="margin-top: 30px;">
+        <div class="overview-card">
+          <h3>Hotel-level cleaning</h3>
+          <ul class="overview-list">
+            <li>Checkout → inspection → cleaning → restocking</li>
+            <li>Standardized handover and acceptance process</li>
+            <li>Double check before the next guest arrives</li>
+            <li>Fixed service fee: <strong>600 PHP per turn</strong></li>
+          </ul>
+        </div>
+
+        <div class="team-card">
+          <h3 class="team-title">StoneCare Maintenance Team</h3>
+          <div class="team-points">
+            <div class="team-point">Repairs are charged at <strong>10% off StoneCare project pricing</strong>.</div>
+            <div class="team-point">The discount also applies to <strong>other units owned by our partner landlords</strong>.</div>
+            <div class="team-point">Other repair items are billed at <strong>actual cost</strong>.</div>
+          </div>
+          <div class="promo-image">
+            <img src="stonecare.jpg" alt="StoneCare card preview">
+            <div class="promo-caption">StoneCare is our in-house cleaning and repair support brand.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="workflow-section">
+    <div class="container">
+      <div class="section-kicker">Process</div>
+      <h2 class="section-title">How we handle every turnover</h2>
+      <p class="section-lead">A clear workflow keeps quality consistent and reduces missed steps between check-out and the next check-in.</p>
+
+      <div class="workflow-grid">
+        <div class="workflow-step">
+          <div class="workflow-index">1</div>
+          <h4>Checkout check</h4>
+          <p>We inspect the unit immediately after guest departure and log any issues or missing items.</p>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-index">2</div>
+          <h4>Deep clean</h4>
+          <p>The unit is cleaned to hotel-level standards, including visible surfaces and high-touch areas.</p>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-index">3</div>
+          <h4>Restock</h4>
+          <p>We replenish essential consumables and prepare the unit for the next guest stay.</p>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-index">4</div>
+          <h4>Double check</h4>
+          <p>Final verification is completed before handover to ensure the unit is fully guest-ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-kicker">Pricing</div>
+      <h2 class="section-title">Simple, transparent service pricing</h2>
+      <p class="section-lead">Clear pricing keeps owner billing easy to understand and makes recurring service planning straightforward.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Hotel-level cleaning</h3>
+          <div class="pricing-amount">600 PHP</div>
+          <div class="pricing-desc">Per turnover, including inspection, cleaning, restocking, standardized acceptance, and final double check.</div>
+        </div>
+
+        <div class="pricing-card featured">
+          <h3>StoneCare repair support</h3>
+          <div class="pricing-amount">-10%</div>
+          <div class="pricing-desc">Repairs are billed at 10% off StoneCare project pricing for partner landlords and other connected units.</div>
+          <div class="pricing-note">This applies to StoneCare project work only.</div>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Other repair items</h3>
+          <div class="pricing-amount">At cost</div>
+          <div class="pricing-desc">Remaining repair items are charged at actual expense with transparent billing.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics-section">
+    <div class="container">
+      <div class="section-kicker">Why owners trust us</div>
+      <h2 class="section-title">Reliable support for daily operations</h2>
+      <p class="section-lead">A unified service team means faster action, better consistency, and fewer handoff mistakes.</p>
+
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <div class="num">1</div>
+          <div class="txt">In-house team for cleaning and maintenance</div>
+        </div>
+        <div class="metric-box">
+          <div class="num">2</div>
+          <div class="txt">Fast response for urgent requests</div>
+        </div>
+        <div class="metric-box">
+          <div class="num">3</div>
+          <div class="txt">Transparent billing and reporting</div>
+        </div>
+        <div class="metric-box">
+          <div class="num">4</div>
+          <div class="txt">Consistent guest-ready standards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-copy">
+          <span class="section-kicker">Get started</span>
+          <h2>Need a cleaner, faster, more reliable turnover team?</h2>
+          <p>StoneCare is built to keep your unit ready for guests, with standardized cleaning, repair coordination, and transparent billing for every service.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
+          <a href="index.html" class="btn btn-secondary">Back to Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
