@@ -736,6 +736,23 @@
             line-height: 1.65;
         }
 
+        /* NEW: dashboard image */
+        .dashboard-image {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 10px 24px rgba(47,52,48,0.05);
+        }
+
+        .dashboard-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
         /* Metrics */
         .metrics-section {
             background: var(--primary-light);
@@ -945,20 +962,20 @@
                         <h3>Performance Overview</h3>
                         <div class="kpi-row">
                             <div class="kpi">
-                                <div class="value">85%</div>
+                                <div class="value">85.7%</div>
                                 <div class="label">Occupancy</div>
                             </div>
                             <div class="kpi">
-                                <div class="value">4.8</div>
+                                <div class="value">100%</div>
+                                <div class="label">Response Rate</div>
+                            </div>
+                            <div class="kpi">
+                                <div class="value">2622</div>
+                                <div class="label">Reviews</div>
+                            </div>
+                            <div class="kpi">
+                                <div class="value">4.84</div>
                                 <div class="label">Rating</div>
-                            </div>
-                            <div class="kpi">
-                                <div class="value">92%</div>
-                                <div class="label">Response</div>
-                            </div>
-                            <div class="kpi">
-                                <div class="value">+18%</div>
-                                <div class="label">Revenue lift</div>
                             </div>
                         </div>
                     </div>
@@ -1116,29 +1133,11 @@
                         <div class="mock-tag">Operational Control</div>
                     </div>
 
-                    <div class="mock-board">
-                        <div class="mock-stat">
-                            <div class="num">92%</div>
-                            <div class="txt">Response Rate</div>
-                        </div>
-                        <div class="mock-stat">
-                            <div class="num">85%</div>
-                            <div class="txt">Occupancy</div>
-                        </div>
-                        <div class="mock-stat">
-                            <div class="num">4.8</div>
-                            <div class="txt">Review Score</div>
-                        </div>
+                    <div class="dashboard-image">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Management Dashboard">
                     </div>
 
-                    <div class="mock-panel">
-                        <h4>Key Metrics We Monitor</h4>
-                        <div class="bar"><span></span></div>
-                        <div class="bar bar-2"><span></span></div>
-                        <div class="bar bar-3"><span></span></div>
-                    </div>
-
-                    <p class="mock-note">
+                    <p class="mock-note" style="margin-top: 14px;">
                         Monthly reporting keeps owners informed on exposure, conversion, occupancy, guest satisfaction, and revenue performance.
                     </p>
                 </div>
