@@ -191,49 +191,52 @@
             margin-right: 10px;
         }
 
-        /* 4. 3张横向优势卡（左图片+右卡片）★ 核心修改：让图片高度和卡片一致 */
+        /* 4. 3张横向优势卡（左图片+右卡片）★ 终极修改：100%匹配高度 */
         .advantages-section {
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
-            display: flex;
+            /* 改用grid布局，更精准控制行列高度 */
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 左右各占一半 */
+            grid-template-rows: auto 1fr; /* 标题一行，内容一行 */
             gap: 40px;
-            /* 关键1：从center改为stretch，让左右容器高度和最高的一方一致（这里就是右侧卡片总高度） */
-            align-items: stretch; 
-            flex-wrap: wrap;
         }
         .advantages-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 32px;
             color: var(--text-dark);
-            margin-bottom: 40px;
+            margin-bottom: 0; /* 去掉margin，用grid gap控制间距 */
             font-weight: 500;
             text-align: center;
-            width: 100%;
+            /* 标题跨两列 */
+            grid-column: 1 / -1;
         }
-        /* 左侧优势图片容器 ★ 核心修改：去掉min-height，高度自适应 */
+        /* 左侧优势图片容器 ★ 关键：高度和右侧卡片容器完全一致 */
         .advantages-img-wrapper {
-            flex: 1;
-            min-width: 300px;
-            /* 让容器高度铺满父级（和右侧卡片总高度一致） */
-            height: 100%; 
+            /* 继承grid行的高度（和右侧卡片容器相同） */
+            height: 100%;
+            /* 超出部分隐藏，彻底避免图片溢出 */
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
         .advantages-img {
             width: 100%;
-            /* 关键2：高度100%铺满容器，不再超长 */
-            height: 100%; 
-            /* 保留图片比例，裁剪多余部分，避免变形 */
-            object-fit: cover; 
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            display: block;
+            height: 100%;
+            /* 优先显示图片中间区域，裁剪上下多余部分 */
+            object-fit: cover;
+            object-position: center;
+            /* 去掉图片自身边框，统一由容器控制 */
+            border: none;
         }
+        /* 右侧优势卡片容器 ★ 固定卡片总高度（和图片容器匹配） */
         .advantages-cards {
-            flex: 1;
-            min-width: 300px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            /* 高度由内容决定，左侧图片容器会完全匹配 */
+            height: 100%;
         }
         .advantage-card {
             background: var(--card-bg);
@@ -241,6 +244,11 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary);
             transition: all 0.3s ease;
+            /* 卡片平均分配高度 */
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .advantage-card:hover {
             box-shadow: 0 5px 15px rgba(159, 180, 158, 0.1);
@@ -251,6 +259,7 @@
             color: var(--text-dark);
             text-align: center;
             font-weight: 500;
+            margin: 0;
         }
 
         /* 5. 数据指标条 */
@@ -300,6 +309,14 @@
             .metrics-container {
                 gap: 15px;
             }
+            /* 移动端优势区变回单列 */
+            .advantages-section {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            .advantages-img-wrapper {
+                min-height: 250px;
+            }
         }
         @media (max-width: 768px) {
             .page-main-title {font-size: 32px;}
@@ -311,8 +328,6 @@
             .metrics-label {font-size: 18px; margin-bottom: 10px;}
             .metric-tag {padding: 8px 15px; font-size: 14px;}
             .points-img {min-height: 250px;}
-            /* 移动端优势区图片高度自适应 */
-            .advantages-img {height: auto; min-height: 200px;}
         }
     </style>
 </head>
@@ -391,7 +406,7 @@
     <section class="advantages-section">
         <h2 class="advantages-title">Our Core Advantages</h2>
         <div class="advantages-img-wrapper">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/8b038cbe3ab8a435243f007b541968ce1ff16bc0/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" alt="Core Advantages" class="advantages-img">
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/8b038cbe3ab8a435243f007b541968ce1ff16bc0/Feb%2026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" alt="Core Advantages" class="advantages-img">
         </div>
         <div class="advantages-cards">
             <div class="advantage-card">
