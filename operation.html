@@ -479,17 +479,18 @@
             font-size: 14px;
         }
 
-        /* Two-column section */
+        /* Two-column section (改为三列，保证高度一致) */
         .service-process-section {
             background: #fff;
             padding-top: 24px;
         }
 
-        .two-col {
+        /* 核心修改：三列布局 + 强制高度一致 */
+        .three-col {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 26px;
-            align-items: start;
+            align-items: stretch; /* 关键：让所有列高度拉伸至一致 */
         }
 
         .info-card {
@@ -498,6 +499,25 @@
             border-radius: 24px;
             padding: 28px;
             box-shadow: 0 10px 24px rgba(47,52,48,0.04);
+            display: flex; /* 关键：flex布局保证内容自适应，高度拉伸 */
+            flex-direction: column;
+            height: 100%; /* 关键：强制卡片高度100% */
+        }
+
+        /* 账单卡片的图片容器 */
+        .billing-card-img {
+            flex: 1; /* 关键：让图片容器占满剩余空间，保证高度一致 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .billing-card-img img {
+            max-height: 100%;
+            width: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         .section-subtitle {
@@ -523,6 +543,7 @@
             list-style: none;
             display: grid;
             gap: 12px;
+            flex: 1; /* 让列表占满空间，保证高度一致 */
         }
 
         .content-list li {
@@ -550,6 +571,7 @@
         .steps {
             display: grid;
             gap: 14px;
+            flex: 1; /* 让步骤列表占满空间，保证高度一致 */
         }
 
         .step {
@@ -846,7 +868,7 @@
 
         @media (max-width: 900px) {
             .hero-grid,
-            .two-col,
+            .three-col, /* 响应式：小屏幕变回单列 */
             .advantages-grid {
                 grid-template-columns: 1fr;
             }
@@ -1051,8 +1073,10 @@
         </div>
     </section>
 
+    <!-- 核心修改：三列布局，包含What's included / How we work / 账单截图 -->
     <section class="service-process-section" id="included">
-        <div class="container two-col">
+        <div class="container three-col">
+            <!-- 第一列：What's included -->
             <div class="info-card">
                 <h3 class="section-subtitle">What’s included</h3>
                 <ul class="content-list">
@@ -1065,6 +1089,7 @@
                 </ul>
             </div>
 
+            <!-- 第二列：How we work -->
             <div class="info-card">
                 <h3 class="section-subtitle">How we work</h3>
                 <div class="steps">
@@ -1096,6 +1121,15 @@
                             <p>We track performance monthly and keep refining for better results.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- 第三列：账单截图 -->
+            <div class="info-card">
+                <h3 class="section-subtitle">Transparent Billing</h3>
+                <div class="billing-card-img">
+                    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/Feb%2026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" 
+                         alt="Monthly Owner Billing Statement - Detailed Revenue & Expense Breakdown">
                 </div>
             </div>
         </div>
@@ -1136,13 +1170,6 @@
                     <!-- 原有仪表盘图片 -->
                     <div class="dashboard-image" style="margin-bottom: 16px;">
                         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Management Dashboard">
-                    </div>
-
-                    <!-- 新增竖版账单截图（保留竖版比例） -->
-                    <div class="dashboard-image">
-                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" 
-                             alt="Monthly Owner Billing Statement" 
-                             style="max-height: 480px; object-fit: contain;">
                     </div>
 
                     <p class="mock-note" style="margin-top: 14px;">
