@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Online Operation | GemstoneBR Co-Host</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -736,6 +736,7 @@
             line-height: 1.65;
         }
 
+        /* NEW: dashboard image */
         .dashboard-image {
             width: 100%;
             border-radius: 18px;
@@ -750,67 +751,6 @@
             height: auto;
             object-fit: cover;
             display: block;
-        }
-
-        /* NEW: 透明账单证明区块 */
-        .statement-section {
-            background: #fff;
-            padding: 60px 0 80px;
-        }
-
-        .statement-card {
-            max-width: 520px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 32px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 20px 35px rgba(47,52,48,0.08);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .statement-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 30px 45px rgba(47,52,48,0.12);
-        }
-
-        .statement-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            background: #f5f7f3;
-        }
-
-        .statement-caption {
-            padding: 24px 20px 20px;
-            text-align: center;
-            background: #fff;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .statement-caption p {
-            font-size: 13px;
-            color: var(--text-light);
-            letter-spacing: 0.3px;
-        }
-
-        .trust-badge {
-            text-align: center;
-            margin-top: 32px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .trust-badge span {
-            background: rgba(159,180,158,0.12);
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            backdrop-filter: blur(4px);
         }
 
         /* Metrics */
@@ -885,20 +825,6 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-        }
-
-        /* 增强重点：加粗高亮数字 */
-        .highlight-number {
-            font-size: 1.2em;
-            font-weight: 800;
-            color: var(--primary-dark);
-            display: inline-block;
-            margin-right: 4px;
-        }
-
-        .hero-copy .hero-points .hero-chip:first-child {
-            background: rgba(159,180,158,0.2);
-            border-color: var(--primary);
         }
 
         /* Responsive */
@@ -997,7 +923,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo-wrapper">
-                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host Logo">
+                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
                 <span class="logo-text">GemstoneBR Co-Host</span>
             </div>
             <div class="nav-links">
@@ -1018,10 +944,10 @@
                     <a href="#included" class="btn btn-secondary">See What’s Included</a>
                 </div>
                 <div class="hero-points">
-                    <span class="hero-chip">⭐ 180+ units managed</span>
-                    <span class="hero-chip">📈 4.84 avg rating</span>
-                    <span class="hero-chip">⚡ 100% response rate</span>
-                    <span class="hero-chip">📊 Transparent reports</span>
+                    <span class="hero-chip">Higher visibility</span>
+                    <span class="hero-chip">Faster bookings</span>
+                    <span class="hero-chip">Better reviews</span>
+                    <span class="hero-chip">Transparent reporting</span>
                 </div>
             </div>
 
@@ -1197,52 +1123,32 @@
                     </div>
                     <div class="advantage-card">
                         <h4>Professional backend management</h4>
-                        <p>We use structured tools and reporting to keep performance visible, measurable, and easy to optimize.</p>
+                        <p>We use structured tools and reporting to keep performance visible, measurable, and easy to optimize — including monthly transparent billing for owners.</p>
                     </div>
                 </div>
 
                 <div class="adv-right">
                     <div class="mock-header">
-                        <div class="mock-title">Management Dashboard</div>
-                        <div class="mock-tag">Operational Control</div>
+                        <div class="mock-title">Transparent Performance & Billing</div>
+                        <div class="mock-tag">Monthly Owner Reports</div>
                     </div>
 
+                    <!-- 原有仪表盘图片 -->
+                    <div class="dashboard-image" style="margin-bottom: 16px;">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Management Dashboard">
+                    </div>
+
+                    <!-- 新增竖版账单截图（保留竖版比例） -->
                     <div class="dashboard-image">
-                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Operational Dashboard">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" 
+                             alt="Monthly Owner Billing Statement" 
+                             style="max-height: 480px; object-fit: contain;">
                     </div>
 
                     <p class="mock-note" style="margin-top: 14px;">
-                        Monthly reporting keeps owners informed on exposure, conversion, occupancy, guest satisfaction, and revenue performance.
+                        Monthly reporting includes detailed occupancy, revenue, and expense breakdowns — delivered directly to owners to ensure full transparency. Our 85%+ average occupancy rate is backed by real, verifiable data.
                     </p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 新增透明账单证明区块 -->
-    <section class="statement-section">
-        <div class="container">
-            <div class="section-head" style="justify-content: center; text-align: center;">
-                <div style="text-align: center;">
-                    <span class="section-kicker">透明运营 · 数据可见</span>
-                    <h2 class="section-title">真实账单，每一分钱都清晰</h2>
-                    <p class="section-lead" style="margin-left: auto; margin-right: auto;">每月为业主提供详细的收入明细与数据分析，所有费用一目了然。</p>
-                </div>
-            </div>
-
-            <div class="statement-card">
-                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024年8月.png" alt="Monthly Statement Sample - Feb 2026">
-                <div class="statement-caption">
-                    <p>📄 示例：2026年2月业主结算报告（FAME-T3-2906）<br>每月准时交付，数据完整可追溯</p>
-                </div>
-            </div>
-
-            <div class="trust-badge">
-                <span>✅ 收入明细拆分</span>
-                <span>📊 入住率趋势图</span>
-                <span>💰 净收益对比</span>
-                <span>📅 同期环比分析</span>
-                <span>🔒 隐私数据脱敏</span>
             </div>
         </div>
     </section>
@@ -1270,7 +1176,7 @@
                     <p>Let us review your current listing and show you where the biggest improvements can be made in exposure, conversion, occupancy, and guest experience.</p>
                 </div>
                 <div class="cta-actions">
-                    <a href="#contact" class="btn btn-primary">Contact Us</a>
+                    <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
                     <a href="index.html" class="btn btn-secondary">Back to Services</a>
                 </div>
             </div>
