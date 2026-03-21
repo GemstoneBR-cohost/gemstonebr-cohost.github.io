@@ -1,51 +1,1178 @@
-<section class="advantages-section">
-    <div class="container">
-        <div class="section-head">
-            <div>
-                <span class="section-kicker">Why us</span>
-                <h2 class="section-title">Our Core Advantages</h2>
-                <p class="section-lead">We are not just managing messages — we are running the full operational engine behind your listings.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Online Operation | GemstoneBR Co-Host</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #9FB49E;
+            --primary-light: #F3F7F1;
+            --primary-dark: #7F9580;
+            --text-dark: #2F3430;
+            --text-light: #6C746F;
+            --bg-light: #FFFFFF;
+            --border-color: #E6EBE2;
+            --card-bg: #FAFBF9;
+            --shadow: 0 18px 40px rgba(47, 52, 48, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .logo-img {
+            height: 72px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 88px 0;
+        }
+
+        .section-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 34px;
+            line-height: 1.15;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: 0.2px;
+        }
+
+        .section-kicker {
+            display: inline-block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .section-lead {
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 760px;
+        }
+
+        /* Hero */
+        .hero-section {
+            background:
+                radial-gradient(circle at top left, rgba(159,180,158,0.18), transparent 28%),
+                linear-gradient(180deg, var(--primary-light), #fff);
+            padding: 80px 0 92px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 38px;
+            align-items: center;
+        }
+
+        .hero-copy h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: clamp(40px, 5vw, 58px);
+            line-height: 1.05;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 18px;
+            max-width: 8.5ch;
+        }
+
+        .hero-copy p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 620px;
+            margin-bottom: 28px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 22px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            min-height: 48px;
+        }
+
+        .btn-primary {
+            background: var(--text-dark);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(47, 52, 48, 0.12);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #1f2321;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-chip {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.74);
+            border: 1px solid rgba(159,180,158,0.24);
+            color: var(--text-dark);
+            font-size: 13px;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 520px;
+            border-radius: 28px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,251,249,0.88)),
+                linear-gradient(135deg, rgba(159,180,158,0.20), rgba(255,255,255,0));
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            padding: 22px;
+        }
+
+        .hero-visual::before {
+            content: "";
+            position: absolute;
+            inset: auto -60px -70px auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(159,180,158,0.28), transparent 65%);
+            filter: blur(2px);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-title {
+            font-size: 13px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .dashboard-pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-card {
+            background: rgba(255,255,255,0.95);
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 12px 24px rgba(47,52,48,0.05);
+        }
+
+        .dashboard-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text-dark);
+        }
+
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .kpi {
+            border-radius: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 14px;
+        }
+
+        .kpi .value {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 22px;
+            color: var(--primary-dark);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .kpi .label {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .calendar-box {
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            background:
+                linear-gradient(180deg, #fff, #fafbf9);
+            padding: 14px;
+        }
+
+        .calendar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+
+        .calendar-top strong {
+            font-size: 14px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+
+        .day {
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            background: #F7F9F6;
+            border: 1px solid var(--border-color);
+        }
+
+        .day.booked {
+            background: rgba(159,180,158,0.18);
+            border-color: rgba(159,180,158,0.28);
+        }
+
+        .day.peak {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .mini-message {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 16px;
+            background: #FBFCFA;
+            border: 1px solid var(--border-color);
+        }
+
+        .mini-message .sender {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mini-message p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Cards section */
+        .selling-points-section {
+            background: #fff;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .points-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .point-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 10px 20px rgba(47,52,48,0.03);
+            transition: all 0.25s ease;
+            min-height: 188px;
+        }
+
+        .point-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(159,180,158,0.6);
+            box-shadow: 0 16px 30px rgba(159,180,158,0.12);
+        }
+
+        .point-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .point-card h3 {
+            font-size: 19px;
+            line-height: 1.3;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .point-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Two-column section */
+        .service-process-section {
+            background: #fff;
+            padding-top: 24px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            align-items: start;
+        }
+
+        .info-card {
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgba(47,52,48,0.04);
+        }
+
+        .section-subtitle {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 26px;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-subtitle::before {
+            content: "";
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 99px;
+        }
+
+        .content-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .content-list li {
+            position: relative;
+            padding: 14px 14px 14px 42px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.75);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .content-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 16px;
+            top: 13px;
+            width: 18px;
+            height: 18px;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .steps {
+            display: grid;
+            gap: 14px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 14px;
+            padding: 16px;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.8);
+        }
+
+        .step-index {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: var(--primary-light);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            color: var(--primary-dark);
+            font-size: 16px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Advantages */
+        .advantages-section {
+            background:
+                linear-gradient(180deg, #fff, #fcfdfb);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .adv-left {
+            display: grid;
+            gap: 16px;
+        }
+
+        .advantage-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 22px 20px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 10px 22px rgba(47,52,48,0.04);
+            transition: all 0.25s ease;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(159,180,158,0.11);
+            background: #fff;
+        }
+
+        .advantage-card h4 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .advantage-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .adv-right {
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,251,249,0.95)),
+                linear-gradient(135deg, rgba(159,180,158,0.18), rgba(255,255,255,0));
+            box-shadow: var(--shadow);
+            padding: 24px;
+            min-height: 360px;
+            position: relative;
+        }
+
+        .mock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 10px;
+        }
+
+        .mock-title {
+            font-size: 13px;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .mock-tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .mock-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .mock-stat {
+            border-radius: 18px;
+            background: rgba(255,255,255,0.88);
+            border: 1px solid var(--border-color);
+            padding: 16px 14px;
+            text-align: center;
+        }
+
+        .mock-stat .num {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 24px;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .mock-stat .txt {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .mock-panel {
+            background: rgba(255,255,255,0.88);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+
+        .mock-panel h4 {
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .bar {
+            height: 10px;
+            border-radius: 999px;
+            background: #edf1ea;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .bar > span {
+            display: block;
+            height: 100%;
+            width: 72%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--primary), #C4D2BE);
+        }
+
+        .bar.bar-2 > span { width: 84%; }
+        .bar.bar-3 > span { width: 61%; }
+
+        .mock-note {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        /* NEW: dashboard image */
+        .dashboard-image {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 10px 24px rgba(47,52,48,0.05);
+        }
+
+        .dashboard-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Metrics */
+        .metrics-section {
+            background: var(--primary-light);
+            padding: 46px 0;
+        }
+
+        .metrics-container {
+            display: grid;
+            grid-template-columns: auto repeat(6, 1fr);
+            gap: 12px;
+            align-items: center;
+        }
+
+        .metrics-label {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        .metric-tag {
+            background: #fff;
+            padding: 12px 16px;
+            border-radius: 999px;
+            font-size: 14px;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(47,52,48,0.03);
+            white-space: nowrap;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 76px 0 96px;
+            background:
+                radial-gradient(circle at top right, rgba(159,180,158,0.16), transparent 28%),
+                linear-gradient(180deg, #fff, #fafcf8);
+        }
+
+        .cta-box {
+            border-radius: 28px;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #ffffff, var(--primary-light));
+            padding: 34px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-copy h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 30px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .cta-copy p {
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 720px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .points-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics-container {
+                grid-template-columns: 1fr;
+                justify-items: start;
+            }
+
+            .metrics-label {
+                white-space: normal;
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .two-col,
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 460px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 16px;
+            }
+
+            .nav-container {
+                align-items: flex-start;
+            }
+
+            .logo-img {
+                height: 58px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+
+            .hero-section {
+                padding-top: 54px;
+            }
+
+            .hero-copy h1 {
+                max-width: none;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .point-card {
+                min-height: auto;
+            }
+
+            .mock-board {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 24px;
+            }
+
+            .cta-copy h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
+                <span class="logo-text">GemstoneBR Co-Host</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Services</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
+    </nav>
 
-        <div class="advantages-grid">
-            <div class="adv-left">
-                <div class="advantage-card">
-                    <h4>In-house operational support</h4>
-                    <p>Design, cleaning, maintenance, and customer service are coordinated under one team, which keeps execution fast and consistent.</p>
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <span class="section-kicker">Online Operation</span>
+                <h1>Professional Online Operation</h1>
+                <p>End-to-end listing management that helps your property stay visible, responsive, and profitable — from inquiry handling to pricing optimization and monthly reporting.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Request a Listing Audit</a>
+                    <a href="#included" class="btn btn-secondary">See What’s Included</a>
                 </div>
-                <div class="advantage-card">
-                    <h4>180+ units of experience</h4>
-                    <p>We’ve handled a large number of properties and refined a working system that is repeatable across different unit types.</p>
-                </div>
-                <div class="advantage-card">
-                    <h4>Professional backend management</h4>
-                    <p>We use structured tools and reporting to keep performance visible, measurable, and easy to optimize — including monthly transparent billing for owners.</p>
+                <div class="hero-points">
+                    <span class="hero-chip">Higher visibility</span>
+                    <span class="hero-chip">Faster bookings</span>
+                    <span class="hero-chip">Better reviews</span>
+                    <span class="hero-chip">Transparent reporting</span>
                 </div>
             </div>
 
-            <div class="adv-right">
-                <div class="mock-header">
-                    <div class="mock-title">Transparent Performance & Billing</div>
-                    <div class="mock-tag">Monthly Owner Reports</div>
+            <div class="hero-visual" aria-label="Operation dashboard preview">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">Operational Snapshot</div>
+                    <div class="dashboard-pill">Live Management</div>
                 </div>
 
-                <!-- 原有仪表盘图片 -->
-                <div class="dashboard-image" style="margin-bottom: 16px;">
-                    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Management Dashboard">
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Performance Overview</h3>
+                        <div class="kpi-row">
+                            <div class="kpi">
+                                <div class="value">85.7%</div>
+                                <div class="label">Occupancy</div>
+                            </div>
+                            <div class="kpi">
+                                <div class="value">100%</div>
+                                <div class="label">Response Rate</div>
+                            </div>
+                            <div class="kpi">
+                                <div class="value">2622</div>
+                                <div class="label">Reviews</div>
+                            </div>
+                            <div class="kpi">
+                                <div class="value">4.84</div>
+                                <div class="label">Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Booking Calendar</h3>
+                        <div class="calendar-box">
+                            <div class="calendar-top">
+                                <strong>Peak Week</strong>
+                                <span class="dashboard-pill">Dynamic Pricing</span>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="day"></div>
+                                <div class="day"></div>
+                                <div class="day booked"></div>
+                                <div class="day booked"></div>
+                                <div class="day peak"></div>
+                                <div class="day peak"></div>
+                                <div class="day peak"></div>
+
+                                <div class="day"></div>
+                                <div class="day booked"></div>
+                                <div class="day booked"></div>
+                                <div class="day booked"></div>
+                                <div class="day booked"></div>
+                                <div class="day peak"></div>
+                                <div class="day peak"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 新增竖版账单截图（适配竖版比例） -->
-                <div class="dashboard-image">
-                    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/Feb%202026%20Statement%20of%20Account-FAME-T3-2906_2024%E5%B9%B48%E6%9C%88.png" 
-                         alt="Monthly Owner Billing Statement" 
-                         style="max-height: 480px; object-fit: contain; /* 保持竖版比例，不拉伸 */">
+                <div class="mini-message">
+                    <div class="sender">Guest message</div>
+                    <p>Hi, can you confirm the check-in instructions and access code? We need a quick reply before arrival.</p>
                 </div>
-
-                <p class="mock-note" style="margin-top: 14px;">
-                    Monthly reporting includes detailed occupancy, revenue, and expense breakdowns — delivered directly to owners to ensure full transparency. Our 85%+ average occupancy rate is backed by real, verifiable data.
-                </p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="selling-points-section">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="section-kicker">What we improve</span>
+                    <h2 class="section-title">What We Help You Achieve</h2>
+                    <p class="section-lead">A focused online operation system built to improve performance across visibility, conversion, occupancy, and guest satisfaction.</p>
+                </div>
+            </div>
+
+            <div class="points-grid">
+                <div class="point-card">
+                    <div class="point-icon">01</div>
+                    <h3>Increase exposure</h3>
+                    <p>CTR optimization to get more eyes on your listing.</p>
+                </div>
+                <div class="point-card">
+                    <div class="point-icon">02</div>
+                    <h3>Improve conversion</h3>
+                    <p>Optimize photos & pricing to turn views into bookings.</p>
+                </div>
+                <div class="point-card">
+                    <div class="point-icon">03</div>
+                    <h3>Increase occupancy rate</h3>
+                    <p>Dynamic pricing strategy to fill more nights.</p>
+                </div>
+                <div class="point-card">
+                    <div class="point-icon">04</div>
+                    <h3>Protect your rating</h3>
+                    <p>Proactive customer service and review management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-process-section" id="included">
+        <div class="container two-col">
+            <div class="info-card">
+                <h3 class="section-subtitle">What’s included</h3>
+                <ul class="content-list">
+                    <li>Listing title & description optimization</li>
+                    <li>Photo selection & update suggestions</li>
+                    <li>Dynamic pricing and calendar management</li>
+                    <li>Guest communication and inquiry handling</li>
+                    <li>Review management and response support</li>
+                    <li>Monthly reporting and performance review</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3 class="section-subtitle">How we work</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-index">1</div>
+                        <div>
+                            <h4>Audit</h4>
+                            <p>We review the listing structure, pricing, visuals, and current performance gaps.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-index">2</div>
+                        <div>
+                            <h4>Optimize</h4>
+                            <p>We improve the title, copy, photo order, pricing logic, and guest flow.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-index">3</div>
+                        <div>
+                            <h4>Operate</h4>
+                            <p>We manage daily guest communication, pricing updates, and booking coordination.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-index">4</div>
+                        <div>
+                            <h4>Report & Improve</h4>
+                            <p>We track performance monthly and keep refining for better results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages-section">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="section-kicker">Why us</span>
+                    <h2 class="section-title">Our Core Advantages</h2>
+                    <p class="section-lead">We are not just managing messages — we are running the full operational engine behind your listings.</p>
+                </div>
+            </div>
+
+            <div class="advantages-grid">
+                <div class="adv-left">
+                    <div class="advantage-card">
+                        <h4>In-house operational support</h4>
+                        <p>Design, cleaning, maintenance, and customer service are coordinated under one team, which keeps execution fast and consistent.</p>
+                    </div>
+                    <div class="advantage-card">
+                        <h4>180+ units of experience</h4>
+                        <p>We’ve handled a large number of properties and refined a working system that is repeatable across different unit types.</p>
+                    </div>
+                    <div class="advantage-card">
+                        <h4>Professional backend management</h4>
+                        <p>We use structured tools and reporting to keep performance visible, measurable, and easy to optimize.</p>
+                    </div>
+                </div>
+
+                <div class="adv-right">
+                    <div class="mock-header">
+                        <div class="mock-title">Management Dashboard</div>
+                        <div class="mock-tag">Operational Control</div>
+                    </div>
+
+                    <div class="dashboard-image">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Management Dashboard">
+                    </div>
+
+                    <p class="mock-note" style="margin-top: 14px;">
+                        Monthly reporting keeps owners informed on exposure, conversion, occupancy, guest satisfaction, and revenue performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-section">
+        <div class="container">
+            <div class="metrics-container">
+                <div class="metrics-label">Metrics we track:</div>
+                <div class="metric-tag">Response rate</div>
+                <div class="metric-tag">CTR</div>
+                <div class="metric-tag">Conversion rate</div>
+                <div class="metric-tag">Occupancy rate</div>
+                <div class="metric-tag">Review score</div>
+                <div class="metric-tag">Revenue performance</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-copy">
+                    <span class="section-kicker">Get started</span>
+                    <h2>Ready to improve your listing performance?</h2>
+                    <p>Let us review your current listing and show you where the biggest improvements can be made in exposure, conversion, occupancy, and guest experience.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
+                    <a href="index.html" class="btn btn-secondary">Back to Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
