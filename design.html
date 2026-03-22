@@ -5,42 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design & Renovation | GemstoneBR Co-Host</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #9FB49E; /* Soft Green */
-            --primary-light: #F0F5EF; /* Light Green */
+            --primary: #9FB49E; 
+            --primary-light: #F0F5EF; 
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #FFFFFF;
-            --card-bg: #FAFAF8; /* Light Beige */
-            --highlight-color: #E8ECE6; /* Highlight Light Gray */
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --gradient-start: rgba(159, 180, 158, 0.18);
-            --gradient-end: rgba(255, 255, 255, 0.9);
+            --card-bg: #FAFAF8;
+            --border-color: #E8ECE6;
+            --hover-color: #6B8E23; /* Hover effect for emphasis */
         }
-
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
-            font-size: 16px;
-            padding: 0;
         }
 
-        /* Navigation */
         nav {
-            padding: 20px 40px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
             background: var(--bg-light);
-            border-bottom: 1px solid var(--highlight-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -48,241 +35,191 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo-wrapper {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         .logo-img {
-            height: 90px;
+            height: 100px;
             width: auto;
             object-fit: contain;
         }
-
         .logo-text {
-            font-family: 'Georgia', serif;
-            font-size: 24px;
-            font-weight: 700;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: 600;
             color: var(--text-dark);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-
         .nav-links {
             display: flex;
             gap: 35px;
         }
-
         .nav-links a {
-            font-size: 16px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-dark);
             text-decoration: none;
             font-weight: 500;
         }
-
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--hover-color); /* Hover color */
         }
 
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            padding: 150px 20px;
+        .title-section {
+            background: var(--primary-light); 
+            padding: 60px 20px;
             text-align: center;
-            position: relative;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 60%, var(--primary-light));
+            background-blend-mode: lighten;
         }
-
-        .hero-title {
-            font-family: 'Georgia', serif;
-            font-size: 72px;
+        .page-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 48px;
             color: var(--text-dark);
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 700; /* Increased weight for premium feel */
         }
-
-        .hero-subtitle {
-            font-size: 24px;
+        .page-subtitle {
+            font-size: 20px;
             color: var(--text-light);
+            margin-bottom: 0;
             font-weight: 300;
-            max-width: 800px;
-            margin: 0 auto 40px;
         }
 
-        .hero-btns {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
+        .image-section {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .banner-image {
+            width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            transition: transform 0.3s ease-in-out;
+        }
+        .banner-image:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
         }
 
-        .btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 30px;
-            font-size: 16px;
-            border-radius: 30px;
-            text-transform: uppercase;
-            font-weight: 600;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: var(--text-dark);
-            color: #fff;
-            border: 2px solid var(--text-dark);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-dark);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        /* Services Section */
         .services-section {
             max-width: 1200px;
-            margin: 100px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
-
         .services-title {
-            font-family: 'Georgia', serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 36px;
             color: var(--text-dark);
             text-align: center;
-            font-weight: 600;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            font-weight: 500;
         }
-
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr); /* Adjusted to 4 for balance */
+            gap: 20px; /* More spacing between cards */
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
         .service-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 12px 30px var(--shadow-color);
-            text-align: center;
-            transition: transform 0.3s ease;
+            border-radius: 10px; /* Rounded corners for a soft feel */
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            height: 380px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px); /* Hover effect for cards */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
-
-        .service-card img {
+        .card-img-placeholder {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .card-title {
-            font-family: 'Georgia', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-top: 20px;
-        }
-
-        .card-description {
+            height: 240px; /* Adjusted height for better card balance */
+            background: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
             font-size: 16px;
-            color: var(--text-light);
-            margin-top: 15px;
+            font-weight: 600;
+        }
+        .card-content {
+            padding: 12px;
+            text-align: center;
+        }
+        .card-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-transform: capitalize;
         }
 
-        /* Projects Section */
         .projects-section {
             max-width: 1200px;
-            margin: 100px auto;
+            margin: 80px auto 60px;
             padding: 0 20px;
         }
-
         .projects-title {
-            font-family: 'Georgia', serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 36px;
             color: var(--text-dark);
             text-align: center;
             margin-bottom: 50px;
-            font-weight: 600;
+            font-weight: 500;
         }
-
         .project-case {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 12px 30px var(--shadow-color);
-            margin-bottom: 40px;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
-        .project-case:hover {
-            transform: translateY(-10px);
-        }
-
         .project-img-wrapper {
             flex: 1;
-            height: 350px;
-            background-color: #e0e0e0;
+            height: 300px;
+            background: var(--border-color);
             display: flex;
-            justify-content: center;
             align-items: center;
-            border-radius: 8px;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 16px;
         }
-
         .project-info {
             flex: 0 0 250px;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
             background: var(--primary-light);
-            border-radius: 8px;
-            text-align: center;
+            border-radius: 10px;
         }
-
         .info-item {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
-
         .info-label {
             font-weight: 600;
             color: var(--primary);
         }
 
-        .img-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-        }
-
-        /* Responsive */
         @media (max-width: 992px) {
             .services-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Adjust for tablets */
             }
-
             .project-case {
                 flex-direction: column;
             }
@@ -291,15 +228,11 @@
         @media (max-width: 768px) {
             .page-title { font-size: 36px; }
             .services-title, .projects-title { font-size: 28px; }
-            .banner-image { width: 90%; }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+            .banner-image { width: 85%; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -307,80 +240,72 @@
                 <span class="logo-text">GemstoneBR Co-Host</span>
             </div>
             <div class="nav-links">
-                <a href="index.html">Services</a>
-                <a href="index.html#contact">Contact</a>
+                <a href="index.html">SERVICES</a>
+                <a href="index.html#contact">CONTACT</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <h1 class="hero-title">Design & Renovation</h1>
-        <p class="hero-subtitle">Transform Your Space into a Stunning, Profitable Property</p>
-        <div class="hero-btns">
-            <a href="#services" class="btn btn-primary">View Our Services</a>
-            <a href="#projects" class="btn btn-secondary">See Our Projects</a>
-        </div>
+    <section class="title-section">
+        <h1 class="page-title">Design & Renovation</h1>
+        <p class="page-subtitle">Transform Your Space with Precision</p>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <h2 class="services-title">What Services Will You Receive?</h2>
+    <section class="image-section">
+        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
+    </section>
+
+    <section class="services-section">
+        <h2 class="services-title">What services will you receive?</h2>
         <div class="services-grid">
             <div class="service-card">
-                <img src="https://via.placeholder.com/300x200" alt="Design">
+                <div class="card-img-placeholder">Design</div>
                 <div class="card-content">
                     <h3 class="card-title">Design</h3>
-                    <p class="card-description">Custom space planning that blends aesthetics with functionality, tailored to your needs.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://via.placeholder.com/300x200" alt="Procurement">
+                <div class="card-img-placeholder">Procurement</div>
                 <div class="card-content">
                     <h3 class="card-title">Procurement</h3>
-                    <p class="card-description">We procure high-quality materials for your project, ensuring durability and style.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://via.placeholder.com/300x200" alt="Construction">
+                <div class="card-img-placeholder">Construction</div>
                 <div class="card-content">
                     <h3 class="card-title">Construction</h3>
-                    <p class="card-description">Expert construction services that guarantee efficiency and high-quality results.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="card-img-placeholder">Deep Cleaning</div>
+                <div class="card-content">
+                    <h3 class="card-title">Deep Cleaning</h3>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="card-img-placeholder">Professional Videography</div>
+                <div class="card-content">
+                    <h3 class="card-title">Professional Videography</h3>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="card-img-placeholder">Image Beautification</div>
+                <div class="card-content">
+                    <h3 class="card-title">Image Beautification</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects-section" id="projects">
+    <section class="projects-section">
         <h2 class="projects-title">Project Presentation</h2>
-        <div class="project-case">
-            <div class="project-img-wrapper">
-                <div class="img-label">Before</div>
-                <img src="https://via.placeholder.com/500x350" alt="Before">
-            </div>
-            <div class="project-img-wrapper">
-                <div class="img-label">After</div>
-                <img src="https://via.placeholder.com/500x350" alt="After">
-            </div>
-            <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> $50,000</div>
-                <div class="info-item"><span class="info-label">Lasted for:</span> 30 days</div>
-            </div>
-        </div>
 
         <div class="project-case">
-            <div class="project-img-wrapper">
-                <div class="img-label">Before</div>
-                <img src="https://via.placeholder.com/500x350" alt="Before">
-            </div>
-            <div class="project-img-wrapper">
-                <div class="img-label">After</div>
-                <img src="https://via.placeholder.com/500x350" alt="After">
-            </div>
+            <div class="project-img-wrapper">Before</div>
+            <div class="project-img-wrapper">After</div>
             <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> $85,000</div>
-                <div class="info-item"><span class="info-label">Lasted for:</span> 45 days</div>
+                <div class="info-item"><span class="info-label">Total cost:</span> 50000 pesos</div>
+                <div class="info-item"><span class="info-label">Lasted for:</span> 30 days</div>
             </div>
         </div>
     </section>
