@@ -12,15 +12,16 @@
         }
 
         :root {
-            --primary: #9FB49E; /* Primary color: soft green */
-            --primary-light: #F0F5EF; /* Light green background */
+            --primary: #9FB49E; /* Soft Green */
+            --primary-light: #F0F5EF; /* Light Green */
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #FFFFFF;
-            --card-bg: #FAFAF8; /* Card background: light beige */
-            --border-color: #E8ECE6; /* Border color */
-            --highlight-color: #e5e9ec; /* Highlight light gray */
-            --shadow-color: rgba(0, 0, 0, 0.1); /* Shadow color */
+            --card-bg: #FAFAF8; /* Light Beige */
+            --highlight-color: #E8ECE6; /* Highlight Light Gray */
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --gradient-start: rgba(159, 180, 158, 0.18);
+            --gradient-end: rgba(255, 255, 255, 0.9);
         }
 
         body {
@@ -29,15 +30,15 @@
             color: var(--text-dark);
             line-height: 1.6;
             font-size: 16px;
-            padding: 0 20px;
+            padding: 0;
         }
 
         /* Navigation */
         nav {
-            padding: 20px;
+            padding: 20px 40px;
             background: var(--bg-light);
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--highlight-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
@@ -55,13 +56,13 @@
         }
 
         .logo-img {
-            height: 80px;
+            height: 90px;
             width: auto;
             object-fit: contain;
         }
 
         .logo-text {
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-family: 'Georgia', serif;
             font-size: 24px;
             font-weight: 700;
             color: var(--text-dark);
@@ -75,7 +76,6 @@
         }
 
         .nav-links a {
-            font-family: 'Segoe UI', sans-serif;
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -89,74 +89,101 @@
         }
 
         /* Hero Section */
-        .title-section {
-            background: linear-gradient(135deg, var(--primary-light), #ffffff);
-            padding: 100px 20px;
+        .hero-section {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 150px 20px;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
 
-        .page-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 60px;
+        .hero-title {
+            font-family: 'Georgia', serif;
+            font-size: 72px;
             color: var(--text-dark);
-            margin-bottom: 15px;
             font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        .page-subtitle {
+        .hero-subtitle {
             font-size: 24px;
             color: var(--text-light);
-            margin-bottom: 0;
-            font-weight: 400;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 40px;
         }
 
-        /* Image Section */
-        .image-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            text-align: center;
+        .hero-btns {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
         }
 
-        .banner-image {
-            width: 70%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--text-dark);
+            color: #fff;
+            border: 2px solid var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: #fff;
         }
 
         /* Services Section */
         .services-section {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 100px auto;
             padding: 0 20px;
         }
 
         .services-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-family: 'Georgia', serif;
             font-size: 36px;
             color: var(--text-dark);
             text-align: center;
-            margin-bottom: 40px;
             font-weight: 600;
+            margin-bottom: 60px;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .service-card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 12px 30px var(--shadow-color);
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover {
@@ -170,34 +197,29 @@
             border-radius: 8px;
         }
 
-        .card-content {
-            text-align: center;
-            margin-top: 15px;
-        }
-
         .card-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 22px;
+            font-family: 'Georgia', serif;
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-top: 20px;
         }
 
         .card-description {
             font-size: 16px;
             color: var(--text-light);
-            font-weight: 400;
+            margin-top: 15px;
         }
 
         /* Projects Section */
         .projects-section {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 100px auto;
             padding: 0 20px;
         }
 
         .projects-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-family: 'Georgia', serif;
             font-size: 36px;
             color: var(--text-dark);
             text-align: center;
@@ -207,14 +229,13 @@
 
         .project-case {
             display: flex;
-            align-items: center;
             gap: 30px;
             background: var(--card-bg);
-            border-radius: 8px;
             padding: 30px;
-            box-shadow: 0 10px 30px var(--shadow-color);
+            border-radius: 12px;
+            box-shadow: 0 12px 30px var(--shadow-color);
             margin-bottom: 40px;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease;
         }
 
         .project-case:hover {
@@ -293,18 +314,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="title-section">
-        <h1 class="page-title">Design & Renovation</h1>
-        <p class="page-subtitle">Transform Your Space into a Stunning, Profitable Property</p>
-    </section>
-
-    <!-- Image Section -->
-    <section class="image-section">
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
+    <section class="hero-section">
+        <h1 class="hero-title">Design & Renovation</h1>
+        <p class="hero-subtitle">Transform Your Space into a Stunning, Profitable Property</p>
+        <div class="hero-btns">
+            <a href="#services" class="btn btn-primary">View Our Services</a>
+            <a href="#projects" class="btn btn-secondary">See Our Projects</a>
+        </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services-section">
+    <section class="services-section" id="services">
         <h2 class="services-title">What Services Will You Receive?</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -328,32 +348,11 @@
                     <p class="card-description">Expert construction services that guarantee efficiency and high-quality results.</p>
                 </div>
             </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/300x200" alt="Deep Cleaning">
-                <div class="card-content">
-                    <h3 class="card-title">Deep Cleaning</h3>
-                    <p class="card-description">Complimentary deep cleaning to ensure your space is spotless and ready for use.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/300x200" alt="Photography">
-                <div class="card-content">
-                    <h3 class="card-title">Professional Photography</h3>
-                    <p class="card-description">High-quality photography included to showcase your property in the best light.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/300x200" alt="Image Beautification">
-                <div class="card-content">
-                    <h3 class="card-title">Image Beautification</h3>
-                    <p class="card-description">We enhance your property photos to perfection, ensuring maximum exposure.</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="projects-section">
+    <section class="projects-section" id="projects">
         <h2 class="projects-title">Project Presentation</h2>
         <div class="project-case">
             <div class="project-img-wrapper">
