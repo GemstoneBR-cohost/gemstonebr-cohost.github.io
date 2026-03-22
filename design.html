@@ -24,7 +24,7 @@
         }
 
         nav {
-            padding: 15px 20px;
+            padding: 20px 30px;
             border-bottom: 1px solid #eee;
             background: var(--bg-light);
         }
@@ -47,11 +47,11 @@
         }
         .logo-text {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 700;
             color: var(--text-dark);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
         .nav-links {
             display: flex;
@@ -59,7 +59,7 @@
         }
         .nav-links a {
             font-family: 'Segoe UI', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-dark);
@@ -72,20 +72,20 @@
 
         .title-section {
             background: var(--primary-light); 
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 60%, var(--primary-light));
             background-blend-mode: lighten;
         }
         .page-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 48px;
+            font-size: 60px;
             color: var(--text-dark);
             margin-bottom: 15px;
-            font-weight: 700; /* Increased weight for premium feel */
+            font-weight: 700; 
         }
         .page-subtitle {
-            font-size: 20px;
+            font-size: 24px;
             color: var(--text-light);
             margin-bottom: 0;
             font-weight: 300;
@@ -93,68 +93,68 @@
 
         .image-section {
             max-width: 1400px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
             text-align: center;
         }
         .banner-image {
-            width: 60%;
+            width: 70%;
             height: auto;
             display: block;
             margin: 0 auto;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
             transition: transform 0.3s ease-in-out;
         }
         .banner-image:hover {
-            transform: scale(1.05); /* Zoom effect on hover */
+            transform: scale(1.05); 
         }
 
         .services-section {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 80px auto;
             padding: 0 20px;
         }
         .services-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 36px;
+            font-size: 40px;
             color: var(--text-dark);
             text-align: center;
             margin-bottom: 40px;
-            font-weight: 500;
+            font-weight: 600;
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Adjusted to 4 for balance */
-            gap: 20px; /* More spacing between cards */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
             max-width: 1200px;
             margin: 0 auto;
         }
         .service-card {
             background: var(--card-bg);
-            border-radius: 10px; /* Rounded corners for a soft feel */
+            border-radius: 10px; 
             overflow: hidden;
             border: 1px solid var(--border-color);
             height: 380px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .service-card:hover {
-            transform: translateY(-5px); /* Hover effect for cards */
+            transform: translateY(-5px); 
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
         .card-img-placeholder {
             width: 100%;
-            height: 240px; /* Adjusted height for better card balance */
+            height: 240px; 
             background: var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
         }
         .card-content {
-            padding: 12px;
+            padding: 15px;
             text-align: center;
         }
         .card-title {
@@ -172,11 +172,11 @@
         }
         .projects-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 36px;
+            font-size: 40px;
             color: var(--text-dark);
             text-align: center;
             margin-bottom: 50px;
-            font-weight: 500;
+            font-weight: 600;
         }
         .project-case {
             display: flex;
@@ -218,7 +218,7 @@
 
         @media (max-width: 992px) {
             .services-grid {
-                grid-template-columns: repeat(2, 1fr); /* Adjust for tablets */
+                grid-template-columns: repeat(2, 1fr); 
             }
             .project-case {
                 flex-direction: column;
@@ -261,37 +261,43 @@
             <div class="service-card">
                 <div class="card-img-placeholder">Design</div>
                 <div class="card-content">
-                    <h3 class="card-title">Design</h3>
+                    <h3 class="card-title">Expert Design</h3>
+                    <p>Creating spaces that blend style and functionality. Tailored to your needs, our designs aim to inspire.</p>
                 </div>
             </div>
             <div class="service-card">
                 <div class="card-img-placeholder">Procurement</div>
                 <div class="card-content">
-                    <h3 class="card-title">Procurement</h3>
+                    <h3 class="card-title">Procurement Services</h3>
+                    <p>Our team sources the best materials and products, ensuring that your project stays within budget and exceeds expectations.</p>
                 </div>
             </div>
             <div class="service-card">
                 <div class="card-img-placeholder">Construction</div>
                 <div class="card-content">
-                    <h3 class="card-title">Construction</h3>
+                    <h3 class="card-title">Construction Management</h3>
+                    <p>From blueprint to reality, we handle every step of the construction process, ensuring quality and efficiency.</p>
                 </div>
             </div>
             <div class="service-card">
                 <div class="card-img-placeholder">Deep Cleaning</div>
                 <div class="card-content">
                     <h3 class="card-title">Deep Cleaning</h3>
+                    <p>Our team leaves no corner untouched, providing a pristine finish to your newly renovated space.</p>
                 </div>
             </div>
             <div class="service-card">
                 <div class="card-img-placeholder">Professional Videography</div>
                 <div class="card-content">
                     <h3 class="card-title">Professional Videography</h3>
+                    <p>We capture your space through high-quality video, perfect for showcasing your property online.</p>
                 </div>
             </div>
             <div class="service-card">
                 <div class="card-img-placeholder">Image Beautification</div>
                 <div class="card-content">
                     <h3 class="card-title">Image Beautification</h3>
+                    <p>Enhancing photos to show off the beauty of your property, making it stand out to potential guests.</p>
                 </div>
             </div>
         </div>
