@@ -6,28 +6,29 @@
     <title>Design & Renovation | GemstoneBR Co-Host</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        /* 沿用原站色系，新增清新淡雅的辅助色 */
         :root {
-            --primary: #9FB49E; /* 主色：浅草木绿 */
-            --primary-light: #F0F5EF; /* 主色淡色：清新草木绿背景 */
+            --primary: #9FB49E; /* Primary color: soft green */
+            --primary-light: #F0F5EF; /* Light green background */
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #FFFFFF;
-            --card-bg: #FAFAF8; /* 卡片背景：浅米色，清新淡雅 */
-            --border-color: #E8ECE6; /* 边框色，和占位图呼应 */
+            --card-bg: #FAFAF8; /* Card background: light beige */
+            --border-color: #E8ECE6; /* Border color */
         }
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            font-size: 16px;
+            padding: 0 20px;
         }
         
-        /* 导航栏样式（保留原样） */
+        /* Navigation bar */
         nav {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
+            padding: 20px;
             background: var(--bg-light);
+            border-bottom: 1px solid #eee;
         }
         .nav-container {
             max-width: 1200px;
@@ -42,13 +43,13 @@
             gap: 12px;
         }
         .logo-img {
-            height: 100px;
+            height: 80px;
             width: auto;
             object-fit: contain;
         }
         .logo-text {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             color: var(--text-dark);
             text-transform: uppercase;
@@ -60,7 +61,7 @@
         }
         .nav-links a {
             font-family: 'Segoe UI', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-dark);
@@ -70,12 +71,13 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-        
-        /* 标题区域：加清新淡雅的背景色 */
+
+        /* Title Section */
         .title-section {
-            background: var(--primary-light); /* 浅草木绿背景，清新淡雅 */
-            padding: 60px 20px;
+            background: var(--primary-light);
+            padding: 80px 20px;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
         .page-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -89,25 +91,26 @@
             color: var(--text-light);
             margin-bottom: 0;
         }
-        
-        /* 🔥 核心修改：缩小Why us图片宽度（从80%改为60%） */
+
+        /* Image Section */
         .image-section {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 40px auto;
-            padding: 0 20px;
             text-align: center;
         }
         .banner-image {
-            width: 60%; /* 关键：从80%缩小到60%，可按需调整为50%/70% */
+            width: 70%; /* Adjusted image size */
             height: auto;
             display: block;
             margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
-        /* 服务模块：6列紧凑竖版，不靠边 */
+
+        /* Services Section */
         .services-section {
-            max-width: 1200px; /* 和原4列宽度一致，不超宽 */
-            margin: 60px auto;
+            max-width: 1200px;
+            margin: 80px auto;
             padding: 0 20px;
         }
         .services-title {
@@ -120,46 +123,47 @@
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6列均分 */
-            gap: 15px; /* 更小间距，更紧凑 */
-            max-width: 1200px; /* 限制总宽度=原4列宽度 */
-            margin: 0 auto; /* 居中，避免靠边 */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .service-card {
             background: var(--card-bg);
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            height: 420px; /* 加高卡片，竖版更明显 */
-            width: 100%; /* 自适应列宽，不超宽 */
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
         }
-        .card-img-placeholder {
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card img {
             width: 100%;
-            height: 340px; /* 加高底图区，强化竖版 */
-            background: var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 13px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
         }
         .card-content {
-            padding: 12px;
             text-align: center;
+            margin-top: 15px;
         }
         .card-title {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 15px;
+            font-size: 20px;
+            font-weight: 600;
             color: var(--text-dark);
-            font-weight: 500;
-            text-transform: capitalize;
-            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .card-description {
+            font-size: 16px;
+            color: var(--text-light);
         }
 
-        /* 案例展示区域样式 */
+        /* Projects Section */
         .projects-section {
             max-width: 1200px;
-            margin: 80px auto 60px;
+            margin: 80px auto;
             padding: 0 20px;
         }
         .projects-title {
@@ -170,83 +174,72 @@
             margin-bottom: 50px;
             font-weight: 500;
         }
-        /* 单个案例容器：Before + After + 右侧信息，横向排列 */
         .project-case {
             display: flex;
-            align-items: stretch; /* 高度对齐 */
+            align-items: center;
             gap: 20px;
             background: var(--card-bg);
-            border-radius: 6px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 30px;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease-in-out;
         }
-        /* Before/After 图片占位 */
+        .project-case:hover {
+            transform: translateY(-10px);
+        }
         .project-img-wrapper {
-            flex: 1; /* 图片区域占比均等 */
-            height: 300px; /* 图片高度，可调整 */
-            background: var(--border-color);
+            flex: 1;
+            height: 350px;
+            background-color: #e0e0e0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 14px;
-            border-radius: 4px;
+            border-radius: 8px;
         }
-        .img-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-        /* 右侧成本/时长信息区域 */
         .project-info {
-            flex: 0 0 200px; /* 固定宽度，不挤压 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 10px;
+            flex: 0 0 250px;
+            padding: 20px;
             background: var(--primary-light);
-            border-radius: 4px;
+            border-radius: 8px;
+            text-align: center;
         }
         .info-item {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--text-dark);
-            margin-bottom: 15px;
-            line-height: 1.5;
+            margin-bottom: 20px;
         }
         .info-label {
             font-weight: 600;
             color: var(--primary);
         }
+        .img-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
 
-        /* 响应式适配 */
+        /* Responsive */
         @media (max-width: 992px) {
-            /* 平板：案例改为上下布局 */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .project-case {
                 flex-direction: column;
             }
-            .project-info {
-                flex: 1;
-                width: 100%;
-                margin-top: 15px;
-            }
         }
         @media (max-width: 768px) {
-            .page-title {font-size: 36px;}
-            .services-title, .projects-title {font-size: 28px;}
-            .banner-image {width: 85%; /* 手机端图片稍宽，保证显示清晰 */}
-            .services-section {overflow-x: auto; padding: 0 10px;}
-            .services-grid {min-width: 900px; gap: 10px;}
-            .service-card {height: 380px;}
-            .card-img-placeholder {height: 300px;}
-            .project-img-wrapper {height: 250px;}
+            .page-title { font-size: 36px; }
+            .services-title, .projects-title { font-size: 28px; }
+            .banner-image { width: 90%; }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -254,148 +247,111 @@
                 <span class="logo-text">GemstoneBR Co-Host</span>
             </div>
             <div class="nav-links">
-                <a href="index.html">SERVICES</a>
-                <a href="index.html#contact">CONTACT</a>
+                <a href="index.html">Services</a>
+                <a href="index.html#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- 标题区域：加清新背景色 -->
+    <!-- Title Section -->
     <section class="title-section">
         <h1 class="page-title">Design & Renovation</h1>
         <p class="page-subtitle">Transform Your Space</p>
     </section>
 
-    <!-- 图片区域（缩小后的Why us图） -->
+    <!-- Image Section -->
     <section class="image-section">
         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
     </section>
 
-    <!-- 服务模块：6列紧凑竖版，不靠边 -->
+    <!-- Services Section -->
     <section class="services-section">
-        <h2 class="services-title">What services will you receive?</h2>
+        <h2 class="services-title">What Services Will You Receive?</h2>
         <div class="services-grid">
-            <!-- 服务卡片1：Design -->
+            <!-- Service 1 -->
             <div class="service-card">
-                <div class="card-img-placeholder">
-                    Design 底图位置
-                </div>
+                <img src="https://via.placeholder.com/300x200" alt="Design">
                 <div class="card-content">
                     <h3 class="card-title">Design</h3>
-                    <p>我们的设计师为您提供个性化空间设计，确保美观与功能并存。</p>
+                    <p class="card-description">Our designers offer customized space planning to ensure both aesthetics and functionality.</p>
                 </div>
             </div>
-            <!-- 服务卡片2：procurement -->
+            <!-- Service 2 -->
             <div class="service-card">
-                <div class="card-img-placeholder">
-                    procurement 底图位置
-                </div>
+                <img src="https://via.placeholder.com/300x200" alt="Procurement">
                 <div class="card-content">
                     <h3 class="card-title">Procurement</h3>
-                    <p>根据您的需求采购高质量建材，为项目提供专业保障。</p>
+                    <p class="card-description">We procure high-quality materials based on your needs to guarantee the best results.</p>
                 </div>
             </div>
-            <!-- 服务卡片3：Construction -->
+            <!-- Service 3 -->
             <div class="service-card">
-                <div class="card-img-placeholder">
-                    Construction 底图位置
-                </div>
+                <img src="https://via.placeholder.com/300x200" alt="Construction">
                 <div class="card-content">
                     <h3 class="card-title">Construction</h3>
-                    <p>我们提供精湛的施工服务，确保项目高效、按时完成。</p>
+                    <p class="card-description">We provide expert construction services to ensure your project is completed on time and to the highest standards.</p>
                 </div>
             </div>
-            <!-- 服务卡片4：Deep cleaning -->
+            <!-- Service 4 -->
             <div class="service-card">
-                <div class="card-img-placeholder">
-                    Deep cleaning 底图位置
-                </div>
+                <img src="https://via.placeholder.com/300x200" alt="Deep Cleaning">
                 <div class="card-content">
                     <h3 class="card-title">Deep Cleaning</h3>
-                    <p>我们的深度清洁服务是免费的，确保您的空间无暇整洁。</p>
+                    <p class="card-description">Our deep cleaning service is included for free, ensuring your space is spotless and ready for use.</p>
                 </div>
             </div>
-            <!-- 服务卡片5：Professional videography -->
+            <!-- Service 5 -->
             <div class="service-card">
-                <div class="card-img-placeholder">
-                    Professional videography 底图位置
-                </div>
+                <img src="https://via.placeholder.com/300x200" alt="Photography">
                 <div class="card-content">
                     <h3 class="card-title">Professional Photography</h3>
-                    <p>专业摄影为您的房源提供最具吸引力的视觉效果，提升您的吸引力。</p>
+                    <p class="card-description">Professional photography is included to capture the best visual representation of your property.</p>
                 </div>
             </div>
-            <!-- 服务卡片6：Image beautification -->
+            <!-- Service 6 -->
             <div class="service-card">
-                <div class="card-img-placeholder">
-                    Image beautification 底图位置
-                </div>
+                <img src="https://via.placeholder.com/300x200" alt="Image Beautification">
                 <div class="card-content">
                     <h3 class="card-title">Image Beautification</h3>
-                    <p>赠送的修图服务确保您的房源照片完美无缺，确保最大曝光。</p>
+                    <p class="card-description">Included image beautification ensures your property photos look perfect, maximizing your exposure.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 案例展示区域 -->
+    <!-- Projects Section -->
     <section class="projects-section">
         <h2 class="projects-title">Project Presentation</h2>
         
-        <!-- 案例1 -->
+        <!-- Project Case 1 -->
         <div class="project-case">
-            <!-- Before 图片占位 -->
             <div class="project-img-wrapper">
                 <div class="img-label">Before</div>
-                <div>案例1 原图位置</div>
+                <img src="https://via.placeholder.com/500x350" alt="Before">
             </div>
-            <!-- After 图片占位 -->
             <div class="project-img-wrapper">
                 <div class="img-label">After</div>
-                <div>案例1 效果图位置</div>
+                <img src="https://via.placeholder.com/500x350" alt="After">
             </div>
-            <!-- 右侧成本/时长信息 -->
             <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> 50000 pesos</div>
+                <div class="info-item"><span class="info-label">Total cost:</span> $50,000</div>
                 <div class="info-item"><span class="info-label">Lasted for:</span> 30 days</div>
             </div>
         </div>
 
-        <!-- 案例2 -->
+        <!-- Project Case 2 -->
         <div class="project-case">
-            <!-- Before 图片占位 -->
             <div class="project-img-wrapper">
                 <div class="img-label">Before</div>
-                <div>案例2 原图位置</div>
+                <img src="https://via.placeholder.com/500x350" alt="Before">
             </div>
-            <!-- After 图片占位 -->
             <div class="project-img-wrapper">
                 <div class="img-label">After</div>
-                <div>案例2 效果图位置</div>
+                <img src="https://via.placeholder.com/500x350" alt="After">
             </div>
-            <!-- 右侧成本/时长信息 -->
             <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> 85000 pesos</div>
+                <div class="info-item"><span class="info-label">Total cost:</span> $85,000</div>
                 <div class="info-item"><span class="info-label">Lasted for:</span> 45 days</div>
-            </div>
-        </div>
-
-        <!-- 案例3 -->
-        <div class="project-case">
-            <!-- Before 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">Before</div>
-                <div>案例3 原图位置</div>
-            </div>
-            <!-- After 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">After</div>
-                <div>案例3 效果图位置</div>
-            </div>
-            <!-- 右侧成本/时长信息 -->
-            <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> 120000 pesos</div>
-                <div class="info-item"><span class="info-label">Lasted for:</span> 60 days</div>
             </div>
         </div>
     </section>
