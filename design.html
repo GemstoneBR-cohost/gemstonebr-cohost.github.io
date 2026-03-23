@@ -3,395 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design & Renovation | GemstoneBR Co-Host</title>
+    <title>Airbnb Turnkey Renovation | GemstoneBR Co-Host</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage': {
+                            50: '#F4F7F1',
+                            100: '#E7F1E1',
+                            200: '#D5E6CA',
+                            500: '#A3B18A', // Main Fresh Green
+                            600: '#8A9A73',
+                            900: '#3D4F3B', // Dark Text Green
+                        },
+                        'wood': {
+                            100: '#FAF8F5',
+                            200: '#F2EDE4',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        * {margin:0;padding:0;box-sizing:border-box;}
-        /* 沿用原站色系，新增清新淡雅的辅助色 */
-        :root {
-            --primary: #9FB49E; /* 主色：浅草木绿 */
-            --primary-light: #F0F5EF; /* 主色淡色：清新草木绿背景 */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-light: #FFFFFF;
-            --card-bg: #FAFAF8; /* 卡片背景：浅米色，清新淡雅 */
-            --border-color: #E8ECE6; /* 边框色，和占位图呼应 */
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-        
-        /* 导航栏样式（保留原样） */
-        nav {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            background: var(--bg-light);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-img {
-            height: 100px;
-            width: auto;
-            object-fit: contain;
-        }
-        .logo-text {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 35px;
-        }
-        .nav-links a {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* 标题区域：加清新淡雅的背景色 */
-        .title-section {
-            background: var(--primary-light); /* 浅草木绿背景，清新淡雅 */
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .page-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 48px;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        .page-subtitle {
-            font-size: 20px;
-            color: var(--text-light);
-            margin-bottom: 0; /* 去掉多余间距 */
-        }
-        
-        /* 🔥 核心修改：缩小Why us图片宽度（从80%改为60%） */
-        .image-section {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        .banner-image {
-            width: 60%; /* 关键：从80%缩小到60%，可按需调整为50%/70% */
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        
-        /* 服务模块：6列紧凑竖版，不靠边 */
-        .services-section {
-            max-width: 1200px; /* 和原4列宽度一致，不超宽 */
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        .services-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 36px;
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 500;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6列均分 */
-            gap: 15px; /* 更小间距，更紧凑 */
-            max-width: 1200px; /* 限制总宽度=原4列宽度 */
-            margin: 0 auto; /* 居中，避免靠边 */
-        }
-        .service-card {
-            background: var(--card-bg);
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            height: 420px; /* 加高卡片，竖版更明显 */
-            width: 100%; /* 自适应列宽，不超宽 */
-        }
-        .card-img-placeholder {
-            width: 100%;
-            height: 340px; /* 加高底图区，强化竖版 */
-            background: var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 13px;
-        }
-        .card-content {
-            padding: 12px;
-            text-align: center;
-        }
-        .card-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 15px;
-            color: var(--text-dark);
-            font-weight: 500;
-            text-transform: capitalize;
-            line-height: 1.4;
-        }
-
-        /* 案例展示区域样式 */
-        .projects-section {
-            max-width: 1200px;
-            margin: 80px auto 60px;
-            padding: 0 20px;
-        }
-        .projects-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 36px;
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: 50px;
-            font-weight: 500;
-        }
-        /* 单个案例容器：Before + After + 右侧信息，横向排列 */
-        .project-case {
-            display: flex;
-            align-items: stretch; /* 高度对齐 */
-            gap: 20px;
-            background: var(--card-bg);
-            border-radius: 6px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 30px;
-        }
-        /* Before/After 图片占位 */
-        .project-img-wrapper {
-            flex: 1; /* 图片区域占比均等 */
-            height: 300px; /* 图片高度，可调整 */
-            background: var(--border-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 14px;
-            border-radius: 4px;
-        }
-        .img-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-        /* 右侧成本/时长信息区域 */
-        .project-info {
-            flex: 0 0 200px; /* 固定宽度，不挤压 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 10px;
-            background: var(--primary-light);
-            border-radius: 4px;
-        }
-        .info-item {
-            font-size: 16px;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        .info-label {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        /* 响应式适配 */
-        @media (max-width: 992px) {
-            /* 平板：案例改为上下布局 */
-            .project-case {
-                flex-direction: column;
-            }
-            .project-info {
-                flex: 1;
-                width: 100%;
-                margin-top: 15px;
-            }
-        }
-        @media (max-width: 768px) {
-            .page-title {font-size: 36px;}
-            .services-title, .projects-title {font-size: 28px;}
-            .banner-image {width: 85%; /* 手机端图片稍宽，保证显示清晰 */ }
-            .services-section {overflow-x: auto; padding: 0 10px;}
-            .services-grid {min-width: 900px; gap: 10px;}
-            .service-card {height: 380px;}
-            .card-img-placeholder {height: 300px;}
-            .project-img-wrapper {height: 250px;}
-        }
+        body { scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, #F4F7F1 0%, #FFFFFF 100%); }
+        .pricing-card-featured { border: 2px solid #A3B18A; box-shadow: 0 20px 40px rgba(163, 177, 138, 0.15); }
     </style>
 </head>
-<body>
-    <!-- 导航栏 -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo-wrapper">
-                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR Co-Host">
-                <span class="logo-text">GemstoneBR Co-Host</span>
+<body class="bg-white text-slate-900 antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter text-sage-900">GEMSTONE<span class="text-sage-500">BR</span> <span class="text-xs font-medium text-slate-400">Co-Host</span></div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-700">
+                <a href="#process" class="hover:text-sage-600 transition">Our Process</a>
+                <a href="#inclusions" class="hover:text-sage-600 transition">What's Included</a>
+                <a href="#pricing" class="hover:text-sage-600 transition">Partnership</a>
             </div>
-            <div class="nav-links">
-                <a href="index.html">SERVICES</a>
-                <a href="index.html#contact">CONTACT</a>
-            </div>
+            <button class="bg-sage-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-sage-600 transition shadow-sm">Get A Quote →</button>
         </div>
     </nav>
 
-    <!-- 标题区域：加清新背景色 -->
-    <section class="title-section">
-        <h1 class="page-title">Design & Renovation</h1>
-        <p class="page-subtitle">Transform Your Space</p>
+    <section class="hero-gradient pt-32 pb-24 px-6 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-6 z-10">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-sage-100 text-sage-600 text-xs font-bold mb-6">
+                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    Built on 180+ Proven Property Models
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-sage-900 tracking-tighter">
+                    Turnkey Renovations for <span class="text-sage-500">High-Yield</span> Airbnb Listings
+                </h1>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed font-light">
+                    We manage the entire spectrum—from initial design and sourcing to construction, hospitality-grade cleaning, and professional photography. Achieve maximum ROI with zero hassle.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#pricing" class="bg-sage-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-sage-600 transition shadow-lg shadow-sage-100 text-center">View Plans</a>
+                    <a href="#" class="bg-white text-sage-900 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-wood-100 transition text-center">Our Portfolio</a>
+                </div>
+            </div>
+            <div class="md:col-span-6 relative">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-sage-100">
+                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" alt="Modern Sage Green Airbnb Interior">
+                </div>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-wood-200 rounded-full blur-3xl opacity-60"></div>
+            </div>
+        </div>
     </section>
 
-    <!-- 图片区域（缩小后的Why us图） -->
-    <section class="image-section">
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/why%20us.png" class="banner-image" alt="Why Choose Us">
+    <section id="process" class="py-24 px-6 bg-white">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="text-3xl font-extrabold text-sage-900 mb-4 tracking-tight">Our End-to-End Turnkey Service</h2>
+            <p class="text-slate-500 font-light leading-relaxed">From the first blueprint to the final edited shot, we handle everything. You just bring the keys.</p>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6">
+            <div class="bg-sage-50 p-8 rounded-2xl border border-sage-100 text-center">
+                <div class="text-4xl mb-4">📐</div>
+                <h4 class="font-bold text-sage-900">Design</h4>
+                <p class="text-xs text-sage-600 mt-2 font-medium">Algorithm-Optimized</p>
+            </div>
+            <div class="bg-sage-50 p-8 rounded-2xl border border-sage-100 text-center">
+                <div class="text-4xl mb-4">🛒</div>
+                <h4 class="font-bold text-sage-900">Sourcing</h4>
+                <p class="text-xs text-sage-600 mt-2 font-medium">Supply Chain Pricing</p>
+            </div>
+            <div class="bg-sage-50 p-8 rounded-2xl border border-sage-100 text-center">
+                <div class="text-4xl mb-4">🔨</div>
+                <h4 class="font-bold text-sage-900">Build</h4>
+                <p class="text-xs text-sage-600 mt-2 font-medium">Efficient Construction</p>
+            </div>
+            <div class="bg-sage-50 p-8 rounded-2xl border border-sage-100 text-center">
+                <div class="text-4xl mb-4">🧹</div>
+                <h4 class="font-bold text-sage-900">Deep Clean</h4>
+                <p class="text-xs text-sage-600 mt-2 font-medium">Hospitality Grade</p>
+            </div>
+            <div class="bg-sage-50 p-8 rounded-2xl border border-sage-100 text-center">
+                <div class="text-4xl mb-4">📸</div>
+                <h4 class="font-bold text-sage-900">Photo</h4>
+                <p class="text-xs text-sage-600 mt-2 font-medium">Commercial Wide-Angle</p>
+            </div>
+            <div class="bg-sage-50 p-8 rounded-2xl border border-sage-100 text-center">
+                <div class="text-4xl mb-4">✨</div>
+                <h4 class="font-bold text-sage-900">Editing</h4>
+                <p class="text-xs text-sage-600 mt-2 font-medium">Boost Click Rate</p>
+            </div>
+        </div>
     </section>
 
-    <!-- 服务模块：6列紧凑竖版，不靠边 -->
-    <section class="services-section">
-        <h2 class="services-title">What services will you receive?</h2>
-        <div class="services-grid">
-            <!-- 服务卡片1：Design -->
-            <div class="service-card">
-                <div class="card-img-placeholder">
-                    Design 底图位置
+    <section id="inclusions" class="py-24 bg-sage-900 text-white px-6 rounded-t-[3rem]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-7">
+                    <h2 class="text-3xl font-extrabold mb-8 text-sage-100 tracking-tight">Fully Stocked from Day One</h2>
+                    <p class="text-sage-200 mb-10 leading-relaxed font-light">
+                        Forget endless shopping lists. We configure your entire property based on our standardized, guest-approved checklist, ensuring seamless operations.
+                    </p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sage-100">
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-sage-500/20 flex items-center justify-center text-sage-500">✓</span>
+                            <span class="font-medium">Complete Kitchen & Bath Essentials</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-sage-500/20 flex items-center justify-center text-sage-500">✓</span>
+                            <span class="font-medium">High-Speed WIFI Network Setup</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-sage-500/20 flex items-center justify-center text-sage-500">✓</span>
+                            <span class="font-medium">5-Star Hotel-Grade Linens Set</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-sage-500/20 flex items-center justify-center text-sage-500">✓</span>
+                            <span class="font-medium">Full Smart Appliance Package</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="card-content">
-                    <h3 class="card-title">Design</h3>
-                </div>
-            </div>
-            <!-- 服务卡片2：procurement -->
-            <div class="service-card">
-                <div class="card-img-placeholder">
-                    procurement 底图位置
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">procurement</h3>
-                </div>
-            </div>
-            <!-- 服务卡片3：Construction -->
-            <div class="service-card">
-                <div class="card-img-placeholder">
-                    Construction 底图位置
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Construction</h3>
-                </div>
-            </div>
-            <!-- 服务卡片4：Deep cleaning -->
-            <div class="service-card">
-                <div class="card-img-placeholder">
-                    Deep cleaning 底图位置
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Deep cleaning</h3>
-                </div>
-            </div>
-            <!-- 服务卡片5：Professional videography -->
-            <div class="service-card">
-                <div class="card-img-placeholder">
-                    Professional videography 底图位置
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Professional videography</h3>
-                </div>
-            </div>
-            <!-- 服务卡片6：Image beautification -->
-            <div class="service-card">
-                <div class="card-img-placeholder">
-                    Image beautification 底图位置
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Image beautification</h3>
+                <div class="md:col-span-5 grid grid-cols-2 gap-4">
+                    <div class="aspect-square bg-sage-800 rounded-3xl flex flex-col justify-center items-center p-6 text-center border border-sage-700">
+                        <span class="text-4xl font-extrabold text-sage-200">180+</span>
+                        <span class="text-xs text-sage-400 mt-3 font-medium uppercase tracking-wider">Proven Models</span>
+                    </div>
+                    <div class="aspect-square bg-sage-500 rounded-3xl flex flex-col justify-center items-center p-6 text-center shadow-xl shadow-sage-500/20">
+                        <span class="text-4xl font-extrabold text-white">2X</span>
+                        <span class="text-xs text-white/80 mt-3 font-medium uppercase tracking-wider">Launch Speed</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 案例展示区域 -->
-    <section class="projects-section">
-        <h2 class="projects-title">Project Presentation</h2>
-        
-        <!-- 案例1 -->
-        <div class="project-case">
-            <!-- Before 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">Before</div>
-                <div>案例1 原图位置</div>
-            </div>
-            <!-- After 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">After</div>
-                <div>案例1 效果图位置</div>
-            </div>
-            <!-- 右侧成本/时长信息 -->
-            <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> 50000 pesos</div>
-                <div class="info-item"><span class="info-label">Lasted for:</span> 30 days</div>
-            </div>
+    <section id="pricing" class="py-24 px-6 bg-wood-100">
+        <div class="max-w-3xl mx-auto text-center mb-20">
+            <h2 class="text-3xl font-extrabold text-sage-900 mb-4 tracking-tight">Flexible Partnership Models</h2>
+            <p class="text-slate-500 font-light leading-relaxed">Choose efficiency-driven standardized fast-track or bespoke uniqueness for premium pricing.</p>
         </div>
-
-        <!-- 案例2 -->
-        <div class="project-case">
-            <!-- Before 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">Before</div>
-                <div>案例2 原图位置</div>
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+            <div class="bg-white p-12 rounded-3xl border border-slate-100 shadow-sm">
+                <h3 class="text-2xl font-bold text-sage-900 mb-2">Standardized Plan</h3>
+                <p class="text-sm text-slate-500 mb-8">Max efficiency, rapid listing to market</p>
+                <div class="text-5xl font-extrabold mb-10 text-sage-900 tracking-tighter">Fixed Quote</div>
+                <ul class="space-y-5 text-sm text-slate-700 mb-12">
+                    <li class="flex items-center">✓ Proven Style Templates</li>
+                    <li class="flex items-center">✓ Standard Furniture & Appliance Package</li>
+                    <li class="flex items-center">✓ Fast Construction Cycle</li>
+                    <li class="flex items-center text-sage-600 font-medium">✓ Complimentary Pro Photography</li>
+                </ul>
+                <button class="w-full py-4 rounded-xl border-2 border-sage-900 text-sage-900 font-bold hover:bg-sage-900 hover:text-white transition">Select Standard</button>
             </div>
-            <!-- After 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">After</div>
-                <div>案例2 效果图位置</div>
-            </div>
-            <!-- 右侧成本/时长信息 -->
-            <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> 85000 pesos</div>
-                <div class="info-item"><span class="info-label">Lasted for:</span> 45 days</div>
-            </div>
-        </div>
-
-        <!-- 案例3 -->
-        <div class="project-case">
-            <!-- Before 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">Before</div>
-                <div>案例3 原图位置</div>
-            </div>
-            <!-- After 图片占位 -->
-            <div class="project-img-wrapper">
-                <div class="img-label">After</div>
-                <div>案例3 效果图位置</div>
-            </div>
-            <!-- 右侧成本/时长信息 -->
-            <div class="project-info">
-                <div class="info-item"><span class="info-label">Total cost:</span> 120000 pesos</div>
-                <div class="info-item"><span class="info-label">Lasted for:</span> 60 days</div>
+            <div class="bg-white p-12 rounded-3xl pricing-card-featured relative">
+                <div class="absolute -top-4 right-10 bg-sage-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg shadow-sage-500/20">Recommended</div>
+                <h3 class="text-2xl font-bold text-sage-900 mb-2">Customized Plan</h3>
+                <p class="text-sm text-slate-500 mb-8">Bespoke design for high booking rates</p>
+                <div class="text-5xl font-extrabold mb-10 text-sage-900 tracking-tighter">10% <span class="text-xl text-slate-400 font-medium">Service Fee</span></div>
+                <ul class="space-y-5 text-sm text-slate-700 mb-12">
+                    <li class="flex items-center">✓ 1-on-1 Bespoke Design by Senior Designer</li>
+                    <li class="flex items-center">✓ Deep Customization based on Location</li>
+                    <li class="flex items-center">✓ Full Process Supervision & QC</li>
+                    <li class="flex items-center text-sage-600 font-medium">✓ Strategic Online Operations Advisory</li>
+                </ul>
+                <button class="w-full py-4 rounded-xl bg-sage-500 text-white font-bold hover:bg-sage-600 transition shadow-xl shadow-sage-200">Get Customized Quote</button>
             </div>
         </div>
     </section>
+
+    <footer class="py-16 border-t border-slate-100 text-center bg-white">
+        <div class="text-2xl font-bold tracking-tighter mb-4 text-sage-900 uppercase">GEMSTONEBR Co-Host</div>
+        <div class="text-slate-400 text-xs font-light tracking-wide">
+            &copy; 2026 GemstoneBR Co-Host. All Rights Reserved.<br>
+            Turnkey. High-Yield. Airbnb Renovations.
+        </div>
+    </footer>
+
 </body>
 </html>
