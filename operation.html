@@ -520,6 +520,14 @@
             border: 1px solid var(--border-color);
         }
 
+        /* 账单卡片文字样式 */
+        .billing-desc {
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
         .section-subtitle {
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: 26px;
@@ -773,6 +781,14 @@
             height: auto;
             object-fit: cover;
             display: block;
+        }
+
+        /* 管理后台截图说明文字样式 */
+        .dashboard-desc {
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.65;
         }
 
         /* Metrics */
@@ -1124,13 +1140,19 @@
                 </div>
             </div>
 
-            <!-- 第三列：账单截图 -->
+            <!-- 第三列：账单截图 - 新增对应文字说明 -->
             <div class="info-card">
                 <h3 class="section-subtitle">Transparent Billing</h3>
                 <div class="billing-card-img">
                     <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/Feb 2026 Statement of Account-FAME-T3-2906_2024年8月.png" 
                          alt="Monthly Owner Billing Statement - Detailed Revenue & Expense Breakdown">
                 </div>
+                <!-- 挪过来的账单说明文字 -->
+                <p class="billing-desc">
+                    Transparent Performance & Billing<br>
+                    Monthly Owner Reports<br>
+                    Monthly reporting includes detailed occupancy, revenue, and expense breakdowns — delivered directly to owners to ensure full transparency.
+                </p>
             </div>
         </div>
     </section>
@@ -1163,8 +1185,8 @@
 
                 <div class="adv-right">
                     <div class="mock-header">
-                        <div class="mock-title">Transparent Performance & Billing</div>
-                        <div class="mock-tag">Monthly Owner Reports</div>
+                        <div class="mock-title">Professional Management Dashboard</div>
+                        <div class="mock-tag">Real-time Data Tracking</div>
                     </div>
 
                     <!-- 原有仪表盘图片 -->
@@ -1172,8 +1194,9 @@
                         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/calendar1.png" alt="Management Dashboard">
                     </div>
 
-                    <p class="mock-note" style="margin-top: 14px;">
-                        Monthly reporting includes detailed occupancy, revenue, and expense breakdowns — delivered directly to owners to ensure full transparency. Our 85%+ average occupancy rate is backed by real, verifiable data.
+                    <!-- 新增管理后台截图的专业说明文字 -->
+                    <p class="dashboard-desc">
+                        Our proprietary management platform provides real-time visibility into all key metrics including booking status, occupancy rates, guest communications, and financial performance. All data is transparent, verifiable, and accessible to owners at any time — ensuring complete trust and accountability in our management process.
                     </p>
                 </div>
             </div>
