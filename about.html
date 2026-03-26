@@ -7,191 +7,71 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
+        /* ========== 核心样式变量  ========== */
         :root {
-            --primary-color: #4FD1C5;
-            --secondary-color: #FF86B3;
-            --gray-light: #F7F9FC;
-            --dark-text: #1F2937;
-            --muted-text: #6B7280;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
-            --transition: all 0.3s ease;
+            --lodgify-mint: #4FD1C5;
+            --lodgify-mint-light: rgba(79, 209, 197, 0.15);
+            --lodgify-mint-dark: #3AA89E;
+            --lodgify-text: #1F2937;
+            --lodgify-muted: #6B7280;
+            --lodgify-gray: #F7F9FC;
+            --shadow: 0 4px 20px rgba(0,0,0,0.04);
+            --radius: 8px;
+            --transition: all 0.2s ease;
             --max-width: 1280px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--lodgify-text); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark-text);
-            line-height: 1.6;
-            background: #fff;
-        }
+        /* ========== 导航栏样式 (保持一致) [cite: 9-22] ========== */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid #f0f0f0; z-index: 999; padding: 18px 0; }
+        .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-img { height: 48px; }
+        .logo-text { font-size: 16px; font-weight: 500; color: var(--lodgify-text); }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { text-decoration: none; font-size: 14px; color: var(--lodgify-muted); transition: var(--transition); }
+        .nav-links a:hover { color: var(--lodgify-mint); }
+        .nav-btn { padding: 10px 20px; background: var(--lodgify-mint); color: white !important; border-radius: 6px; font-size: 13px; font-weight: 500; }
+        .language-switch { display: flex; gap: 6px; margin-left: 16px; }
+        .lang-btn { background: transparent; border: 1px solid #E5E7EB; padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; }
+        .lang-btn.active { background: var(--lodgify-mint); color: white; border-color: var(--lodgify-mint); }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-        }
+        /* ========== 内容版块通用样式 [cite: 23-25] ========== */
+        .section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+        .section-gray { background: var(--lodgify-gray); padding: 80px 40px; }
+        .section-center { text-align: center; margin-bottom: 50px; }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(8px);
-            padding: 18px 0;
-            border-bottom: 1px solid #f0f0f0;
-            z-index: 999;
-        }
+        /* Hero 样式 [cite: 26-28] */
+        .about-hero { padding: 160px 20px 60px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .about-hero h1 { font-size: 42px; margin-bottom: 20px; color: var(--lodgify-text); }
+        .about-hero p { font-size: 18px; color: var(--lodgify-muted); }
 
-        .nav-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* 数据卡片样式 [cite: 39-44] */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+        .card { padding: 40px 30px; background: #fff; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow); border: 1px solid #f0f0f0; transition: var(--transition); }
+        .card:hover { transform: translateY(-5px); }
+        .card i { font-size: 36px; color: var(--lodgify-mint); margin-bottom: 20px; }
+        .card h3 { font-size: 20px; margin-bottom: 12px; }
+        .card p { font-size: 14px; color: var(--lodgify-muted); }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
+        /* 资质证书样式 [cite: 31-38] */
+        .license-wrapper { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        .license-item { text-align: center; }
+        .license-box { background: #e5e7eb; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: #9ca3af; margin-bottom: 15px; border: 1px solid #eee; }
+        .box-cn { width: 400px; height: 260px; }
+        .box-ph { width: 260px; height: 360px; }
 
-        .nav-links a {
-            text-decoration: none;
-            font-size: 14px;
-            color: var(--muted-text);
-            transition: var(--transition);
-        }
+        /* 页脚样式 [cite: 45-47] */
+        footer { padding: 60px 40px; text-align: center; border-top: 1px solid #f0f0f0; }
+        .footer-logo { height: 48px; margin-bottom: 20px; }
+        .copyright { font-size: 12px; color: var(--lodgify-muted); }
 
-        .nav-links a:hover { color: var(--primary-color); }
-
-        .nav-btn {
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .about-hero {
-            background: url('your-image.jpg') center/cover no-repeat;
-            padding: 120px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            color: white;
-        }
-
-        .about-hero h1 {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .about-hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .section {
-            padding: 60px 40px;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .section-center {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .team-photo {
-            width: 100%;
-            height: 380px;
-            background: var(--gray-light);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 30px 0;
-            background-image: url('team-placeholder.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .license-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
-        }
-
-        .license-item {
-            text-align: center;
-        }
-
-        .license-cn, .license-ph {
-            background: var(--gray-light);
-            border-radius: var(--radius);
-            display: grid;
-            place-items: center;
-            padding: 20px;
-            max-width: 400px;
-            height: 250px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .card {
-            padding: 28px;
-            background: #fff;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .card i {
-            font-size: 32px;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        footer {
-            padding: 50px 40px;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-            background: white;
-        }
-
-        .footer-logo { height: 48px; margin-bottom: 16px; }
-
-        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .about-hero h1 { font-size: 32px; }
-            .team-photo { height: 260px; }
+            .box-cn, .box-ph { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
@@ -204,103 +84,172 @@
             <span class="logo-text">GemstoneBR</span>
         </a>
         <div class="nav-links">
-            <a href="index.html#services">Services</a>
-            <a href="about.html">About Us</a>
-            <a href="reserve.html">Reserve a Room</a>
-            <a href="index.html#contact" class="nav-btn">Free Consultation</a>
+            <a href="index.html#services" data-i18n="nav.services">Services</a>
+            <a href="about.html" data-i18n="nav.about">About Us</a>
+            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
+            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
+            <div class="language-switch">
+                <button class="lang-btn active" id="enBtn">EN</button>
+                <button class="lang-btn" id="cnBtn">中文</button>
+            </div>
         </div>
     </div>
 </nav>
 
 <section class="about-hero">
-    <h1>About GemstoneBR Co-Host</h1>
-    <p>The Philippines' Largest Professional Short-Term Rental Management Team | Dual Registered in China & Philippines</p>
+    <h1 data-i18n="about.heroTitle">Philippines' Leading Short-Term Rental Team</h1>
+    <p data-i18n="about.heroSub">Combining 3 years of local expertise with institutional-grade management for 180+ premium properties.</p>
 </section>
 
-<section class="section">
-    <div class="section-center">
-        <h2>Our Brand</h2>
-        <p>Officially registered in China & Philippines, we are the leading short-term rental co-host team with safe, professional services.</p>
-    </div>
-
-    <div class="team-photo">
-        📸 Team Group Photo
+<section class="section" style="padding-top: 0;">
+    <div class="grid">
+        <div class="card">
+            <i class="fas fa-hotel"></i>
+            <h3 style="font-size: 28px; color: var(--lodgify-mint);">180+</h3>
+            <p data-i18n="about.statsProperties">Managed Units</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-users"></i>
+            <h3 style="font-size: 28px; color: var(--lodgify-mint);">30+</h3>
+            <p data-i18n="about.statsTeam">Professional Staff</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-history"></i>
+            <h3 style="font-size: 28px; color: var(--lodgify-mint);">3 Yrs</h3>
+            <p data-i18n="about.statsYears">Local Experience</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-trophy"></i>
+            <h3 style="font-size: 24px; color: var(--lodgify-mint);" data-i18n="about.statsRank">No.1 Scale</h3>
+            <p data-i18n="about.statsRankSub">In Targeted Districts</p>
+        </div>
     </div>
 </section>
 
 <section class="section-gray">
     <div class="section-center">
-        <h2>Our Team</h2>
-        <p>Professional experts to maximize your property value</p>
-    </div>
-    <div class="grid">
-        <div class="card">
-            <i class="fas fa-user-tie"></i>
-            <h3>Senior Management</h3>
-            <p>10+ years cross-border real estate experience</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-laptop-house"></i>
-            <h3>Operation Experts</h3>
-            <p>Proficient in global platform rules & pricing</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-hard-hat"></i>
-            <h3>On-site Team</h3>
-            <p>Professional cleaning & 24/7 support</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="section-center">
-        <h2>Legal Qualifications</h2>
-        <p>Dual registration, 100% legal & compliant</p>
+        <h2 data-i18n="about.complianceTitle">Dual-Country Registration</h2>
+        <p data-i18n="about.complianceDesc">We prioritize legal integrity. GemstoneBR is officially registered in both China and the Philippines, ensuring a transparent and secure partnership for global property owners.</p>
     </div>
     <div class="license-wrapper">
         <div class="license-item">
-            <div class="license-cn">📄 China Business License</div>
-            <p class="license-title">China Registration</p>
+            <div class="license-box box-cn">📸 [China Business License Scan]</div>
+            <p data-i18n="about.licenseCN">China Registration</p>
         </div>
         <div class="license-item">
-            <div class="license-ph">📄 Philippines Business License</div>
-            <p class="license-title">Philippines Registration</p>
+            <div class="license-ph">📸 [Philippines SEC/DTI License Scan]</div>
+            <p data-i18n="about.licensePH">Philippines Registration</p>
         </div>
     </div>
 </section>
 
-<section class="section-gray">
+<section class="section">
     <div class="section-center">
-        <h2>Core Strengths</h2>
+        <h2 data-i18n="about.coverageTitle">Strategic Local Presence</h2>
+        <p data-i18n="about.coverageDesc">Concentrated excellence in Metro Manila's high-demand business hubs.</p>
     </div>
     <div class="grid">
         <div class="card">
-            <i class="fas fa-certificate"></i>
-            <h3>Fully Legal</h3>
-            <p>Dual registered in China & Philippines</p>
+            <i class="fas fa-map-marked-alt"></i>
+            <h3 data-i18n="about.citiesTitle">3 Prime Cities</h3>
+            <p data-i18n="about.citiesDesc">Deeply rooted in Makati, Pasay, and Mandaluyong with 24/7 on-site support.</p>
         </div>
         <div class="card">
-            <i class="fas fa-crown"></i>
-            <h3>Industry Leader</h3>
-            <p>Largest team in the Philippines</p>
+            <i class="fas fa-building"></i>
+            <h3 data-i18n="about.buildingsTitle">6 Signature Condos</h3>
+            <p data-i18n="about.buildingsDesc">Operating 180+ units across 6 major residential complexes for maximum operational efficiency.</p>
         </div>
         <div class="card">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Safe & Reliable</h3>
-            <p>Formal qualifications & protection</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-chart-line"></i>
-            <h3>Proven Results</h3>
-            <p>180+ properties, 85%+ occupancy</p>
+            <i class="fas fa-user-shield"></i>
+            <h3 data-i18n="about.staffTitle">30+ Specialists</h3>
+            <p data-i18n="about.staffDesc">A full-time team of butlers, professional cleaners, and multi-platform operation experts.</p>
         </div>
     </div>
 </section>
 
 <footer>
     <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
-    <p>&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
+
+<script>
+    const i18n = {
+        en: {
+            nav: { services: "Services", about: "About Us", reserve: "Reserve a Room", consult: "Free Consultation" },
+            about: {
+                heroTitle: "Philippines' No.1 Professional Short-Term Rental Team",
+                heroSub: "Combining 3 years of local expertise with institutional-grade management for 180+ premium properties.",
+                statsProperties: "Managed Units",
+                statsTeam: "Full-time Staff",
+                statsYears: "Local Experience",
+                statsRank: "No.1 Scale",
+                statsRankSub: "In Targeted Districts",
+                complianceTitle: "Dual-Country Registration",
+                complianceDesc: "We prioritize legal integrity. GemstoneBR is officially registered in both China and the Philippines, ensuring a transparent and secure partnership for global property owners.",
+                licenseCN: "Registered in China",
+                licensePH: "Registered in Philippines",
+                coverageTitle: "Strategic Local Presence",
+                coverageDesc: "Concentrated excellence in Metro Manila's high-demand business hubs.",
+                citiesTitle: "3 Prime Cities",
+                citiesDesc: "Deeply rooted in Makati, Pasay, and Mandaluyong with 24/7 on-site support.",
+                buildingsTitle: "6 Signature Condos",
+                buildingsDesc: "Operating 180+ units across 6 major residential complexes for maximum operational efficiency.",
+                staffTitle: "30+ Specialists",
+                staffDesc: "A full-time team of butlers, professional cleaners, and operation experts."
+            }
+        },
+        zh: {
+            nav: { services: "服务项目", about: "关于我们", reserve: "预订房间", consult: "免费咨询" },
+            about: {
+                heroTitle: "菲律宾规模第一的专业短租托管团队",
+                heroSub: "3年本地深耕经验，为180多套高端房源提供机构级标准化管理服务。",
+                statsProperties: "在管房源套数",
+                statsTeam: "全职服务团队",
+                statsYears: "本地经营经验",
+                statsRank: "规模第一",
+                statsRankSub: "核心覆盖区域",
+                complianceTitle: "中菲双国正规注册",
+                complianceDesc: "宝石BR坚持合法合规经营。我们在中国和菲律宾均拥有正规注册的公司实体，为全球业主的资产安全提供法律保障。",
+                licenseCN: "中国正规营业执照",
+                licensePH: "菲律宾正规营业执照",
+                coverageTitle: "无可比拟的本地优势",
+                coverageDesc: "在马尼拉核心商业区实现高密度、专业化的集群管理。",
+                citiesTitle: "横跨3大核心城市",
+                citiesDesc: "深度覆盖马卡蒂 (Makati)、帕塞 (Pasay) 和 曼达卢永 (Mandaluyong) 三大核心区。",
+                buildingsTitle: "6大公寓 180+房源",
+                buildingsDesc: "在6个主要大型公寓内集中经营超过180套房源，规模迅速扩大至菲律宾第一。",
+                staffTitle: "30多人的专业团队",
+                staffDesc: "由30多名专业管家、保洁和平台运营专家组成，提供酒店级标准服务。"
+            }
+        }
+    };
+
+    const enBtn = document.getElementById('enBtn');
+    const cnBtn = document.getElementById('cnBtn');
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    function changeLang(lang) {
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let text = i18n[lang];
+            keys.forEach(k => text = text[k]);
+            el.innerHTML = text;
+        });
+    }
+
+    enBtn.addEventListener('click', () => {
+        enBtn.classList.add('active');
+        cnBtn.classList.remove('active');
+        changeLang('en');
+    });
+
+    cnBtn.addEventListener('click', () => {
+        cnBtn.classList.add('active');
+        enBtn.classList.remove('active');
+        changeLang('zh');
+    });
+</script>
 
 </body>
 </html>
