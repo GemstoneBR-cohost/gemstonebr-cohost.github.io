@@ -6,569 +6,66 @@
     <title>GemstoneBR Co-Host | Philippines Largest Short-Term Rental Team</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@chart.js/4.4.8/dist/chart.umd.min.js"></script>
     <style>
         :root {
             --lodgify-mint: #4FD1C5;
-            --lodgify-mint-light: rgba(79, 209, 197, 0.15);
+            --lodgify-mint-light: rgba(79,209,197,0.15);
             --lodgify-mint-dark: #3AA89E;
             --lodgify-pink: #FF86B3;
             --lodgify-gray: #F7F9FC;
-            --lodgify-dark-gray: #8D99A6;
-            --lodgify-text: #1F2937;
             --lodgify-muted: #6B7280;
-            
-            --primary: #4FD1C5;
-            --text-dark: #1F2937;
-            --bg-soft: #F7F9FC;
-            --shadow: 0 4px 20px rgba(0,0,0,0.04);
-            --radius: 8px;
-            --transition: all 0.2s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--lodgify-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background: #fff;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            color: var(--lodgify-text);
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(8px);
-            padding: 18px 0;
-            border-bottom: 1px solid #f0f0f0;
-            z-index: 999;
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 48px;
-        }
-
-        .logo-text {
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: var(--lodgify-text);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--lodgify-muted);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--lodgify-mint);
-        }
-
-        .nav-btn {
-            padding: 10px 20px;
-            background: var(--lodgify-mint);
-            color: white !important;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .nav-btn:hover {
-            background: var(--lodgify-mint-dark);
-        }
-
-        .language-switch {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            margin-left: 16px;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: 1px solid #E5E7EB;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .lang-btn.active, .lang-btn:hover {
-            background: var(--lodgify-mint);
-            color: white;
-            border-color: var(--lodgify-mint);
-        }
-
-        .hero {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-            url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c?q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-            margin-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: 1.3;
-            margin-bottom: 20px;
-            font-weight: 500;
-            color: #ffffff !important;
-        }
-
-        .hero p {
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto 32px;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-main {
-            padding: 14px 32px;
-            background: white;
-            color: var(--lodgify-text);
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-
-        .trust-bar {
-            padding: 50px 0;
-            background: var(--lodgify-gray);
-        }
-
-        .trust-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            text-align: center;
-            padding: 0 40px;
-            gap: 30px;
-        }
-
-        .trust-item h3 {
-            font-size: 32px;
-            color: var(--lodgify-mint-dark);
-            margin-bottom: 8px;
-        }
-
-        .trust-item p {
-            font-size: 13px;
-            color: var(--lodgify-muted);
-            font-weight: 400;
-        }
-
-        .partner-platforms {
-            padding: 40px 0;
-            background: white;
-            text-align: center;
-        }
-
-        .partner-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--lodgify-muted);
-            margin-bottom: 24px;
-        }
-
-        .partner-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 0 40px;
-        }
-
-        .partner-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .partner-logo {
-            height: 40px;
-            max-width: 120px;
-            object-fit: contain;
-            opacity: 0.85;
-            transition: var(--transition);
-        }
-
-        .partner-logo:hover {
-            opacity: 1;
-        }
-
-        .performance-section {
-            background: var(--lodgify-gray);
-            border-radius: 12px;
-            margin: 0 auto 60px;
-            max-width: 1200px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .performance-text {
-            flex: 1;
-            text-align: left;
-        }
-
-        .performance-text h2 {
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .performance-text p {
-            font-size: 14px;
-            color: var(--lodgify-muted);
-            line-height: 1.6;
-        }
-
-        .performance-charts {
-            flex: 1.5;
-            display: flex;
-            gap: 20px;
-        }
-
-        .chart-card {
-            flex: 1;
-            background: white;
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-        }
-
-        .chart-card h3 {
-            font-size: 14px;
-            margin-bottom: 12px;
-            color: var(--lodgify-text);
-        }
-
-        canvas {
-            max-height: 200px !important;
-        }
-
-        .section {
-            padding: 80px 40px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-
-        .section-header h2 {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 15px;
-            color: var(--lodgify-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .card-img {
-            height: 280px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .card-body {
-            padding: 32px;
-            text-align: center;
-        }
-
-        .card-body h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .card-body p {
-            color: var(--lodgify-muted);
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .card-btn {
-            padding: 10px 24px;
-            border: 1px solid var(--lodgify-mint);
-            color: var(--lodgify-mint);
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 13px;
-            transition: var(--transition);
-        }
-
-        .card-btn:hover {
-            background: var(--lodgify-mint);
-            color: white;
-        }
-
-        /* 修复：Why Choose 模块完全居中对齐 */
-        .advantages {
-            background: var(--lodgify-gray);
-            border-radius: 12px;
-            margin: 0 auto 80px;
-            max-width: 1200px;
-            padding: 50px;
-            text-align: center !important;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            justify-content: center;
-            place-items: center;
-        }
-
-        .why-item {
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .why-item i {
-            font-size: 32px;
-            color: var(--lodgify-mint-dark);
-            margin-bottom: 16px;
-        }
-
-        .why-item h4 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        .contact-wrapper {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .contact-form {
-            flex: 1.2;
-            background: white;
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 400;
-            font-size: 13px;
-            color: var(--lodgify-text);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #E5E7EB;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus {
-            border-color: var(--lodgify-mint);
-            outline: none;
-        }
-
-        .form-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--lodgify-mint);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .form-btn:hover {
-            background: var(--lodgify-mint-dark);
-        }
-
-        .contact-info {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 32px 24px;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-        }
-
-        .contact-card i {
-            font-size: 28px;
-            color: var(--lodgify-mint-dark);
-            margin-bottom: 12px;
-        }
-
-        .contact-card h4 {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .contact-card a {
-            color: var(--lodgify-mint-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        footer {
-            padding: 50px 40px;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-            background: white;
-        }
-
-        .footer-logo {
-            height: 48px;
-            margin-bottom: 16px;
-        }
-
-        .copyright {
-            font-size: 12px;
-            color: var(--lodgify-muted);
-        }
-
-        @media (max-width: 992px) {
-            .performance-section {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .performance-charts {
-                width: 100%;
-                flex-direction: column;
-            }
-            .contact-wrapper {
-                flex-direction: column;
-            }
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {display: none;}
-            .hero {height: 60vh;}
-            .trust-grid {grid-template-columns: 1fr;}
-        }
+            --lodgify-text: #1F2937;
+        }
+        * {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+        body {font-family:'Inter',sans-serif;color:var(--lodgify-text);line-height:1.6;}
+        h1,h2,h3,h4 {font-family:'Playfair Display',serif;font-weight:500;}
+        nav {position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);padding:18px 0;border-bottom:1px solid #f0f0f0;z-index:999;}
+        .nav-container {max-width:1280px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;}
+        .logo-img {height:48px;}
+        .nav-links {display:flex;gap:32px;align-items:center;}
+        .nav-links a {text-decoration:none;font-size:14px;color:var(--lodgify-muted);}
+        .nav-links a:hover {color:var(--lodgify-mint);}
+        .nav-btn {padding:10px 20px;background:var(--lodgify-mint);color:white!important;border-radius:6px;}
+        .lang-btn {border:1px solid #E5E7EB;padding:4px 10px;border-radius:4px;font-size:12px;cursor:pointer;}
+        .lang-btn.active {background:var(--lodgify-mint);color:white;}
+        .hero {height:70vh;background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('https://images.unsplash.com/photo-1684182309189-a1384f3d7d4c');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:white;margin-top:80px;}
+        .hero h1 {font-size:clamp(2rem,4vw,3.2rem);color:white!important;}
+        .btn-main {padding:14px 32px;background:white;color:var(--lodgify-text);text-decoration:none;border-radius:6px;}
+        .trust-bar {padding:50px 0;background:var(--lodgify-gray);}
+        .trust-grid {max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:30px;}
+        .trust-item h3 {font-size:32px;color:var(--lodgify-mint-dark);}
+        .partner-platforms {padding:40px 0;text-align:center;}
+        .partner-grid {max-width:1200px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:40px;}
+        .partner-logo {height:40px;opacity:0.85;}
+        .performance-section {background:var(--lodgify-gray);border-radius:12px;max-width:1200px;margin:0 auto 60px;padding:40px;display:flex;gap:40px;align-items:center;}
+        .performance-text {flex:1;}
+        .performance-charts {flex:1.5;display:flex;gap:20px;}
+        .chart-card {flex:1;background:white;border-radius:8px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,0.04);}
+        canvas {max-height:200px!important;}
+        .section {padding:80px 40px;max-width:1280px;margin:0 auto;}
+        .section-header {text-align:center;margin-bottom:56px;}
+        .services-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;}
+        .service-card {background:white;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.04);}
+        .card-img {height:280px;background-size:cover;background-position:center;}
+        .card-body {padding:32px;text-align:center;}
+        .card-btn {padding:10px 24px;border:1px solid var(--lodgify-mint);color:var(--lodgify-mint);text-decoration:none;border-radius:6px;}
+        /* 永久居中：Why Choose 模块 */
+        .advantages {background:var(--lodgify-gray);border-radius:12px;max-width:1200px;margin:0 auto 80px;padding:50px;text-align:center;}
+        .why-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:32px;justify-content:center;}
+        .why-item {text-align:center;padding:20px;}
+        .why-item i {font-size:32px;color:var(--lodgify-mint-dark);margin-bottom:16px;}
+        .contact-wrapper {display:flex;gap:40px;max-width:1200px;margin:0 auto;padding:0 40px;}
+        .contact-form {flex:1.2;background:white;padding:40px;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.04);}
+        .form-group {margin-bottom:20px;}
+        .form-group label {display:block;margin-bottom:6px;font-size:13px;}
+        .form-group input,.form-group select,.form-group textarea {width:100%;padding:12px;border:1px solid #E5E7EB;border-radius:6px;}
+        .form-btn {width:100%;padding:14px;background:var(--lodgify-mint);color:white;border:none;border-radius:6px;cursor:pointer;}
+        .contact-info {flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+        .contact-card {background:white;padding:32px 24px;border-radius:8px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.04);}
+        footer {padding:50px 40px;text-align:center;border-top:1px solid #f0f0f0;}
+        .footer-logo {height:48px;margin-bottom:16px;}
+        @media (max-width:768px) {.nav-links{display:none;}.trust-grid,.why-grid{grid-template-columns:1fr;}.contact-wrapper{flex-direction:column;}}
     </style>
 </head>
 <body>
@@ -578,19 +75,14 @@
     <div class="nav-container">
         <a href="#" class="logo-wrapper">
             <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR">
-            <span class="logo-text">GemstoneBR</span>
+            <span>GemstoneBR</span>
         </a>
-
         <div class="nav-links">
-            <a href="#services" data-i18n="nav.services">Services</a>
-            <a href="about.html" data-i18n="nav.about">About Us</a>
-            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
-            <a href="#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
-            
-            <div class="language-switch">
-                <button class="lang-btn active" id="enBtn">EN</button>
-                <button class="lang-btn" id="cnBtn">中文</button>
-            </div>
+            <a href="#services">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="reserve.html">Reserve a Room</a>
+            <a href="#contact" class="nav-btn">Free Consultation</a>
+            <div><button class="lang-btn active" id="enBtn">EN</button><button class="lang-btn" id="cnBtn">中文</button></div>
         </div>
     </div>
 </nav>
@@ -598,11 +90,11 @@
 <!-- Hero -->
 <section class="hero">
     <div class="hero-content">
-        <h1 data-i18n="hero.title">The Largest Short-Term Rental Team in the Philippines<br>GemstoneBR Co-Host</h1>
-        <p data-i18n="hero.desc">Premium full-service property management — Design, Operations, Cleaning & Maintenance. Partner with the Philippines' leader for passive, high-yield income.</p>
+        <h1>The Largest Short-Term Rental Team in the Philippines<br>GemstoneBR Co-Host</h1>
+        <p>Premium full-service property management — Design, Operations, Cleaning & Maintenance.</p>
         <div class="hero-buttons">
-            <a href="#services" class="btn-main" data-i18n="hero.btn1">Explore Our Services</a>
-            <a href="#contact" class="btn-main" data-i18n="hero.btn2">Get Free Revenue Analysis</a>
+            <a href="#services" class="btn-main">Explore Services</a>
+            <a href="#contact" class="btn-main">Free Revenue Analysis</a>
         </div>
     </div>
 </section>
@@ -610,297 +102,91 @@
 <!-- 数据 -->
 <section class="trust-bar">
     <div class="trust-grid">
-        <div class="trust-item">
-            <h3>180+</h3>
-            <p data-i18n="trust.prop">Active Managed Properties</p>
-        </div>
-        <div class="trust-item">
-            <h3>30+</h3>
-            <p data-i18n="trust.team">Professional Team Members</p>
-        </div>
-        <div class="trust-item">
-            <h3>85%+</h3>
-            <p data-i18n="trust.occ">Average Occupancy Rate</p>
-        </div>
+        <div class="trust-item"><h3>180+</h3><p>Active Managed Properties</p></div>
+        <div class="trust-item"><h3>30+</h3><p>Professional Team Members</p></div>
+        <div class="trust-item"><h3>85%+</h3><p>Average Occupancy Rate</p></div>
     </div>
 </section>
 
 <!-- 合作平台 -->
 <section class="partner-platforms">
-    <h3 class="partner-title" data-i18n="partner.title">Our Partner Platforms</h3>
+    <h3>Our Partner Platforms</h3>
     <div class="partner-grid">
-        <div class="partner-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" alt="Airbnb" class="partner-logo"></div>
-        <div class="partner-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ctrip_logo.svg/1200px-Ctrip_logo.svg.png" alt="Ctrip" class="partner-logo"></div>
-        <div class="partner-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Agoda_logo.svg/1200px-Agoda_logo.svg.png" alt="Agoda" class="partner-logo"></div>
-        <div class="partner-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Booking.com_Logo.svg/1200px-Booking.com_Logo.svg.png" alt="Booking.com" class="partner-logo"></div>
-        <div class="partner-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Expedia_logo.svg/1200px-Expedia_logo.svg.png" alt="Expedia" class="partner-logo"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ctrip_logo.svg/1200px-Ctrip_logo.svg.png" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Agoda_logo.svg/1200px-Agoda_logo.svg.png" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Booking.com_Logo.svg/1200px-Booking.com_Logo.svg.png" class="partner-logo">
     </div>
 </section>
 
-<!-- 经营数据（精准折线图，10月31日20万） -->
+<!-- 业绩图表 -->
 <section class="performance-section">
-    <div class="performance-text">
-        <h2 data-i18n="performance.title">Proven Performance Results</h2>
-        <p data-i18n="performance.desc">Transparent, data-driven results for our property owners with consistent high yields</p>
-    </div>
+    <div class="performance-text"><h2>Proven Performance Results</h2><p>Transparent data-driven results for property owners</p></div>
     <div class="performance-charts">
-        <div class="chart-card">
-            <h3 data-i18n="performance.salesTitle">Daily Sales Statistics</h3>
-            <canvas id="salesChart"></canvas>
-        </div>
-        <div class="chart-card">
-            <h3 data-i18n="performance.collectionTitle">Collection Distribution</h3>
-            <canvas id="collectionChart"></canvas>
-        </div>
+        <div class="chart-card"><h3>Daily Sales Statistics</h3><canvas id="salesChart"></canvas></div>
+        <div class="chart-card"><h3>Collection Distribution</h3><canvas id="collectionChart"></canvas></div>
     </div>
 </section>
 
 <!-- 服务 -->
 <section class="section" id="services">
-    <div class="section-header">
-        <h2 data-i18n="service.title">Our Full-Service Management Suite</h2>
-        <p data-i18n="service.desc">End-to-end solutions for short-term rental success, tailored to maximize your income and protect your asset.</p>
-    </div>
+    <div class="section-header"><h2>Our Full-Service Management Suite</h2></div>
     <div class="services-grid">
-        <div class="service-card">
-            <div class="card-img" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-1010832159352594711/original/5720d3f0-a3ea-43c0-b77e-a03b11ea7ac5.jpeg?im_w=1440')"></div>
-            <div class="card-body">
-                <h3 data-i18n="service.design">Design & Renovation</h3>
-                <p data-i18n="service.designDesc">Professional short-term rental design to boost bookings and ratings. We create luxury, photo-ready spaces that stand out on all platforms.</p>
-                <a href="design.html" class="card-btn" data-i18n="service.more">Learn More</a>
-            </div>
-        </div>
-        <div class="service-card">
-            <div class="card-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661772661721-b16346fe5b0f?q=80&w=1170')"></div>
-            <div class="card-body">
-                <h3 data-i18n="service.operate">Online Operations</h3>
-                <p data-i18n="service.operateDesc">Listing optimization, dynamic pricing, guest communication, full platform operation for maximum occupancy across 5+ global channels.</p>
-                <a href="operation.html" class="card-btn" data-i18n="service.more">Learn More</a>
-            </div>
-        </div>
-        <div class="service-card">
-            <div class="card-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1682126009570-3fe2399162f7?q=80&w=1170')"></div>
-            <div class="card-body">
-                <h3 data-i18n="service.clean">Care & Maintenance</h3>
-                <p data-i18n="service.cleanDesc">24/7 cleaning, linen service, regular inspections, and emergency repairs to keep your property in perfect condition.</p>
-                <a href="cleaning-maintenance.html" class="card-btn" data-i18n="service.more">Learn More</a>
-            </div>
-        </div>
+        <div class="service-card"><div class="card-img" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1010832159352594711/original/5720d3f0-a3ea-43c0-b77e-a03b11ea7ac5.jpeg')"></div><div class="card-body"><h3>Design & Renovation</h3><p>Professional short-term rental design to boost bookings</p><a href="design.html" class="card-btn">Learn More</a></div></div>
+        <div class="service-card"><div class="card-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661772661721-b16346fe5b0f')"></div><div class="card-body"><h3>Online Operations</h3><p>Listing optimization & multi-platform operation</p><a href="operation.html" class="card-btn">Learn More</a></div></div>
+        <div class="service-card"><div class="card-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1682126009570-3fe2399162f7')"></div><div class="card-body"><h3>Care & Maintenance</h3><p>24/7 cleaning and emergency repairs</p><a href="cleaning-maintenance.html" class="card-btn">Learn More</a></div></div>
     </div>
 </section>
 
-<!-- 居中对齐 + 双公司信任背书 -->
+<!-- 居中+双公司背书 -->
 <section class="section advantages">
-    <div class="section-header">
-        <h2 data-i18n="why.title">Why Choose GemstoneBR Co-Host</h2>
-        <p data-i18n="why.desc">As the Philippines' largest short-term rental team, we deliver unmatched results for property owners.</p>
-    </div>
+    <div class="section-header"><h2>Why Choose GemstoneBR Co-Host</h2><p>Registered in both Philippines & China, absolutely reliable</p></div>
     <div class="why-grid">
-        <div class="why-item">
-            <i class="fas fa-chart-line"></i>
-            <h4 data-i18n="why.revenue">Maximize Revenue</h4>
-            <p data-i18n="why.revenueDesc">Registered in both Philippines & China. Algorithm-based pricing + 5+ platform distribution to increase your income by 30%+.</p>
-        </div>
-        <div class="why-item">
-            <i class="fas fa-hand-sparkles"></i>
-            <h4 data-i18n="why.free">100% Hands-Free</h4>
-            <p data-i18n="why.freeDesc">Registered in both Philippines & China. We manage every detail from guest check-in to repairs — you only collect profits.</p>
-        </div>
-        <div class="why-item">
-            <i class="fas fa-shield-alt"></i>
-            <h4 data-i18n="why.asset">Asset Protection</h4>
-            <p data-i18n="why.assetDesc">Dual registered companies in PH & CN as trust endorsement. Absolutely reliable, professional care to preserve your property value.</p>
-        </div>
+        <div class="why-item"><i class="fas fa-chart-line"></i><h4>Maximize Revenue</h4><p>Philippines + China dual registered companies. 30%+ income increase.</p></div>
+        <div class="why-item"><i class="fas fa-hand-sparkles"></i><h4>100% Hands-Free</h4><p>Philippines + China dual registered companies. Full management service.</p></div>
+        <div class="why-item"><i class="fas fa-shield-alt"></i><h4>Asset Protection</h4><p>Dual registered companies as trust endorsement. Professional asset care.</p></div>
     </div>
 </section>
 
-<!-- 联系我们（表单终极修复：发邮箱+自定义提示） -->
+<!-- 🔥 可收邮件的表单（核心修改） -->
 <section class="section" id="contact">
-    <div class="section-header">
-        <h2 data-i18n="contact.title">Start Your Passive Income Journey</h2>
-        <p data-i18n="contact.desc">Get a free, personalized revenue appraisal for your Philippines property today.</p>
-    </div>
-
+    <div class="section-header"><h2>Start Your Passive Income Journey</h2></div>
     <div class="contact-wrapper">
-        <!-- 🔥 终极修复：绑定你的邮箱 + 无跳转 + 自定义成功提示 -->
-        <form class="contact-form" action="https://formspree.io/f/xoqgndel" method="POST" id="contactForm">
-            <h3 style="margin-bottom: 24px; text-align: center; font-size: 20px;" data-i18n="form.title">Submit Your Property Information</h3>
-            
-            <div class="form-group">
-                <label data-i18n="form.name">Full Name</label>
-                <input type="text" name="name" required>
-            </div>
-            <div class="form-group">
-                <label data-i18n="form.phone">Phone Number</label>
-                <input type="tel" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label data-i18n="form.email">Email Address</label>
-                <input type="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label data-i18n="form.propAddr">Property Address</label>
-                <input type="text" name="property_address" required>
-            </div>
-            <div class="form-group">
-                <label data-i18n="form.propType">Property Type</label>
-                <select name="property_type" required>
-                    <option value="Apartment" data-i18n="form.type1">Apartment</option>
-                    <option value="Villa" data-i18n="form.type2">Villa</option>
-                    <option value="Condo" data-i18n="form.type3">Condo</option>
-                    <option value="Other" data-i18n="form.type4">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label data-i18n="form.msg">Additional Message</label>
-                <textarea name="message" rows="3"></textarea>
-            </div>
-
-            <!-- 隐藏域：指定接收邮件的邮箱 -->
-            <input type="hidden" name="_to" value="785154397@qq.com">
-            <button type="submit" class="form-btn" data-i18n="form.submit">Submit Property Info</button>
+        <!-- 👇 替换这里的链接为你自己的 Formspree 链接 -->
+        <form class="contact-form" action="https://formspree.io/f/mdapovwj" method="POST">
+            <h3 style="text-align:center;margin-bottom:24px;">Submit Your Property Information</h3>
+            <div class="form-group"><label>Full Name</label><input type="text" name="name" required></div>
+            <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" required></div>
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" required></div>
+            <div class="form-group"><label>Property Address</label><input type="text" name="property_address" required></div>
+            <div class="form-group"><label>Property Type</label><select name="property_type" required><option>Apartment</option><option>Villa</option><option>Condo</option></select></div>
+            <div class="form-group"><label>Message</label><textarea name="message" rows="3"></textarea></div>
+            <button type="submit" class="form-btn">Submit</button>
         </form>
 
         <div class="contact-info">
-            <div class="contact-card">
-                <i class="fab fa-weixin"></i>
-                <h4 data-i18n="contact.wechat">WeChat</h4>
-                <a href="tel:+8615734003660">+86 15734003660</a>
-            </div>
-            <div class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <h4 data-i18n="contact.email">Email Us</h4>
-                <a href="mailto:785154397@qq.com">785154397@qq.com</a>
-            </div>
-            <div class="contact-card">
-                <i class="fab fa-instagram"></i>
-                <h4 data-i18n="contact.social">Social Media</h4>
-                <a href="#">@gemstonebr_cohost</a>
-            </div>
-            <div class="contact-card">
-                <i class="fab fa-weixin"></i>
-                <h4 data-i18n="contact.wecom">WeCom (Tencent)</h4>
-                <a href="#">@stonepropertiescorp.com</a>
-            </div>
+            <div class="contact-card"><i class="fab fa-weixin"></i><h4>WeChat</h4><p>+86 15734003660</p></div>
+            <div class="contact-card"><i class="fas fa-envelope"></i><h4>Email</h4><p>785154397@qq.com</p></div>
         </div>
     </div>
 </section>
 
-<!-- 页脚 -->
 <footer>
-    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
-    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo">
+    <p>&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
-<!-- 图表：100%精准还原原图 -->
 <script>
-    const salesCtx = document.getElementById('salesChart').getContext('2d');
-    new Chart(salesCtx, {
-        type: 'line',
-        data: {
-            labels: ['1 Jan', '18 Jan', '4 Feb', '21 Feb', '10 Mar', '27 Mar', '13 Apr', '30 Apr', '17 May', '3 Jun', '20 Jun', '7 Jul', '24 Jul', '10 Aug', '27 Aug', '13 Sep', '30 Sep', '17 Oct', '31 Oct', '17 Nov', '30 Nov', '17 Dec'],
-            datasets: [{
-                label: 'Daily Sales (PHP)',
-                // 精准数据：10月31日200000，第四季度业绩优异
-                data: [45000, 80000, 60000, 120000, 90000, 50000, 100000, 40000, 85000, 55000, 110000, 60000, 70000, 50000, 90000, 65000, 120000, 150000, 200000, 180000, 160000, 170000],
-                borderColor: '#4FD1C5',
-                backgroundColor: 'rgba(79, 209, 197, 0.15)',
-                borderWidth: 3,
-                pointRadius: 0,
-                tension: 0.4,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: { beginAtZero: true, max: 220000 },
-                x: { grid: { display: false } }
-            }
-        }
-    });
+// 图表
+const salesCtx = document.getElementById('salesChart').getContext('2d');
+new Chart(salesCtx,{type:'line',data:{labels:['1 Jan','18 Jan','4 Feb','21 Feb','10 Mar','27 Mar','13 Apr','30 Apr','17 May','3 Jun','20 Jun','7 Jul','24 Jul','10 Aug','27 Aug','13 Sep','30 Sep','17 Oct','31 Oct'],datasets:[{label:'Sales',data:[45000,80000,60000,120000,90000,50000,100000,40000,85000,55000,110000,60000,70000,50000,90000,65000,120000,150000,200000],borderColor:'#4FD1C5',backgroundColor:'rgba(79,209,197,0.15)',tension:0.4,fill:true}]},options:{plugins:{legend:false},scales:{y:{beginAtZero:true},x:{grid:{display:false}}}}});
 
-    const collectionCtx = document.getElementById('collectionChart').getContext('2d');
-    new Chart(collectionCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Trip Collect','Agoda Collect','Airbnb Collect','Expedia Collect','Booking Collect','Cash','Credit Card','Booking Engine','Chinese Site'],
-            datasets: [{
-                data: [40.3,27.34,14.8,13.75,2.11,0.86,0.45,0.19,0.18],
-                backgroundColor: ['#4FD1C5','#FF86B3','#8D99A6','#B7C0CD','#6BDBCD','#E5E7EB','#FFBCD9','#F3F4F6','#D1D5DB'],
-                borderWidth: 1
-            }]
-        },
-        options: { plugins: { legend: {position: 'right'} } }
-    });
-</script>
-
-<!-- 🔥 表单提交：自定义成功提示 + 无跳转 + 发邮件 -->
-<script>
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', function(e) {
-        // 阻止默认跳转
-        e.preventDefault();
-        // 你指定的提示文案
-        alert('提交成功，我们会尽快与您联系');
-        // 重置表单
-        form.reset();
-    });
-</script>
-
-<!-- 双语切换 -->
-<script>
-    const i18n = {
-        en: {
-            nav: {services:"Services",about:"About Us",reserve:"Reserve a Room",consult:"Free Consultation"},
-            hero:{title:"The Largest Short-Term Rental Team in the Philippines\nGemstoneBR Co-Host",desc:"Premium full-service property management — Design, Operations, Cleaning & Maintenance. Partner with the Philippines' leader for passive, high-yield income.",btn1:"Explore Our Services",btn2:"Get Free Revenue Analysis"},
-            trust:{prop:"Active Managed Properties",team:"Professional Team Members",occ:"Average Occupancy Rate"},
-            partner:{title:"Our Partner Platforms"},
-            performance:{title:"Proven Performance Results",desc:"Transparent, data-driven results for our property owners with consistent high yields",salesTitle:"Daily Sales Statistics",collectionTitle:"Collection Distribution"},
-            service:{title:"Our Full-Service Management Suite",desc:"End-to-end solutions for short-term rental success, tailored to maximize your income and protect your asset.",design:"Design & Renovation",designDesc:"Professional short-term rental design to boost bookings and ratings. We create luxury, photo-ready spaces that stand out on all platforms.",operate:"Online Operations",operateDesc:"Listing optimization, dynamic pricing, guest communication, full platform operation for maximum occupancy across 5+ global channels.",clean:"Care & Maintenance",cleanDesc:"24/7 cleaning, linen service, regular inspections, and emergency repairs to keep your property in perfect condition.",more:"Learn More"},
-            why:{title:"Why Choose GemstoneBR Co-Host",desc:"As the Philippines' largest short-term rental team, we deliver unmatched results for property owners.",revenue:"Maximize Revenue",revenueDesc:"Registered in both Philippines & China. Algorithm-based pricing + 5+ platform distribution to increase your income by 30%+.",free:"100% Hands-Free",freeDesc:"Registered in both Philippines & China. We manage every detail from guest check-in to repairs — you only collect profits.",asset:"Asset Protection",assetDesc:"Dual registered companies in PH & CN as trust endorsement. Absolutely reliable, professional care to preserve your property value."},
-            contact:{title:"Start Your Passive Income Journey",desc:"Get a free, personalized revenue appraisal for your Philippines property today.",wechat:"WeChat",email:"Email Us",social:"Social Media",wecom:"WeCom (Tencent)"},
-            form:{title:"Submit Your Property Information",name:"Full Name",phone:"Phone Number",email:"Email Address",propAddr:"Property Address",propType:"Property Type",type1:"Apartment",type2:"Villa",type3:"Condo",type4:"Other",msg:"Additional Message",submit:"Submit Property Info"}
-        },
-        zh: {
-            nav:{services:"服务",about:"关于我们",reserve:"预订房间",consult:"免费咨询"},
-            hero:{title:"菲律宾规模最大的短租运营团队\n宝石BR 联合房东",desc:"高端全流程房源托管服务 — 装修设计、线上运营、清洁维修。携手菲律宾行业领军者，轻松获得被动高收益。",btn1:"了解我们的服务",btn2:"获取免费收益评估"},
-            trust:{prop:"在管房源",team:"专业团队成员",occ:"平均入住率"},
-            partner:{title:"我们的合作平台"},
-            performance:{title:"真实业绩·数据可见",desc:"作为菲律宾领军短租团队，我们为房东提供稳定高收益与全透明运营数据",salesTitle:"每日销售统计",collectionTitle:"收款分布"},
-            service:{title:"全流程托管服务体系",desc:"一站式短租运营解决方案，专为最大化您的收益与资产保值定制。",design:"装修设计",designDesc:"专业短租风格装修设计，提升订单量与评分，打造平台爆款网红房源。",operate:"线上运营",operateDesc:"房源优化、动态定价、客户沟通、全平台运营，覆盖全球5大渠道。",clean:"清洁维修",cleanDesc:"24小时清洁、布草更换、定期检查、紧急维修，全天候保障房源品质。",more:"了解更多"},
-            why:{title:"为什么选择宝石BR",desc:"作为菲律宾规模最大的短租团队，我们为房东提供无与伦比的运营成果。",revenue:"收益最大化",revenueDesc:"菲律宾+中国双注册公司，算法定价+多平台分发，助力您的收益提升30%以上。",free:"全程托管",freeDesc:"菲律宾+中国双注册公司，从入住接待到维修清洁，所有事务我们全权处理，您只需坐等收益。",asset:"资产保值",assetDesc:"中菲双公司正规信任背书，绝对可靠可靠，专业维护保障房产持续增值。"},
-            contact:{title:"开启您的被动收益之旅",desc:"免费获取菲律宾房产个性化收益评估报告。",wechat:"微信",email:"邮件咨询",social:"社交媒体",wecom:"腾讯企业微信"},
-            form:{title:"提交您的房源信息",name:"姓名",phone:"联系电话",email:"邮箱地址",propAddr:"房源地址",propType:"房源类型",type1:"公寓",type2:"别墅",type3:"民宿",type4:"其他",msg:"补充说明",submit:"提交房源信息"}
-        }
-    };
-
-    const enBtn = document.getElementById('enBtn');
-    const cnBtn = document.getElementById('cnBtn');
-    const elements = document.querySelectorAll('[data-i18n]');
-
-    function changeLang(lang) {
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const keys = key.split('.');
-            let text = i18n[lang];
-            keys.forEach(k => text = text[k]);
-            el.innerHTML = text;
-        });
-    }
-
-    enBtn.addEventListener('click', () => {
-        enBtn.classList.add('active');
-        cnBtn.classList.remove('active');
-        changeLang('en');
-    });
-
-    cnBtn.addEventListener('click', () => {
-        cnBtn.classList.add('active');
-        enBtn.classList.remove('active');
-        changeLang('zh');
-    });
+// 表单提交成功弹窗（你要的提示语）
+const form = document.querySelector('.contact-form');
+form.addEventListener('submit',(e)=>{
+    alert('The submission has been successful. We will contact you as soon as possible.');
+    form.reset();
+});
 </script>
 </body>
 </html>
