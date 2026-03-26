@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | GemstoneBR Co-Host</title>
-    <!-- 完全复用主页字体、图标 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* ========== 100% 复用主页配色 + 样式 绝不修改 ========== */
         :root {
             --lodgify-mint: #4FD1C5;
             --lodgify-mint-light: rgba(79, 209, 197, 0.15);
@@ -21,9 +19,9 @@
             --primary: #4FD1C5;
             --text-dark: #1F2937;
             --bg-soft: #F7F9FC;
-            --shadow: 0 4px 20px rgba(0,0,0,0.04);
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
             --radius: 8px;
-            --transition: all 0.2s ease;
+            --transition: all 0.3s ease;
             --max-width: 1280px;
         }
 
@@ -48,7 +46,6 @@
             color: var(--lodgify-text);
         }
 
-        /* ========== 导航栏：和主页完全一模一样 ========== */
         nav {
             position: fixed;
             top: 0;
@@ -59,6 +56,7 @@
             border-bottom: 1px solid #f0f0f0;
             z-index: 999;
         }
+
         .nav-container {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -67,24 +65,13 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        .logo-img {height: 48px;}
-        .logo-text {
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: var(--lodgify-text);
-        }
+
         .nav-links {
             display: flex;
             align-items: center;
             gap: 32px;
         }
+
         .nav-links a {
             text-decoration: none;
             font-size: 14px;
@@ -92,7 +79,9 @@
             color: var(--lodgify-muted);
             transition: var(--transition);
         }
+
         .nav-links a:hover {color: var(--lodgify-mint);}
+
         .nav-btn {
             padding: 10px 20px;
             background: var(--lodgify-mint);
@@ -101,56 +90,36 @@
             font-size: 13px;
             font-weight: 500;
         }
-        .nav-btn:hover {background: var(--lodgify-mint-dark);}
-        .language-switch {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            margin-left: 16px;
-        }
-        .lang-btn {
-            background: transparent;
-            border: 1px solid #E5E7EB;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .lang-btn.active, .lang-btn:hover {
-            background: var(--lodgify-mint);
+
+        .about-hero {
+            background: url('your-image.jpg') center/cover no-repeat;
+            padding: 120px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
             color: white;
-            border-color: var(--lodgify-mint);
         }
 
-        /* ========== 极简排版：无文字堆叠 + 合理尺寸 + 设计感 ========== */
+        .about-hero h1 {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .about-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         .section {
             padding: 60px 40px;
             max-width: 1100px;
             margin: 0 auto;
         }
+
         .section-center {text-align: center; margin-bottom: 40px;}
         .section-gray {background: var(--lodgify-gray); padding: 60px 40px;}
 
-        /* Hero 标题区：极简 不臃肿 */
-        .about-hero {
-            padding: 120px 20px 40px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .about-hero h1 {
-            font-size: 38px;
-            margin-bottom: 16px;
-        }
-        .about-hero p {
-            font-size: 16px;
-            color: var(--lodgify-muted);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* 团队合照：合理尺寸 绝不超大 */
         .team-photo {
             width: 100%;
             height: 380px;
@@ -161,9 +130,10 @@
             justify-content: center;
             margin: 30px 0;
             color: var(--lodgify-muted);
+            background-image: url('team-photo.jpg');
+            background-size: cover;
         }
 
-        /* 营业执照：尺寸标准 排版整洁 */
         .license-wrapper {
             display: flex;
             gap: 40px;
@@ -172,40 +142,29 @@
             flex-wrap: wrap;
             margin: 40px 0;
         }
+
         .license-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
         }
-        .license-cn {
-            width: 460px;
-            height: 260px;
+
+        .license-cn, .license-ph {
             background: var(--lodgify-gray);
             border-radius: var(--radius);
             display: grid;
             place-items: center;
-        }
-        .license-ph {
-            width: 260px;
-            height: 380px;
-            background: var(--lodgify-gray);
-            border-radius: var(--radius);
-            display: grid;
-            place-items: center;
-        }
-        .license-title {
-            font-size: 17px;
-            font-weight: 500;
+            padding: 20px;
         }
 
-        /* 卡片模块：极简 不杂乱 亮点清晰 */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
             margin-top: 30px;
         }
+
         .card {
             padding: 28px;
             background: #fff;
@@ -213,43 +172,42 @@
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
         .card i {
             font-size: 32px;
             color: var(--lodgify-mint-dark);
             margin-bottom: 16px;
         }
+
         .card h3 {
             font-size: 19px;
             margin-bottom: 8px;
         }
-        .card p {
-            font-size: 14px;
-            color: var(--lodgify-muted);
-        }
 
-        /* ========== 页脚：和主页完全一模一样 ========== */
+        .footer-logo {height: 48px; margin-bottom: 16px;}
         footer {
             padding: 50px 40px;
             text-align: center;
             border-top: 1px solid #f0f0f0;
             background: white;
         }
-        .footer-logo {height: 48px; margin-bottom: 16px;}
-        .copyright {font-size: 12px; color: var(--lodgify-muted);}
 
-        /* 响应式 */
         @media (max-width: 768px) {
             .nav-links {display: none;}
             .team-photo {height: 260px;}
-            .license-cn, .license-ph {width: 100%; max-width: 380px;}
             .about-hero h1 {font-size: 28px;}
         }
     </style>
 </head>
 <body>
 
-<!-- 导航：100% 主页原版 -->
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-wrapper">
@@ -257,204 +215,103 @@
             <span class="logo-text">GemstoneBR</span>
         </a>
         <div class="nav-links">
-            <a href="index.html#services" data-i18n="nav.services">Services</a>
-            <a href="about.html" data-i18n="nav.about">About Us</a>
-            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
-            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
-            <div class="language-switch">
-                <button class="lang-btn active" id="enBtn">EN</button>
-                <button class="lang-btn" id="cnBtn">中文</button>
-            </div>
+            <a href="index.html#services">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="reserve.html">Reserve a Room</a>
+            <a href="index.html#contact" class="nav-btn">Free Consultation</a>
         </div>
     </div>
 </nav>
 
-<!-- Hero 极简标题 -->
 <section class="about-hero">
-    <h1 data-i18n="about.title">About GemstoneBR Co-Host</h1>
-    <p data-i18n="about.subtitle">The Philippines' Largest Professional Short-Term Rental Management Team | Dual Registered in China & Philippines</p>
+    <h1>About GemstoneBR Co-Host</h1>
+    <p>The Philippines' Largest Professional Short-Term Rental Management Team | Dual Registered in China & Philippines</p>
 </section>
 
-<!-- 品牌介绍：短句 无堆叠 -->
 <section class="section">
     <div class="section-center">
-        <h2 data-i18n="about.brand">Our Brand</h2>
-        <p style="max-width: 600px; margin: 0 auto;" data-i18n="about.brandDesc">Officially registered in China & Philippines, we are the leading short-term rental co-host team with safe, professional services.</p>
+        <h2>Our Brand</h2>
+        <p style="max-width: 600px; margin: 0 auto;">Officially registered in China & Philippines, we are the leading short-term rental co-host team with safe, professional services.</p>
     </div>
 
-    <!-- 团队合照：标准尺寸 -->
     <div class="team-photo">
         📸 Team Group Photo
     </div>
 </section>
 
-<!-- 专业团队：卡片亮点 整洁 -->
 <section class="section-gray">
     <div class="section-center">
-        <h2 data-i18n="about.team">Our Team</h2>
-        <p data-i18n="about.teamDesc">Professional experts to maximize your property value</p>
+        <h2>Our Team</h2>
+        <p>Professional experts to maximize your property value</p>
     </div>
     <div class="grid">
         <div class="card">
             <i class="fas fa-user-tie"></i>
-            <h3 data-i18n="about.leader">Senior Management</h3>
-            <p data-i18n="about.leaderDesc">10+ years cross-border real estate experience</p>
+            <h3>Senior Management</h3>
+            <p>10+ years cross-border real estate experience</p>
         </div>
         <div class="card">
             <i class="fas fa-laptop-house"></i>
-            <h3 data-i18n="about.operation">Operation Experts</h3>
-            <p data-i18n="about.operationDesc">Proficient in global platform rules & pricing</p>
+            <h3>Operation Experts</h3>
+            <p>Proficient in global platform rules & pricing</p>
         </div>
         <div class="card">
             <i class="fas fa-hard-hat"></i>
-            <h3 data-i18n="about.service">On-site Team</h3>
-            <p data-i18n="about.serviceDesc">Professional cleaning & 24/7 support</p>
+            <h3>On-site Team</h3>
+            <p>Professional cleaning & 24/7 support</p>
         </div>
     </div>
 </section>
 
-<!-- 资质证书：整洁对称 设计感 -->
 <section class="section">
     <div class="section-center">
-        <h2 data-i18n="about.license">Legal Qualifications</h2>
-        <p data-i18n="about.licenseDesc">Dual registration, 100% legal & compliant</p>
+        <h2>Legal Qualifications</h2>
+        <p>Dual registration, 100% legal & compliant</p>
     </div>
     <div class="license-wrapper">
         <div class="license-item">
             <div class="license-cn">📄 China Business License</div>
-            <p class="license-title" data-i18n="about.licenseCN">China Registration</p>
+            <p class="license-title">China Registration</p>
         </div>
         <div class="license-item">
             <div class="license-ph">📄 Philippines Business License</div>
-            <p class="license-title" data-i18n="about.licensePH">Philippines Registration</p>
+            <p class="license-title">Philippines Registration</p>
         </div>
     </div>
 </section>
 
-<!-- 核心实力：亮点突出 不杂乱 -->
 <section class="section-gray">
     <div class="section-center">
-        <h2 data-i18n="about.strength">Core Strengths</h2>
+        <h2>Core Strengths</h2>
     </div>
     <div class="grid">
         <div class="card">
             <i class="fas fa-certificate"></i>
-            <h3 data-i18n="about.legal">Fully Legal</h3>
-            <p data-i18n="about.legalDesc">Dual registered in China & Philippines</p>
+            <h3>Fully Legal</h3>
+            <p>Dual registered in China & Philippines</p>
         </div>
         <div class="card">
             <i class="fas fa-crown"></i>
-            <h3 data-i18n="about.leaderShip">Industry Leader</h3>
-            <p data-i18n="about.leaderShipDesc">Largest team in the Philippines</p>
+            <h3>Industry Leader</h3>
+            <p>Largest team in the Philippines</p>
         </div>
         <div class="card">
             <i class="fas fa-shield-alt"></i>
-            <h3 data-i18n="about.safe">Safe & Reliable</h3>
-            <p data-i18n="about.safeDesc">Formal qualifications & protection</p>
+            <h3>Safe & Reliable</h3>
+            <p>Formal qualifications & protection</p>
         </div>
         <div class="card">
             <i class="fas fa-chart-line"></i>
-            <h3 data-i18n="about.results">Proven Results</h3>
-            <p data-i18n="about.resultsDesc">180+ properties, 85%+ occupancy</p>
+            <h3>Proven Results</h3>
+            <p>180+ properties, 85%+ occupancy</p>
         </div>
     </div>
 </section>
 
-<!-- 页脚：100% 主页原版 -->
 <footer>
     <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
-    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+    <p>&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
-<!-- 双语切换：完整保留 -->
-<script>
-    const i18n = {
-        en: {
-            nav: {services:"Services",about:"About Us",reserve:"Reserve a Room",consult:"Free Consultation"},
-            about: {
-                title:"About Us",
-                subtitle:"The Philippines' Largest Professional Short-Term Rental Management Team | Dual Registered in China & Philippines",
-                brand:"Our Brand",
-                brandDesc:"Officially registered in China & Philippines, we are the leading short-term rental co-host team with safe, professional services.",
-                team:"Our Team",
-                teamDesc:"Professional experts to maximize your property value",
-                leader:"Senior Management",
-                leaderDesc:"10+ years cross-border real estate experience",
-                operation:"Operation Experts",
-                operationDesc:"Proficient in global platform rules & pricing",
-                service:"On-site Team",
-                serviceDesc:"Professional cleaning & 24/7 support",
-                license:"Legal Qualifications",
-                licenseDesc:"Dual registration, 100% legal & compliant",
-                licenseCN:"China Registration",
-                licensePH:"Philippines Registration",
-                strength:"Core Strengths",
-                legal:"Fully Legal",
-                legalDesc:"Dual registered in China & Philippines",
-                leaderShip:"Industry Leader",
-                leaderShipDesc:"Largest team in the Philippines",
-                safe:"Safe & Reliable",
-                safeDesc:"Formal qualifications & protection",
-                results:"Proven Results",
-                resultsDesc:"180+ properties, 85%+ occupancy"
-            }
-        },
-        zh: {
-            nav:{services:"服务",about:"关于我们",reserve:"预订房间",consult:"免费咨询"},
-            about: {
-                title:"关于我们",
-                subtitle:"菲律宾规模最大的专业短租运营团队 | 中菲双正规注册公司",
-                brand:"品牌介绍",
-                brandDesc:"宝石BR在中菲两国均正规注册，是菲律宾领先的短租托管团队，提供安全专业的服务。",
-                team:"专业团队",
-                teamDesc:"行业专家，为您的房产创造最大价值",
-                leader:"资深管理",
-                leaderDesc:"10年以上跨境房产经验",
-                operation:"运营专家",
-                operationDesc:"精通全球平台规则与定价",
-                service:"本地团队",
-                serviceDesc:"专业清洁与24小时服务",
-                license:"正规资质",
-                licenseDesc:"双国注册，100%合法合规",
-                licenseCN:"中国营业执照",
-                licensePH:"菲律宾营业执照",
-                strength:"核心实力",
-                legal:"合法正规",
-                legalDesc:"中菲双公司注册",
-                leaderShip:"行业领军",
-                leaderShipDesc:"菲律宾规模第一团队",
-                safe:"安全可靠",
-                safeDesc:"正规资质，资产保障",
-                results:"业绩顶尖",
-                resultsDesc:"180+房源，85%+入住率"
-            }
-        }
-    };
-
-    const enBtn = document.getElementById('enBtn');
-    const cnBtn = document.getElementById('cnBtn');
-    const elements = document.querySelectorAll('[data-i18n]');
-
-    function changeLang(lang) {
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const keys = key.split('.');
-            let text = i18n[lang];
-            keys.forEach(k => text = text[k]);
-            el.innerHTML = text;
-        });
-    }
-
-    enBtn.addEventListener('click', () => {
-        enBtn.classList.add('active');
-        cnBtn.classList.remove('active');
-        changeLang('en');
-    });
-    cnBtn.addEventListener('click', () => {
-        cnBtn.classList.add('active');
-        enBtn.classList.remove('active');
-        changeLang('zh');
-    });
-</script>
 </body>
 </html>
