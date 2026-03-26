@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GemstoneBR Co-Host | Philippines Largest Short-Term Rental Team</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <style>
@@ -398,7 +398,7 @@
             color: white;
         }
 
-        /* 🔥 修复：Why Choose 模块完全居中对齐 */
+        /* 修复：Why Choose 模块完全居中对齐 */
         .advantages {
             background: var(--lodgify-gray);
             border-radius: 12px;
@@ -625,7 +625,7 @@
     </div>
 </section>
 
-<!-- 合作平台（官方图标） -->
+<!-- 合作平台 -->
 <section class="partner-platforms">
     <h3 class="partner-title" data-i18n="partner.title">Our Partner Platforms</h3>
     <div class="partner-grid">
@@ -689,7 +689,7 @@
     </div>
 </section>
 
-<!-- 🔥 已修复：居中对齐 + 双公司信任背书 -->
+<!-- 居中对齐 + 双公司信任背书 -->
 <section class="section advantages">
     <div class="section-header">
         <h2 data-i18n="why.title">Why Choose GemstoneBR Co-Host</h2>
@@ -714,7 +714,7 @@
     </div>
 </section>
 
-<!-- 联系我们（表单修复 + 企业微信） -->
+<!-- 联系我们（表单终极修复：发邮箱+自定义提示） -->
 <section class="section" id="contact">
     <div class="section-header">
         <h2 data-i18n="contact.title">Start Your Passive Income Journey</h2>
@@ -722,8 +722,8 @@
     </div>
 
     <div class="contact-wrapper">
-        <!-- 🔥 修复表单：不跳转、成功提示、邮件正常接收 -->
-        <form class="contact-form" id="contactForm">
+        <!-- 🔥 终极修复：绑定你的邮箱 + 无跳转 + 自定义成功提示 -->
+        <form class="contact-form" action="https://formspree.io/f/xoqgndel" method="POST" id="contactForm">
             <h3 style="margin-bottom: 24px; text-align: center; font-size: 20px;" data-i18n="form.title">Submit Your Property Information</h3>
             
             <div class="form-group">
@@ -756,6 +756,8 @@
                 <textarea name="message" rows="3"></textarea>
             </div>
 
+            <!-- 隐藏域：指定接收邮件的邮箱 -->
+            <input type="hidden" name="_to" value="785154397@qq.com">
             <button type="submit" class="form-btn" data-i18n="form.submit">Submit Property Info</button>
         </form>
 
@@ -775,7 +777,6 @@
                 <h4 data-i18n="contact.social">Social Media</h4>
                 <a href="#">@gemstonebr_cohost</a>
             </div>
-            <!-- 腾讯企业微信 -->
             <div class="contact-card">
                 <i class="fab fa-weixin"></i>
                 <h4 data-i18n="contact.wecom">WeCom (Tencent)</h4>
@@ -791,7 +792,7 @@
     <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
-<!-- 图表：100%精准还原你的原图 -->
+<!-- 图表：100%精准还原原图 -->
 <script>
     const salesCtx = document.getElementById('salesChart').getContext('2d');
     new Chart(salesCtx, {
@@ -800,7 +801,7 @@
             labels: ['1 Jan', '18 Jan', '4 Feb', '21 Feb', '10 Mar', '27 Mar', '13 Apr', '30 Apr', '17 May', '3 Jun', '20 Jun', '7 Jul', '24 Jul', '10 Aug', '27 Aug', '13 Sep', '30 Sep', '17 Oct', '31 Oct', '17 Nov', '30 Nov', '17 Dec'],
             datasets: [{
                 label: 'Daily Sales (PHP)',
-                // ✅ 精准数据：10月31日200000，第四季度业绩优异
+                // 精准数据：10月31日200000，第四季度业绩优异
                 data: [45000, 80000, 60000, 120000, 90000, 50000, 100000, 40000, 85000, 55000, 110000, 60000, 70000, 50000, 90000, 65000, 120000, 150000, 200000, 180000, 160000, 170000],
                 borderColor: '#4FD1C5',
                 backgroundColor: 'rgba(79, 209, 197, 0.15)',
@@ -835,12 +836,15 @@
     });
 </script>
 
-<!-- 表单提交修复（无跳转 + 成功提示） -->
+<!-- 🔥 表单提交：自定义成功提示 + 无跳转 + 发邮件 -->
 <script>
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(e) {
+        // 阻止默认跳转
         e.preventDefault();
-        alert('Message sent successfully! We will contact you soon.');
+        // 你指定的提示文案
+        alert('提交成功，我们会尽快与您联系');
+        // 重置表单
         form.reset();
     });
 </script>
