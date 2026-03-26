@@ -3,107 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Our Team | GemstoneBR Co-Host</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Our Team | GemstoneBR Co-Host</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         :root {
             --primary: #4FD1C5;
             --primary-dark: #3AA89E;
-            --dark: #111827;
-            --gray: #F3F4F6;
-            --text-muted: #6B7280;
-            --white: #ffffff;
-            --gold: #D4AF37; /* 增加金色用于强调权威 */
+            --dark: #1F2937;
+            --gray-light: #F9FAFB;
+            --gray-text: #6B7280;
+            --gold: #C5A059;
+            --max-width: 1200px;
         }
 
-        body { font-family: 'Inter', sans-serif; margin: 0; color: var(--dark); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); line-height: 1.8; margin: 0; background: #fff; overflow-x: hidden; }
 
-        /* 统一导航栏样式 */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; border-bottom: 1px solid #eee; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-img { height: 45px; }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
+        /* --- 导航栏 --- */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 1000; padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
+        .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 42px; }
+        .nav-links { display: flex; align-items: center; gap: 35px; }
         .nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--dark); transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
-        .nav-btn { background: var(--primary); color: #fff !important; padding: 10px 22px; border-radius: 4px; }
-        .lang-switch { display: flex; gap: 5px; margin-left: 15px; }
-        .lang-btn { background: none; border: 1px solid #ddd; padding: 2px 8px; cursor: pointer; border-radius: 3px; font-size: 12px; }
-        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .nav-btn { background: var(--primary); color: #fff !important; padding: 10px 24px; border-radius: 4px; }
+        .lang-switch { display: flex; gap: 8px; margin-left: 20px; }
+        .lang-btn { background: none; border: 1px solid #eee; padding: 3px 10px; cursor: pointer; border-radius: 4px; font-size: 11px; color: var(--gray-text); }
+        .lang-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
 
-        /* --- 核心 Hero Section --- */
-        .hero-section { 
-            position: relative; 
-            height: 80vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
-            background: #000; /* 图片未加载时的底色 */
-        }
-        .hero-bg-image {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* 这里替换为你们 30 人的团队合影 */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-        }
-        .hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 800px; padding: 0 20px; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 64px); margin-bottom: 20px; line-height: 1.2; }
-        .hero-content p { font-size: 20px; opacity: 0.9; margin-bottom: 30px; font-weight: 300; }
+        /* --- Hero Section: 左文右图 --- */
+        .hero { padding: 160px 40px 100px; background: linear-gradient(90deg, #fff 60%, var(--gray-light) 40%); }
+        .hero-container { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 60px); line-height: 1.1; margin-bottom: 30px; }
+        .hero-text p { font-size: 18px; color: var(--gray-text); max-width: 500px; margin-bottom: 40px; }
+        .hero-image { position: relative; }
+        .hero-image img { width: 100%; border-radius: 12px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); transition: 0.5s ease; }
+        .hero-image::before { content: ''; position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: var(--primary); border-radius: 50%; z-index: -1; opacity: 0.2; }
 
-        /* --- 实力看板 --- */
-        .stats-bar { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            max-width: 1100px; 
-            margin: -60px auto 0; 
-            position: relative; 
-            z-index: 3; 
-            background: white; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .stat-item { padding: 40px 20px; text-align: center; border-right: 1px solid #eee; }
-        .stat-item:last-child { border-right: none; }
-        .stat-item h2 { font-size: 36px; color: var(--primary); margin-bottom: 5px; }
-        .stat-item p { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        /* --- 核心亮点看板 --- */
+        .highlights { padding: 100px 40px; max-width: var(--max-width); margin: 0 auto; }
+        .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .high-card { padding: 30px; text-align: center; border-bottom: 3px solid transparent; transition: 0.3s; }
+        .high-card:hover { border-bottom-color: var(--primary); background: var(--gray-light); }
+        .high-card h2 { font-size: 42px; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+        .high-card p { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-text); }
 
-        /* --- 双语合规版块 --- */
-        .section { padding: 100px 30px; max-width: 1200px; margin: 0 auto; }
-        .compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .compliance-tag { display: inline-block; padding: 5px 15px; background: var(--gray); border-left: 4px solid var(--gold); font-weight: 600; margin-bottom: 20px; }
-        .compliance-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 20px; }
-        .compliance-content p { font-size: 17px; color: var(--text-muted); margin-bottom: 20px; }
+        /* --- 正规化背书 (双国注册) --- */
+        .legal-section { padding: 120px 40px; background: var(--dark); color: #fff; }
+        .legal-container { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .legal-text h2 { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 30px; }
+        .legal-text p { font-size: 17px; opacity: 0.8; margin-bottom: 25px; }
+        .legal-badge { display: flex; align-items: center; gap: 15px; color: var(--primary); font-weight: 600; margin-bottom: 15px; }
         
-        .license-display { display: flex; gap: 20px; }
-        .license-card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; flex: 1; }
-        .license-card i { font-size: 40px; color: var(--gold); margin-bottom: 15px; }
-        .license-placeholder { height: 200px; background: #f9f9f9; border: 2px dashed #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #aaa; margin-bottom: 10px; }
+        .license-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; }
+        .license-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; text-align: center; }
+        .license-img-placeholder { height: 220px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.3); }
 
-        /* --- 团队架构与地理分布 --- */
-        .team-section { background: var(--gray); padding: 100px 30px; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 40px; }
-        
-        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .team-card { background: white; padding: 40px; border-radius: 16px; transition: 0.3s; }
-        .team-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .team-card i { font-size: 40px; color: var(--primary); margin-bottom: 25px; }
-        .team-card h3 { font-size: 22px; margin-bottom: 15px; }
-        .team-card p { color: var(--text-muted); font-size: 15px; }
+        /* --- 规模与区域优势 --- */
+        .scale-section { padding: 120px 40px; max-width: var(--max-width); margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 20px; }
+        .scale-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .scale-item i { font-size: 32px; color: var(--primary); margin-bottom: 25px; }
+        .scale-item h3 { font-size: 22px; margin-bottom: 15px; }
+        .scale-item p { color: var(--gray-text); font-size: 15px; }
 
-        footer { padding: 60px 30px; text-align: center; background: #fff; border-top: 1px solid #eee; }
-        .footer-logo { height: 40px; margin-bottom: 20px; }
-        .footer-text { color: var(--text-muted); font-size: 13px; }
+        /* --- 页脚 --- */
+        footer { padding: 80px 40px; text-align: center; border-top: 1px solid #f0f0f0; background: #fff; }
+        .footer-logo { height: 40px; margin-bottom: 30px; opacity: 0.8; }
+        .copyright { font-size: 12px; color: var(--gray-text); letter-spacing: 1px; }
 
-        @media (max-width: 900px) {
-            .compliance-grid, .team-grid, .stats-bar { grid-template-columns: 1fr; }
-            .stat-item { border-right: none; border-bottom: 1px solid #eee; }
-            .hero-section { height: 60vh; }
+        /* 移动端适配 */
+        @media (max-width: 992px) {
+            .hero-container, .legal-container, .highlights-grid, .scale-grid { grid-template-columns: 1fr; }
+            .hero { padding: 120px 20px 60px; background: #fff; }
+            .hero-text { text-align: center; }
+            .hero-text p { margin: 0 auto 40px; }
+            .legal-section { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -114,8 +90,8 @@
         <a href="index.html"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR"></a>
         <div class="nav-links">
             <a href="index.html#services" data-i18n="nav.services">Services</a>
-            <a href="about.html" data-i18n="nav.about">Our Team</a>
-            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Contact Us</a>
+            <a href="about.html" data-i18n="nav.about">Team</a>
+            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Consultation</a>
             <div class="lang-switch">
                 <button class="lang-btn active" id="enBtn">EN</button>
                 <button class="lang-btn" id="cnBtn">中文</button>
@@ -124,118 +100,94 @@
     </div>
 </nav>
 
-<section class="hero-section">
-    <div class="hero-bg-image"></div>
-    <div class="hero-content">
-        <h1 data-i18n="hero.title">The Force Behind 180+ Premium Units</h1>
-        <p data-i18n="hero.sub">Philippines' largest professional management team, driven by 30+ specialists and 3 years of market dominance.</p>
-    </div>
-</section>
-
-<div class="stats-bar">
-    <div class="stat-item"><h2>180+</h2><p data-i18n="stat.units">Managed Properties</p></div>
-    <div class="stat-item"><h2>30+</h2><p data-i18n="stat.staff">Team Members</p></div>
-    <div class="stat-item"><h2>3 Yrs</h2><p data-i18n="stat.exp">Local Heritage</p></div>
-    <div class="stat-item"><h2>6</h2><p data-i18n="stat.bldgs">Signature Complexes</p></div>
-</div>
-
-<section class="section">
-    <div class="compliance-grid">
-        <div class="compliance-content">
-            <div class="compliance-tag" data-i18n="comp.tag">100% REGULATED</div>
-            <h2 data-i18n="comp.title">Dual-Country Corporate Infrastructure</h2>
-            <p data-i18n="comp.p1">Unlike individual operators, GemstoneBR is a fully institutionalized co-hosting group officially registered in both **China and the Philippines**.</p>
-            <p data-i18n="comp.p2">Our dual-country legal presence provides our global investors with an unparalleled level of financial transparency and operational security.</p>
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1 data-i18n="hero.title">The Philippines' Largest Professional Team</h1>
+            <p data-i18n="hero.sub">Institutional-grade management powered by 30+ specialists. We don't just host; we dominate the local market with data and dedication.</p>
         </div>
-        <div class="license-display">
-            <div class="license-card">
-                <div class="license-placeholder">📸 [CN License]</div>
-                <h4 data-i18n="comp.cn">China Entity</h4>
-            </div>
-            <div class="license-card">
-                <div class="license-placeholder">📸 [PH License]</div>
-                <h4 data-i18n="comp.ph">Philippines Entity</h4>
-            </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="GemstoneBR Team">
         </div>
     </div>
 </section>
 
-<section class="team-section">
-    <div class="section-title">
-        <h2 data-i18n="team.title">Regional Leadership</h2>
-        <p data-i18n="team.sub">Dominating Metro Manila's most high-demand districts.</p>
+<section class="highlights">
+    <div class="highlights-grid">
+        <div class="high-card"><h2>180+</h2><p data-i18n="high.units">Units Under Management</p></div>
+        <div class="high-card"><h2>30+</h2><p data-i18n="high.staff">Full-time Specialists</p></div>
+        <div class="high-card"><h2>3Y+</h2><p data-i18n="high.exp">Market Leadership</p></div>
+        <div class="high-card"><h2>85%</h2><p data-i18n="high.occ">Average Occupancy</p></div>
     </div>
-    <div class="team-grid">
-        <div class="team-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3 data-i18n="team.c1t">The 3-City Strategy</h3>
-            <p data-i18n="team.c1p">We focus our 30-person power in Makati, Pasay, and Mandaluyong, ensuring rapid response times and deep local market data.</p>
+</section>
+
+<section class="legal-section">
+    <div class="legal-container">
+        <div class="legal-text">
+            <div class="legal-badge"><i class="fas fa-check-circle"></i> <span data-i18n="legal.badge">100% REGULATED ENTITY</span></div>
+            <h2 data-i18n="legal.title">Stability Beyond Borders</h2>
+            <p data-i18n="legal.p1">GemstoneBR is a dual-registered hospitality group in both **China and the Philippines**. We provide a corporate-grade safety net that individual hosts simply cannot offer.</p>
+            <p data-i18n="legal.p2">Our clients benefit from legal-binding contracts, transparent financial reporting, and the peace of mind that comes with a registered international brand.</p>
         </div>
-        <div class="team-card">
+        <div class="license-grid">
+            <div class="license-box">
+                <div class="license-img-placeholder">📸 [CN License Photo]</div>
+                <small data-i18n="legal.cn">Registered in China</small>
+            </div>
+            <div class="license-box" style="transform: translateY(30px);">
+                <div class="license-img-placeholder">📸 [PH License Photo]</div>
+                <small data-i18n="legal.ph">Registered in Philippines</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="scale-section">
+    <div class="section-header">
+        <h2 data-i18n="scale.title">Regional Dominance</h2>
+        <p data-i18n="scale.sub" style="color: var(--gray-text);">Concentrated operations for maximum efficiency and response speed.</p>
+    </div>
+    <div class="scale-grid">
+        <div class="scale-item">
+            <i class="fas fa-city"></i>
+            <h3 data-i18n="scale.c1t">3 Strategic Cities</h3>
+            <p data-i18n="scale.c1p">We focus exclusively on Makati, Pasay, and Mandaluyong—the heartbeat of Manila's high-yield rental market.</p>
+        </div>
+        <div class="scale-item">
             <i class="fas fa-building"></i>
-            <h3 data-i18n="team.c2t">6 Major Complexes</h3>
-            <p data-i18n="team.c2p">By concentrating 180+ units within 6 signature buildings, we achieve economies of scale that individual hosts simply cannot match.</p>
+            <h3 data-i18n="scale.c2t">6 Major Complexes</h3>
+            <p data-i18n="scale.c2p">Managing 180+ units across only 6 signature buildings allows us to have 24/7 staff presence on-site.</p>
         </div>
-        <div class="team-card">
-            <i class="fas fa-user-check"></i>
-            <h3 data-i18n="team.c3t">Specialized Divisions</h3>
-            <p data-i18n="team.c3p">From AI pricing analysts to 24/7 on-site butler services, our team is structured like a boutique hotel group.</p>
+        <div class="scale-item">
+            <i class="fas fa-user-shield"></i>
+            <h3 data-i18n="scale.c3t">3-Year Track Record</h3>
+            <p data-i18n="scale.c3p">In an industry of high turnover, our 3-year history of growth proves our operational resilience and owner trust.</p>
         </div>
     </div>
 </section>
 
 <footer>
     <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo">
-    <p class="footer-text" data-i18n="footer.text">&copy; 2026 GemstoneBR Co-Host. The #1 Choice for Manila Property Owners.</p>
+    <p class="copyright" data-i18n="footer.copy">&copy; 2026 GemstoneBR Co-Host. The #1 Choice for International Property Owners.</p>
 </footer>
 
 <script>
     const i18n = {
         en: {
-            nav: { services: "Services", about: "Our Team", consult: "Contact Us" },
-            hero: { 
-                title: "The Force Behind 180+ Premium Units", 
-                sub: "Philippines' largest professional management team, driven by 30+ specialists and 3 years of market dominance." 
-            },
-            stat: { units: "Managed Properties", staff: "Team Members", exp: "Local Heritage", bldgs: "Signature Complexes" },
-            comp: {
-                tag: "100% REGULATED",
-                title: "Dual-Country Corporate Infrastructure",
-                p1: "Unlike individual operators, GemstoneBR is a fully institutionalized co-hosting group officially registered in both China and the Philippines.",
-                p2: "Our dual-country legal presence provides our global investors with an unparalleled level of financial transparency and operational security.",
-                cn: "China Entity", ph: "Philippines Entity"
-            },
-            team: {
-                title: "Regional Leadership",
-                sub: "Dominating Metro Manila's most high-demand districts.",
-                c1t: "The 3-City Strategy", c1p: "Focusing our 30-person power in Makati, Pasay, and Mandaluyong for rapid response.",
-                c2t: "6 Major Complexes", c2p: "Concentrating 180+ units in 6 signature buildings to maximize operational efficiency.",
-                c3t: "Specialized Divisions", c3p: "Structured like a hotel group with 24/7 butler services and AI pricing analysts."
-            },
-            footer: { text: "© 2026 GemstoneBR Co-Host. The #1 Choice for Manila Property Owners." }
+            nav: { services: "Services", about: "Team", consult: "Consultation" },
+            hero: { title: "The Philippines' Largest Professional Team", sub: "Institutional-grade management powered by 30+ specialists. We dominate the local market with data and dedication." },
+            high: { units: "Units Managed", staff: "Full-time Staff", exp: "Market Leadership", occ: "Avg. Occupancy" },
+            legal: { badge: "100% REGULATED ENTITY", title: "Stability Beyond Borders", p1: "GemstoneBR is a dual-registered hospitality group in both China and the Philippines. We provide a corporate-grade safety net.", p2: "Our clients benefit from legal-binding contracts and transparent financial reporting from an international brand.", cn: "Registered in China", ph: "Registered in Philippines" },
+            scale: { title: "Regional Dominance", sub: "Concentrated operations for maximum efficiency and response speed.", c1t: "3 Strategic Cities", c1p: "We focus on Makati, Pasay, and Mandaluyong—the heartbeat of Manila's rental market.", c2t: "6 Major Complexes", c2p: "180+ units across 6 signature buildings allows us to have 24/7 staff on-site.", c3t: "3-Year Track Record", c3p: "Our 3-year history proves our operational resilience and owner trust." },
+            footer: { copy: "© 2026 GemstoneBR Co-Host. The #1 Choice for International Property Owners." }
         },
         zh: {
-            nav: { services: "服务项目", about: "关于我们", consult: "联系我们" },
-            hero: { 
-                title: "180+套房源背后的专业力量", 
-                sub: "菲律宾规模最大的专业管理团队。30多名专家成员，3年本地市场统治力。" 
-            },
-            stat: { units: "在管房源套数", staff: "团队成员人数", exp: "本地经营经验", bldgs: "核心合作公寓" },
-            comp: {
-                tag: "100% 合规经营",
-                title: "中菲双国注册企业架构",
-                p1: "不同于个人房东或小型散户，宝石BR是一家在中菲两国均拥有正规注册公司的机构化托管集团。",
-                p2: "双国注册的法律背景为全球业主提供了无可比拟的财务透明度与资产安全性。",
-                cn: "中国注册主体", ph: "菲律宾注册主体"
-            },
-            team: {
-                title: "区域领军地位",
-                sub: "深度覆盖马尼拉大都会最高端的商务区。",
-                c1t: "三大城市战略", c1p: "我们的30人团队集中覆盖 Makati, Pasay 和 Mandaluyong，确保极速响应和深度市场掌控。",
-                c2t: "深耕6大公寓", c2p: "在6个核心公寓内集中经营超过180套房源，实现了散户无法比拟的规模效应。",
-                c3t: "专业部门划分", c3p: "采用酒店集团式管理架构，设有AI定价分析师、24/7驻场管家等多个专业部门。"
-            },
-            footer: { text: "© 2026 宝石BR托管. 菲律宾房产业主的首选合作伙伴。" }
+            nav: { services: "服务项目", about: "关于我们", consult: "免费咨询" },
+            hero: { title: "菲律宾规模第一的专业代管团队", sub: "30多名专家构成的机构级管理体系。我们不仅是房东，更是用数据和专业深耕本地市场的领军者。" },
+            high: { units: "在管房源套数", staff: "全职团队人数", exp: "行业领军时长", occ: "平均入住率" },
+            legal: { badge: "100% 合规经营实体", title: "跨越国界的稳健保障", p1: "宝石BR是在中国和菲律宾均正规注册的酒店式管理集团。我们提供个人房东无法企及的机构级安全网。", p2: "我们的客户享有具备法律效力的合同、透明的财务报告，以及来自国际品牌的专业背书。", cn: "中国正规注册主体", ph: "菲律宾正规注册主体" },
+            scale: { title: "区域统治力", sub: "高密度的集群化运营，确保极致的服务效率和响应速度。", c1t: "深耕3大核心城市", c1p: "我们聚焦马卡蒂 (Makati)、帕塞 (Pasay) 和 曼达卢永 (Mandaluyong)——马尼拉最高收益的核心地段。", c2t: "聚焦6大核心公寓", c2p: "在6个标志性大楼内集中经营180多套房源，使我们能实现24/7全天候驻场服务。", c3t: "3年成功运营实绩", c3p: "在行业波动中，我们3年的持续高速增长证明了我们的运营韧性及业主的高度信任。" },
+            footer: { copy: "© 2026 宝石BR代管. 全球业主的菲律宾房产首选合作伙伴。" }
         }
     };
 
