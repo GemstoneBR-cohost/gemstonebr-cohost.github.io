@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve a Room - GemstoneBR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --lodgify-mint: #4FD1C5;
+            --lodgify-mint-light: rgba(79, 209, 197, 0.15);
+            --lodgify-mint-dark: #3AA89E;
+            --lodgify-pink: #FF86B3;
+            --lodgify-gray: #F7F9FC;
+            --lodgify-dark-gray: #8D99A6;
+            --lodgify-text: #1F2937;
+            --lodgify-muted: #6B7280;
+            
+            --primary: #4FD1C5;
+            --text-dark: #1F2937;
+            --bg-soft: #F7F9FC;
+            --shadow: 0 4px 20px rgba(0,0,0,0.04);
+            --radius: 8px;
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--lodgify-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: var(--lodgify-text);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(8px);
+            padding: 18px 0;
+            border-bottom: 1px solid #f0f0f0;
+            z-index: 999;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 48px;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--lodgify-text);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--lodgify-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--lodgify-mint);
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: var(--lodgify-mint);
+            color: white !important;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: var(--lodgify-mint-dark);
+        }
+
+        .language-switch {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-left: 16px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #E5E7EB;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--lodgify-mint);
+            color: white;
+            border-color: var(--lodgify-mint);
+        }
+
+        /* 预订页面专属样式 - 与主页风格统一 */
+        .reserve-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+            url('https://images.unsplash.com/photo-1633933568444-39144d40d415?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+
+        .reserve-hero h1 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            color: #fff !important;
+        }
+
+        .reserve-section {
+            padding: 80px 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+        }
+
+        .hotel-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
+            transition: var(--transition);
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* 横版酒店主图位置 */
+        .hotel-img {
+            width: 100%;
+            height: 240px;
+            background-color: var(--lodgify-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lodgify-muted);
+            overflow: hidden;
+        }
+
+        .hotel-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hotel-info {
+            padding: 32px;
+            text-align: center;
+        }
+
+        .hotel-name {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .hotel-btn {
+            padding: 12px 32px;
+            background: var(--lodgify-mint);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .hotel-btn:hover {
+            background: var(--lodgify-mint-dark);
+        }
+
+        footer {
+            padding: 50px 40px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+            background: white;
+        }
+
+        .footer-logo {
+            height: 48px;
+            margin-bottom: 16px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: var(--lodgify-muted);
+        }
+
+        @media (max-width: 992px) {
+            .hotel-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {display: none;}
+            .hotel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 - 与主页完全一致 -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-wrapper">
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img" alt="GemstoneBR">
+            <span class="logo-text">GemstoneBR</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html#services" data-i18n="nav.services">Services</a>
+            <a href="about.html" data-i18n="nav.about">About Us</a>
+            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
+            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
+            
+            <div class="language-switch">
+                <button class="lang-btn active" id="enBtn">EN</button>
+                <button class="lang-btn" id="cnBtn">中文</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- 预订页面头部 -->
+<section class="reserve-hero">
+    <h1 data-i18n="reserve.title">Choose Your Property to Reserve</h1>
+</section>
+
+<!-- 6个酒店预订模块 -->
+<section class="reserve-section">
+    <div class="hotel-grid">
+        <!-- 酒店1 -->
+        <div class="hotel-card">
+            <div class="hotel-img">
+                <!-- 替换为你的酒店图片：src="图片地址" -->
+                <img src="" alt="GemstoneBR in SMDC Air Residences">
+                <span>Hotel Image</span>
+            </div>
+            <div class="hotel-info">
+                <h3 class="hotel-name">GemstoneBR in SMDC Air Residences</h3>
+                <!-- 替换href为你的预订链接 -->
+                <a href="air-residences.html" class="hotel-btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- 酒店2 -->
+        <div class="hotel-card">
+            <div class="hotel-img">
+                <img src="" alt="GemstoneBR in SMDC AirII Residences">
+                <span>Hotel Image</span>
+            </div>
+            <div class="hotel-info">
+                <h3 class="hotel-name">GemstoneBR in SMDC AirII Residences</h3>
+                <a href="air2-residences.html" class="hotel-btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- 酒店3 -->
+        <div class="hotel-card">
+            <div class="hotel-img">
+                <img src="" alt="GemstoneBR in SMDC Coast Residences">
+                <span>Hotel Image</span>
+            </div>
+            <div class="hotel-info">
+                <h3 class="hotel-name">GemstoneBR in SMDC Coast Residences</h3>
+                <a href="coast-residences.html" class="hotel-btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- 酒店4 -->
+        <div class="hotel-card">
+            <div class="hotel-img">
+                <img src="" alt="GemstoneBR in SMDC Shore Residences">
+                <span>Hotel Image</span>
+            </div>
+            <div class="hotel-info">
+                <h3 class="hotel-name">GemstoneBR in SMDC Shore Residences</h3>
+                <a href="shore-residences.html" class="hotel-btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- 酒店5 -->
+        <div class="hotel-card">
+            <div class="hotel-img">
+                <img src="" alt="GemstoneBR in SMDC Shore2 Residences">
+                <span>Hotel Image</span>
+            </div>
+            <div class="hotel-info">
+                <h3 class="hotel-name">GemstoneBR in SMDC Shore2 Residences</h3>
+                <a href="shore2-residences.html" class="hotel-btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- 酒店6 -->
+        <div class="hotel-card">
+            <div class="hotel-img">
+                <img src="" alt="GemstoneBR in SMDC Fame Residences">
+                <span>Hotel Image</span>
+            </div>
+            <div class="hotel-info">
+                <h3 class="hotel-name">GemstoneBR in SMDC Fame Residences</h3>
+                <a href="fame-residences.html" class="hotel-btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 - 与主页完全一致 -->
+<footer>
+    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
+    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+</footer>
+
+<!-- 双语切换脚本 - 与主页完全一致 -->
+<script>
+    const i18n = {
+        en: {
+            nav: {services:"Services",about:"About Us",reserve:"Reserve a Room",consult:"Free Consultation"},
+            reserve: {title:"Choose Your Property to Reserve"}
+        },
+        zh: {
+            nav:{services:"服务",about:"关于我们",reserve:"预订房间",consult:"免费咨询"},
+            reserve: {title:"选择您要预订的房源"}
+        }
+    };
+
+    const enBtn = document.getElementById('enBtn');
+    const cnBtn = document.getElementById('cnBtn');
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    function changeLang(lang) {
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let text = i18n[lang];
+            keys.forEach(k => text = text[k]);
+            el.innerHTML = text;
+        });
+    }
+
+    enBtn.addEventListener('click', () => {
+        enBtn.classList.add('active');
+        cnBtn.classList.remove('active');
+        changeLang('en');
+    });
+
+    cnBtn.addEventListener('click', () => {
+        cnBtn.classList.add('active');
+        enBtn.classList.remove('active');
+        changeLang('zh');
+    });
+</script>
+</body>
+</html>
