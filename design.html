@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design & Renovation | GemstoneBR Co-Host</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300,400,500,600&family=Playfair+Display:wght@400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         /* 统一主站CSS变量 */
@@ -47,10 +47,23 @@
         .hover-bg-primary:hover { background-color: var(--primary-dark); }
         .hero-overlay { background: rgba(0, 0, 0, 0.4); }
 
-        /* ========== 统一页脚（与主站/About页完全一致） ========== */
-        footer { padding: 60px 0; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { height: 48px; width: auto; margin-bottom: 15px; } /* 页脚LOGO 48px */
-        .copyright { font-size: 12px; color: var(--text-muted); margin-top: 10px; }
+        /* ========== 修复：统一页脚（LOGO完美居中） ========== */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+            text-align: center; /* 文字居中 */
+        }
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin: 0 auto 15px; /* 核心修复：左右自动边距=水平居中 */
+            display: block; /* 图片转为块级元素，确保居中生效 */
+        }
+        .copyright {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -187,12 +200,10 @@
     </div>
 </section>
 
-<!-- 统一页脚 -->
+<!-- 修复后：简洁居中的页脚 -->
 <footer>
-    <div class="container max-w-5xl mx-auto px-6">
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="footer-logo" alt="GemstoneBR">
-        <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
-    </div>
+    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="footer-logo" alt="GemstoneBR">
+    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
 <!-- 完整双语脚本（英文+中文全覆盖） -->
