@@ -20,11 +20,11 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background: #fff; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* ========== 导航栏还原：Logo + 文字 ========== */
+        /* ========== 导航栏：LOGO更新为48px ========== */
         nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 16px 0; border-bottom: 1px solid #f0f0f0; z-index: 1000; }
         .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main); }
-        .logo-img { height: 42px; width: auto; }
+        .logo-img { height: 48px; width: auto; } /* 导航LOGO固定48px */
         .logo-text { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
         .nav-links { display: flex; align-items: center; gap: 30px; }
         .nav-links a { text-decoration: none; font-size: 14px; color: var(--text-muted); font-weight: 500; transition: 0.3s; }
@@ -51,15 +51,31 @@
         .intro-card h3 { font-size: 22px; margin-bottom: 15px; }
         .intro-card p { font-size: 15px; color: var(--text-muted); }
 
-        /* ========== 执照合规版块：重点排版 ========== */
-        .license-section { padding: 100px 0; background: var(--bg-soft); }
+        /* ========== 新增：团队规模模块（填充空白，突出50+团队） ========== */
+        .team-section { padding: 80px 0; background: var(--bg-soft); }
+        .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; text-align: center; }
+        .team-item h3 { font-size: 38px; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+        .team-item p { font-size: 14px; color: var(--text-muted); }
+
+        /* ========== 执照合规版块：缩小尺寸+横竖版高度统一 ========== */
+        .license-section { padding: 100px 0; background: #fff; }
         .license-flex { display: flex; gap: 50px; align-items: stretch; margin-top: 60px; }
         .license-item { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); flex: 1; text-align: center; }
         
-        /* 针对横竖比例的专门处理 */
-        .img-container-landscape { width: 100%; aspect-ratio: 1.4 / 1; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
-        .img-container-portrait { width: 100%; aspect-ratio: 1 / 1.4; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
-        .license-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        /* 核心修改：缩小营业执照 + 横竖版高度完全一致 */
+        .img-container-landscape,
+        .img-container-portrait {
+            width: 100%;
+            height: 200px; /* 固定高度，横竖版完全等高 */
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .license-item img { max-width: 90%; max-height: 90%; object-fit: contain; }
         .license-tag { display: inline-block; padding: 4px 12px; background: var(--primary); color: #fff; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
 
         /* ========== 每周进化：线性流程 ========== */
@@ -70,14 +86,15 @@
         .step-dot { width: 60px; height: 60px; background: #fff; border: 2px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 700; transition: 0.3s; }
         .process-step:hover .step-dot { background: var(--primary); color: #fff; }
 
-        /* ========== 页脚还原 ========== */
+        /* ========== 页脚：LOGO更新为128px ========== */
         footer { padding: 60px 0; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { height: 44px; margin-bottom: 15px; }
+        .footer-logo { height: 128px; width: auto; margin-bottom: 15px; } /* 底部LOGO固定128px */
+        .copyright { font-size: 12px; color: var(--text-muted); margin-top: 10px; }
 
         @media (max-width: 968px) {
-            .hero-grid, .grid-3, .license-flex, .process-row { grid-template-columns: 1fr; flex-direction: column; gap: 40px; }
+            .hero-grid, .grid-3, .license-flex, .process-row, .team-grid { grid-template-columns: 1fr; flex-direction: column; gap: 40px; }
             .process-row::before { display: none; }
-            .process-step { width: 100%; }
+            .process-step, .team-item { width: 100%; }
         }
     </style>
 </head>
@@ -86,12 +103,14 @@
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-wrapper">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="logo-img">
+            <!-- 新LOGO链接 -->
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="logo-img" alt="GemstoneBR">
             <span class="logo-text">GemstoneBR</span>
         </a>
         <div class="nav-links">
             <a href="index.html#services" data-i18n="nav.services">Services</a>
             <a href="about.html" data-i18n="nav.about">About Us</a>
+            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
             <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
             <div class="lang-switch">
                 <button class="lang-btn active" id="enBtn">EN</button>
@@ -142,6 +161,34 @@
     </div>
 </section>
 
+<!-- 🔥 新增：团队规模实力模块（50+专业团队，填充页面空白） -->
+<section class="team-section">
+    <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: 36px;" data-i18n="about.teamTitle">Our Scale & Professional Team</h2>
+            <p style="color: var(--text-muted); margin-top: 15px;" data-i18n="about.teamDesc">50+ dedicated professionals delivering end-to-end short-term rental management services</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-item">
+                <h3>50+</h3>
+                <p data-i18n="about.team1">Full-Time Team Members</p>
+            </div>
+            <div class="team-item">
+                <h3>180+</h3>
+                <p data-i18n="about.team2">Managed Properties</p>
+            </div>
+            <div class="team-item">
+                <h3>85%+</h3>
+                <p data-i18n="about.team3">Average Occupancy Rate</p>
+            </div>
+            <div class="team-item">
+                <h3>5+</h3>
+                <p data-i18n="about.team4">Global Booking Platforms</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="license-section">
     <div class="container">
         <div style="text-align: center;">
@@ -151,7 +198,7 @@
             <div class="license-item">
                 <span class="license-tag">China Registration</span>
                 <div class="img-container-landscape">
-                    <img src="https://via.placeholder.com/600x420?text=China+Business+License+(Horizontal)" alt="China License">
+                    <img src="https://via.placeholder.com/600x420?text=China+Business+License" alt="China License">
                 </div>
                 <h4 data-i18n="about.l1t">GemstoneBR China</h4>
                 <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.l1p">Legal corporate entity for global operations.</p>
@@ -159,7 +206,7 @@
             <div class="license-item">
                 <span class="license-tag">Philippines Registration</span>
                 <div class="img-container-portrait">
-                    <img src="https://via.placeholder.com/400x560?text=Philippines+License+(Vertical)" alt="Philippines License">
+                    <img src="https://via.placeholder.com/400x560?text=Philippines+License" alt="Philippines License">
                 </div>
                 <h4 data-i18n="about.l2t">GemstoneBR Philippines</h4>
                 <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.l2p">Localized on-site management entity.</p>
@@ -201,15 +248,16 @@
 
 <footer>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo">
-        <p style="font-size: 12px; color: var(--text-muted);">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+        <!-- 新LOGO链接 + 128px大小 -->
+        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="footer-logo" alt="GemstoneBR">
+        <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
     </div>
 </footer>
 
 <script>
     const i18n = {
         en: {
-            nav: { services: "Services", about: "About Us", consult: "Free Consultation" },
+            nav: { services: "Services", about: "About Us", reserve:"Reserve a Room", consult: "Free Consultation" },
             about: {
                 h1: "Asset Integrity, Hospitality Excellence.",
                 hp: "GemstoneBR is an institutionally-led co-hosting partner, bridging professional real estate management with luxury service standards.",
@@ -218,6 +266,13 @@
                 c1t: "Investment DNA", c1p: "Core leadership applies real estate investment logic, ensuring risk control.",
                 c2t: "Hotel-Grade Operations", c2p: "Field staff recruited from 5-star backgrounds, maintaining rigorous SOPs.",
                 c3t: "Multilingual Support", c3p: "Our customer service team eliminates language barriers for global guests.",
+                // 新增团队模块双语文案
+                teamTitle: "Our Scale & Professional Team",
+                teamDesc: "50+ dedicated professionals delivering end-to-end short-term rental management services",
+                team1: "Full-Time Team Members",
+                team2: "Managed Properties",
+                team3: "Average Occupancy Rate",
+                team4: "Global Booking Platforms",
                 t2: "Compliance & Global Trust",
                 l1t: "GemstoneBR China", l1p: "Legal corporate entity for global operations.",
                 l2t: "GemstoneBR Philippines", l2p: "Localized on-site management entity.",
@@ -230,7 +285,7 @@
             }
         },
         zh: {
-            nav: { services: "服务", about: "关于我们", consult: "免费咨询" },
+            nav: { services: "服务", about: "关于我们", reserve:"预订房间", consult: "免费咨询" },
             about: {
                 h1: "守护资产价值，重塑款待标准",
                 hp: "宝石BR由地产投资与项目管理专家创立，致力于将机构级的严谨与五星级酒店服务引入马尼拉短租市场。",
@@ -239,6 +294,13 @@
                 c1t: "地产投资基因", c1p: "管理层以地产开发与投研逻辑经营短租，严控风险，保障资产长期增值。",
                 c2t: "星级酒店级执行", c2p: "现场主管与保洁团队均来自高端酒店，执行极其严苛的标准化作业流程(SOP)。",
                 c3t: "多语种客服支持", c3p: "专业客服团队支持多国语言，彻底消除全球房客与海外业主之间的沟通隔阂。",
+                // 新增团队模块双语文案
+                teamTitle: "规模实力·专业团队",
+                teamDesc: "50余名全职专业人员，提供一站式短租托管运营服务",
+                team1: "全职团队成员",
+                team2: "在管房源数量",
+                team3: "平均入住率",
+                team4: "全球预订平台",
                 t2: "全球合规与信赖基石",
                 l1t: "宝石BR（中国）", l1p: "面向全球客户的合法签约与财务主体。",
                 l2t: "宝石BR（菲律宾）", l2p: "深耕本地的现场运营与行政合规实体。",
