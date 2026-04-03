@@ -202,8 +202,14 @@
         footer { padding: 50px 40px; text-align: center; border-top: 1px solid var(--border-color); background: white; }
         .copyright { font-size: 12px; color: var(--text-light); margin-top: 20px;}
 
-        /* 悬浮微信按钮 */
-        .floating-contact { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 999; transition: var(--transition); }
+        /* 统一悬浮按钮样式 */
+        .floating-contact { 
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
+            background: var(--primary); color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 24px; box-shadow: 0 10px 25px rgba(79, 209, 197, 0.4); 
+            z-index: 999; transition: all 0.3s ease; 
+        }
         .floating-contact:hover { transform: translateY(-5px) scale(1.1); }
 
         /* ================= 响应式适配 ================= */
@@ -539,9 +545,9 @@
         <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" alt="GemstoneBR" style="height: 100px; margin: 0 auto;">
         <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
     </footer>
-
+    
     <a href="index.html#contact" class="floating-contact" title="Contact Us">
-        <i class="fab fa-weixin"></i>
+        <i class="fas fa-comment-dots"></i>
     </a>
 
     <script>
@@ -593,7 +599,7 @@
                     c1r2: "\"It's so comfortable and aesthetically good! The hosts are very responsive and welcoming.\"",
                     
                     // ======== 修改了这里的案例 2 ========
-                    c2Title: "Modern style 1BR", c2Loc: "Urban Rest SuiteThe decorative items with a design sense, combined with the wooden paneling walls and the rich lighting design, create a luxurious space atmosphere.", 
+                    c2Title: "Modern style 1BR", c2Loc: "The decorative items with a design sense, combined with the wooden paneling walls and the rich lighting design, create a luxurious space atmosphere.", 
                     c2r1: "\"The bedroom design is absolutely dreamy! The colors are so relaxing, and the furniture choice is impeccable. The unit’s furniture arrangement and ambiance are all great, giving homey and cozy feeling.\"", 
                     c2r2: "\"The place was aesthetically nice. It was decorated properly, so cozy, and smells good.\"",
                     
