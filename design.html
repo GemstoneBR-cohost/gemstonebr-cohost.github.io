@@ -3,317 +3,696 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design & Renovation | GemstoneBR Co-Host</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300,400,500,600&family=Playfair+Display:wght@400,500,600,700&display=swap" rel="stylesheet">
+    <title>High-End Design & Furnishing | GemstoneBR Co-Host</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
     <style>
-        /* 统一主站CSS变量 */
-        :root {
-            --primary: #4FD1C5;
-            --primary-dark: #3AA89E;
-            --text-main: #1F2937;
-            --text-muted: #6B7280;
-            --bg-soft: #F9FBFC;
-            --max-width: 1140px;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* 全站统一色系与样式系统 */
+        :root {
+            --primary: #4FD1C5; /* 宝石薄荷绿 */
+            --primary-light: rgba(79, 209, 197, 0.12);
+            --primary-dark: #3AA89E;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #FFFFFF;
+            --bg-soft: #F9FAFB; /* 淡灰背景 */
+            --border-color: #E5E7EB;
+            --highlight: #FF86B3; /* Lodgify 粉色，用于免费高亮 */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-primary: 0 10px 30px rgba(79, 209, 197, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #fff;
-            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-        /* ========== 统一导航栏（与主站/About页完全一致） ========== */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 16px 0; border-bottom: 1px solid #f0f0f0; z-index: 1000; }
-        .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main); }
-        .logo-img { height: 48px; width: auto; } /* 导航LOGO 48px */
-        .logo-text { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { text-decoration: none; font-size: 14px; color: var(--text-muted); font-weight: 500; transition: 0.3s; }
+        /* 标题统一更换为 Montserrat，极简现代 SaaS 风 */
+        h1, h2, h3, h4, .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ================= 导航栏 ================= */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(12px); padding: 15px 0; border-bottom: 1px solid var(--border-color); z-index: 1000;
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 44px; }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-light); transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
-        .nav-btn { padding: 10px 20px; background: var(--primary); color: white !important; border-radius: 6px; font-size: 13px; }
-        .lang-btn { background: none; border: 1px solid #eee; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; }
-        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .nav-btn { padding: 10px 24px; background: var(--primary); color: white !important; border-radius: 6px; font-weight: 600; }
+        .nav-btn:hover { background: var(--primary-dark); }
+        .language-switch { display: flex; gap: 6px; margin-left: 16px; }
+        .lang-btn { background: transparent; border: 1px solid var(--border-color); padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; cursor: pointer; transition: var(--transition); }
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .mobile-menu-toggle { display: none; font-size: 24px; color: var(--text-dark); cursor: pointer; }
 
-        /* 统一配色样式 */
-        .bg-primary { background-color: var(--primary); }
-        .text-primary { color: var(--primary); }
-        .border-primary { border-color: var(--primary); }
-        .hover-bg-primary:hover { background-color: var(--primary-dark); }
-        .hero-overlay { background: rgba(0, 0, 0, 0.4); }
+        /* ================= 通用布局 ================= */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .section-kicker { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-dark); font-weight: 700; margin-bottom: 16px; font-family: 'Inter', sans-serif;}
+        .section-title { font-size: 36px; line-height: 1.2; color: var(--text-dark); margin-bottom: 20px; }
+        .section-lead { font-size: 16px; color: var(--text-light); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 30px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: var(--transition); cursor: pointer; border: none; font-family: 'Inter', sans-serif;}
 
-        /* ========== 修复：统一页脚（LOGO完美居中） ========== */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid #eee;
-            text-align: center; /* 文字居中 */
+        /* ================= Hero 首屏 ================= */
+        .hero-section {
+            padding: 160px 0 100px;
+            background: radial-gradient(circle at top right, rgba(79, 209, 197, 0.08), transparent 35%), linear-gradient(180deg, var(--bg-soft), #fff);
         }
-        .footer-logo {
-            height: 48px;
-            width: auto;
-            margin: 0 auto 15px; /* 核心修复：左右自动边距=水平居中 */
-            display: block; /* 图片转为块级元素，确保居中生效 */
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+        .hero-copy h1 { font-size: clamp(42px, 4.5vw, 56px); line-height: 1.15; color: var(--text-dark); margin-bottom: 24px; }
+        .hero-copy p { font-size: 18px; color: var(--text-light); margin-bottom: 32px; max-width: 90%; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: var(--shadow-md); }
+        .btn-primary:hover { transform: translateY(-3px); background: var(--primary-dark); box-shadow: var(--shadow-primary); color: #fff; }
+        .hero-points { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;}
+        .hero-chip { padding: 8px 16px; border-radius: 999px; background: rgba(255,255,255,0.8); border: 1px solid rgba(79, 209, 197, 0.3); color: var(--text-dark); font-size: 13px; font-weight: 500; }
+
+        .hero-visual { position: relative; }
+        .hero-visual img { border-radius: 28px; box-shadow: var(--shadow-lg); border: 20px solid #fff; }
+        .stat-overlay { position: absolute; bottom: 40px; right: -40px; background: #fff; padding: 20px; border-radius: 18px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); display: flex; gap: 15px; }
+        .stat-overlay i { width: 48px; height: 48px; background: var(--primary-light); color: var(--primary-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .stat-overlay strong { font-size: 20px; display: block; font-family: 'Montserrat', sans-serif; font-weight: 800;}
+        .stat-overlay span { font-size: 12px; color: var(--text-light); font-weight: 500;}
+
+        /* ================= 一排 6 列精致服务模块 ================= */
+        .features-section { background: var(--bg-soft); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .features-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+        
+        .feature-card { 
+            background: #fff; 
+            border: 1px solid var(--border-color); 
+            border-radius: 16px; 
+            padding: 24px 18px; 
+            transition: var(--transition); 
+            text-align: left; 
+            box-shadow: var(--shadow-sm); 
+            position: relative;
         }
-        .copyright {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 10px;
+        .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+        
+        .feature-icon { 
+            width: 44px; height: 44px; 
+            background: var(--primary-light); 
+            color: var(--primary-dark); 
+            border-radius: 10px; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            font-size: 18px; margin-bottom: 16px; 
+            transition: var(--transition); 
+        }
+        
+        .feature-card h3 { font-size: 15px; margin-bottom: 8px; color: var(--text-dark); font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 0; }
+        .feature-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+        /* 免费赠送高亮样式 */
+        .highlight-card { border-color: var(--primary-light); background: linear-gradient(180deg, #fff, var(--bg-soft)); box-shadow: var(--shadow-md); }
+        .free-badge { 
+            position: absolute; top: -10px; right: -8px; 
+            background: var(--highlight); color: white; 
+            font-size: 11px; font-weight: 700; padding: 4px 10px; 
+            border-radius: 999px; box-shadow: 0 4px 10px rgba(255, 134, 179, 0.4); 
+            z-index: 10; border: 2px solid white; transform: rotate(5deg);
+        }
+        .value-tag { 
+            display: inline-block; margin-top: 12px; 
+            background: var(--primary-light); color: var(--primary-dark); 
+            font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px; 
+        }
+
+        /* ================= Full Turnkey Configuration ================= */
+        .turnkey-section { background: #113233; color: #fff; padding: 100px 0; overflow: hidden; }
+        .turnkey-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+        .turnkey-copy h2 { font-size: 38px; color: #fff; margin-bottom: 24px; letter-spacing: -1px;}
+        .turnkey-copy p { color: #E5E7EB; margin-bottom: 32px; font-size: 16px; font-weight: 300; line-height: 1.7; }
+        .turnkey-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; list-style: none; }
+        .turnkey-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; font-weight: 300; }
+        .turnkey-list li i { color: var(--primary); margin-top: 4px; font-size: 14px; }
+        .turnkey-stat { text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .turnkey-stat .num { font-size: 64px; font-weight: 800; color: var(--primary); margin-bottom: 10px; line-height: 1; font-family: 'Montserrat', sans-serif;}
+        .turnkey-stat .label { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #9CA3AF; font-weight: 600;}
+
+        /* ================= 案例展示模块 ================= */
+        .portfolio-section { background: #fff; }
+        .portfolio-grid { display: grid; gap: 60px; }
+        .case-item { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: stretch; background: var(--bg-soft); border-radius: 24px; border: 1px solid var(--border-color); overflow: hidden; padding: 20px;}
+        .case-item:nth-child(even) { direction: rtl; } 
+        .case-item:nth-child(even) .case-content { direction: ltr; }
+        .case-image { border-radius: 16px; overflow: hidden; }
+        .case-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .case-item:hover .case-image img { transform: scale(1.05); }
+        .case-content { display: flex; flex-direction: column; justify-content: space-between; padding: 20px 10px; }
+        .case-header { margin-bottom: 30px; }
+        .case-title { font-size: 22px; color: var(--text-dark); margin-bottom: 8px; font-weight: 700; font-family: 'Montserrat', sans-serif; letter-spacing: -0.5px;}
+        .case-location { font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 8px;}
+        .review-card { background: #fff; border-radius: 12px; border: 1px solid var(--border-color); padding: 18px; margin-bottom: 15px; box-shadow: var(--shadow-sm); transition: var(--transition);}
+        .review-card:last-child { margin-bottom: 0; }
+        .review-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-md); }
+        .review-card p { font-size: 13.5px; color: var(--text-light); font-style: italic; line-height: 1.6;}
+        .review-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--border-color); }
+        .guest-info { display: flex; align-items: center; gap: 8px;}
+        .guest-avatar { width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif;}
+        .guest-name { font-size: 13px; font-weight: 600;}
+        .rating-stars { color: #FBBF24; font-size: 12px; display: flex; gap: 2px;}
+
+        /* ================= Partnership Plans ================= */
+        .pricing-section { background: var(--bg-soft); border-top: 1px solid var(--border-color); padding: 100px 0; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+        
+        .pricing-card { background: #fff; border: 1px solid var(--border-color); border-radius: 20px; padding: 50px 40px; box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; position: relative;}
+        .pricing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .pricing-card.popular { border: 2px solid var(--primary); box-shadow: var(--shadow-primary); }
+        .popular-badge { background: var(--primary); color: white; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); letter-spacing: 1px;}
+        
+        .pricing-card h3 { font-size: 26px; color: var(--text-dark); margin-bottom: 12px; text-align: center; }
+        .pricing-card > p { font-size: 14px; color: var(--text-light); text-align: center; margin-bottom: 30px; font-style: italic; font-weight: 400;}
+        .price-display { font-size: 42px; font-weight: 800; color: var(--text-dark); text-align: center; margin-bottom: 40px; font-family: 'Montserrat', sans-serif; letter-spacing: -1px;}
+        .price-display span { font-size: 18px; color: var(--text-light); font-weight: 500; font-family: 'Inter', sans-serif; letter-spacing: 0;}
+        
+        .pricing-features { list-style: none; display: grid; gap: 18px; margin-bottom: 40px; flex-grow: 1;}
+        .pricing-features li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--text-dark); }
+        .pricing-features li i { color: var(--primary); font-size: 18px; }
+        
+        /* ================= Contact CTA ================= */
+        .contact-section { background: #fff; text-align: center; }
+        .contact-box { background: var(--bg-soft); padding: 60px 40px; border-radius: 24px; border: 1px solid var(--border-color); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-md); }
+        .contact-box h2 { font-size: 30px; margin-bottom: 16px; letter-spacing: -1px;}
+        .contact-box p { color: var(--text-light); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;}
+        
+        /* ================= 页脚同步首页 ================= */
+        footer { padding: 50px 40px; text-align: center; border-top: 1px solid var(--border-color); background: white; }
+        .copyright { font-size: 12px; color: var(--text-light); margin-top: 20px;}
+
+        /* 悬浮微信按钮 */
+        .floating-contact { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 999; transition: var(--transition); }
+        .floating-contact:hover { transform: translateY(-5px) scale(1.1); }
+
+        /* ================= 响应式适配 ================= */
+        @media (max-width: 1100px) {
+            .features-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .case-item { grid-template-columns: 1fr; }
+            .case-item:nth-child(even) { direction: ltr; }
+            .case-image { height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            section { padding: 80px 0; }
+            .mobile-menu-toggle { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: var(--transition); opacity: 0; pointer-events: none; }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; pointer-events: all; }
+            .nav-links a, .nav-btn { width: 90%; text-align: center; margin: 10px auto; padding: 12px; }
+            .language-switch { justify-content: center; margin: 10px 0; }
+            
+            .hero-section { padding: 120px 0 60px; }
+            .hero-grid, .turnkey-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-copy { text-align: center; }
+            .hero-copy p { margin-left: auto; margin-right: auto; }
+            .hero-copy div { justify-content: center; }
+            .stat-overlay { bottom: 10px; right: 10px; padding: 10px; gap: 8px;}
+            .stat-overlay i { width: 36px; height: 36px; font-size: 16px; }
+            .stat-overlay strong { font-size: 16px; }
+            .stat-overlay span { font-size: 10px; }
+            
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .turnkey-list { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .contact-box { padding: 40px 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<!-- 统一导航栏 -->
-<nav>
-    <div class="nav-container">
-        <a href="index.html" class="logo-wrapper">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="logo-img" alt="GemstoneBR">
-            <span class="logo-text"> </span>
-        </a>
-        <div class="nav-links">
-            <a href="index.html#services" data-i18n="nav.services">Services</a>
-            <a href="about.html" data-i18n="nav.about">About Us</a>
-            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
-            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
-            <div class="lang-switch">
-                <button class="lang-btn active" id="enBtn">EN</button>
-                <button class="lang-btn" id="cnBtn">中文</button>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="logo-img" alt="GemstoneBR">
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#services" data-i18n="nav.services">Services</a>
+                <a href="about.html" data-i18n="nav.about">About Us</a>
+                <a href="operation.html" data-i18n="nav.op">Online Operation</a>
+                <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
+                <div class="language-switch">
+                    <button class="lang-btn active" id="enBtn">EN</button>
+                    <button class="lang-btn" id="cnBtn">中文</button>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- 装修页面主体（全双语标注） -->
-<section class="relative h-[85vh] flex items-center justify-center overflow-hidden mt-[130px]">
-    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/IMG_4503.jpg" 
-         class="absolute inset-0 w-full h-full object-cover" alt="Renovation Hero">
-    <div class="absolute inset-0 hero-overlay"></div>
-    <div class="relative z-10 text-center px-6 max-w-4xl">
-        <h1 class="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight" data-i18n="design.title">
-            Turnkey Renovation for <br>High-Yield Airbnb Listings
-        </h1>
-        <p class="text-lg text-white/90 mb-10 max-w-2xl mx-auto font-light" data-i18n="design.desc">
-            Based on 180+ proven property models. We design, build, and optimize your space for maximum rental income.
-        </p>
-        <a href="#pricing" class="inline-block bg-white text-[#333] px-10 py-4 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition shadow-xl" data-i18n="design.btn1">
-            View Renovation Plans
-        </a>
-    </div>
-</section>
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <span class="section-kicker" data-i18n="d.heroKicker">Interior Design Services</span>
+                <h1 data-i18n="d.heroTitle">Turnkey Interior Design & Furnishing</h1>
+                <p data-i18n="d.heroDesc">Based on 180+ proven property models. We design, build, and optimize your space for maximum rental income.</p>
+                <div style="display: flex; gap: 14px;">
+                    <a href="#pricing" class="btn btn-primary" data-i18n="d.heroBtn1">View Renovation Plans</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/IMG_4503.jpg" alt="Interior Design">
+                <div class="stat-overlay">
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <strong>180+</strong>
+                        <span data-i18n="d.perfStat">Managed Units</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="py-24 px-6 bg-[#FAF9F6]">
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6">
-        <div class="bg-white p-8 border border-gray-100 text-center group hover:border-primary transition">
-            <div class="text-3xl mb-3">📐</div>
-            <h4 class="font-bold text-sm uppercase tracking-wider text-gray-700" data-i18n="design.service1">Design</h4>
-        </div>
-        <div class="bg-white p-8 border border-gray-100 text-center group hover:border-primary transition">
-            <div class="text-3xl mb-3">🛒</div>
-            <h4 class="font-bold text-sm uppercase tracking-wider text-gray-700" data-i18n="design.service2">Sourcing</h4>
-        </div>
-        <div class="bg-white p-8 border border-gray-100 text-center group hover:border-primary transition">
-            <div class="text-3xl mb-3">🔨</div>
-            <h4 class="font-bold text-sm uppercase tracking-wider text-gray-700" data-i18n="design.service3">Build</h4>
-        </div>
-        <div class="bg-white p-8 border border-gray-100 text-center group hover:border-primary transition">
-            <div class="text-3xl mb-3">🧹</div>
-            <h4 class="font-bold text-sm uppercase tracking-wider text-gray-700" data-i18n="design.service4">Deep Clean</h4>
-        </div>
-        <div class="bg-white p-8 border border-gray-100 text-center group hover:border-primary transition">
-            <div class="text-3xl mb-3">📸</div>
-            <h4 class="font-bold text-sm uppercase tracking-wider text-gray-700" data-i18n="design.service5">Photography</h4>
-        </div>
-        <div class="bg-white p-8 border border-gray-100 text-center group hover:border-primary transition">
-            <div class="text-3xl mb-3">✨</div>
-            <h4 class="font-bold text-sm uppercase tracking-wider text-gray-700" data-i18n="design.service6">Fine Edit</h4>
-        </div>
-    </div>
-</section>
+    <section class="features-section" id="included">
+        <div class="container">
+            <div class="section-header" style="max-width: 800px;">
+                <span class="section-kicker" data-i18n="d.spKicker">Our core capabilities</span>
+                <h2 class="section-title" data-i18n="d.spTitle">Transforming Properties into Market-Leading Assets</h2>
+                <p class="section-lead" data-i18n="d.spLead">A targeted service system built to increase your RevPAR through accelerated renovation and aesthetic optimization.</p>
+            </div>
 
-<section class="py-24 bg-[#3D4F3B] text-white px-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-        <div class="md:w-3/5">
-            <h2 class="text-4xl font-serif mb-8 text-primary" data-i18n="design.config">Full Turnkey Configuration</h2>
-            <p class="text-gray-300 mb-10 text-lg font-light" data-i18n="design.configDesc">We equip your property with everything needed for a 5-star guest experience based on a standardized one-time checklist.</p>
-            <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
-                <li class="flex items-center space-x-3 border-l-2 border-primary pl-4">
-                    <span data-i18n="design.item1">Complete Kitchen & Bath Utilities</span>
-                </li>
-                <li class="flex items-center space-x-3 border-l-2 border-primary pl-4">
-                    <span data-i18n="design.item2">Smart door locks facilitate self-check-in</span>
-                </li>
-                <li class="flex items-center space-x-3 border-l-2 border-primary pl-4">
-                    <span data-i18n="design.item3">High-Speed WIFI Setup</span>
-                </li>
-                <li class="flex items-center space-x-3 border-l-2 border-primary pl-4">
-                    <span data-i18n="design.item4">Hotel-Grade Linens & Textiles</span>
-                </li>
-            </ul>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-pen-ruler"></i></div>
+                    <h3 data-i18n="d.service1">Design</h3>
+                    <p data-i18n="d.f1Desc">Floor plans, style concepts, and visual boards tailored for short-term rental market preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3 data-i18n="d.service2">Sourcing</h3>
+                    <p data-i18n="d.f2Desc">Furniture, fixtures, and equipment procurement. We balance style, durability, and cost.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hammer"></i></div>
+                    <h3 data-i18n="d.service3">Build</h3>
+                    <p data-i18n="d.f3Desc">Professional construction and installation oversight to ensure design comes to reality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-broom"></i></div>
+                    <h3 data-i18n="d.service4">Deep Clean</h3>
+                    <p data-i18n="d.f4Desc">Post-construction deep cleaning to ensure the property is spotless and guest-ready.</p>
+                </div>
+                <div class="feature-card highlight-card">
+                    <div class="free-badge" data-i18n="d.freeBadge">Free Bonus</div>
+                    <div class="feature-icon"><i class="fas fa-camera"></i></div>
+                    <h3 data-i18n="d.service5">Photography</h3>
+                    <p data-i18n="d.f5Desc">High-end architectural photography to capture the space and attract maximum clicks.</p>
+                    <span class="value-tag" data-i18n="d.f5Val">Save High Market Fee</span>
+                </div>
+                <div class="feature-card highlight-card">
+                    <div class="free-badge" data-i18n="d.freeBadge">Free Bonus</div>
+                    <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                    <h3 data-i18n="d.service6">Fine Edit</h3>
+                    <p data-i18n="d.f6Desc">Final visual editing to perfect lighting and mood, standing out in OTA search results.</p>
+                    <span class="value-tag" data-i18n="d.f6Val">Save High Market Fee</span>
+                </div>
+            </div>
         </div>
-        <div class="md:w-2/5 text-center p-12 bg-white/5 rounded-2xl border border-white/10">
-            <div class="text-6xl font-bold text-primary mb-4">180+</div>
-            <div class="text-sm uppercase tracking-widest text-gray-400" data-i18n="design.models">Proven Profit Models</div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="pricing" class="py-24 px-6 bg-white">
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-serif mb-4" data-i18n="design.plans">Partnership Plans</h2>
-            <div class="w-20 h-1 bg-primary mx-auto"></div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-10">
-            <!-- 标准化方案：修改按钮文字+跳转链接 -->
-            <div class="bg-white p-12 rounded-none border-2 border-primary shadow-2xl relative">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-6 py-1 uppercase tracking-widest" data-i18n="design.recommend">Recommended</div>
-                <h3 class="text-2xl font-serif text-gray-800 mb-4" data-i18n="design.standard">Standardized Plan</h3>
-                <p class="text-sm text-gray-500 mb-8 font-light italic" data-i18n="design.standardDesc">Fast turnaround, data-driven efficiency.</p>
-                <div class="text-5xl font-bold mb-10 text-gray-900 tracking-tighter text-center" data-i18n="design.fixed">Fixed Quote</div>
-                <ul class="space-y-5 text-sm text-gray-600 mb-12">
-                    <li class="flex items-center" data-i18n="design.standard1">✓ Proven Style Templates</li>
-                    <li class="flex items-center" data-i18n="design.standard2">✓ Full Appliance & Furniture Package</li>
-                    <li class="flex items-center">✓ <span class="text-primary font-bold underline ml-1" data-i18n="design.standard3">Past operating data can be referred to</span></li>
-                    <li class="flex items-center" data-i18n="design.standard4">✓ 2-Week Rapid Implementation</li>
+    <section class="turnkey-section">
+        <div class="container turnkey-grid">
+            <div class="turnkey-copy">
+                <h2 class="section-title" style="color: #fff; margin-bottom: 24px;" data-i18n="d.config">Full Turnkey Configuration</h2>
+                <p style="color: #E5E7EB; margin-bottom: 40px; font-size: 17px; font-weight: 300;" data-i18n="d.configDesc">We equip your property with everything needed for a 5-star guest experience based on a standardized one-time checklist.</p>
+                <ul class="turnkey-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-i18n="d.item1">Complete Kitchen & Bath Utilities</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-i18n="d.item2">Smart door locks facilitate self-check-in</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-i18n="d.item3">High-Speed WIFI Setup</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-i18n="d.item4">Hotel-Grade Linens & Textiles</span>
+                    </li>
                 </ul>
-                <a href="reserve.html" class="block w-full text-center py-4 bg-primary text-white font-bold uppercase tracking-widest text-sm hover:bg-primary-dark transition" data-i18n="design.explore">Explore Our Project</a>
             </div>
-
-            <div class="bg-white p-12 rounded-none border border-gray-100 shadow-sm">
-                <h3 class="text-2xl font-serif text-gray-800 mb-4" data-i18n="design.custom">Customized Plan</h3>
-                <p class="text-sm text-gray-500 mb-8 font-light italic" data-i18n="design.customDesc">Tailor-made for premium niche markets.</p>
-                <div class="text-5xl font-bold mb-10 text-gray-900 tracking-tighter text-center">10% <span class="text-lg text-gray-400" data-i18n="design.fee">Fee</span></div>
-                <ul class="space-y-5 text-sm text-gray-600 mb-12">
-                    <li class="flex items-center" data-i18n="design.custom1">✓ Bespoke Interior Design</li>
-                    <li class="flex items-center" data-i18n="design.custom2">✓ High-End Niche Branding</li>
-                    <li class="flex items-center" data-i18n="design.custom3">✓ Full Quality Supervision</li>
-                    <li class="flex items-center" data-i18n="design.custom4">✓ Strategic Market Positioning</li>
-                </ul>
-                <a href="index.html#contact" class="block w-full text-center py-4 border-2 border-gray-900 text-gray-900 font-bold uppercase tracking-widest text-sm hover:bg-gray-900 hover:text-white transition" data-i18n="design.quote">Get Custom Quote</a>
+            <div class="turnkey-stat">
+                <div class="num">180+</div>
+                <div class="label" data-i18n="d.models">Proven Profit Models</div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 修复后：简洁居中的页脚 -->
-<footer>
-    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="footer-logo" alt="GemstoneBR">
-    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
-</footer>
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-kicker" data-i18n="d.portKicker">PORTFOLIO</span>
+                <h2 class="section-title" data-i18n="d.portTitle">Design Success Stories</h2>
+                <p class="section-lead" data-i18n="d.portLead">Explore how we transform blank spaces into stunning, high-occupancy assets that guests love.</p>
+            </div>
 
-<!-- 完整双语脚本（英文+中文全覆盖） -->
-<script>
-    const i18n = {
-        en: {
-            nav: { services: "Services", about: "About Us", reserve: "Reserve a Room", consult: "Free Consultation" },
-            design: {
-                title: "Turnkey Renovation for High-Yield Airbnb Listings",
-                desc: "Based on 180+ proven property models. We design, build, and optimize your space for maximum rental income.",
-                btn1: "View Renovation Plans",
-                service1: "Design",
-                service2: "Sourcing",
-                service3: "Build",
-                service4: "Deep Clean",
-                service5: "Photography",
-                service6: "Fine Edit",
-                config: "Full Turnkey Configuration",
-                configDesc: "We equip your property with everything needed for a 5-star guest experience based on a standardized one-time checklist.",
-                item1: "Complete Kitchen & Bath Utilities",
-                item2: "Smart door locks facilitate self-check-in",
-                item3: "High-Speed WIFI Setup",
-                item4: "Hotel-Grade Linens & Textiles",
-                models: "Proven Profit Models",
-                plans: "Partnership Plans",
-                recommend: "Recommended",
-                standard: "Standardized Plan",
-                standardDesc: "Fast turnaround, data-driven efficiency.",
-                fixed: "Fixed Quote",
-                standard1: "Proven Style Templates",
-                standard2: "Full Appliance & Furniture Package",
-                standard3: "Past operating data can be referred to",
-                standard4: "2-Week Rapid Implementation",
-                explore: "Explore Our Project",
-                custom: "Customized Plan",
-                customDesc: "Tailor-made for premium niche markets.",
-                fee: "Fee",
-                custom1: "Bespoke Interior Design",
-                custom2: "High-End Niche Branding",
-                custom3: "Full Quality Supervision",
-                custom4: "Strategic Market Positioning",
-                quote: "Get Custom Quote"
+            <div class="portfolio-grid">
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1727.jpg" alt="Luxurious 1BR">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-header">
+                            <h4 class="case-title" data-i18n="d.c1Title">Luxurious 1BR</h4>
+                            <p class="case-location" data-i18n="d.c1Loc"><i class="fas fa-map-marker-alt"></i> Downtown Luxury Condo</p>
+                        </div>
+                        <div class="reviews-wrapper">
+                            <div class="review-card">
+                                <p data-i18n="d.c1r1">"Beautiful place to stay! The condo was clean and definitely same as posted! "</p>
+                                <div class="review-footer">
+                                    <div class="guest-info">
+                                        <div class="guest-avatar">J</div>
+                                        <div class="guest-name">Jamal</div>
+                                    </div>
+                                    <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <div class="review-card">
+                                <p data-i18n="d.c1r2">"It's so comfortable and aesthetically good! The hosts are very responsive and welcoming. "</p>
+                                <div class="review-footer">
+                                    <div class="guest-info">
+                                        <div class="guest-avatar">S</div>
+                                        <div class="guest-name">Summer</div>
+                                    </div>
+                                    <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1119.jpg" alt="Modern style 1BR">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-header">
+                            <h4 class="case-title" data-i18n="d.c2Title">Modern style 1BR</h4>
+                            <p class="case-location" data-i18n="d.c2Loc"><i class="fas fa-map-marker-alt"></i> Urban Rest Suite</p>
+                        </div>
+                        <div class="reviews-wrapper">
+                            <div class="review-card">
+                                <p data-i18n="d.c2r1">"The bedroom design is absolutely dreamy! The colors are so relaxing, and the furniture choice is impeccable.The unit’s furniture arrangement and ambiance are all great, giving homey and cozy feeling."</p>
+                                <div class="review-footer">
+                                    <div class="guest-info">
+                                        <div class="guest-avatar">N</div>
+                                        <div class="guest-name">Nicole</div>
+                                    </div>
+                                    <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <div class="review-card">
+                                <p data-i18n="d.c2r2">"The place was aesthetically nice. It was decorated properly, so cozy, and smells good."</p>
+                                <div class="review-footer">
+                                    <div class="guest-info">
+                                        <div class="guest-avatar">A</div>
+                                        <div class="guest-name">Ainah</div>
+                                    </div>
+                                    <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/908.jpg" alt="Tropical style 1BR">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-header">
+                            <h4 class="case-title" data-i18n="d.c3Title">Tropical style 1BR</h4>
+                            <p class="case-location" data-i18n="d.c3Loc"><i class="fas fa-map-marker-alt"></i> City Loft Apartment</p>
+                        </div>
+                        <div class="reviews-wrapper">
+                            <div class="review-card">
+                                <p data-i18n="d.c3r1">"Unit is very neat and cozy. Love the aesthetic– relaxing but not dull. Everything we needed for a relaxing short stay is here."</p>
+                                <div class="review-footer">
+                                    <div class="guest-info">
+                                        <div class="guest-avatar">L</div>
+                                        <div class="guest-name">Lei</div>
+                                    </div>
+                                    <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <div class="review-card">
+                                <p data-i18n="d.c3r2">"The interiors had a peaceful charm, muted tones, warm lighting, and solohiya accent. "</p>
+                                <div class="review-footer">
+                                    <div class="guest-info">
+                                        <div class="guest-avatar">M</div>
+                                        <div class="guest-name">Mara</div>
+                                    </div>
+                                    <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="d.plans">Partnership Plans</h2>
+                <div style="width: 50px; height: 3px; background: var(--primary); margin: 0 auto; border-radius: 2px;"></div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card popular">
+                    <span class="popular-badge" data-i18n="d.recommend">Recommended</span>
+                    <h3 data-i18n="d.standard">Standardized Plan</h3>
+                    <p data-i18n="d.standardDesc">Fast turnaround, data-driven efficiency.</p>
+                    
+                    <div class="price-display" data-i18n="d.fixed">Fixed Quote</div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.standard1">Proven Style Templates</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.standard2">Full Appliance & Furniture Package</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong style="color: var(--primary); text-decoration: underline;" data-i18n="d.standard3">Past operating data can be referred to</strong></span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.standard4">2-Week Rapid Implementation</span></li>
+                    </ul>
+                    
+                    <a href="reserve.html" class="btn btn-primary" style="width: 100%;" data-i18n="d.explore">Explore Our Project</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 data-i18n="d.custom">Customized Plan</h3>
+                    <p data-i18n="d.customDesc">Tailor-made for premium niche markets.</p>
+                    
+                    <div class="price-display">10% <span data-i18n="d.fee">Fee</span></div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.custom1">Bespoke Interior Design</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.custom2">High-End Niche Branding</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.custom3">Full Quality Supervision</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="d.custom4">Strategic Market Positioning</span></li>
+                    </ul>
+                    
+                    <a href="index.html#contact" class="btn" style="width: 100%; border: 2px solid var(--text-dark); color: var(--text-dark);" data-i18n="d.quote" onmouseover="this.style.background='var(--text-dark)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='var(--text-dark)';">Get Custom Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 data-i18n="d.ctaTitle">Ready to Elevate Your Property's Value?</h2>
+                <p data-i18n="d.ctaDesc">Let us evaluate your property. Our designers will provide insights on aesthetic upgrades and asset configuration that will maximize your rental yield.</p>
+                <a href="index.html#contact" class="btn btn-primary" data-i18n="d.ctaBtn">Free Renovation Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" alt="GemstoneBR" style="height: 100px; margin: 0 auto;">
+        <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+    </footer>
+
+    <a href="index.html#contact" class="floating-contact" title="Contact Us">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
             }
-        },
-        zh: {
-            nav: { services: "服务", about: "关于我们", reserve: "预订房间", consult: "免费咨询" },
-            design: {
-                title: "一站式装修改造｜高收益短租房源定制",
-                desc: "基于180+套成功运营案例，我们为您设计、施工、优化空间，实现租金收益最大化",
-                btn1: "查看装修方案",
-                service1: "空间设计",
-                service2: "软装采购",
-                service3: "施工落地",
-                service4: "深度保洁",
-                service5: "专业摄影",
-                service6: "精修美化",
-                config: "全配套一站式配置",
-                configDesc: "我们按照标准化清单，为房源配齐所有设施，打造五星级房客体验",
-                item1: "完整厨卫家电用品",
-                item2: "智能门锁自助入住",
-                item3: "高速WIFI网络配置",
-                item4: "酒店级床品布草",
-                models: "成熟盈利模型",
-                plans: "合作方案",
-                recommend: "推荐选择",
-                standard: "标准化方案",
-                standardDesc: "快速落地，数据驱动高效运营",
-                fixed: "固定报价",
-                standard1: "成熟风格模板",
-                standard2: "全套家电家具软装",
-                standard3: "可参考历史运营数据",
-                standard4: "2周快速落地",
-                explore: "查看案例房源",
-                custom: "个性化定制方案",
-                customDesc: "为高端细分市场量身定制",
-                fee: "服务费",
-                custom1: "专属室内设计",
-                custom2: "高端小众品牌打造",
-                custom3: "全程质量监管",
-                custom4: "市场战略定位",
-                quote: "获取定制报价"
-            }
-        }
-    };
-
-    const enBtn = document.getElementById('enBtn');
-    const cnBtn = document.getElementById('cnBtn');
-    const elements = document.querySelectorAll('[data-i18n]');
-
-    function changeLang(lang) {
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const keys = key.split('.');
-            let text = i18n[lang];
-            keys.forEach(k => text = text[k]);
-            el.innerHTML = text;
         });
-    }
 
-    enBtn.addEventListener('click', () => {
-        enBtn.classList.add('active');
-        cnBtn.classList.remove('active');
-        changeLang('en');
-    });
+        const i18n = {
+            en: {
+                nav: { services:"Services", about:"About Us", op:"Online Operation", consult:"Free Consultation" },
+                d: {
+                    heroKicker: "Interior Design Services", 
+                    heroTitle: "Turnkey Interior Design & Furnishing", 
+                    heroDesc: "Based on 180+ proven property models. We design, build, and optimize your space for maximum rental income.",
+                    heroBtn1: "View Renovation Plans",
+                    perfStat: "Managed Units",
+                    spKicker: "Our core capabilities", 
+                    spTitle: "Transforming Properties into Market-Leading Assets", 
+                    spLead: "A targeted service system built to increase your RevPAR through accelerated renovation and aesthetic optimization.",
+                    service1: "Design", f1Desc: "Floor plans, style concepts, and visual boards tailored for short-term rental market preferences.",
+                    service2: "Sourcing", f2Desc: "Furniture, fixtures, and equipment procurement. We balance style, durability, and cost.",
+                    service3: "Build", f3Desc: "Professional construction and installation oversight to ensure design comes to reality.",
+                    service4: "Deep Clean", f4Desc: "Post-construction deep cleaning to ensure the property is spotless and guest-ready.",
+                    service5: "Photography", f5Desc: "High-end architectural photography to capture the space and attract maximum clicks.",
+                    service6: "Fine Edit", f6Desc: "Final visual editing to perfect lighting and mood, standing out in OTA search results.",
+                    freeBadge: "Free Bonus", f5Val: "Save High Market Fee", f6Val: "Save High Market Fee",
+                    
+                    config: "Full Turnkey Configuration",
+                    configDesc: "We equip your property with everything needed for a 5-star guest experience based on a standardized one-time checklist.",
+                    item1: "Complete Kitchen & Bath Utilities",
+                    item2: "Smart door locks facilitate self-check-in",
+                    item3: "High-Speed WIFI Setup",
+                    item4: "Hotel-Grade Linens & Textiles",
+                    models: "Proven Profit Models",
+                    
+                    portKicker: "PORTFOLIO", portTitle: "Design Success Stories", portLead: "Explore how we transform blank spaces into stunning, high-occupancy assets that guests love.",
+                    c1Title: "Modern Chic Haven", c1Loc: "Downtown Luxury Condo", c1r1: "\"Unbelievable design! The moment we walked in, we felt like we were in a high-end magazine shoot. The decor details are perfect.\"", c1r2: "\"Best Airbnb decor we have ever seen. Highly professional style yet incredibly cozy and functional.\"",
+                    c2Title: "Serene Dream Bedroom", c2Loc: "Urban Rest Suite", c2r1: "\"The bedroom design is absolutely dreamy! The colors are so relaxing, and the furniture choice is impeccable.\"", c2r2: "\"Highly stylized stay that guarantees a 5-star experience. The attention to decor detail is superb.\"",
+                    c3Title: "Functional & Stylish Dining", c3Loc: "City Loft Apartment", c3r1: "\"The open kitchen and dining area are incredibly well-designed. Super functional yet stylish. Perfect for hosting.\"", c3r2: "\"Amazing lighting and beautiful dining setup. It made our family dinner so special and highly photogenic!\"",
+                    
+                    plans: "Partnership Plans",
+                    recommend: "Recommended",
+                    standard: "Standardized Plan",
+                    standardDesc: "Fast turnaround, data-driven efficiency.",
+                    fixed: "Fixed Quote",
+                    standard1: "Proven Style Templates",
+                    standard2: "Full Appliance & Furniture Package",
+                    standard3: "Past operating data can be referred to",
+                    standard4: "2-Week Rapid Implementation",
+                    explore: "Explore Our Project",
+                    custom: "Customized Plan",
+                    customDesc: "Tailor-made for premium niche markets.",
+                    fee: "Fee",
+                    custom1: "Bespoke Interior Design",
+                    custom2: "High-End Niche Branding",
+                    custom3: "Full Quality Supervision",
+                    custom4: "Strategic Market Positioning",
+                    quote: "Get Custom Quote",
+                    ctaTitle: "Ready to Elevate Your Property's Value?", ctaDesc: "Our designers will provide insights on aesthetic upgrades that will maximize your rental yield.", ctaBtn: "Free Renovation Consultation"
+                }
+            },
+            zh: {
+                nav: { services:"服务项目", about:"关于我们", op:"线上运营", consult:"免费咨询" },
+                d: {
+                    heroKicker: "装修设计服务", 
+                    heroTitle: "全流程全包式室内设计与软装", 
+                    heroDesc: "基于180+套成功运营案例，我们为您设计、施工、优化空间，实现租金收益最大化。",
+                    heroBtn1: "查看装修方案",
+                    perfStat: "在管房源",
+                    spKicker: "我们的核心能力", 
+                    spTitle: "将您的房产转化为行业领先的资产", 
+                    spLead: "针对性服务体系，通过加速装修与视觉优化，显著提升您的 RevPAR 收益。",
+                    service1: "空间设计", f1Desc: "为短租市场深度定制的空间结构、风格概念及视觉效果。让每平米都产生收益。",
+                    service2: "软装采购", f2Desc: "家具、家电与设备的采购。我们为您平衡风格、耐用性与成本，实现收益最大化。",
+                    service3: "施工落地", f3Desc: "专业的施工与安装监督，确保设计完美还原至现实空间。",
+                    service4: "深度保洁", f4Desc: "施工后的全方位深度保洁，确保房源一尘不染，随时准备迎接房客入住。",
+                    service5: "专业摄影", f5Desc: "高端建筑摄影，完美捕捉空间美感，最大化吸引平台用户的点击。",
+                    service6: "精修美化", f6Desc: "后期视觉精修，优化光线与氛围，让您的房源在OTA搜索结果中脱颖而出。",
+                    freeBadge: "免费赠送", f5Val: "免收市价高昂拍摄费", f6Val: "免收后期精修额外费用",
+                    
+                    config: "全配套一站式配置",
+                    configDesc: "我们按照标准化清单，为房源配齐所有设施，打造五星级房客体验。",
+                    item1: "完整厨卫家电用品",
+                    item2: "智能门锁自助入住",
+                    item3: "高速WIFI网络配置",
+                    item4: "酒店级床品布草",
+                    models: "成熟盈利模型",
+                    
+                    portKicker: "项目案例展示", portTitle: "装修设计成功故事", portLead: "探索我们如何将空白的空间转化为深受客房欢迎的高收益、高口碑房产。",
+                    c1Title: "Modern Chic 精致港湾", c1Loc: "Downtown 豪华公寓", c1r1: "“难以置信的设计！房间看起来就像杂志封面一样漂亮。每一个装修细节都很完美。”", c1r2: "“我们住过的最舒适的民宿，装修细节满分。强烈推荐！”",
+                    c2Title: "Serene Dream 幻梦卧室", c2Loc: "Urban 静谧套房", c2r1: "“卧室的设计真的是太梦幻了！配色非常让人放松，家具选择也很高级。”", c2r2: "“非常有设计感的民宿，提供5星级的入住体验。软装真的很细腻。”",
+                    c3Title: "Modern & Functional 现代厨房", c3Loc: "City 阁楼公寓", c3r1: "“难以置信的设计！开放式厨房和用餐区设计得太完美了。非常适合举办私人晚餐会议。”", c3r2: "“极其高级的灯光和美妙的用餐布置。这让我们的家庭聚餐变得非常特别且出片！”",
+                    
+                    plans: "合作方案",
+                    recommend: "推荐选择",
+                    standard: "标准化方案",
+                    standardDesc: "快速落地，数据驱动高效运营",
+                    fixed: "固定报价",
+                    standard1: "成熟风格模板",
+                    standard2: "全套家电家具软装",
+                    standard3: "可参考历史运营数据",
+                    standard4: "2周快速落地",
+                    explore: "查看案例房源",
+                    custom: "个性化定制方案",
+                    customDesc: "为高端细分市场量身定制",
+                    fee: "服务费",
+                    custom1: "专属室内设计",
+                    custom2: "高端小众品牌打造",
+                    custom3: "全程质量监管",
+                    custom4: "市场战略定位",
+                    quote: "获取定制报价",
+                    ctaTitle: "准备好提升您的收益了吗？", ctaDesc: "联系我们的运营顾问，为您提供免费的房源诊断与收益提升专项建议。", ctaBtn: "立即免费咨询"
+                }
+            }
+        };
 
-    cnBtn.addEventListener('click', () => {
-        cnBtn.classList.add('active');
-        enBtn.classList.remove('active');
-        changeLang('zh');
-    });
-</script>
+        const enBtn = document.getElementById('enBtn');
+        const cnBtn = document.getElementById('cnBtn');
+        const elements = document.querySelectorAll('[data-i18n]');
+
+        function changeLang(lang) {
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let text = i18n[lang];
+                keys.forEach(k => { if (text) text = text[k]; });
+                if (text) el.innerHTML = text;
+            });
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        enBtn.addEventListener('click', () => {
+            enBtn.classList.add('active'); cnBtn.classList.remove('active'); changeLang('en');
+        });
+
+        cnBtn.addEventListener('click', () => {
+            cnBtn.classList.add('active'); enBtn.classList.remove('active'); changeLang('zh');
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            if (savedLang === 'zh') cnBtn.click(); else enBtn.click();
+        });
+    </script>
 </body>
 </html>
