@@ -4,91 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | GemstoneBR Co-Host</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
     <style>
-        :root {
-            --primary: #4FD1C5;
-            --primary-dark: #3AA89E;
-            --text-main: #1F2937;
-            --text-muted: #6B7280;
-            --bg-soft: #F9FBFC;
-            --max-width: 1140px;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background: #fff; overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* ========== 导航栏：LOGO更新为48px ========== */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 16px 0; border-bottom: 1px solid #f0f0f0; z-index: 1000; }
-        .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main); }
-        .logo-img { height: 48px; width: auto; } /* 导航LOGO固定48px */
-        .logo-text { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { text-decoration: none; font-size: 14px; color: var(--text-muted); font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-        .nav-btn { padding: 10px 20px; background: var(--primary); color: white !important; border-radius: 6px; font-size: 13px; }
-        .lang-btn { background: none; border: 1px solid #eee; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; }
-        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-        /* ========== 视觉模块：错位 Hero ========== */
-        .hero-section { padding: 160px 0 100px; background: linear-gradient(to bottom, #fff, var(--bg-soft)); }
-        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
-        .hero-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; }
-        .hero-content h1 { font-size: 52px; line-height: 1.1; margin-bottom: 24px; color: var(--text-main); }
-        .hero-content p { font-size: 18px; color: var(--text-muted); margin-bottom: 30px; }
-        .hero-image-wrapper { position: relative; }
-        .team-photo { width: 100%; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.12); z-index: 2; position: relative; }
-        .hero-decoration { position: absolute; width: 100%; height: 100%; border: 2px solid var(--primary); border-radius: 12px; top: 20px; left: 20px; z-index: 1; }
-
-        /* ========== 核心背景：卡片化排版 ========== */
-        .intro-section { padding: 100px 0; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
-        .intro-card { padding: 40px; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f5f5f5; }
-        .intro-card i { font-size: 32px; color: var(--primary); margin-bottom: 25px; display: block; }
-        .intro-card h3 { font-size: 22px; margin-bottom: 15px; }
-        .intro-card p { font-size: 15px; color: var(--text-muted); }
-
-        /* ========== 执照合规版块：缩小尺寸+横竖版高度统一 ========== */
-        .license-section { padding: 100px 0; background: #fff; }
-        .license-flex { display: flex; gap: 50px; align-items: stretch; margin-top: 60px; }
-        .license-item { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); flex: 1; text-align: center; }
-        
-        /* 核心修改：缩小营业执照 + 横竖版高度完全一致 */
-        .img-container-landscape,
-        .img-container-portrait {
-            width: 100%;
-            height: 200px; /* 固定高度，横竖版完全等高 */
-            background: #eee;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* 严格控制的 3 色极简高级色系 */
+        :root {
+            --primary: #4FD1C5; 
+            --primary-light: rgba(79, 209, 197, 0.12);
+            --primary-dark: #3AA89E;
+            
+            --text-dark: #1F2937; /* 深石板灰 */
+            --text-light: #6B7280; /* 柔和灰 */
+            
+            --bg-light: #FFFFFF;
+            --bg-soft: #F9FAFB; /* 极浅灰蓝背景 */
+            --border-color: #E5E7EB; 
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .license-item img { max-width: 90%; max-height: 90%; object-fit: contain; }
-        .license-tag { display: inline-block; padding: 4px 12px; background: var(--primary); color: #fff; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
 
-        /* ========== 每周进化：线性流程 ========== */
-        .process-section { padding: 100px 0; }
-        .process-row { display: flex; justify-content: space-between; margin-top: 60px; position: relative; }
-        .process-row::before { content: ''; position: absolute; top: 30px; left: 0; width: 100%; height: 1px; background: #eee; z-index: 1; }
-        .process-step { position: relative; z-index: 2; background: #fff; text-align: center; width: 22%; }
-        .step-dot { width: 60px; height: 60px; background: #fff; border: 2px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 700; transition: 0.3s; }
-        .process-step:hover .step-dot { background: var(--primary); color: #fff; }
+        html { scroll-behavior: smooth; }
 
-        /* ========== 页脚：LOGO更新为128px ========== */
-        footer { padding: 60px 0; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { height: 48px; width: auto; margin-bottom: 15px; } /* 底部LOGO固定128px */
-        .copyright { font-size: 12px; color: var(--text-muted); margin-top: 10px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
 
-        @media (max-width: 968px) {
-            .hero-grid, .grid-3, .license-flex, .process-row, .team-grid { grid-template-columns: 1fr; flex-direction: column; gap: 40px; }
-            .process-row::before { display: none; }
-            .process-step, .team-item { width: 100%; }
+        h1, h2, h3, h4, .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ================= 导航栏 ================= */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px); padding: 15px 0; border-bottom: 1px solid var(--border-color); z-index: 1000;
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 44px; }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-light); transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-btn { padding: 10px 24px; background: var(--primary); color: white !important; border-radius: 6px; font-weight: 600; transition: var(--transition);}
+        .nav-btn:hover { background: var(--primary-dark); }
+        .language-switch { display: flex; gap: 6px; margin-left: 16px; }
+        .lang-btn { background: transparent; border: 1px solid var(--border-color); padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; cursor: pointer; transition: var(--transition); color: var(--text-light);}
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .mobile-menu-toggle { display: none; font-size: 24px; color: var(--text-dark); cursor: pointer; }
+
+        /* ================= 通用布局 ================= */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .section-kicker { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-dark); font-weight: 700; margin-bottom: 16px; font-family: 'Inter', sans-serif;}
+        .section-title { font-size: 36px; line-height: 1.2; margin-bottom: 20px; }
+        .section-lead { font-size: 16px; color: var(--text-light); }
+
+        /* ================= Hero 首屏 ================= */
+        .hero-section {
+            padding: 180px 0 100px;
+            background: linear-gradient(180deg, #F0FDFB 0%, #FFFFFF 100%);
+        }
+        .hero-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 60px; align-items: center; }
+        .hero-copy h1 { font-size: clamp(34px, 4vw, 50px); line-height: 1.2; margin-bottom: 24px; letter-spacing: -1px;}
+        .hero-copy p { font-size: 17px; color: var(--text-light); margin-bottom: 32px; max-width: 90%; line-height: 1.7;}
+        
+        .hero-visual { position: relative; border-radius: 24px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border-color);}
+        .hero-visual img { width: 100%; height: auto; object-fit: cover; }
+
+        /* ================= 业务规模与体量数据条 ================= */
+        .impact-section { padding: 60px 0; background: #fff; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 30px; }
+        .impact-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;}
+        .impact-item h3 { font-size: 56px; color: var(--primary-dark); margin-bottom: 8px; letter-spacing: -2px; line-height: 1;}
+        .impact-item p { font-size: 15px; color: var(--text-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
+        .impact-item .sub-text { font-size: 13px; color: var(--text-light); background: var(--bg-soft); padding: 4px 12px; border-radius: 6px; border: 1px solid var(--border-color);}
+
+        /* ================= 4大专业化细分团队 ================= */
+        .teams-section { background: var(--bg-soft); }
+        .teams-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .team-card { background: #fff; border-radius: 16px; padding: 32px 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column;}
+        .team-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--primary-light);}
+        .team-icon { width: 52px; height: 52px; background: var(--primary-light); color: var(--primary-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 24px; }
+        .team-card h3 { font-size: 18px; margin-bottom: 12px; letter-spacing: -0.2px;}
+        .team-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+        /* ================= 执照合规版块 ================= */
+        .license-section { background: #fff; }
+        .license-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: stretch; max-width: 1000px; margin: 0 auto;}
+        .license-card { background: var(--bg-soft); border-radius: 20px; padding: 40px 30px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition);}
+        .license-card:hover { box-shadow: var(--shadow-md); border-color: var(--primary-light);}
+        
+        .license-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--text-dark); color: #fff; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px;}
+        .license-tag i { color: var(--primary); }
+        
+        .img-container { width: 100%; height: 260px; background: #fff; border-radius: 12px; border: 1px solid var(--border-color); padding: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);}
+        .img-container img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(20%); transition: var(--transition);}
+        .license-card:hover .img-container img { filter: grayscale(0%); transform: scale(1.02);}
+        
+        .license-card h4 { font-size: 18px; margin-bottom: 8px; }
+        .license-card p { font-size: 14px; color: var(--text-light); }
+
+        /* ================= 持续进化的管理闭环 ================= */
+        .process-section { background: var(--bg-soft); border-top: 1px solid var(--border-color); }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .process-step { background: #fff; border-radius: 16px; padding: 32px 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); transition: var(--transition); position: relative;}
+        .process-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+        
+        .step-dot { width: 44px; height: 44px; background: var(--primary-light); color: var(--primary-dark); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .process-step:hover .step-dot { background: var(--primary); color: #fff; border-color: var(--primary);}
+        
+        .process-step h4 { font-size: 16px; margin-bottom: 10px; }
+        .process-step p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+        /* ================= CTA 模块 ================= */
+        .cta-section { padding: 100px 0; text-align: center; background: #fff; }
+        .cta-box { max-width: 800px; margin: 0 auto; background: var(--bg-soft); padding: 60px 40px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+        .cta-box h2 { font-size: 30px; margin-bottom: 16px; letter-spacing: -1px;}
+        .cta-box p { font-size: 15px; color: var(--text-light); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;}
+        .btn-primary { display: inline-flex; padding: 16px 32px; background: var(--primary); color: #fff; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; font-family: 'Inter', sans-serif;}
+        .btn-primary:hover { background: var(--primary-dark); box-shadow: 0 10px 20px rgba(79, 209, 197, 0.3); transform: translateY(-2px);}
+
+        /* ================= 页脚与悬浮按钮 ================= */
+        footer { padding: 50px 40px; text-align: center; border-top: 1px solid var(--border-color); background: #fff; }
+        .footer-logo { height: 80px; margin: 0 auto 16px; object-fit: contain; }
+        .copyright { font-size: 13px; color: var(--text-light); }
+
+        .floating-contact { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 10px 25px rgba(79, 209, 197, 0.4); z-index: 999; transition: var(--transition); }
+        .floating-contact:hover { transform: translateY(-5px) scale(1.1); }
+
+        /* ================= 响应式 ================= */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-copy { text-align: center; }
+            .hero-copy p { margin: 0 auto 32px; }
+            .teams-grid { grid-template-columns: repeat(2, 1fr); }
+            .license-grid { grid-template-columns: 1fr; max-width: 600px;}
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 12px 16px; }
+            .mobile-menu-toggle { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px 0; box-shadow: var(--shadow-md); border-bottom: 1px solid var(--border-color); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: var(--transition); opacity: 0; pointer-events: none; }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; pointer-events: all; }
+            .nav-links a, .nav-btn { width: 90%; text-align: center; margin: 10px auto; padding: 12px; }
+            .language-switch { justify-content: center; margin: 10px 0; }
+            
+            .hero-section { padding: 140px 0 60px; }
+            .hero-copy h1 { font-size: 32px; }
+            .impact-grid { grid-template-columns: 1fr; gap: 30px; }
+            .teams-grid, .process-grid { grid-template-columns: 1fr; }
+            .cta-box { padding: 40px 20px; }
+            .floating-contact { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px;}
         }
     </style>
 </head>
@@ -97,16 +180,15 @@
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-wrapper">
-            <!-- 新LOGO链接 -->
             <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="logo-img" alt="GemstoneBR">
-            <span class="logo-text"> </span>
         </a>
-        <div class="nav-links">
+        <div class="mobile-menu-toggle" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
             <a href="index.html#services" data-i18n="nav.services">Services</a>
-            <a href="about.html" data-i18n="nav.about">About Us</a>
+            <a href="about.html" class="active" data-i18n="nav.about" style="color: var(--primary);">About Us</a>
             <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
             <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
-            <div class="lang-switch">
+            <div class="language-switch">
                 <button class="lang-btn active" id="enBtn">EN</button>
                 <button class="lang-btn" id="cnBtn">中文</button>
             </div>
@@ -115,68 +197,93 @@
 </nav>
 
 <section class="hero-section">
-    <div class="container">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <h1 data-i18n="about.h1">Asset Integrity, Hospitality Excellence.</h1>
-                <p data-i18n="about.hp">GemstoneBR is an institutionally-led co-hosting partner, bridging professional real estate management with luxury service standards.</p>
-            </div>
-            <div class="hero-image-wrapper">
-                <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/team.jpg" class="team-photo" alt="GemstoneBR Team">
-                <div class="hero-decoration"></div>
-            </div>
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <span class="section-kicker" data-i18n="about.kicker">About GemstoneBR</span>
+            <h1 data-i18n="about.h1">The Largest & Most Formal Short-Term Rental Team in the Philippines.</h1>
+            <p data-i18n="about.hp">With a dedicated team of over 50 full-time professionals, we provide the most comprehensive and institutional-grade property management across Metro Manila.</p>
+        </div>
+        <div class="hero-visual">
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/team.jpg" alt="GemstoneBR Team">
         </div>
     </div>
 </section>
 
-<section class="intro-section">
-    <div class="container">
-        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-            <h2 style="font-size: 36px;" data-i18n="about.t1">Rooted in Professionalism</h2>
-            <p style="color: var(--text-muted); margin-top: 15px;" data-i18n="about.p1">We don't just manage rooms; we curate assets with a management team from real estate investment and project management backgrounds.</p>
+<section class="impact-section">
+    <div class="container impact-grid">
+        <div class="impact-item">
+            <h3>50+</h3>
+            <p data-i18n="about.stat1">Team Members</p>
+            <span class="sub-text" data-i18n="about.stat1Sub">Full-time professionals</span>
         </div>
-        <div class="grid-3">
-            <div class="intro-card">
-                <i class="fas fa-city"></i>
-                <h3 data-i18n="about.c1t">Project Management DNA</h3>
-                <p data-i18n="about.c1p">Our core leadership applies real estate investment logic to short-term rentals, ensuring risk control and asset preservation.</p>
-            </div>
-            <div class="intro-card">
-                <i class="fas fa-concierge-bell"></i>
-                <h3 data-i18n="about.c2t">Hotel-Grade Operations</h3>
-                <p data-i18n="about.c2p">Field supervisors and housekeeping staff are recruited from 5-star backgrounds, maintaining rigorous service SOPs.</p>
-            </div>
-            <div class="intro-card">
-                <i class="fas fa-globe"></i>
-                <h3 data-i18n="about.c3t">Multilingual Support</h3>
-                <p data-i18n="about.c3p">Our customer service team eliminates cultural and language barriers for international guests and offshore owners.</p>
-            </div>
+        <div class="impact-item">
+            <h3>3</h3>
+            <p data-i18n="about.stat2">Major Cities</p>
+            <span class="sub-text" data-i18n="about.stat2Sub">Makati, Pasay, Mandaluyong</span>
+        </div>
+        <div class="impact-item">
+            <h3>7</h3>
+            <p data-i18n="about.stat3">Premium Projects</p>
+            <span class="sub-text" data-i18n="about.stat3Sub">Top-tier condominiums</span>
         </div>
     </div>
 </section>
 
+<section class="teams-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-kicker" data-i18n="about.teamKicker">Team Structure</span>
+            <h2 class="section-title" data-i18n="about.teamTitle">Our Specialized Divisions</h2>
+            <p class="section-lead" data-i18n="about.teamLead">We operate with an institutional structure, dividing our 50+ staff into highly specialized departments to ensure 5-star service at every touchpoint.</p>
+        </div>
+        <div class="teams-grid">
+            <div class="team-card">
+                <div class="team-icon"><i class="fas fa-laptop-house"></i></div>
+                <h3 data-i18n="about.t1Title">Online Operations Team</h3>
+                <p data-i18n="about.t1Desc">Dedicated to OTA algorithm optimization, dynamic pricing, and 24/7 multilingual guest communication.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><i class="fas fa-concierge-bell"></i></div>
+                <h3 data-i18n="about.t2Title">Offline Service Team</h3>
+                <p data-i18n="about.t2Desc">Hotel-grade housekeeping and field supervisors ensuring flawless check-ins and spotless turnovers.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><i class="fas fa-bug-slash"></i></div>
+                <h3 data-i18n="about.t3Title">Pest Control Team</h3>
+                <p data-i18n="about.t3Desc">In-house specialized pest management, conducting regular deep sanitization suited for tropical climates.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><i class="fas fa-tools"></i></div>
+                <h3 data-i18n="about.t4Title">Maintenance Team</h3>
+                <p data-i18n="about.t4Desc">Rapid-response engineering team handling AC, plumbing, appliance, and structural repairs instantly.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="license-section">
     <div class="container">
-        <div style="text-align: center;">
-            <h2 style="font-size: 36px;" data-i18n="about.t2">Compliance & Global Trust</h2>
+        <div class="section-header">
+            <span class="section-kicker" data-i18n="about.trustKicker">Trust & Security</span>
+            <h2 class="section-title" data-i18n="about.t2">Compliance & Global Trust</h2>
+            <p class="section-lead" data-i18n="about.trustLead">Dual-registered entities ensure absolute legal compliance and financial security for global property owners.</p>
         </div>
-        <div class="license-flex">
-            <div class="license-item">
-                <span class="license-tag">China Registration</span>
-                <div class="img-container-landscape">
+        <div class="license-grid">
+            <div class="license-card">
+                <div class="license-tag"><i class="fas fa-shield-alt"></i> <span data-i18n="about.tagCN">China Registration</span></div>
+                <div class="img-container">
                     <img src="https://via.placeholder.com/600x420?text=China+Business+License" alt="China License">
                 </div>
                 <h4 data-i18n="about.l1t">GemstoneBR China</h4>
-                <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.l1p">Legal corporate entity for global operations.</p>
+                <p data-i18n="about.l1p">Legal corporate entity for global operations.</p>
             </div>
-            <div class="license-item">
-                <span class="license-tag">Philippines Registration</span>
-                <div class="img-container-portrait">
+            <div class="license-card">
+                <div class="license-tag"><i class="fas fa-shield-alt"></i> <span data-i18n="about.tagPH">Philippines Registration</span></div>
+                <div class="img-container">
                     <img src="https://via.placeholder.com/400x560?text=Philippines+License" alt="Philippines License">
                 </div>
                 <h4 data-i18n="about.l2t">GemstoneBR Philippines</h4>
-                <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.l2p">Localized on-site management entity.</p>
+                <p data-i18n="about.l2p">Localized on-site management entity.</p>
             </div>
         </div>
     </div>
@@ -184,86 +291,141 @@
 
 <section class="process-section">
     <div class="container">
-        <div style="text-align: center;">
-            <h2 style="font-size: 36px;" data-i18n="about.t3">The Cycle of Excellence</h2>
-            <p style="color: var(--text-muted); margin-top: 10px;" data-i18n="about.p3">Our team never stands still. We evolve through a data-driven weekly review process.</p>
+        <div class="section-header">
+            <span class="section-kicker" data-i18n="about.cycleKicker">Improvement</span>
+            <h2 class="section-title" data-i18n="about.t3">The Cycle of Excellence</h2>
+            <p class="section-lead" data-i18n="about.p3">Our team never stands still. We evolve through a data-driven weekly review process.</p>
         </div>
-        <div class="process-row">
+        <div class="process-grid">
             <div class="process-step">
-                <div class="step-dot">01</div>
+                <div class="step-dot">1</div>
                 <h4 data-i18n="about.s1t">Guest Feedback</h4>
-                <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.s1p">Analyzing every detail of recent reviews.</p>
+                <p data-i18n="about.s1p">Analyzing every detail of recent reviews and guest communications.</p>
             </div>
             <div class="process-step">
-                <div class="step-dot">02</div>
+                <div class="step-dot">2</div>
                 <h4 data-i18n="about.s2t">Weekly Review</h4>
-                <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.s2p">Management & field leads resolve bottlenecks.</p>
+                <p data-i18n="about.s2p">Management and field leads meet to resolve operational bottlenecks.</p>
             </div>
             <div class="process-step">
-                <div class="step-dot">03</div>
+                <div class="step-dot">3</div>
                 <h4 data-i18n="about.s3t">SOP Refinement</h4>
-                <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.s3p">Updating protocols for better service.</p>
+                <p data-i18n="about.s3p">Updating protocols and checklists for better service delivery.</p>
             </div>
             <div class="process-step">
-                <div class="step-dot">04</div>
+                <div class="step-dot">4</div>
                 <h4 data-i18n="about.s4t">Stable Execution</h4>
-                <p style="font-size: 13px; color: var(--text-muted);" data-i18n="about.s4p">Standardized delivery by our permanent team.</p>
+                <p data-i18n="about.s4p">Standardized delivery guaranteed by our permanent in-house team.</p>
             </div>
         </div>
     </div>
 </section>
 
-<footer>
+<section class="cta-section">
     <div class="container">
-        <!-- 新LOGO链接 + 128px大小 -->
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="footer-logo" alt="GemstoneBR">
-        <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+        <div class="cta-box">
+            <h2 data-i18n="about.ctaTitle">Ready to elevate your property's performance?</h2>
+            <p data-i18n="about.ctaDesc">Partner with the Philippines' most professional co-hosting team. Let's maximize your rental yield together.</p>
+            <a href="index.html#contact" class="btn-primary" data-i18n="about.ctaBtn">Get Free Consultation</a>
+        </div>
     </div>
+</section>
+
+<footer>
+    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
+    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
+<a href="index.html#contact" class="floating-contact" title="Contact Us">
+    <i class="fas fa-comment-dots"></i>
+</a>
+
 <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileBtn.querySelector('i');
+        if(navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+        }
+    });
+
     const i18n = {
         en: {
             nav: { services: "Services", about: "About Us", reserve:"Reserve a Room", consult: "Free Consultation" },
             about: {
-                h1: "Asset Integrity, Hospitality Excellence.",
-                hp: "GemstoneBR is an institutionally-led co-hosting partner, bridging professional real estate management with luxury service standards.",
-                t1: "Rooted in Professionalism",
-                p1: "We don't just manage rooms; we curate assets with a management team from real estate investment backgrounds.",
-                c1t: "Investment DNA", c1p: "Core leadership applies real estate investment logic, ensuring risk control.",
-                c2t: "Hotel-Grade Operations", c2p: "Field staff recruited from 5-star backgrounds, maintaining rigorous SOPs.",
-                c3t: "Multilingual Support", c3p: "Our customer service team eliminates language barriers for global guests.",
-               
+                kicker: "About GemstoneBR",
+                h1: "The Largest & Most Formal Short-Term Rental Team in the Philippines.",
+                hp: "With a dedicated team of over 50 full-time professionals, we provide the most comprehensive and institutional-grade property management across Metro Manila.",
+                
+                stat1: "Team Members", stat1Sub: "Full-time professionals", 
+                stat2: "Major Cities", stat2Sub: "Makati, Pasay, Mandaluyong", 
+                stat3: "Premium Projects", stat3Sub: "Top-tier condominiums",
+                
+                teamKicker: "Team Structure",
+                teamTitle: "Our Specialized Divisions",
+                teamLead: "We operate with an institutional structure, dividing our 50+ staff into highly specialized departments to ensure 5-star service at every touchpoint.",
+                t1Title: "Online Operations Team", t1Desc: "Dedicated to OTA algorithm optimization, dynamic pricing, and 24/7 multilingual guest communication.",
+                t2Title: "Offline Service Team", t2Desc: "Hotel-grade housekeeping and field supervisors ensuring flawless check-ins and spotless turnovers.",
+                t3Title: "Pest Control Team", t3Desc: "In-house specialized pest management, conducting regular deep sanitization suited for tropical climates.",
+                t4Title: "Maintenance Team", t4Desc: "Rapid-response engineering team handling AC, plumbing, appliance, and structural repairs instantly.",
+                
+                trustKicker: "Trust & Security",
                 t2: "Compliance & Global Trust",
+                trustLead: "Dual-registered entities ensure absolute legal compliance and financial security for global property owners.",
+                tagCN: "China Registration", tagPH: "Philippines Registration",
                 l1t: "GemstoneBR China", l1p: "Legal corporate entity for global operations.",
                 l2t: "GemstoneBR Philippines", l2p: "Localized on-site management entity.",
+                
+                cycleKicker: "Improvement",
                 t3: "The Cycle of Excellence",
                 p3: "Our team never stands still. We evolve through a data-driven weekly review process.",
-                s1t: "Guest Feedback", s1p: "Analyzing every detail of reviews.",
-                s2t: "Weekly Review", s2p: "Management resolves bottlenecks.",
-                s3t: "SOP Refinement", s3p: "Updating protocols for better service.",
-                s4t: "Stable Execution", s4p: "Standardized delivery by permanent team."
+                s1t: "Guest Feedback", s1p: "Analyzing every detail of recent reviews and guest communications.",
+                s2t: "Weekly Review", s2p: "Management and field leads meet to resolve operational bottlenecks.",
+                s3t: "SOP Refinement", s3p: "Updating protocols and checklists for better service delivery.",
+                s4t: "Stable Execution", s4p: "Standardized delivery guaranteed by our permanent in-house team.",
+                
+                ctaTitle: "Ready to elevate your property's performance?", ctaDesc: "Partner with the Philippines' most professional co-hosting team. Let's maximize your rental yield together.", ctaBtn: "Get Free Consultation"
             }
         },
         zh: {
-            nav: { services: "服务", about: "关于我们", reserve:"预订房间", consult: "免费咨询" },
+            nav: { services: "服务项目", about: "关于我们", reserve:"房源预订", consult: "免费咨询" },
             about: {
-                h1: "守护资产价值，重塑款待标准",
-                hp: "宝石BR由地产投资与项目管理专家创立，致力于将机构级的严谨与五星级酒店服务引入马尼拉短租市场。",
-                t1: "源自地产行业的专业底蕴",
-                p1: "我们不仅是在管理房间，更是在经营您的资产。核心管理层均拥有深厚的地产投资背景。",
-                c1t: "地产投资基因", c1p: "管理层以地产开发与投研逻辑经营短租，严控风险，保障资产长期增值。",
-                c2t: "星级酒店级执行", c2p: "现场主管与保洁团队均来自高端酒店，执行极其严苛的标准化作业流程(SOP)。",
-                c3t: "多语种客服支持", c3p: "专业客服团队支持多国语言，彻底消除全球房客与海外业主之间的沟通隔阂。",
+                kicker: "关于宝石BR",
+                h1: "菲律宾规模最大、最正规的短租运营团队",
+                hp: "我们拥有50余人的全职专业团队，在马尼拉大都会为您提供最全面、机构级的高端房源托管服务。",
+                
+                stat1: "全职团队成员", stat1Sub: "专业化的细分部门", 
+                stat2: "核心城市覆盖", stat2Sub: "Makati, Pasay, Mandaluyong", 
+                stat3: "高端楼盘入驻", stat3Sub: "深耕核心公寓项目",
+                
+                teamKicker: "组织架构",
+                teamTitle: "高度专业化的细分团队",
+                teamLead: "我们将50多名员工划分为高度专业化的职能部门，以机构级的管理架构，确保在每一个服务触点都达到五星级标准。",
+                t1Title: "线上运营团队", t1Desc: "专注各大OTA平台算法优化、收益管理、动态调价及24/7多语种客情沟通。",
+                t2Title: "线下管家与保洁团队", t2Desc: "五星级酒店标准的现场执行团队，负责完美的迎客接待与一尘不染的翻房保洁。",
+                t3Title: "专业消杀团队", t3Desc: "内部专属的虫害防治团队，针对热带气候定期进行深度的空间消毒与除虫作业。",
+                t4Title: "工程维修团队", t4Desc: "极速响应的内部工程队，随时解决空调、水电、电器及房屋结构的突发维修需求。",
+                
+                trustKicker: "合规与信任",
                 t2: "全球合规与信赖基石",
+                trustLead: "中菲双注册实体，为全球房东提供绝对的法律合规保障与资金安全背书。",
+                tagCN: "中国合法注册", tagPH: "菲律宾合法注册",
                 l1t: "宝石BR（中国）", l1p: "面向全球客户的合法签约与财务主体。",
                 l2t: "宝石BR（菲律宾）", l2p: "深耕本地的现场运营与行政合规实体。",
+                
+                cycleKicker: "持续进化",
                 t3: "持续进化的管理闭环",
                 p3: "追求卓越永无止境。我们通过每周例会，将数据分析转化为不断进化的服务标准。",
-                s1t: "房客评价剖析", s1p: "深度复盘每一条反馈，挖掘改进空间。",
-                s2t: "每周管理例会", s2p: "管理层与现场主管针对痛点极速响应。",
-                s3t: "标准化流程优化", s3p: "动态更新SOP，确保服务永远走在前面。",
-                s4t: "稳定高效执行", s4p: "100%全职团队确保服务标准的忠实落地。"
+                s1t: "房客评价剖析", s1p: "深度复盘每一条反馈与客情沟通，挖掘改进空间。",
+                s2t: "每周管理例会", s2p: "管理层与现场主管共同研讨，针对运营痛点极速响应。",
+                s3t: "标准化流程优化", s3p: "动态更新保洁与服务 SOP 清单，确保服务永远走在前面。",
+                s4t: "稳定高效执行", s4p: "100% 全职稳定团队，确保各项服务标准的忠实落地。",
+                
+                ctaTitle: "准备好提升您的房源业绩了吗？", ctaDesc: "携手菲律宾最专业的托管团队，让我们共同开启您的被动高收益之旅。", ctaBtn: "获取免费咨询"
             }
         }
     };
@@ -277,21 +439,23 @@
             const key = el.getAttribute('data-i18n');
             const keys = key.split('.');
             let text = i18n[lang];
-            keys.forEach(k => text = text[k]);
-            el.innerHTML = text;
+            keys.forEach(k => { if (text) text = text[k]; });
+            if (text) el.innerHTML = text;
         });
+        localStorage.setItem('preferredLang', lang);
     }
 
     enBtn.addEventListener('click', () => {
-        enBtn.classList.add('active');
-        cnBtn.classList.remove('active');
-        changeLang('en');
+        enBtn.classList.add('active'); cnBtn.classList.remove('active'); changeLang('en');
     });
 
     cnBtn.addEventListener('click', () => {
-        cnBtn.classList.add('active');
-        enBtn.classList.remove('active');
-        changeLang('zh');
+        cnBtn.classList.add('active'); enBtn.classList.remove('active'); changeLang('zh');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        if (savedLang === 'zh') cnBtn.click(); else enBtn.click();
     });
 </script>
 </body>
