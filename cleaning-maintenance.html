@@ -189,10 +189,16 @@
         
         /* ================= 页脚 ================= */
         footer { padding: 50px 40px; text-align: center; border-top: 1px solid var(--border-color); background: white; }
-        .copyright { font-size: 12px; color: var(--text-light); margin-top: 20px;}
+        .copyright { font-size: 13px; color: var(--text-light); margin-top: 20px;}
 
-        /* 悬浮微信按钮 */
-        .floating-contact { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 999; transition: var(--transition); }
+        /* 统一悬浮消息按钮 */
+        .floating-contact { 
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
+            background: var(--primary); color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 24px; box-shadow: 0 10px 25px rgba(79, 209, 197, 0.4); 
+            z-index: 999; transition: var(--transition); 
+        }
         .floating-contact:hover { transform: translateY(-5px) scale(1.1); }
 
         /* ================= 响应式 ================= */
@@ -216,6 +222,7 @@
             .hero-copy h1 { font-size: 32px; }
             .pricing-grid, .workflow-grid { grid-template-columns: 1fr; }
             .cta-box { padding: 40px 20px; }
+            .floating-contact { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px;}
         }
     </style>
 </head>
@@ -282,7 +289,7 @@
                                 <span data-i18n="vis.r1Price">600 PHP</span>
                             </div>
                             <div class="price-row">
-                                <strong data-i18n="vis.r2Title">StoneCare repair</strong>
+                                <strong data-i18n="vis.r2Title">StoneCare repair discount</strong>
                                 <span data-i18n="vis.r2Price">-10%</span>
                             </div>
                             <div class="price-row">
@@ -321,8 +328,8 @@
                 </div>
 
                 <div class="overview-card">
-                    <h3 data-i18n="ov.c2Title">StoneCare Maintenance</h3>
-                    <ul class="overview-list">
+                    <h3 data-i18n="ov.c2Title">StoneCare Maintenance Team</h3>
+                    <ul class="overview-list" style="margin-bottom: 12px;">
                         <li data-i18n="ov.p1">Repairs are charged at <strong>10% off StoneCare project pricing</strong>.</li>
                         <li data-i18n="ov.p2">The discount also applies to <strong>other units owned by our partner landlords</strong>.</li>
                         <li data-i18n="ov.p3"><strong>24/7 rapid response</strong> for urgent repair needs to minimize guest disruption.</li>
@@ -340,7 +347,7 @@
 
     <section class="workflow-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" style="margin-bottom: 40px;">
                 <span class="section-kicker" data-i18n="wf.kicker">Process</span>
                 <h2 class="section-title" data-i18n="wf.title">How we handle every turnover</h2>
                 <p class="section-lead" data-i18n="wf.lead">A clear workflow keeps quality consistent and reduces missed steps between check-out and the next check-in.</p>
@@ -398,7 +405,7 @@
                     <div class="pricing-icon icon-amber"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3 data-i18n="pr.p3Title">Other repair items</h3>
                     <div class="pricing-amount" data-i18n="pr.p3Price" style="font-size: 32px; padding-top:4px;">At cost</div>
-                    <div class="pricing-desc" data-i18n="pr.p3Desc">Remaining repair items are charged at actual expense with absolutely transparent billing.</div>
+                    <div class="pricing-desc" data-i18n="pr.p3Desc">Remaining repair items are charged at actual expense with transparent billing.</div>
                 </div>
             </div>
         </div>
@@ -423,7 +430,7 @@
     </footer>
 
     <a href="index.html#contact" class="floating-contact" title="Contact Us">
-        <i class="fab fa-weixin"></i>
+        <i class="fas fa-comment-dots"></i>
     </a>
 
     <script>
@@ -454,7 +461,7 @@
                     mini1Title: "What we handle", s1: "Unit cleaning and turnover", s2: "Furniture / sofa / mattress cleaning", s3: "Maintenance and repair coordination",
                     mini2Title: "Service rules", 
                     r1Title: "Hotel-level cleaning", r1Price: "600 PHP",
-                    r2Title: "StoneCare repair", r2Price: "-10%",
+                    r2Title: "StoneCare repair discount", r2Price: "-10%",
                     r3Title: "Other repair items", r3Price: "At cost"
                 },
                 ov: {
@@ -477,7 +484,7 @@
                     kicker: "Pricing", title: "Simple, transparent service pricing", lead: "Clear pricing keeps owner billing easy to understand and makes recurring service planning straightforward.",
                     p1Title: "Hotel-level cleaning", p1Desc: "Per turnover, including inspection, cleaning, restocking, standardized acceptance, and final double check.",
                     p2Title: "StoneCare repair support", p2Desc: "Repairs are billed at 10% off StoneCare project pricing for partner landlords and other connected units.", 
-                    p3Title: "Other repair items", p3Price: "At cost", p3Desc: "Remaining repair items are charged at actual expense with absolutely transparent billing."
+                    p3Title: "Other repair items", p3Price: "At cost", p3Desc: "Remaining repair items are charged at actual expense with transparent billing."
                 },
                 cta: {
                     title: "Need a cleaner, faster, more reliable turnover team?", desc: "StoneCare is built to keep your unit ready for guests, with standardized cleaning, repair coordination, and transparent billing for every service.", btn1: "Contact Us", btn2: "Back to Services"
@@ -497,7 +504,7 @@
                     mini1Title: "我们的服务范围", s1: "房源保洁与翻房整理", s2: "家具/沙发/床垫深度清洁", s3: "维保项目的跟进与协调",
                     mini2Title: "计费规则", 
                     r1Title: "酒店级深度保洁", r1Price: "600 PHP",
-                    r2Title: "StoneCare 内部维修", r2Price: "-10%",
+                    r2Title: "StoneCare 维修专属折扣", r2Price: "-10%",
                     r3Title: "其他外部维修项目", r3Price: "按实际成本"
                 },
                 ov: {
