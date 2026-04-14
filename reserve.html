@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserve a Room - GemstoneBR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         :root {
-            --lodgify-mint: #4FD1C5;
-            --lodgify-mint-light: rgba(79, 209, 197, 0.15);
-            --lodgify-mint-dark: #3AA89E;
-            --lodgify-pink: #FF86B3;
-            --lodgify-gray: #F7F9FC;
-            --lodgify-dark-gray: #8D99A6;
-            --lodgify-text: #1F2937;
-            --lodgify-muted: #6B7280;
-            
             --primary: #4FD1C5;
+            --primary-light: rgba(79, 209, 197, 0.15);
+            --primary-dark: #3AA89E;
             --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #FFFFFF;
             --bg-soft: #F7F9FC;
+            --border-color: #E5E7EB;
+            
             --shadow: 0 4px 20px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
             --radius: 8px;
-            --transition: all 0.2s ease;
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -34,27 +32,29 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--lodgify-text);
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
             background: #fff;
         }
 
+        /* 统一大标题字体 */
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            color: var(--lodgify-text);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
         }
 
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(8px);
-            padding: 18px 0;
-            border-bottom: 1px solid #f0f0f0;
-            z-index: 999;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
         }
 
         .nav-container {
@@ -69,19 +69,19 @@
         .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .logo-img {
-            height: 48px;
+            height: 44px;
         }
 
         .logo-text {
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.5px;
-            color: var(--lodgify-text);
+            color: var(--text-dark);
         }
 
         .nav-links {
@@ -93,26 +93,27 @@
         .nav-links a {
             text-decoration: none;
             font-size: 14px;
-            font-weight: 400;
-            color: var(--lodgify-muted);
+            font-weight: 500;
+            color: var(--text-light);
             transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--lodgify-mint);
+            color: var(--primary);
         }
 
         .nav-btn {
-            padding: 10px 20px;
-            background: var(--lodgify-mint);
+            padding: 10px 24px;
+            background: var(--primary);
             color: white !important;
             border-radius: 6px;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
+            transition: var(--transition);
         }
 
         .nav-btn:hover {
-            background: var(--lodgify-mint-dark);
+            background: var(--primary-dark);
         }
 
         .language-switch {
@@ -124,55 +125,91 @@
 
         .lang-btn {
             background: transparent;
-            border: 1px solid #E5E7EB;
-            padding: 4px 10px;
+            border: 1px solid var(--border-color);
+            padding: 4px 12px;
             border-radius: 4px;
             font-size: 12px;
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            color: var(--text-light);
         }
 
         .lang-btn.active, .lang-btn:hover {
-            background: var(--lodgify-mint);
+            background: var(--primary);
             color: white;
-            border-color: var(--lodgify-mint);
+            border-color: var(--primary);
         }
 
-        /* 🔥 优化版预订页面Hero：贴合代运营业务，展示实力+装修参考+预订 */
+        .mobile-menu-toggle { display: none; font-size: 24px; color: var(--text-dark); cursor: pointer; }
+
+        /* 🔥 优化版预订页面Hero：左侧文案 + 右侧高级水印LOGO */
         .reserve-hero {
-            height: 50vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+            min-height: 50vh;
+            background: linear-gradient(rgba(17, 24, 39, 0.65), rgba(17, 24, 39, 0.65)),
             url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/605858664.jpg?k=f06ceb169208910f9059ea47a76fadc0a7e073f0bb23708dcf808cf6900c1a40&o=');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             color: white;
-            padding: 0 20px;
-            margin-top: 80px;
+            padding: 80px 20px;
+            margin-top: 75px;
         }
 
-        .reserve-hero .hero-content {
-            max-width: 800px;
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            text-align: left;
         }
 
         .reserve-hero h1 {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: 1.3;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.25;
             margin-bottom: 16px;
-            font-weight: 500;
+            font-weight: 700;
             color: #ffffff !important;
+            letter-spacing: -0.5px;
         }
 
         .reserve-hero p {
             font-size: 16px;
-            max-width: 650px;
-            margin: 0 auto;
             opacity: 0.95;
             font-weight: 300;
             line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* 高级透明融合水印 LOGO */
+        .hero-logo-box {
+            flex: 0 0 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* 滤色融合，保留白色剔透感 */
+            mix-blend-mode: screen; 
+            /* 降低透明度，打造若隐若现的高级感 */
+            opacity: 0.65; 
+            /* 防止误触挡住底层交互 */
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .hero-logo-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            /* 核心：将黑色 LOGO 完全反转为纯白色 */
+            filter: brightness(0) invert(1); 
         }
 
         .reserve-section {
@@ -189,25 +226,27 @@
 
         .hotel-card {
             background: white;
-            border-radius: var(--radius);
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
         .hotel-card:hover {
             transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
         }
 
         .hotel-img {
             width: 100%;
             height: 240px;
-            background-color: var(--lodgify-gray);
+            background-color: var(--bg-soft);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--lodgify-muted);
+            color: var(--text-light);
             overflow: hidden;
         }
 
@@ -215,6 +254,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hotel-card:hover .hotel-img img {
+            transform: scale(1.05);
         }
 
         .hotel-info {
@@ -226,40 +270,57 @@
             font-size: 18px;
             margin-bottom: 20px;
             line-height: 1.4;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
         .hotel-btn {
-            padding: 12px 32px;
-            background: var(--lodgify-mint);
+            padding: 14px 32px;
+            background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             display: inline-block;
+            font-family: 'Inter', sans-serif;
         }
 
         .hotel-btn:hover {
-            background: var(--lodgify-mint-dark);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 209, 197, 0.3);
         }
 
         footer {
             padding: 50px 40px;
             text-align: center;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid var(--border-color);
             background: white;
         }
 
         .footer-logo {
-            height: 150px;
+            height: 100px;
             margin-bottom: 16px;
+            object-fit: contain;
         }
 
         .copyright {
-            font-size: 12px;
-            color: var(--lodgify-muted);
+            font-size: 13px;
+            color: var(--text-light);
         }
+
+        /* 悬浮聊天按钮 */
+        .floating-contact { 
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
+            background: var(--primary); color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 24px; box-shadow: 0 10px 25px rgba(79, 209, 197, 0.4); 
+            z-index: 999; transition: var(--transition); 
+        }
+        .floating-contact:hover { transform: translateY(-5px) scale(1.1); }
 
         @media (max-width: 992px) {
             .hotel-grid {
@@ -267,25 +328,52 @@
             }
         }
 
+        @media (max-width: 800px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .reserve-hero p {
+                margin: 0 auto;
+            }
+            .hero-logo-box {
+                flex: 0 0 auto;
+                width: 240px;
+                opacity: 0.25; /* 移动端适当再弱化一点透明度 */
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {display: none;}
+            nav { padding: 12px 16px; }
+            .mobile-menu-toggle { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px 0; box-shadow: var(--shadow-md); border-bottom: 1px solid var(--border-color); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: var(--transition); opacity: 0; pointer-events: none; }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; pointer-events: all; }
+            .nav-links a, .nav-btn { width: 90%; text-align: center; margin: 10px auto; padding: 12px; }
+            .language-switch { justify-content: center; margin: 10px 0; }
+
             .hotel-grid {
                 grid-template-columns: 1fr;
             }
+            .reserve-section {
+                padding: 60px 20px;
+            }
+            .floating-contact { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px;}
         }
     </style>
 </head>
 <body>
 
-<!-- 导航栏 - 与主页完全一致 -->
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-wrapper">
             <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="logo-img" alt="GemstoneBR">
-            <span class="logo-text"> </span>
         </a>
-
-        <div class="nav-links">
+        <div class="mobile-menu-toggle" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
             <a href="index.html#services" data-i18n="nav.services">Services</a>
             <a href="about.html" data-i18n="nav.about">About Us</a>
             <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
@@ -299,41 +387,40 @@
     </div>
 </nav>
 
-<!-- 🔥 优化后的Hero核心区域 -->
 <section class="reserve-hero">
-    <div class="hero-content">
-        <h1 data-i18n="reserve.title">Explore Our Managed Residences</h1>
-        <p data-i18n="reserve.desc">View our scaled managed portfolio | Inspiring renovation designs for your property | Book your stay directly</p>
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 data-i18n="reserve.title">Explore Our Managed Residences</h1>
+            <p data-i18n="reserve.desc">View our scaled managed portfolio | Inspiring renovation designs for your property | Book your stay directly</p>
+        </div>
+        <div class="hero-logo-box">
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" alt="GemstoneBR Logo">
+        </div>
     </div>
 </section>
 
-<!-- 6个酒店预订模块 -->
 <section class="reserve-section">
     <div class="hotel-grid">
-        <!-- 酒店1 -->
         <div class="hotel-card">
             <div class="hotel-img">
                 <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/689946693.jpg?k=a44c6f0b59f98f6d43ae726234d4bb307c30f57ad261e939b389e5bbf0c49c9e&o=" alt="GemstoneBR in SMDC Air Residences">
-                            </div>
+            </div>
             <div class="hotel-info">
                 <h3 class="hotel-name">GemstoneBR in SMDC Air Residences</h3>
                 <a href="https://www.smartorder.ai/booking-engine-c/booking-engine-c?propertyId=508977&groupId=-1" class="hotel-btn">View Design & Book</a>
             </div>
         </div>
 
-        <!-- 酒店2 -->
         <div class="hotel-card">
             <div class="hotel-img">
                 <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/551841647.jpg?k=d0525c7b65c578d1ebb467919ddefe977247b9ad28fe906902b39179e1a0411d&o=" alt="GemstoneBR in SMDC AirII Residences">
             </div>
             <div class="hotel-info">
                 <h3 class="hotel-name">GemstoneBR in SMDC AirII Residences</h3>
-                <a href="https://www.smartorder.ai/booking-engine-c/booking-engine-c?propertyId=508974&groupId=-1
-" class="hotel-btn">View Design & Book</a>
+                <a href="https://www.smartorder.ai/booking-engine-c/booking-engine-c?propertyId=508974&groupId=-1" class="hotel-btn">View Design & Book</a>
             </div>
         </div>
 
-        <!-- 酒店3 -->
         <div class="hotel-card">
             <div class="hotel-img">
                 <img src="https://dimg04.c-ctrip.com/images/0205912000ck86o5m90B2_C_750_340_Q70.jpg" alt="GemstoneBR in SMDC Coast Residences">
@@ -344,7 +431,6 @@
             </div>
         </div>
 
-        <!-- 酒店4 -->
         <div class="hotel-card">
             <div class="hotel-img">
                 <img src="https://images.trvl-media.com/lodging/106000000/105100000/105093500/105093474/fb4730a1.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill" alt="GemstoneBR in SMDC Shore Residences">
@@ -355,7 +441,6 @@
             </div>
         </div>
 
-        <!-- 酒店5 -->
         <div class="hotel-card">
             <div class="hotel-img">
                 <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/574955056.jpg?k=90a7dc40ebd81ebe1d4c4004868475aa6bd0de31ab81eb724f58582d976941af&o=" alt="GemstoneBR in SMDC Shore2 Residences">
@@ -366,7 +451,6 @@
             </div>
         </div>
 
-        <!-- 酒店6 -->
         <div class="hotel-card">
             <div class="hotel-img">
                 <img src="https://i.travelapi.com/lodging/112000000/111430000/111421000/111420901/9d2abec2_z.jpg" alt="GemstoneBR in SMDC Fame Residences">
@@ -379,14 +463,28 @@
     </div>
 </section>
 
-<!-- 页脚 - 与主页完全一致 -->
 <footer>
     <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
     <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
-<!-- 双语切换脚本（新增优化版文案） -->
+<a href="index.html#contact" class="floating-contact" title="Contact Us">
+    <i class="fas fa-comment-dots"></i>
+</a>
+
 <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileBtn.querySelector('i');
+        if(navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+        }
+    });
+
     const i18n = {
         en: {
             nav: {services:"Services",about:"About Us",reserve:"Reserve a Room",consult:"Free Consultation"},
@@ -414,8 +512,9 @@
             const keys = key.split('.');
             let text = i18n[lang];
             keys.forEach(k => text = text[k]);
-            el.innerHTML = text;
+            if(text) el.innerHTML = text;
         });
+        localStorage.setItem('preferredLang', lang);
     }
 
     enBtn.addEventListener('click', () => {
@@ -428,6 +527,11 @@
         cnBtn.classList.add('active');
         enBtn.classList.remove('active');
         changeLang('zh');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        if (savedLang === 'zh') cnBtn.click(); else enBtn.click();
     });
 </script>
 </body>
