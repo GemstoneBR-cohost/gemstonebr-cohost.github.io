@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Process - GemstoneBR Co-Host</title>
-    <!-- 全站统一高级字体：Montserrat (标题) & Inter (正文) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
@@ -79,13 +78,13 @@
         .process-section { padding: 100px 0; background: var(--bg-light); }
         .step-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 120px; padding: 0 20px; }
         
-        .step-block { display: flex; align-items: center; gap: 60px; }
+        .step-block { display: flex; align-items: stretch; gap: 60px; }
         .step-block:nth-child(even) { flex-direction: row-reverse; }
 
-        .step-info { flex: 1; }
+        .step-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .step-badge {
             display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800;
-            color: var(--primary-dark); background: var(--primary-light); padding: 6px 16px; border-radius: 99px; margin-bottom: 20px;
+            color: var(--primary-dark); background: var(--primary-light); padding: 6px 16px; border-radius: 99px; margin-bottom: 20px; align-self: flex-start;
         }
         .step-info h2 { font-size: 28px; line-height: 1.3; color: var(--text-dark); margin-bottom: 20px; }
         .step-info p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 24px; }
@@ -94,25 +93,18 @@
         .step-bullets li { font-size: 14px; color: var(--text-dark); display: flex; align-items: flex-start; gap: 10px; font-weight: 500; }
         .step-bullets li i { color: var(--primary); font-size: 16px; margin-top: 3px; }
 
-        /* 右侧媒体/照片预留框展示 */
-        .step-media { flex: 1.1; display: flex; flex-direction: column; gap: 16px; }
+        /* 右侧媒体照片高级布局网格 */
+        .step-media { flex: 1.1; display: flex; flex-direction: column; justify-content: center; }
         
-        /* 1张大图的容器样式 */
-        .media-single { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; background: var(--bg-soft); }
-        .media-single.portrait-container { max-width: 380px; margin: 0 auto; } /* 月度报告等竖图 */
-        
-        /* 2张并排图的容器样式 */
-        .media-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .media-grid-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); background: var(--bg-soft); }
+        /* 拼图通用盒层级 */
+        .media-box { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); background: var(--bg-soft); }
+        .media-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* 高级高级灰占位框占位样式 */
-        .placeholder-box {
-            position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #F3F4F6, #E5E7EB); color: var(--text-light); text-align: center; padding: 40px 20px;
-        }
-        .placeholder-box i { font-size: 32px; color: var(--primary); margin-bottom: 12px; opacity: 0.8; }
-        .placeholder-box span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #9CA3AF; }
-        .placeholder-box p { font-size: 13px; color: var(--text-light); margin-top: 4px; font-weight: 400; }
+        /* 步骤一专享：并排2张竖图 */
+        .media-grid-vertical-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+
+        /* 步骤三/五等单张竖图容器最大宽度控制 */
+        .portrait-frame { max-width: 400px; margin: 0 auto; width: 100%; }
 
         /* ================= 底部 CTA 区域 ================= */
         .cta-section { background: var(--bg-soft); text-align: center; padding: 100px 0; border-top: 1px solid var(--border-color); }
@@ -156,17 +148,16 @@
             .process-hero { height: 35vh; min-height: 280px; margin-top: 60px; }
             .process-section { padding: 60px 0; }
             .step-container { gap: 80px; }
-            .step-block, .step-block:nth-child(even) { flex-direction: column; text-align: center; gap: 30px; }
+            .step-block, .step-block:nth-child(even) { flex-direction: column !important; text-align: center; align-items: center; }
             .step-bullets { justify-items: center; }
             .step-bullets li { text-align: left; }
-            .media-single.portrait-container { max-width: 100%; }
+            .portrait-frame { max-width: 100%; }
             .floating-contact { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- 导航栏 -->
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-wrapper">
@@ -187,7 +178,6 @@
     </div>
 </nav>
 
-<!-- Hero 头部 -->
 <section class="process-hero">
     <div class="hero-content">
         <h1 data-i18n="hero.title">Our End-to-End Co-Hosting Process</h1>
@@ -195,11 +185,9 @@
     </div>
 </section>
 
-<!-- 核心全流程步骤展示 -->
 <section class="process-section">
     <div class="step-container">
         
-        <!-- 步骤 1：房源勘测与评估 -->
         <div class="step-block">
             <div class="step-info">
                 <span class="step-badge" data-i18n="step1.badge">STEP 01</span>
@@ -212,19 +200,17 @@
                 </ul>
             </div>
             <div class="step-media">
-                <!-- 预留 2 张横图展示位：初始检查与勘测场景 -->
-                <div class="media-grid-2">
-    <div class="media-grid-item" style="aspect-ratio: 4/3;">
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/qingdian1.png" alt="Inspection 1" style="width:100%; height:100%; object-fit:cover;">
-    </div>
-    <div class="media-grid-item" style="aspect-ratio: 4/3;">
-        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/qingdian2.jpg" alt="Inspection 2" style="width:100%; height:100%; object-fit:cover;">
-    </div>
-</div>
+                <div class="media-grid-vertical-2">
+                    <div class="media-box" style="aspect-ratio: 3/4;">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/qingdian1.png" alt="Inspection Vertical 1">
+                    </div>
+                    <div class="media-box" style="aspect-ratio: 3/4;">
+                        <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/qingdian2.jpg" alt="Inspection Vertical 2">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 步骤 2：定制优化报告 -->
         <div class="step-block">
             <div class="step-info">
                 <span class="step-badge" data-i18n="step2.badge">STEP 02</span>
@@ -237,23 +223,12 @@
                 </ul>
             </div>
             <div class="step-media">
-                <!-- 预留 2 张横图展示位：方案与对比图 -->
-                <div class="media-grid-2">
-                    <div class="media-grid-item placeholder-box" style="aspect-ratio: 4/3;">
-                        <i class="fas fa-pencil-ruler"></i>
-                        <span data-i18n="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/fangan1.png">Design Proposal A</span>
-                        <p data-i18n="placeholder.click">Ready for Upload</p>
-                    </div>
-                    <div class="media-grid-item placeholder-box" style="aspect-ratio: 4/3;">
-                        <i class="fas fa-exchange-alt"></i>
-                        <span data-i18n="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/fangan2.png">Design Proposal B</span>
-                        <p data-i18n="placeholder.click">Ready for Upload</p>
-                    </div>
+                <div class="media-box" style="aspect-ratio: 16/9;">
+                    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/fangan2.png" alt="Custom Property Enhancement Report">
                 </div>
             </div>
         </div>
 
-        <!-- 步骤 3：标准化配置表 -->
         <div class="step-block">
             <div class="step-info">
                 <span class="step-badge" data-i18n="step3.badge">STEP 03</span>
@@ -266,16 +241,12 @@
                 </ul>
             </div>
             <div class="step-media">
-                <!-- 预留 1 张大尺寸横图展示位：房间配置表截图 -->
-                <div class="media-single placeholder-box" style="aspect-ratio: 16/10;">
-                    <i class="fas fa-list-ol"></i>
-                    <span data-i18n="placeholder.img5">Standardized Facility Checklist Screenshot</span>
-                    <p data-i18n="placeholder.click">Ready for Upload</p>
+                <div class="media-box portrait-frame" style="aspect-ratio: 3/4;">
+                    <img src="请在这里粘贴您的配置表截图网址.png" alt="Facility Checklist Standardized Sheet">
                 </div>
             </div>
         </div>
 
-        <!-- 步骤 4：专业摄影与精修 -->
         <div class="step-block">
             <div class="step-info">
                 <span class="step-badge" data-i18n="step4.badge">STEP 04</span>
@@ -288,16 +259,12 @@
                 </ul>
             </div>
             <div class="step-media">
-                <!-- 预留 1 张高级大横图：样板间精修图 -->
-                <div class="media-single placeholder-box" style="aspect-ratio: 16/9;">
-                    <i class="fas fa-image"></i>
-                    <span data-i18n="placeholder.img6">Professional Photography Sample</span>
-                    <p data-i18n="placeholder.click">Ready for Upload</p>
+                <div class="media-box" style="aspect-ratio: 16/9;">
+                    <img src="请在这里粘贴您的专业客房成片网址.png" alt="Professional Hotel Interior Showcase">
                 </div>
             </div>
         </div>
 
-        <!-- 步骤 5：月度透明财务与数据报告 -->
         <div class="step-block">
             <div class="step-info">
                 <span class="step-badge" data-i18n="step5.badge">STEP 05</span>
@@ -310,11 +277,8 @@
                 </ul>
             </div>
             <div class="step-media">
-                <!-- 预留 1 张高大上竖版：财务与数据报告截图 -->
-                <div class="media-single portrait-container placeholder-box" style="aspect-ratio: 3/4;">
-                    <i class="fas fa-file-invoice"></i>
-                    <span data-i18n="placeholder.img7">Monthly Report Mobile Mockup</span>
-                    <p data-i18n="placeholder.click">Ready for Upload (Portrait Screenshot)</p>
+                <div class="media-box portrait-frame" style="aspect-ratio: 3/4;">
+                    <img src="请在这里粘贴您的月度财务报表竖图网址.png" alt="Monthly Operational Statement Report">
                 </div>
             </div>
         </div>
@@ -322,7 +286,6 @@
     </div>
 </section>
 
-<!-- 底部 CTA 区域 -->
 <section class="cta-section">
     <div class="cta-box">
         <h2 data-i18n="cta.title">Worry-Free Property Yields Are Just One Click Away</h2>
@@ -331,18 +294,15 @@
     </div>
 </section>
 
-<!-- 页脚 (与主站一致) -->
 <footer>
     <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
     <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
 </footer>
 
-<!-- 悬浮微信/客服按钮 (与主页一致) -->
 <a href="index.html#contact" class="floating-contact" title="Contact Us">
     <i class="fas fa-comment-dots"></i>
 </a>
 
-<!-- 语言翻译核心脚本 (LocalStorage机制完全与主页面同步) -->
 <script>
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -362,16 +322,6 @@
             hero: {
                 title: "Our Full Service CO-Host Process",
                 desc: "Step-by-step professional management designed to transform your asset, optimize performance, and deliver maximum passive yields."
-            },
-            placeholder: {
-                img1: "Inspection Photo 1 (Onsite Survey)",
-                img2: "Inspection Photo 2 (Asset Check)",
-                img3: "Design Proposal A (Concept layout)",
-                img4: "Design Proposal B (Upgrade plan)",
-                img5: "Standardized Facility Checklist Screenshot",
-                img6: "Professional DSLR Photography Sample",
-                img7: "Monthly Report Mobile Mockup (Vertical)",
-                click: "Ready for Upload"
             },
             step1: {
                 badge: "STEP 01",
@@ -425,20 +375,10 @@
                 title: "我们的服务托管全流程",
                 desc: "一站式专业托管流程：为您合理重塑资产，最大化房源线上吸引力，确保持续、透明的高被动收益。"
             },
-            placeholder: {
-                img1: "房源检查照片 1（实地勘测）",
-                img2: "房源检查照片 2（资产盘点）",
-                img3: "定制优化方案 A（空间规划图）",
-                img4: "定制优化方案 B（升级增配表）",
-                img5: "标准化房源硬装配置表截图",
-                img6: "高端广角摄影/精修成品图",
-                img7: "月度透明报表截图（竖版大图）",
-                click: "等待您上传替换链接"
-            },
             step1: {
                 badge: "第一步",
                 title: "初始房源实地勘测与情况核检",
-                desc: "在房东完成房源委托后，我们的资深团队将对房间进行一次深度、专业的实地核检，严格排查硬装损耗、水电安全，挖掘可用来包装房源的特色亮点。",
+                desc: "在房东完成房源委托后，我们的资神团队将对房间进行一次深度、专业的实地核检，严格排查硬装损耗、水电安全，挖掘可用来包装房源的特色亮点。",
                 b1: "全面核查硬装基础架构及日常水电运作健康度",
                 b2: "清点房源内已有家具与日用品",
                 b3: "了解房源的优势与缺点"
@@ -446,7 +386,7 @@
             step2: {
                 badge: "第二步",
                 title: "定制化房源升级与优化报告",
-                desc: "我们针对勘测报告，结合房源已有设施进行去粗存精。我们不会盲目推翻重来，而是为您量身定制升级报告，指导您增添哪些装饰和家具，确保钱花在刀刃上。",
+                desc: "我们针对勘测报告，结合房源已有设施进行去粗存精。我们不会盲目推翻重来，而是为您量身定制升级报告，指导您增添哪些装饰 and 家具，确保钱花在刀刃上。",
                 b1: "结合房源现状从已落地项目中的家具与饰品定制出适配的装饰方案",
                 b2: "定制出高性价比、一目了然的预算及专属增配物资明细",
                 b3: "打造直击 OTA 房客痛点的独特设计风格，直接提高点击率"
