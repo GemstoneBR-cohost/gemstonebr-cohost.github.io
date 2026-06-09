@@ -104,54 +104,79 @@
         .partner-logo { height: 40px; max-width: 120px; object-fit: contain; opacity: 0.85; transition: var(--transition); }
         .partner-logo:hover { opacity: 1; }
 
-        /* ================= 优化：拼图照片墙 (大图错落展示) ================= */
-        .gallery-section { padding: 80px 0 60px; background: #fff; border-top: 1px solid var(--border-color); }
-        .gallery-grid { 
-            max-width: 1280px; 
-            margin: 0 auto; 
-            padding: 0 40px; 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            grid-auto-rows: 240px; 
-            gap: 16px; 
+        /* ================= Design Gallery ================= */
+        .gallery-section { padding: 80px 0 80px; background: #fff; border-top: 1px solid var(--border-color); }
+
+        .gallery-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 300px 220px 300px;
+            gap: 14px;
         }
-        .g-item { 
-            border-radius: 16px; 
-            overflow: hidden; 
-            background: var(--bg-soft); 
-            box-shadow: var(--shadow-sm); 
+
+        /* 布局规则：行1=左大+右2小堆叠，行2=3等宽横条，行3=左2小堆叠+右大 */
+        .g-item {
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--bg-soft);
             position: relative;
         }
-        /* 不同的占比营造高级错落感 */
-        .g-large { grid-column: span 2; grid-row: span 2; }
-        .g-tall { grid-row: span 2; }
-        .g-wide { grid-column: span 2; grid-row: span 1; }
-        
-        .g-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.5s ease; 
-            cursor: pointer; 
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: block;
         }
-        .g-item:hover img { transform: scale(1.05); }
-.gallery-grid {
-    max-width:1280px;
-    margin:auto;
-    padding:0 40px;
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:20px;
-}
-.g-landscape {
-    aspect-ratio: 4/3;
-}
-.g-portrait {
-    aspect-ratio: 3/4;
-}
-.span-2 {
-    grid-column: span 3;
-}
+        .g-item:hover img { transform: scale(1.06); }
+        .g-item:hover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 60%);
+            border-radius: 14px;
+            pointer-events: none;
+        }
+
+        /* 第1行：左侧大图跨2行，右侧上下各一小图 */
+        .g-r1-left  { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .g-r1-rt    { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .g-r1-rb    { grid-column: 2 / 3; grid-row: 2 / 3; }
+
+        /* 第1行：最右侧跨2行的竖图 */
+        .g-r1-right { grid-column: 3 / 4; grid-row: 1 / 3; }
+
+        /* 第2行：三等分横幅 */
+        .g-r2-a     { grid-column: 1 / 2; grid-row: 3 / 4; }
+        .g-r2-b     { grid-column: 2 / 3; grid-row: 3 / 4; }
+        .g-r2-c     { grid-column: 3 / 4; grid-row: 3 / 4; }
+
+        /* 最后3张图独占第4行 */
+        .gallery-grid-bottom {
+            max-width: 1280px;
+            margin: 14px auto 0;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .g-bottom {
+            height: 220px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--bg-soft);
+            position: relative;
+        }
+        .g-bottom img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer; display: block;
+        }
+        .g-bottom:hover img { transform: scale(1.06); }
 
 
         /* ================= 业绩图表 ================= */
@@ -241,9 +266,9 @@
             .performance-charts { grid-template-columns: 1fr; }
             
             /* 平板端照片墙调整 */
-            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-            .g-large { grid-column: span 2; grid-row: span 2; }
-            .g-wide { grid-column: span 2; }
+            .gallery-grid { grid-template-rows: 240px 180px 240px; }
+            .gallery-grid-bottom { }
+            .g-bottom { height: 180px; }
         }
 
         @media (max-width: 768px) {
@@ -259,10 +284,20 @@
             .services-grid, .why-grid, .contact-info { grid-template-columns: 1fr; }
             
             /* 手机端照片墙调整 */
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; padding: 0 20px; gap: 10px;}
-            .g-large { grid-column: span 2; grid-row: span 2; }
-            .g-wide { grid-column: span 2; grid-row: span 1; }
-            .g-tall { grid-column: span 1; grid-row: span 2; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 180px 140px 180px;
+                padding: 0 16px; gap: 10px;
+            }
+            .g-r1-left  { grid-column: 1 / 2; grid-row: 1 / 3; }
+            .g-r1-rt    { grid-column: 2 / 3; grid-row: 1 / 2; }
+            .g-r1-rb    { grid-column: 2 / 3; grid-row: 2 / 3; }
+            .g-r1-right { display: none; }
+            .g-r2-a     { grid-column: 1 / 2; grid-row: 3 / 4; }
+            .g-r2-b     { grid-column: 2 / 3; grid-row: 3 / 4; }
+            .g-r2-c     { display: none; }
+            .gallery-grid-bottom { grid-template-columns: repeat(2, 1fr); padding: 0 16px; margin-top: 10px; }
+            .g-bottom { height: 150px; }
 
             .floating-contact { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px;}
             .performance-section { margin: 40px 20px; padding: 40px 20px; }
@@ -343,55 +378,35 @@
 </section>
 
 
+
 <section class="gallery-section">
     <div class="container" style="padding-bottom: 20px;">
-        <div class="section-header" style="margin-bottom: 30px;">
+        <div class="section-header" style="margin-bottom: 40px;">
             <span class="section-kicker" data-i18n="gallery.kicker">Portfolio</span>
             <h2 class="section-title" data-i18n="gallery.title">Design Gallery</h2>
             <p class="section-lead" data-i18n="gallery.desc">Explore our aesthetic room designs and premium configurations across different projects.</p>
         </div>
     </div>
 
+    <!-- 主网格：3列 × 3行，左大+右双、三等宽横条 -->
     <div class="gallery-grid">
-        <!-- 第一排 -->
-        <div class="g-item g-landscape span-2">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/2345.jpg" alt="Design 1">
-        </div>
-        <div class="g-item g-landscape span-2">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/4906.jpg" alt="Design 2">
-        </div>
+        <div class="g-item g-r1-left"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1615.jpg" alt="Design 1"></div>
+        <div class="g-item g-r1-rt"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/4906.jpg" alt="Design 2"></div>
+        <div class="g-item g-r1-rb"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/5367.jpg" alt="Design 3"></div>
+        <div class="g-item g-r1-right"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1217.jpg" alt="Design 4"></div>
+        <div class="g-item g-r2-a"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/2345.jpg" alt="Design 5"></div>
+        <div class="g-item g-r2-b"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/720.jpg" alt="Design 6"></div>
+        <div class="g-item g-r2-c"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1119.jpg" alt="Design 7"></div>
+    </div>
 
-        <!-- 第二排 -->
-        <div class="g-item g-portrait">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/5367.jpg" alt="Design 3">
-        </div>
-        <div class="g-item g-landscape span-2">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1217.jpg" alt="Design 4">
-        </div>
-        <div class="g-item g-portrait">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1615.jpg" alt="Design 5">
-        </div>
-
-        <!-- 第三排 -->
-        <div class="g-item g-landscape span-2">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/720.jpg" alt="Design 6">
-        </div>
-        <div class="g-item g-landscape span-2">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1119.jpg" alt="Design 7">
-        </div>
-
-        <!-- 第四排 -->
-        <div class="g-item g-landscape">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/3710.jpg" alt="Design 8">
-        </div>
-        <div class="g-item g-landscape">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/908.jpg" alt="Design 9">
-        </div>
-        <div class="g-item g-landscape">
-            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1727.jpg" alt="Design 10">
-        </div>
+    <!-- 底部三等分行 -->
+    <div class="gallery-grid-bottom">
+        <div class="g-bottom"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/3710.jpg" alt="Design 8"></div>
+        <div class="g-bottom"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/908.jpg" alt="Design 9"></div>
+        <div class="g-bottom"><img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/1727.jpg" alt="Design 10"></div>
     </div>
 </section>
+
 
 
 <!-- 经营数据（升级容纳3个图表） -->
