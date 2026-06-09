@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Process - GemstoneBR Co-Host</title>
+    <!-- 全站统一高级字体：Montserrat (标题) & Inter (正文) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* 统一品牌色系 */
+        :root {
+            --primary: #4FD1C5; 
+            --primary-light: rgba(79, 209, 197, 0.12);
+            --primary-dark: #3AA89E;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #FFFFFF;
+            --bg-soft: #F9FAFB;
+            --border-color: #E5E7EB;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ================= 导航栏 (与主页一致) ================= */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px); padding: 15px 0; border-bottom: 1px solid var(--border-color); z-index: 1000;
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 44px; }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-light); transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-btn { padding: 10px 24px; background: var(--primary); color: white !important; border-radius: 6px; font-weight: 600; }
+        .nav-btn:hover { background: var(--primary-dark); }
+        .language-switch { display: flex; gap: 6px; margin-left: 16px; }
+        .lang-btn { background: transparent; border: 1px solid var(--border-color); padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; cursor: pointer; transition: var(--transition); color: var(--text-light);}
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .mobile-menu-toggle { display: none; font-size: 24px; color: var(--text-dark); cursor: pointer; }
+
+        /* ================= Hero 头部 ================= */
+        .process-hero {
+            height: 45vh; min-height: 350px;
+            background: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; margin-top: 75px;
+            color: #ffffff;
+        }
+        .hero-content { max-width: 800px; }
+        .process-hero h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.25; margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+        .process-hero p { font-size: 16px; opacity: 0.9; font-weight: 300; max-width: 600px; margin: 0 auto; }
+
+        /* ================= 步骤核心区域 ================= */
+        .process-section { padding: 100px 0; background: var(--bg-light); }
+        .step-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 120px; padding: 0 20px; }
+        
+        .step-block { display: flex; align-items: center; gap: 60px; }
+        .step-block:nth-child(even) { flex-direction: row-reverse; }
+
+        .step-info { flex: 1; }
+        .step-badge {
+            display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800;
+            color: var(--primary-dark); background: var(--primary-light); padding: 6px 16px; border-radius: 99px; margin-bottom: 20px;
+        }
+        .step-info h2 { font-size: 28px; line-height: 1.3; color: var(--text-dark); margin-bottom: 20px; }
+        .step-info p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 24px; }
+        
+        .step-bullets { list-style: none; display: grid; gap: 12px; }
+        .step-bullets li { font-size: 14px; color: var(--text-dark); display: flex; align-items: flex-start; gap: 10px; font-weight: 500; }
+        .step-bullets li i { color: var(--primary); font-size: 16px; margin-top: 3px; }
+
+        /* 右侧媒体/照片预留框展示 */
+        .step-media { flex: 1.1; display: flex; flex-direction: column; gap: 16px; }
+        
+        /* 1张大图的容器样式 */
+        .media-single { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; background: var(--bg-soft); }
+        .media-single.portrait-container { max-width: 380px; margin: 0 auto; } /* 月度报告等竖图 */
+        
+        /* 2张并排图的容器样式 */
+        .media-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .media-grid-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); background: var(--bg-soft); }
+
+        /* 高级高级灰占位框占位样式 */
+        .placeholder-box {
+            position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #F3F4F6, #E5E7EB); color: var(--text-light); text-align: center; padding: 40px 20px;
+        }
+        .placeholder-box i { font-size: 32px; color: var(--primary); margin-bottom: 12px; opacity: 0.8; }
+        .placeholder-box span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #9CA3AF; }
+        .placeholder-box p { font-size: 13px; color: var(--text-light); margin-top: 4px; font-weight: 400; }
+
+        /* ================= 底部 CTA 区域 ================= */
+        .cta-section { background: var(--bg-soft); text-align: center; padding: 100px 0; border-top: 1px solid var(--border-color); }
+        .cta-box { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .cta-box h2 { font-size: 32px; margin-bottom: 16px; letter-spacing: -1px; }
+        .cta-box p { color: var(--text-light); margin-bottom: 32px; font-size: 16px; }
+        .btn-cta {
+            display: inline-block; padding: 16px 36px; background: var(--text-dark); color: white; border-radius: 8px;
+            font-size: 15px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-cta:hover { background: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+        /* ================= 页脚 (与主页一致) ================= */
+        footer { padding: 50px 40px; text-align: center; border-top: 1px solid var(--border-color); background: #fff; }
+        .footer-logo { height: 120px; margin: 0 auto 16px; object-fit: contain; }
+        .copyright { font-size: 13px; color: var(--text-light); }
+
+        /* 悬浮统一按钮 */
+        .floating-contact { 
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
+            background: var(--primary); color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 24px; box-shadow: 0 10px 25px rgba(79, 209, 197, 0.4); 
+            z-index: 999; transition: var(--transition); 
+        }
+        .floating-contact:hover { transform: translateY(-5px) scale(1.1); }
+
+        /* ================= 响应式 ================= */
+        @media (max-width: 1024px) {
+            .step-block { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 12px 16px; }
+            .mobile-menu-toggle { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px 0; box-shadow: var(--shadow-lg); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: var(--transition); opacity: 0; pointer-events: none; border-bottom: 1px solid var(--border-color); }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; pointer-events: all; }
+            .nav-links a, .nav-btn { width: 90%; text-align: center; margin: 10px auto; padding: 12px; }
+            .language-switch { justify-content: center; margin: 10px 0; }
+
+            .process-hero { height: 35vh; min-height: 280px; margin-top: 60px; }
+            .process-section { padding: 60px 0; }
+            .step-container { gap: 80px; }
+            .step-block, .step-block:nth-child(even) { flex-direction: column; text-align: center; gap: 30px; }
+            .step-bullets { justify-items: center; }
+            .step-bullets li { text-align: left; }
+            .media-single.portrait-container { max-width: 100%; }
+            .floating-contact { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-wrapper">
+            <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/logo.png" class="logo-img" alt="GemstoneBR">
+        </a>
+        <div class="mobile-menu-toggle" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html#services" data-i18n="nav.services">Services</a>
+            <a href="about.html" data-i18n="nav.about">About Us</a>
+            <a href="process.html" data-i18n="nav.process">Service Process</a>
+            <a href="reserve.html" data-i18n="nav.reserve">Reserve a Room</a>
+            <a href="index.html#contact" class="nav-btn" data-i18n="nav.consult">Free Consultation</a>
+            <div class="language-switch">
+                <button class="lang-btn active" id="enBtn">EN</button>
+                <button class="lang-btn" id="cnBtn">中文</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero 头部 -->
+<section class="process-hero">
+    <div class="hero-content">
+        <h1 data-i18n="hero.title">Our End-to-End Co-Hosting Process</h1>
+        <p data-i18n="hero.desc">Step-by-step professional management designed to transform your asset, optimize performance, and deliver maximum passive yields.</p>
+    </div>
+</section>
+
+<!-- 核心全流程步骤展示 -->
+<section class="process-section">
+    <div class="step-container">
+        
+        <!-- 步骤 1：房源勘测与评估 -->
+        <div class="step-block">
+            <div class="step-info">
+                <span class="step-badge" data-i18n="step1.badge">STEP 01</span>
+                <h2 data-i18n="step1.title">Initial On-Site Inspection & Audit</h2>
+                <p data-i18n="step1.desc">We perform a rigorous, physical inspection of the property to evaluate layout efficiency, physical condition, and structural readiness. Our operational experts identify every detailed feature that can be highlighted for guests.</p>
+                <ul class="step-bullets">
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step1.b1">Detailed baseline structure and utility health check</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step1.b2">On-site inventory and asset valuation mapping</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step1.b3">Highlight identification for platform ranking optimization</span></li>
+                </ul>
+            </div>
+            <div class="step-media">
+                <!-- 预留 2 张横图展示位：初始检查与勘测场景 -->
+                <div class="media-grid-2">
+                    <div class="media-grid-item placeholder-box" style="aspect-ratio: 4/3;">
+                        <i class="fas fa-camera-retro"></i>
+                        <span data-i18n="placeholder.img1">Inspection Photo 1</span>
+                        <p data-i18n="placeholder.click">Ready for Upload</p>
+                    </div>
+                    <div class="media-grid-item placeholder-box" style="aspect-ratio: 4/3;">
+                        <i class="fas fa-tools"></i>
+                        <span data-i18n="placeholder.img2">Inspection Photo 2</span>
+                        <p data-i18n="placeholder.click">Ready for Upload</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤 2：定制优化报告 -->
+        <div class="step-block">
+            <div class="step-info">
+                <span class="step-badge" data-i18n="step2.badge">STEP 02</span>
+                <h2 data-i18n="step2.title">Custom Property Enhancement Report</h2>
+                <p data-i18n="step2.desc">Based on the inspection, we generate a bespoke renovation and aesthetic proposal. We evaluate what is already in place to see what can be repurposed, and list precisely what additions are needed, optimizing investment cost.</p>
+                <ul class="step-bullets">
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step2.b1">Comprehensive before-and-after spatial mockups</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step2.b2">Detailed budget allocation and targeted upgrade list</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step2.b3">Design plan optimized for high conversion booking rates</span></li>
+                </ul>
+            </div>
+            <div class="step-media">
+                <!-- 预留 2 张横图展示位：方案与对比图 -->
+                <div class="media-grid-2">
+                    <div class="media-grid-item placeholder-box" style="aspect-ratio: 4/3;">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <span data-i18n="placeholder.img3">Design Proposal A</span>
+                        <p data-i18n="placeholder.click">Ready for Upload</p>
+                    </div>
+                    <div class="media-grid-item placeholder-box" style="aspect-ratio: 4/3;">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span data-i18n="placeholder.img4">Design Proposal B</span>
+                        <p data-i18n="placeholder.click">Ready for Upload</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤 3：标准化配置表 -->
+        <div class="step-block">
+            <div class="step-info">
+                <span class="step-badge" data-i18n="step3.badge">STEP 03</span>
+                <h2 data-i18n="step3.title">Standardized High-Value Facility Checklist</h2>
+                <p class="step-desc" data-i18n="step3.desc">We develop a standardized inventory checklist based on years of OTA guest feedback. This list prioritizes high-impact amenities that directly boost guest satisfaction and booking rankings — ensuring your budget is spent only where guests see and feel it.</p>
+                <ul class="step-bullets">
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step3.b1">Prioritizes high-retention smart appliances and premium bedding</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step3.b2">Prevents unnecessary design expenditures and saves owner capital</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step3.b3">Guarantees 100% hotel-grade configuration and safety standards</span></li>
+                </ul>
+            </div>
+            <div class="step-media">
+                <!-- 预留 1 张大尺寸横图展示位：房间配置表截图 -->
+                <div class="media-single placeholder-box" style="aspect-ratio: 16/10;">
+                    <i class="fas fa-list-ol"></i>
+                    <span data-i18n="placeholder.img5">Standardized Facility Checklist Screenshot</span>
+                    <p data-i18n="placeholder.click">Ready for Upload</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤 4：专业摄影与精修 -->
+        <div class="step-block">
+            <div class="step-info">
+                <span class="step-badge" data-i18n="step4.badge">STEP 04</span>
+                <h2 data-i18n="step4.title">Professional Media & Retouched Gallery</h2>
+                <p data-i18n="step4.desc">We employ professional wide-angle cameras, tailored lighting equipment, and specialized hospitality post-processing techniques to create a flawless online presence. These premium visuals serve as your listing's primary funnel magnet.</p>
+                <ul class="step-bullets">
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step4.b1">High-end DSLR wide-angle shooting and HDR exposure</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step4.b2">Professional staging and aesthetic color correction</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step4.b3">Meticulous post-editing tailored for global platform algorithms</span></li>
+                </ul>
+            </div>
+            <div class="step-media">
+                <!-- 预留 1 张高级大横图：样板间精修图 -->
+                <div class="media-single placeholder-box" style="aspect-ratio: 16/9;">
+                    <i class="fas fa-image"></i>
+                    <span data-i18n="placeholder.img6">Professional Photography Sample</span>
+                    <p data-i18n="placeholder.click">Ready for Upload</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤 5：月度透明财务与数据报告 -->
+        <div class="step-block">
+            <div class="step-info">
+                <span class="step-badge" data-i18n="step5.badge">STEP 05</span>
+                <h2 data-i18n="step5.title">Monthly Performance & Operational Reporting</h2>
+                <p data-i18n="step5.desc">Transparency is our signature. At the start of every month, we provide a thorough statement detailing occupancy rates, ADR, OTA fee breakdowns, and exact expenses. We fine-tune pricing dynamically to guarantee you maximum worry-free passive cashflow.</p>
+                <ul class="step-bullets">
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step5.b1">Transparent, itemized breakdowns of monthly revenue and costs</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step5.b2">Dynamic pricing reviews customized for individual market trends</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="step5.b3">Worry-free passive returns: sit back and watch your yields grow</span></li>
+                </ul>
+            </div>
+            <div class="step-media">
+                <!-- 预留 1 张高大上竖版：财务与数据报告截图 -->
+                <div class="media-single portrait-container placeholder-box" style="aspect-ratio: 3/4;">
+                    <i class="fas fa-file-invoice"></i>
+                    <span data-i18n="placeholder.img7">Monthly Report Mobile Mockup</span>
+                    <p data-i18n="placeholder.click">Ready for Upload (Portrait Screenshot)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 底部 CTA 区域 -->
+<section class="cta-section">
+    <div class="cta-box">
+        <h2 data-i18n="cta.title">Worry-Free Property Yields Are Just One Click Away</h2>
+        <p data-i18n="cta.desc">Partner with the most trusted short-term rental brand in the Philippines and turn your property into a passive income machine.</p>
+        <a href="index.html#contact" class="btn-cta" data-i18n="cta.btn">Get Free Revenue Evaluation</a>
+    </div>
+</section>
+
+<!-- 页脚 (与主站一致) -->
+<footer>
+    <img src="https://raw.githubusercontent.com/Ula1996/ula1996.github.io/main/%E7%99%BD%E5%BA%95logo.png" class="footer-logo" alt="GemstoneBR">
+    <p class="copyright">&copy; 2026 GemstoneBR Co-Host. All Rights Reserved.</p>
+</footer>
+
+<!-- 悬浮微信/客服按钮 (与主页一致) -->
+<a href="index.html#contact" class="floating-contact" title="Contact Us">
+    <i class="fas fa-comment-dots"></i>
+</a>
+
+<!-- 语言翻译核心脚本 (LocalStorage机制完全与主页面同步) -->
+<script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileBtn.querySelector('i');
+        if(navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+        }
+    });
+
+    const i18n = {
+        en: {
+            nav: {services:"Services",about:"About Us",process:"Service Process",reserve:"Reserve a Room",consult:"Free Consultation"},
+            hero: {
+                title: "Our Full Service托管 Process",
+                desc: "Step-by-step professional management designed to transform your asset, optimize performance, and deliver maximum passive yields."
+            },
+            placeholder: {
+                img1: "Inspection Photo 1 (Onsite Survey)",
+                img2: "Inspection Photo 2 (Asset Check)",
+                img3: "Design Proposal A (Concept layout)",
+                img4: "Design Proposal B (Upgrade plan)",
+                img5: "Standardized Facility Checklist Screenshot",
+                img6: "Professional DSLR Photography Sample",
+                img7: "Monthly Report Mobile Mockup (Vertical)",
+                click: "Ready for Upload"
+            },
+            step1: {
+                badge: "STEP 01",
+                title: "Initial On-Site Inspection & Audit",
+                desc: "We perform a rigorous, physical inspection of the property to evaluate layout efficiency, physical condition, and structural readiness. Our operational experts identify every detailed feature that can be highlighted for guests.",
+                b1: "Detailed baseline structure and utility health check",
+                b2: "On-site inventory and asset valuation mapping",
+                b3: "Highlight identification for platform ranking optimization"
+            },
+            step2: {
+                badge: "STEP 02",
+                title: "Custom Property Enhancement Report",
+                desc: "Based on the inspection, we generate a bespoke renovation and aesthetic proposal. We evaluate what is already in place to see what can be repurposed, and list precisely what additions are needed, optimizing investment cost.",
+                b1: "Comprehensive before-and-after spatial mockups",
+                b2: "Detailed budget allocation and targeted upgrade list",
+                b3: "Design plan optimized for high conversion booking rates"
+            },
+            step3: {
+                badge: "STEP 03",
+                title: "Standardized High-Value Facility Checklist",
+                desc: "We develop a standardized inventory checklist based on years of OTA guest feedback. This list prioritizes high-impact amenities that directly boost guest satisfaction and booking rankings — ensuring your budget is spent only where guests see and feel it.",
+                b1: "Prioritizes high-retention smart appliances and premium bedding",
+                b2: "Prevents unnecessary design expenditures and saves owner capital",
+                b3: "Guarantees 100% hotel-grade configuration and safety standards"
+            },
+            step4: {
+                badge: "STEP 04",
+                title: "Professional Media & Retouched Gallery",
+                desc: "We employ professional wide-angle cameras, tailored lighting equipment, and specialized hospitality post-processing techniques to create a flawless online presence. These premium visuals serve as your listing's primary funnel magnet.",
+                b1: "High-end DSLR wide-angle shooting and HDR exposure",
+                b2: "Professional staging and aesthetic color correction",
+                b3: "Meticulous post-editing tailored for global platform algorithms"
+            },
+            step5: {
+                badge: "STEP 05",
+                title: "Monthly Performance & Operational Reporting",
+                desc: "Transparency is our signature. At the start of every month, we provide a thorough statement detailing occupancy rates, ADR, OTA fee breakdowns, and exact expenses. We fine-tune pricing dynamically to guarantee you maximum worry-free passive cashflow.",
+                b1: "Transparent, itemized breakdowns of monthly revenue and costs",
+                b2: "Dynamic pricing reviews customized for individual market trends",
+                b3: "Worry-free passive returns: sit back and watch your yields grow"
+            },
+            cta: {
+                title: "Worry-Free Property Yields Are Just One Click Away",
+                desc: "Partner with the most trusted short-term rental brand in the Philippines and turn your property into a passive income machine.",
+                btn: "Get Free Revenue Evaluation"
+            }
+        },
+        zh: {
+            nav:{services:"服务项目",about:"关于我们",process:"服务流程",reserve:"房源预订",consult:"免费咨询"},
+            hero: {
+                title: "我们的服务托管全流程",
+                desc: "一站式专业托管流程：为您合理重塑资产，最大化房源线上吸引力，确保持续、透明的高被动收益。"
+            },
+            placeholder: {
+                img1: "房源检查照片 1（实地勘测）",
+                img2: "房源检查照片 2（资产盘点）",
+                img3: "定制优化方案 A（空间规划图）",
+                img4: "定制优化方案 B（升级增配表）",
+                img5: "标准化房源硬装配置表截图",
+                img6: "高端广角摄影/精修成品图",
+                img7: "月度透明报表截图（竖版大图）",
+                click: "等待您上传替换链接"
+            },
+            step1: {
+                badge: "第一步",
+                title: "初始房源实地勘测与情况核检",
+                desc: "在房东完成房源委托后，我们的资深团队将对房间进行一次深度、专业的实地核检，严格排查硬装损耗、水电安全，挖掘可用来包装房源的特色亮点。",
+                b1: "全面核查硬装基础架构及日常水电运作健康度",
+                b2: "实地资产物资精准清点并形成资产估值记录",
+                b3: "提炼亮点房源标签，为后续优化多平台搜索排名打下基础"
+            },
+            step2: {
+                badge: "第二步",
+                title: "定制化房源升级与优化报告",
+                desc: "我们针对勘测报告，结合房源已有设施进行去粗存精。我们不会盲目推翻重来，而是为您量身定制升级报告，指导您增添哪些装饰和家具，确保钱花在刀刃上。",
+                b1: "提供生动、专业的改造前/改造后局部空间对比效果",
+                b2: "定制出高性价比、一目了然的预算及专属增配物资明细",
+                b3: "打造直击 OTA 房客痛点的独特设计风格，直接提高点击率"
+            },
+            step3: {
+                badge: "第三步",
+                title: "经验沉淀：标准化高附加值配置表",
+                desc: "区别于昂贵复杂的普通家装设计，我们提供独家的“标准化房间配置表”。这是由我们运营数千位房客反馈积累出的核心指南，确保您购置的所有设施都深深抓住了高评分和核心客群关注的焦点。",
+                b1: "优先配置容易带来超高复购率的高档床品、智能家电等",
+                b2: "彻底避免不产生溢价效益的花哨设计，全方位节省业主开销",
+                b3: "100% 贴合酒店级房间安全、消防配置和无障碍标准"
+            },
+            step4: {
+                badge: "第四步",
+                title: "专业设备空间拍摄与深度后期精修",
+                desc: "我们配备高档单反相机、广角镜头、多机位补光设备及针对高端酒店民宿的资深调色修图。这些高质感的宣传片，将是您线上销售额当之无愧的“点击量磁铁”。",
+                b1: "专业单反大广角广域采光及多重 HDR 曝光合成",
+                b2: "资深生活美学软装场景摆拍及质感光源调试",
+                b3: "专门针对 Airbnb 等跨国平台推荐推荐算法进行的图片裁剪优化"
+            },
+            step5: {
+                badge: "第五步",
+                title: "月度透明财务与房源数据分析报告",
+                desc: "我们的特色是：账目绝对清晰、数据完全透明。每月月初为您提供一份图表饱满、条目分明的上一月度运营报告（包含入住率、ADR、OTA 抽成及确切开支），结合房源特性和淡旺季动态定价。您只需在家等钱到账就行。",
+                b1: "全透明、条目详细的月度账单（每一笔收入支出皆可追溯）",
+                b2: "定制化的房源竞品数据分析与定价机制修正报告",
+                b3: "真正实现全程躺赢的双手托管：让您每个月只管收钱"
+            },
+            cta: {
+                title: "开启您的双手托管和高额被动收益",
+                desc: "携手菲律宾规模最大、最受房东信任的短租代运营团队，立刻盘活闲置资产。",
+                btn: "获取免费房源收益评估"
+            }
+        }
+    };
+
+    const enBtn = document.getElementById('enBtn');
+    const cnBtn = document.getElementById('cnBtn');
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    function changeLang(lang) {
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let text = i18n[lang];
+            keys.forEach(k => { if (text) text = text[k]; });
+            if (text) el.innerHTML = text;
+        });
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    enBtn.addEventListener('click', () => {
+        enBtn.classList.add('active'); cnBtn.classList.remove('active'); changeLang('en');
+    });
+
+    cnBtn.addEventListener('click', () => {
+        cnBtn.classList.add('active'); enBtn.classList.remove('active'); changeLang('zh');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        if (savedLang === 'zh') cnBtn.click(); else enBtn.click();
+    });
+</script>
+</body>
+</html>
